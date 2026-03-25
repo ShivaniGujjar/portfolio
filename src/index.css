@@ -1,0 +1,60 @@
+html {
+  scroll-behavior: smooth;
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+html::-webkit-scrollbar {
+  display: none;
+}
+
+:root {
+  /* Fonts - Added JetBrains Mono for that 2D Dev vibe */
+  --font-body: "Inter", sans-serif;
+  --font-heading: "JetBrains Mono", "Poppins", sans-serif;
+
+  /* Colors - Artifex Theme */
+  --color-bg: #F9FBFA; /* Soft Pastel Cream */
+  --color-bg-light: #F5F5F5;
+  --color-text: #000000;
+  --color-heading: #000000;
+  
+  /* Standardizing your Pastel 2D Palette */
+  --color-yellow: #FFF58A; /* Pastel Sun */
+  --color-green: #00ED64;  /* MongoDB/Neon Green */
+  --color-mint: #E2FBE5;   /* Pastel Mint */
+  --color-navy: #001E2B;   /* Terminal Navy */
+  
+  --color-border: #000000;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /* Extra safety to ensure no stray scrollbars appear on elements */
+  scrollbar-width: none; 
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  min-height: 100vh;
+  /* Fixes potential horizontal jitters */
+  overflow-x: hidden; 
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 900; /* Heavier weight for 2D style */
+  letter-spacing: -1px;
+}

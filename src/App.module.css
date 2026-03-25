@@ -1,0 +1,127 @@
+.contentWrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* --- HEADER --- */
+.header {
+  padding: 1.5rem 0;
+  border-bottom: 3px solid #000;
+  background-color: #FFFFFF;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* --- HOME SECTION --- */
+.homeSection {
+  background: linear-gradient(135deg, #FFFEF0 0%, #FFFFFF 100%);
+  min-height: auto; /* 🔥 FIXED */
+  padding: 2rem 0 3rem; /* 🔥 REDUCED */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.homeSection::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  background-color: rgba(255, 245, 138, 0.08);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* --- SECTION CARD STYLES --- */
+.sectionCard {
+  padding: 4rem 2rem;
+  margin: 3rem auto;
+  width: 95%;
+  max-width: 1000px;
+  border: 4px solid #000;
+  border-radius: 0;
+  box-shadow: 16px 16px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* Yellow Card Section - About/Services */
+.sectionCardYellow {
+  composes: sectionCard;
+  background-color: #FFF58A;
+  color: #000;
+  box-shadow: 16px 16px 0 #000;
+}
+
+/* Pink Card Section - Projects */
+.sectionCardPink {
+  composes: sectionCard;
+  background-color: #F691DE;
+  color: #000;
+  box-shadow: 16px 16px 0 #000;
+}
+
+/* Green Card Section - Contact */
+.sectionCardGreen {
+  composes: sectionCard;
+  background-color: #05CD6A;
+  color: #FFFFFF;
+  box-shadow: 16px 16px 0 #000;
+}
+
+/* --- FOOTER --- */
+.footer {
+  padding: 3rem 0;
+  margin-top: 3rem;
+  border-top: 4px solid #000;
+  background-color: #FFFFFF;
+}
+
+.footerContent {
+  composes: contentWrapper;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+/* --- SOCIAL LINKS --- */
+.socialLinks {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.socialIcon {
+  font-size: 2rem;
+  color: #000;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border: 3px solid #000;
+  border-radius: 50%;
+}
+
+.socialIcon:hover {
+  background-color: #00ED64;
+  transform: translateY(-4px);
+  box-shadow: 4px 8px 0 rgba(0, 0, 0, 0.1);
+}
+
+
+/* In your main layout file */
+.mainLayoutContainer {
+  display: flex;
+  flex-direction: column;
+  /* FIXED: Set gap to 0 so sections touch each other */
+  gap: 0; 
+}
