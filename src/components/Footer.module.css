@@ -63,11 +63,11 @@
 }
 
 .topButton:hover {
-  background: #2D9CDB; 
+  background: #559fca; 
   color: #1A1A1A;     
   border-color: #2D9CDB;
   transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #A3E635; 
+  box-shadow: 6px 6px 0px #138544; 
 }
 
 .topButton:active {

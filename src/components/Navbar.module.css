@@ -82,7 +82,7 @@
 }
 
 .connectBtn:hover {
-  background-color: #F2C94C; /* Pink ki jagah Yellow Hover - mast lagega */
+  background-color: #2D9CDB; /* Pink ki jagah Yellow Hover - mast lagega */
   color: #1A1A1A;
   transform: translate(-3px, -3px);
   box-shadow: 9px 9px 0px #1A1A1A; 

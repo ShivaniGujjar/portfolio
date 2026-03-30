@@ -43,24 +43,135 @@
 .cardMain { display: grid; grid-template-columns: 1.1fr 1fr; }
 
 /* --- BIO SECTION --- */
-.bioSection { padding: 3.5rem; border-right: 4px solid #1A1A1A; }
+.bioSection { 
+  padding: 1.5rem 3.5rem; /* Pehle 3.5rem tha, isko 1.5rem karle */
+  border-right: 4px solid #1A1A1A; 
+}
 .headerRow { display: flex; gap: 10px; margin-bottom: 1.5rem; }
 .roleTag { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 900; background: #1A1A1A; color: #FFF; padding: 4px 12px; }
 .statusTag { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 900; border: 2px solid #1A1A1A; padding: 2px 10px; }
 
-.mainTitle { font-size: 4rem; font-weight: 950; line-height: 0.85; letter-spacing: -3px; margin-bottom: 1.5rem; color: #1A1A1A; }
+.mainTitle { font-size: 4rem; font-weight: 950; line-height: 0.85; letter-spacing: -3px; margin-bottom: .5rem; color: #1A1A1A; }
 .blueText { color: #2D9CDB; }
 .bioText { font-size: 1.15rem; font-weight: 600; color: #475569; line-height: 1.6; }
 
-.mernHighlight {
-  position: relative;
-  font-weight: 900;
+
+
+
+.aboutHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1rem; /* Spacing kam ki height ke liye */
+  padding-top: 0.2rem;
+}
+
+.simpleTitle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2.2rem; /* Balanced size */
+  font-weight: 950;
+  background-color: #ed5f2b; /* Signature Pink */
+  color: #fffdfd;
+  padding: 4px 15px;
+  border: 4px solid #1A1A1A;
+  box-shadow: 6px 6px 0px #1A1A1A; /* 2D Retro Shadow */
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  line-height: 1;
+  display: inline-block;
+  /* Thoda sa slant "Creative" look ke liye, par clean 2D */
+  transform: rotate(-1.5deg); 
+}
+
+.versionBadge {
+  background-color: #FFFFFF;
   color: #1A1A1A;
+  padding: 4px 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 800;
+  border: 3px solid #1A1A1A;
+  box-shadow: 4px 4px 0px #1A1A1A;
+  align-self: center;
+}
+
+/* Height Fix for Bio Section */
+.bioSection {
+  padding: 1.2rem 2.5rem; /* Padding kam rakhi hai */
+}
+
+.mainTitle {
+  font-size: 3.8rem;
+  margin-top: 0.5rem;
+  line-height: 0.9;
+}
+/* --- TERA ORIGINAL BIO TEXT (Same rakha hai) --- */
+.bioText { 
+  font-size: 1.15rem; 
+  font-weight: 600; 
+  color: #30343c; 
+  line-height: 1.7; 
+}
+
+/* --- SIRF YE NAYE HIGHLIGHTS ADD KAR TAAKI TEXT DULL NA LAGE --- */
+
+/* 1. Tera Naam (Palette Yellow underline) */
+.nameHighlight {
+  position: relative;
+  color: #1A1A1A;
+  font-weight: 950;
+  z-index: 1;
+  display: inline-block;
   padding: 0 4px;
-  background: #F2C94C;
+}
+
+/* Ye banayega Stylized Marker Underline */
+.nameHighlight::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 1px; /* Line ko thoda upar rakha hai text ke niche */
+  width: 100%;
+  height: 6px; /* Thick marker look */
+  background-color: #FFC567; /* Palette Yellow */
+  z-index: -1; /* Text ke peeche rahega */
+  transform: rotate(-1deg) skewX(-10deg); /* Hand-drawn wavy look */
+  border-radius: 2px;
+  opacity: 0.8;
+}
+
+
+
+/* 2. MERN STACK (Retro Orange Tag) */
+.mernTag {
+  background: #de260e; 
+  color: #FFFFFF;
+  padding: 1px 8px;
+  font-weight: 900;
   border: 2px solid #1A1A1A;
+  box-shadow: 3px 3px 0px #1A1A1A;
+  font-family: 'JetBrains Mono', monospace;
+  display: inline-block;
+  transform: rotate(-1.5deg);
   margin: 0 4px;
 }
+
+/* 3. Interactive Interfaces (Retro Pink text) */
+.uiHighlight {
+  color: #108d48; 
+  font-weight: 900; 
+  border-bottom: 2px dashed #1eaf4a;
+}
+
+/* 4. Performance (Retro Blue) */
+.perfHighlight {
+  color: #058CD7;
+  font-weight: 900;
+}
+
+
+
+
 
 /* --- QUICK TAGS --- */
 .quickTags { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 2.5rem; }
@@ -70,14 +181,14 @@
   box-shadow: 4px 4px 0px #1A1A1A;
   transition: all 0.15s ease;
 }
-.qTag:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0px #F691DE; }
+.qTag:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0px #1f437e; }
 
 /* --- SKILLS SECTION (COMPACT HEIGHT) --- */
 .skillsZone { display: flex; flex-direction: column; }
 
 .skillBlock {
   flex: 1; 
-  padding: 1.5rem 2.5rem; /* Reduced from 2.5rem to save height */
+  padding: 0.5rem 2.5rem; 
   border-bottom: 4px solid #1A1A1A;
   transition: all 0.3s ease; 
   cursor: pointer; 
@@ -85,21 +196,21 @@
 }
 .skillBlock:last-child { border-bottom: none; }
 
-.skillBlock h3 { 
-  font-size: 1.3rem; /* Slightly smaller for compactness */
+/* .skillBlock h3 { 
+  font-size: 1rem; 
   font-weight: 950; 
   margin: 0.4rem 0; 
   letter-spacing: -0.5px; 
-}
+} */
 .skillBlock p { 
   font-size: 0.85rem; /* Smaller subtext */
   font-weight: 600; 
-  margin: 0; 
+  margin: 0.2rem; 
   opacity: 0.95; 
 }
 
 /* 1. FRONTEND: React Blue Default */
-.skillBlock:nth-child(1) { background-color: #3cadcd !important; color: #FFFFFF !important; } 
+.skillBlock:nth-child(1) { background-color: #058CD7 !important; color: #FFFFFF !important; } 
 .skillBlock:nth-child(1):hover { 
   background-color: #003140 !important; color: #61DAFB !important; padding-left: 3rem; 
 }
@@ -115,6 +226,42 @@
 .skillBlock:nth-child(3):hover { 
   background-color: #1A1A1A !important; color: #FF6C37 !important; padding-left: 3rem; 
 }
+
+
+
+
+.skillIcons {
+  display: flex;
+  gap: 3.5rem;
+  font-size: 2rem; /* Perfect size */
+  margin-bottom: 0.5rem; /* Text se thoda gap */
+  color: #FFFFFF; /* Default White taaki colored bg pe chamke */
+  transition: all 0.3s ease;
+  margin-left: 28px;
+  margin-top: 0.5rem;
+  
+}
+
+.skillBlock h3 { 
+  font-size: 1.2rem; 
+  font-weight: 950; 
+  margin: 0.2rem 0; /* Margin tight kiya icons ke sath jodne ke liye */
+  letter-spacing: -0.5px; 
+  color: #FFFFFF;
+}
+
+/* Hover par interaction */
+.skillBlock:hover .skillIcons {
+  transform: translateY(-3px);
+  color: #FFC567; /* Hover par palette yellow pop */
+}
+
+.skillBlock:hover { 
+  background-color: #1A1A1A !important; 
+  padding-left: 3rem; 
+}
+
+/* ... baki sara tera original code ... */
 
 /* Label: Compact sizes */
 .label { 
@@ -156,6 +303,22 @@
 
 .livePulse { width: 10px; height: 10px; background-color: #27AE60; border-radius: 50%; animation: pulse 1.5s infinite; }
 @keyframes pulse { 50% { opacity: 0.4; transform: scale(1.2); } }
+
+/* LET'S BUILD BUTTON FIX */
+.socialTile { 
+  background-color: #1A1A1A; 
+  text-decoration: none; 
+  color: #FFFFFF; 
+  font-weight: 900; 
+  box-shadow: 6px 6px 0px #2D9CDB; /* Initial Blue Shadow */
+}
+
+.socialTile:hover { 
+  background-color: #F2C94C; /* Yellow Hover */
+  color: #1A1A1A; 
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0px #1A1A1A;
+}
 
 /* --- RESPONSIVE OVERRIDES --- */
 @media (max-width: 900px) {

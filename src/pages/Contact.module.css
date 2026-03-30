@@ -91,61 +91,116 @@
 }
 
 /* --- FORM SIDE --- */
+/* --- FORM SIDE UPDATE --- */
 .formSide {
   background: #FFFFFF;
   border: 4px solid #1A1A1A;
   border-radius: 8px;
-  box-shadow: 15px 15px 0px #1A1A1A;
-  overflow: hidden;
+  box-shadow: 12px 12px 0px #1A1A1A; /* Shadow thoda compact kiya */
+  overflow: visible; /* Labels bahar nikalne ke liye visible rakha hai */
 }
 
 .formHeader {
   background: #1A1A1A;
-  padding: 14px 24px;
+  padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.dot { width: 10px; height: 10px; border: 2px solid #FFF; border-radius: 2px; margin-right: 6px; display: inline-block; }
-.headerText { color: #FFF; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 850; margin: 0; }
+.contactForm { 
+  padding: 2rem; /* Padding 3rem se 2rem ki height control ke liye */
+}
 
-.contactForm { padding: 3rem; }
+.inputGroup { 
+  margin-bottom: 1.8rem; 
+  display: flex; 
+  flex-direction: column; 
+  position: relative; 
+}
 
-.inputGroup { margin-bottom: 2rem; display: flex; flex-direction: column; }
-.inputGroup label { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 950; margin-bottom: 10px; color: #1A1A1A; }
+/* Labels as Colorful Retro Stickers */
+.inputGroup label { 
+  font-family: 'JetBrains Mono', monospace; 
+  font-size: 0.7rem; 
+  font-weight: 950; 
+  margin-bottom: -10px; /* Input ke upar overlap */
+  margin-left: 10px;
+  padding: 3px 12px;
+  border: 3px solid #1A1A1A;
+  width: fit-content;
+  z-index: 5;
+  text-transform: uppercase;
+  box-shadow: 3px 3px 0px #1A1A1A;
+}
+
+/* Assigning Palette Colors to Labels */
+.inputGroup:nth-child(1) label { 
+  background: #FB7DA8; /* Pink */
+  transform: rotate(-2deg); 
+}
+
+.inputGroup:nth-child(2) label { 
+  background: #FFC567; /* Yellow */
+  transform: rotate(1.5deg); 
+}
+
+.inputGroup:nth-child(3) label { 
+  background: #058CD7; /* Blue */
+  color: #FFFFFF;
+  transform: rotate(-1deg); 
+}
 
 .inputGroup input, .inputGroup textarea { 
   border: 3px solid #1A1A1A; 
-  padding: 18px; 
+  padding: 15px; 
   font-weight: 700; 
-  font-size: 1rem; 
-  background: #F9F9F7; 
-  outline: none; 
-  transition: 0.15s; 
-  width: 100%;
+  font-size: 0.95rem; 
+  background: #FFFFFF; 
+  box-shadow: 6px 6px 0px #1A1A1A; /* Hard 2D shadow */
+  transition: 0.2s ease; 
+  outline: none;
 }
 
+/* Focus Effect: Input pops up */
 .inputGroup input:focus, .inputGroup textarea:focus { 
-  background: #FFF; 
-  box-shadow: 6px 6px 0px #F2C94C; 
-  transform: translate(-3px, -3px); 
+  transform: translate(-2px, -2px);
+  box-shadow: 9px 9px 0px #FD5A46; /* Orange shadow on focus */
+  background: #FFF;
 }
 
+/* Submit Button with Retro Pop */
 .submitBtn {
   width: 100%;
-  padding: 1.2rem;
+  padding: 1rem;
   background: #1A1A1A;
   color: #FFF;
   font-weight: 950;
+  font-size: 1.1rem;
   border: 3px solid #1A1A1A;
-  border-radius: 6px;
+  border-radius: 4px;
   cursor: pointer;
-  box-shadow: 6px 6px 0px #27AE60;
-  transition: all 0.1s ease;
+  box-shadow: 6px 6px 0px #159c50; /* Pink shadow by default */
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.submitBtn:hover { background: #27AE60; transform: translate(-2px, -2px); box-shadow: 8px 8px 0px #1A1A1A; }
+.submitBtn:hover { 
+  background: #2abe6d; /* Hover par Pink background */
+  color: #1A1A1A; 
+  transform: translate(-4px, -4px); 
+  box-shadow: 10px 10px 0px #1A1A1A; 
+}
+
+/* --- HEIGHT ADJUSTMENT FOR LEFT SIDE TOO --- */
+.contactTitle {
+  font-size: 4rem; /* 4.5 se thoda chota kiya height manage karne ko */
+}
+
+.contactDesc {
+  margin: 1rem 0; /* Margin kam ki */
+}
 
 @keyframes blink { 50% { opacity: 0.4; } }
 

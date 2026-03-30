@@ -2,22 +2,16 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start; 
-  /* Top padding navbar ke liye balanced rakhi hai */
-  padding: 2rem 2rem 2rem 2rem; 
-  
-  /* CRUCIAL FIX: Width ko 1200px kiya taaki About/Projects se match kare */
+  padding: 2rem; 
   max-width: 1200px; 
   margin: 0 auto;
-  
-  min-height: auto !important; 
-  height: auto !important;
+  min-height: auto;
   position: relative;
   background-color: #F9F9F7;
   overflow-x: hidden; 
   width: 100%;
 }
 
-/* --- LEFT CONTENT --- */
 .heroText {
   flex: 1.2;
   z-index: 10;
@@ -35,7 +29,7 @@
 }
 
 .statusText {
-  color: #27AE60;
+  color: #00995E; /* Retro Green */
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.7rem;
   font-weight: 900;
@@ -45,7 +39,6 @@
 .heroHeading {
   font-size: clamp(3rem, 9vh, 5.2rem); 
   font-weight: 950;
-  /* CHANGE 2: Line height 0.9 (MERN Stack aur Applications ke beech space) */
   line-height: 0.9; 
   color: #1A1A1A;
   letter-spacing: -4px;
@@ -54,13 +47,12 @@
 
 .outlineText {
   -webkit-text-stroke: 2px #1A1A1A;
-  color: transparent;
+  color: #FF6C37
 }
 
 .highlightWrapper {
   position: relative;
   display: inline-block;
-  /* Vertical margin 8px (Applications ko touch na karne ke liye) */
   margin: 8px 0; 
   transform: rotate(-1.5deg);
 }
@@ -68,8 +60,8 @@
 .highlight {
   position: relative;
   z-index: 2;
-  background-color: #F2C94C;
-  color: #1A1A1A;
+  background-color: #FF6C37; /* Palette Yellow */
+  color: white;
   padding: 6px 25px;
   border: 4px solid #1A1A1A;
   display: inline-block;
@@ -85,58 +77,38 @@
   margin: 1.2rem 0;
 }
 
-/* Specific Branding Colors */
-.reactColor {
-  color: #3aa4c1; /* React Blue */
-  font-weight: 900;
-}
+.reactColor { color: #058CD7; font-weight: 900; } /* Blue */
+.nodeColor { color: #00995E; font-weight: 900; }  /* Green */
+.mongoColor { color: #FD5A46; font-weight: 900; } /* Orange/Red */
 
-.nodeColor {
-  color: #296729; /* Node.js Green */
-  font-weight: 900;
-}
-
-.mongoColor {
-  color: #47A248; /* MongoDB Dark Green */
-  font-weight: 900;
-}
-
-/* --- THE CTA --- */
 .ctaButton {
   position: relative;
   background-color: #1A1A1A;
   color: #FFFFFF;
   padding: 16px 38px;
-  font-weight: 900;
+  font-weight: 950;
   font-size: 0.95rem;
   text-decoration: none;
   border: 3px solid #1A1A1A;
   border-radius: 6px;
   display: inline-block;
-  box-shadow: 6px 6px 0px #F2C94C; 
-  transition: all 0.1s ease;
+  box-shadow: 6px 6px 0px #FB7DA8; /* Palette Pink */
+  transition: all 0.15s ease;
 }
 
 .ctaButton:hover {
   transform: translate(-2px, -2px);
   box-shadow: 8px 8px 0px #1A1A1A;
-  background-color: #2D9CDB; 
-  color: #FFFFFF;
+  background-color: #058CD7; /* Blue Hover */
 }
 
-.ctaButton:active {
-  transform: translate(4px, 4px);
-  box-shadow: 0px 0px 0px #1A1A1A;
-}
-
-/* --- THE STACK (Original Colors Restored) --- */
+/* --- THE STACK GRAPHIC --- */
 .mernStackGraphic {
   flex: 0.8;
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 1rem;
   align-items: flex-end;
-  position: relative;
   margin-top: 3rem; 
 }
 
@@ -157,37 +129,50 @@
   transform: translate(-4px, -4px);
 }
 
+.layerIcon {
+  background: #1A1A1A;
+  color: #FFF;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  border: 2px solid #1A1A1A;
+  transition: all 0.2s ease;
+}
+
+/* Individual Icon Hover Colors */
+.mongoLayer:hover .layerIcon { color: #00995E; background: #FFF; }
+.expressLayer:hover .layerIcon { color: #FB7DA8; background: #FFF; }
+.reactLayer:hover .layerIcon { color: #058CD7; background: #FFF; }
+.nodeLayer:hover .layerIcon { color: #FFC567; background: #FFF; }
+
 .layerBlock {
   position: absolute;
   inset: -4px;
-  /* RESTORED: Back to your original variable */
-  background: var(--accent); 
   transform: translate(8px, 8px);
   z-index: -1;
   border: 4px solid #1A1A1A;
   transition: all 0.2s ease;
 }
 
-/* Baaki sara responsive aur animations wahi purana... */
-.layerContent { display: flex; align-items: center; gap: 12px; }
-.layerId { background: #1A1A1A; color: #FFF; padding: 4px 10px; font-family: 'JetBrains Mono', monospace; font-weight: 900; font-size: 0.85rem; }
-.monoText { font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 0.75rem; }
-.layerStatus { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 950; opacity: 0.4; }
-.pulseDot { width: 10px; height: 10px; background: #27AE60; border-radius: 50%; animation: statusBlink 1.5s infinite; }
+/* Layer Shadow Colors from Palette */
+.mongoLayer .layerBlock { background-color: #00995E; }
+.expressLayer .layerBlock { background-color: #FB7DA8; }
+.reactLayer .layerBlock { background-color: #058CD7; }
+.nodeLayer .layerBlock { background-color: #FFC567; }
+
+.layerContent { display: flex; align-items: center; gap: 15px; }
+.monoText { font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 0.75rem; color: #1A1A1A; }
+.layerStatus { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; font-weight: 950; opacity: 0.5; }
+.pulseDot { width: 10px; height: 10px; background: #00995E; border-radius: 50%; animation: statusBlink 1.5s infinite; }
+
 @keyframes statusBlink { 50% { opacity: 0.3; transform: scale(1.1); } }
 
 @media (max-width: 768px) {
-  .heroContainer {
-    flex-direction: column;
-    text-align: center;
-    padding: 3.5rem 1.5rem 1.5rem 1.5rem; 
-    align-items: center;
-    overflow: hidden;
-    min-height: auto !important;
-  }
-  .heroHeading { font-size: 2.2rem; line-height: 1.1; }
-  .highlightWrapper { transform: rotate(0deg); margin: 15px 0; width: 100%; }
-  .highlight { font-size: 1.8rem; padding: 8px 15px; width: 90%; }
-  .mernStackGraphic { align-items: center; margin-top: 2rem; width: 100%; flex: none; }
-  .techLayer { width: 100%; max-width: 300px; }
+  .heroContainer { flex-direction: column; text-align: center; align-items: center; }
+  .heroHeading { font-size: 2.5rem; }
+  .mernStackGraphic { align-items: center; width: 100%; }
+  .techLayer { width: 100%; max-width: 320px; }
 }

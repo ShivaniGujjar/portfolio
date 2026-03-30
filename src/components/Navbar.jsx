@@ -20,7 +20,7 @@ const Navbar = () => {
         {/* LOGO */}
         <div className={styles.logoGroup}>
           <a href="#home" className={styles.logoMain}>
-            SHIVANI<span className={styles.dot}>.</span>
+            PORTFOLIO<span className={styles.dot}>.</span>
           </a>
         </div>
 

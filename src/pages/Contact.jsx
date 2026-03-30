@@ -1,8 +1,35 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 import styles from './Contact.module.css';
 import { FaGithub, FaLinkedinIn, FaXTwitter, FaInstagram } from "react-icons/fa6";
 
 const Contact = () => {
+  const form = useRef();
+  const [btnText, setBtnText] = useState("SEND MESSAGE →");
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setBtnText("SENDING...");
+
+    // EmailJS logic
+    emailjs.sendForm(
+      'service_4sp6weh',   // Step 1 wali Service ID
+      'template_ie0ka9k',  // Step 2 wali Template ID
+      form.current,
+      '6se8NWjesf5hBewkW'    // Step 3 wali Public Key
+    )
+    .then((result) => {
+        console.log(result.text);
+        setBtnText("SUCCESS! ✅");
+        form.current.reset(); // Form clear kar dega
+        setTimeout(() => setBtnText("SEND MESSAGE →"), 3000);
+    }, (error) => {
+        console.log(error.text);
+        setBtnText("FAILED! ❌");
+        setTimeout(() => setBtnText("SEND MESSAGE →"), 3000);
+    });
+  };
+
   return (
     <section className={styles.contactWrapper} id="contact">
       <div className={styles.contactContainer}>
@@ -50,24 +77,25 @@ const Contact = () => {
             <p className={styles.headerText}>SEND A MESSAGE</p>
           </div>
           
-          <form className={styles.contactForm}>
+          <form ref={form} onSubmit={sendEmail} className={styles.contactForm}>
             <div className={styles.inputGroup}>
               <label>YOUR NAME</label>
-              <input type="text" placeholder="Full Name" required />
+              {/* Important: name attribute Template se match hona chahiye */}
+              <input type="text" name="from_name" placeholder="Full Name" required />
             </div>
             
             <div className={styles.inputGroup}>
               <label>EMAIL ADDRESS</label>
-              <input type="email" placeholder="email@address.com" required />
+              <input type="email" name="reply_to" placeholder="email@address.com" required />
             </div>
 
             <div className={styles.inputGroup}>
               <label>TELL ME ABOUT YOUR PROJECT</label>
-              <textarea placeholder="Message..." rows="4" required></textarea>
+              <textarea name="message" placeholder="Message..." rows="4" required></textarea>
             </div>
 
             <button type="submit" className={styles.submitBtn}>
-              SEND MESSAGE →
+              {btnText}
             </button>
           </form>
         </div>
