@@ -43,3 +43,9 @@ body{
 .read-the-docs {
   color: #888;
 }
+
+/* Add this to your global CSS if sections still feel far apart */
+section {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}

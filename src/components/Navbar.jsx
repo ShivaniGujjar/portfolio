@@ -1,35 +1,43 @@
-import React from "react";
-import styles from "./Navbar.module.css";
+import React from 'react';
+import styles from './Navbar.module.css';
 
-function Navbar() {
-  const scrollToContact = (e) => {
-    e.preventDefault();
-    // Use the ID of your contact section or footer
-    const contactSection = document.getElementById('contact'); 
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
+const Navbar = () => {
   return (
     <nav className={styles.navbar}>
-      <div className={styles.logo}>Shivani</div>
-      <ul className={styles.navLinks}>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      {/* Changed to an anchor tag for easy linking, styled as a button */}
-      <a 
-        href="#contact" 
-        className={styles.talkButton} 
-        onClick={scrollToContact}
-      >
-        Let’s Connect
-      </a>
+      <div className={styles.navContainer}>
+        
+        {/* LOGO: Technical Branding */}
+        <div className={styles.logoGroup}>
+          <a href="#home" className={styles.logoMain}>
+            SHIVANI<span className={styles.dot}>.</span>
+          </a>
+        </div>
+
+        {/* NAVIGATION: Professional Liquid Links */}
+        <ul className={styles.navLinks}>
+          <li className={styles.navItem}>
+            <a href="#home" className={`${styles.link} ${styles.homeHover}`}>HOME</a>
+          </li>
+          <li className={styles.navItem}>
+            <a href="#about" className={`${styles.link} ${styles.aboutHover}`}>ABOUT</a>
+          </li>
+          <li className={styles.navItem}>
+            <a href="#projects" className={`${styles.link} ${styles.projectsHover}`}>PROJECTS</a>
+          </li>
+          <li className={styles.navItem}>
+            <a href="#contact" className={`${styles.link} ${styles.contactHover}`}>CONTACT</a>
+          </li>
+        </ul>
+
+        {/* CTA: Mechanical Button */}
+        <div className={styles.ctaWrapper}>
+          <a href="#contact" className={styles.connectBtn}>
+            LET'S CONNECT
+          </a>
+        </div>
+      </div>
     </nav>
   );
-}
+};
 
 export default Navbar;

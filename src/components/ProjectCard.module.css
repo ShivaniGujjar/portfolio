@@ -1,154 +1,185 @@
-/* --- THE MAIN CARD CONTAINER --- */
-.card {
-  background-color: #FFFFFF;
-  border: 4px solid #000;
-  padding: 3.5rem;
-  margin-bottom: 6rem;
+.projectSection {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  /* Balanced spacing between projects */
+  margin-bottom: 8rem; 
+  --project-color: #2D9CDB;
+}
+
+/* THE FIX: Remove space after the second project */
+.projectSection:last-child {
+  margin-bottom: 0 !important;
+}
+
+.reversed { direction: rtl; }
+.reversed > * { direction: ltr; }
+
+/* --- VISUAL SIDE --- */
+.visualSide { position: relative; perspective: 1000px; }
+
+.colorBlock {
   position: relative;
-  /* Double shadow: Black + Vibrant Green */
-  box-shadow: 12px 12px 0px #000, 24px 24px 0px #00ED64; 
-  font-family: 'JetBrains Mono', monospace;
-  overflow: visible;
-  display: flex;
-  flex-direction: column; /* Prevents text/image overlap */
-  gap: 2rem;
+  background-color: var(--project-color);
+  border: 4px solid #1A1A1A;
+  padding: 2.5rem;
+  box-shadow: 20px 20px 0px #1A1A1A;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
 }
 
-/* --- THE STICKER TITLE --- */
-.projectTitle {
-  font-size: 3.2rem;
-  font-weight: 900;
-  color: #000;
-  margin-bottom: 2rem;
-  letter-spacing: -2px;
-  text-transform: uppercase;
-  /* Yellow Highlighter Effect */
-  background: #FFF58A; 
-  padding: 5px 20px;
-  border: 4px solid #000;
-  box-shadow: 6px 6px 0px #000;
-  /* transform: rotate(-1.5deg); */
-  display: inline-block;
-  align-self: flex-start;
+.checkerboard {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#1A1A1A 1.5px, transparent 1.5px);
+  background-size: 15px 15px;
+  opacity: 0.15;
+  z-index: 1;
 }
 
-/* --- THE BOXED DESCRIPTION --- */
-.cardDescription {
-  background: #f9f9f9;
-  border: 3px solid #000;
-  padding: 1.5rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
-  box-shadow: 6px 6px 0px #000;
-  color: #222;
-  line-height: 1.6;
-}
-
-/* --- TECH STACK STICKERS --- */
-.cardTechList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  list-style: none;
-  padding: 0;
-  margin: 1.5rem 0;
-}
-
-.cardTechItem {
-  background-color: #F691DE; /* Pastel Mint */
-  color: #000;
-  padding: 6px 14px;
-  border: 3px solid #000;
-  font-weight: 900;
-  font-size: 0.85rem;
-  box-shadow: 4px 4px 0px #000;
-  text-transform: uppercase;
-}
-
-/* --- ACTION BUTTONS --- */
-.cardLinks {
-  display: flex;
-  gap: 1.5rem;
-  margin-top: 1rem;
-}
-
-/* GITHUB BUTTON (Standard) */
-.cardLink {
-  padding: 1rem 2.2rem;
-  border: 4px solid #000;
-  background-color: #FFFFFF;
-  font-weight: 900;
-  box-shadow: 8px 8px 0px #000;
-  text-decoration: none;
-  color: #000;
-  text-transform: uppercase;
-  transition: all 0.1s ease;
-}
-
-/* GITHUB HOVER -> MONGODB GREEN */
-.cardLink:hover {
-  background-color: #00ED64; 
-  transform: translate(3px, 3px);
-  box-shadow: 4px 4px 0px #000;
-}
-
-/* LIVE DEMO BUTTON (Primary Yellow) */
-.primaryLink {
-  background-color: #FFF58A; 
-}
-
-/* LIVE DEMO HOVER -> PASTEL BLUE */
-.primaryLink:hover {
-  background-color: #70C1FF; /* Pastel Sky Blue */
-  transform: translate(3px, 3px);
-  box-shadow: 4px 4px 0px #000;
-}
-
-.cardLink:active, .primaryLink:active {
-  transform: translate(6px, 6px);
-  box-shadow: 2px 2px 0px #000;
-}
-
-/* --- IMAGE CONTAINER --- */
-.cardImageContainer {
-  margin-top: 2rem;
+.imageFrame {
   position: relative;
-  width: 100%;
+  z-index: 2;
+  border: 4px solid #1A1A1A;
+  background: #000;
+  box-shadow: 12px 12px 0px #1A1A1A;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
-.cardImage {
+.projectImg {
   width: 100%;
   height: auto;
-  border: 4px solid #000;
-  transform: rotate(1.5deg);
-  box-shadow: 12px 12px 0px #00ED64;
-  background-color: #fff;
-  transition: transform 0.2s;
+  display: block;
+  filter: grayscale(100%) contrast(1.1);
+  transition: 0.4s ease;
 }
 
-.card:hover .cardImage {
-  transform: rotate(0deg) scale(1.02);
-}
-
-/* --- TOP RIGHT BADGE --- */
-.card::before {
-  content: "SOURCE_DEPLOYED";
+.scanLaser {
   position: absolute;
-  top: -20px;
-  right: 40px;
-  background: #000;
-  color: #fff;
-  padding: 5px 15px;
-  font-size: 0.7rem;
-  font-weight: 900;
-  border: 2px solid #000;
+  top: -100%; left: 0;
+  width: 100%; height: 4px;
+  background: #FFF;
+  box-shadow: 0 0 15px #FFF, 0 0 30px var(--project-color);
+  z-index: 5;
+  opacity: 0;
+}
+
+/* --- HOVER KINETICS --- */
+.projectSection:hover .colorBlock {
+  transform: translate(-8px, -8px);
+  box-shadow: 35px 35px 0px #F2C94C;
+}
+
+.projectSection:hover .imageFrame {
+  transform: translate(-4px, -4px);
+  box-shadow: 18px 18px 0px #FFF;
+}
+
+.projectSection:hover .projectImg {
+  filter: grayscale(0%) contrast(1);
+  transform: scale(1.03);
+}
+
+.projectSection:hover .scanLaser {
+  opacity: 1;
+  animation: sweep 2s infinite linear;
+}
+
+@keyframes sweep {
+  0% { top: -10%; }
+  100% { top: 110%; }
+}
+
+.idBadge {
+  position: absolute;
+  top: 15px; right: 15px;
+  background: #F2C94C;
+  color: #1A1A1A;
+  padding: 4px 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 950;
+  font-size: 0.85rem;
+  border: 3px solid #1A1A1A;
   z-index: 10;
 }
 
-/* --- RESPONSIVE FIX --- */
-@media (max-width: 768px) {
-  .card { padding: 1.5rem; }
-  .projectTitle { font-size: 2.2rem; }
-  .cardLinks { flex-direction: column; }
-  .cardLink { text-align: center; }
+/* --- CONTENT SIDE --- */
+.headerMeta { display: flex; align-items: center; gap: 15px; margin-bottom: 2rem; }
+
+.status { 
+  font-family: 'JetBrains Mono', monospace; 
+  font-size: 0.85rem; 
+  font-weight: 950; 
+  color: var(--project-color); 
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.colorLine { flex: 1; height: 4px; background: var(--project-color); border: 2px solid #1A1A1A; }
+
+.title {
+  font-size: 4rem;
+  font-weight: 950;
+  letter-spacing: -3px;
+  line-height: 0.85;
+  margin-bottom: 1.5rem;
+  color: #1A1A1A;
+}
+
+.projectSection:hover .title { transform: skewX(-4deg); }
+
+.description {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #475569;
+  line-height: 1.5;
+  margin-bottom: 2.5rem;
+}
+
+.techCloud { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 3.5rem; }
+.techPill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 900;
+  padding: 6px 14px;
+  background: #FFF;
+  border: 3px solid #1A1A1A;
+  box-shadow: 4px 4px 0px #1A1A1A;
+  transition: 0.15s;
+}
+
+.projectSection:hover .techPill {
+  background: var(--project-color);
+  color: #FFF;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #1A1A1A;
+}
+
+.buttonStack { display: flex; gap: 15px; }
+.mainBtn, .sideBtn {
+  flex: 1; text-align: center; text-decoration: none; padding: 18px 10px;
+  font-weight: 950; font-size: 0.85rem; border: 3px solid #1A1A1A;
+  border-radius: 6px;
+  box-shadow: 6px 6px 0px #1A1A1A;
+  transition: all 0.1s ease;
+  letter-spacing: 0.5px;
+}
+
+.mainBtn { background: #1A1A1A; color: #FFF; }
+.sideBtn { background: #F691DE; color: #1A1A1A; }
+
+.mainBtn:hover { background: var(--project-color); transform: translate(-2px, -2px); box-shadow: 8px 8px 0px #1A1A1A; }
+.sideBtn:hover { background: #F2C94C; transform: translate(-2px, -2px); box-shadow: 8px 8px 0px #1A1A1A; }
+
+.mainBtn:active, .sideBtn:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0px #1A1A1A;
+}
+
+@media (max-width: 1100px) {
+  .projectSection { grid-template-columns: 1fr; gap: 3rem; margin-bottom: 6rem; }
+  .title { font-size: 3rem; }
+  .reversed { direction: ltr; }
 }

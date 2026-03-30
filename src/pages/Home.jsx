@@ -1,51 +1,83 @@
-import React from "react";
-import styles from "./Home.module.css";
-import profilePic from "../assets/1.jpg";
-import starIcon from "../assets/star.svg";
+import React from 'react';
+import styles from './Home.module.css';
 
-function Home() {
-  // Smooth scroll function
-  const scrollToProjects = (e) => {
-    e.preventDefault();
-    const projectsSection = document.getElementById('projects');
-    if (projectsSection) {
-      projectsSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
+const Home = () => {
   return (
-    <div className={styles.heroContainer}>
-      <div className={styles.heroContent}>
+    <section className={styles.heroContainer} id="home">
+      <div className={styles.heroText}>
+        <div className={styles.statusBadge}>
+          <span className={styles.pulseDot}></span>
+          <span className={styles.statusText}>SYSTEM_STATUS: OPERATIONAL</span>
+        </div>
+
         <h1 className={styles.heroHeading}>
-          Building Scalable <br />
-          <span className={styles.highlight}>MERN Stack</span> <br />
-          Applications
+          BUILDING <br />
+          <span className={styles.outlineText}>SCALABLE</span> <br />
+          <div className={styles.highlightWrapper}>
+            <span className={styles.highlight}>MERN STACK</span>
+          </div> <br />
+          APPLICATIONS
         </h1>
         
         <p className={styles.heroSubtext}>
-          I specialize in building high-performance 
-          web applications with React, Node.js, and MongoDB. 
-          
+          Specializing in high-performance web architecture 
+          with <span className={styles.techLink}>React</span>, 
+          <span className={styles.techLink}> Node.js</span>, and 
+          <span className={styles.techLink}> MongoDB</span>.
         </p>
 
-        {/* Changed to anchor tag for better linking */}
-        <a 
-          href="#projects" 
-          className={styles.ctaButton} 
-          onClick={scrollToProjects}
-        >
-          View My Work
-        </a>
+        <div className={styles.buttonGroup}>
+  <a href="#projects" className={styles.ctaButton}>
+    VIEW PROJECTS →
+  </a>
+</div>
       </div>
 
-      <div className={styles.heroImageWrapper}>
-        <div className={styles.polaroidFrame}>
-          <img src={profilePic} alt="Shivani" className={styles.heroImage} />
+      <div className={styles.mernStackGraphic}>
+        <div className={styles.connectionWire}></div>
+
+        {/* JS Layer */}
+        <div className={styles.techLayer} style={{ '--accent': '#F2C94C' }}>
+          <div className={styles.layerContent}>
+            <span className={styles.layerId}>JS</span>
+            <p className={styles.monoText}>RUNTIME // NODE.JS</p>
+          </div>
+          <div className={styles.layerStatus}>LIVE</div>
+          <div className={styles.layerBlock}></div>
         </div>
-        <img src={starIcon} alt="star" className={styles.starGraphic} />
+
+        {/* Express Layer */}
+        <div className={styles.techLayer} style={{ '--accent': '#E2E2E2' }}>
+          <div className={styles.layerContent}>
+            <span className={styles.layerId}>EX</span>
+            <p className={styles.monoText}>SERVER // EXPRESS</p>
+          </div>
+          <div className={styles.layerStatus}>STABLE</div>
+          <div className={styles.layerBlock}></div>
+        </div>
+
+        {/* React Layer */}
+        <div className={styles.techLayer} style={{ '--accent': '#2D9CDB' }}>
+          <div className={styles.layerContent}>
+            <span className={styles.layerId}>⚛</span>
+            <p className={styles.monoText}>CLIENT // REACT</p>
+          </div>
+          <div className={styles.layerStatus}>READY</div>
+          <div className={styles.layerBlock}></div>
+        </div>
+
+        {/* MongoDB Layer */}
+        <div className={styles.techLayer} style={{ '--accent': '#27AE60' }}>
+          <div className={styles.layerContent}>
+            <span className={styles.layerId}>DB</span>
+            <p className={styles.monoText}>DATABASE // MONGODB</p>
+          </div>
+          <div className={styles.layerStatus}>ACTIVE</div>
+          <div className={styles.layerBlock}></div>
+        </div>
       </div>
-    </div>
+    </section>
   );
-}
+};
 
 export default Home;

@@ -1,153 +1,181 @@
-/* --- SECTION WRAPPER --- */
 .contactWrapper {
-  padding: 1rem 0; 
-  width: 100%;
+  padding: 2rem 4rem 4rem 4rem;
+  background-color: #F9F9F7;
+}
+
+.contactContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+/* --- LEFT SIDE: TEXT --- */
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #1A1A1A;
+  color: #27AE60;
+  padding: 6px 14px;
   font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 950;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+}
+
+.pulse {
+  width: 10px; height: 10px;
+  background: #27AE60;
+  border-radius: 50%;
+  animation: blink 1.5s infinite;
+}
+
+.contactTitle { 
+  font-size: 4.5rem; 
+  font-weight: 950; 
+  line-height: 0.85; 
+  letter-spacing: -3px; 
+  color: #1A1A1A;
+}
+
+.blueText { color: #2D9CDB; }
+
+.contactDesc {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #475569;
+  margin: 1.5rem 0;
+  max-width: 450px;
+  line-height: 1.6;
+}
+
+/* --- REFINED ICON HOVER KINETICS --- */
+.iconGrid { 
+  display: flex; 
+  gap: 15px; 
+  margin-top: 2rem; 
+}
+
+.iconLink {
+  font-size: 1.5rem;
+  padding: 15px;
   display: flex;
-  flex-direction: column;
+  border: 3px solid #1A1A1A;
+  border-radius: 8px;
+  /* Snappy spring transition */
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 5px 5px 0px #1A1A1A;
+  cursor: pointer;
 }
 
-/* --- THE CLEAN HEADER --- */
-.sectionHeader {
-  /* Colors */
-  background-color: #FFF58A; /* Artifex Sun Yellow */
-  color: #000;               /* Solid Black Text */
-  
-  /* Sizing & Font */
-  font-size: 1.8rem;
-  font-weight: 900;
-  padding: 12px 24px;
-  text-transform: uppercase;
-  font-family: 'JetBrains Mono', monospace;
-  letter-spacing: -1px;
-  text-align: center;
-  /* Border & 2D Shadow */
-  display: inline-block;
-  border: 4px solid #000;
-  box-shadow: 8px 8px 0px #000; /* Sharp Black Shadow */
-  
-  /* Alignment & Spacing */
-  margin-bottom: 2.5rem;
-  margin-left: 0; /* Align to the edge of your project card below */
-  
-  /* Remove any previous rotation */
-  transform: rotate(0deg); 
+/* GITHUB: Green -> Black */
+.github { background: #27AE60; color: #FFF; }
+.github:hover { 
+  background: #1A1A1A; 
+  color: #27AE60; 
+  transform: translate(-4px, -4px); 
+  box-shadow: 10px 10px 0px #27AE60; 
 }
 
-/* Ensure the wrapper isn't pushing it too far right */
-.projectsWrapper {
-  padding: 1rem 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Keeps the sticker on the left */
+/* LINKEDIN: Blue -> Black */
+.linkedin { background: #0077B5; color: #FFF; }
+.linkedin:hover { 
+  background: #1A1A1A; 
+  color: #0077B5; 
+  transform: translate(-4px, -4px); 
+  box-shadow: 10px 10px 0px #0077B5; 
 }
 
-/* --- THE TERMINAL WINDOW (FULL WIDTH) --- */
-.formWindow {
-  background-color: #001E2B;
-  border: 4px solid #000;
-  width: 100%; /* Fills the Green Section card edges */
-  box-shadow: 15px 15px 0px #000;
+/* TWITTER/X: Black -> Blue */
+.twitter { background: #1A1A1A; color: #FFF; }
+.twitter:hover { 
+  background: #2D9CDB; 
+  color: #FFF; 
+  transform: translate(-4px, -4px); 
+  box-shadow: 10px 10px 0px #1A1A1A; 
+}
+
+/* INSTAGRAM: Gradient -> Black */
+.instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%,#d6249f 60%,#285AEB 90%); color: #FFF; }
+.instagram:hover { 
+  background: #1A1A1A; 
+  color: #d6249f; 
+  transform: translate(-4px, -4px); 
+  box-shadow: 10px 10px 0px #d6249f; 
+}
+
+/* THE CLICK ACTION */
+.iconLink:active { 
+  transform: translate(6px, 6px); 
+  box-shadow: 0px 0px 0px transparent; 
+}
+
+/* --- FORM SIDE --- */
+.formSide {
+  background: #FFFFFF;
+  border: 4px solid #1A1A1A;
+  border-radius: 8px;
+  box-shadow: 15px 15px 0px #1A1A1A;
   overflow: hidden;
 }
 
-.windowHeader {
-  background: #000;
-  padding: 1rem 1.5rem;
+.formHeader {
+  background: #1A1A1A;
+  padding: 14px 24px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  border-bottom: 4px solid #000;
+  align-items: center;
 }
 
-.dots { display: flex; gap: 8px; }
-.dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid #000; }
-.dot:nth-child(1) { background: #FF6B6B; }
-.dot:nth-child(2) { background: #FFE162; }
-.dot:nth-child(3) { background: #00ED64; }
+.dot { width: 10px; height: 10px; border: 2px solid #FFF; border-radius: 2px; margin-right: 6px; display: inline-block; }
+.headerText { color: #FFF; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 850; margin: 0; }
 
-.headerTitle { 
-  color: #00ED64; 
-  font-size: 0.85rem; 
-  font-weight: 900; 
-  text-transform: uppercase;
+.contactForm { padding: 3rem; }
+
+.inputGroup { margin-bottom: 2rem; display: flex; flex-direction: column; }
+.inputGroup label { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 950; margin-bottom: 10px; color: #1A1A1A; }
+
+.inputGroup input, .inputGroup textarea { 
+  border: 3px solid #1A1A1A; 
+  padding: 18px; 
+  font-weight: 700; 
+  font-size: 1rem; 
+  background: #F9F9F7; 
+  outline: none; 
+  transition: 0.15s; 
 }
 
-/* --- FORM STYLING --- */
-.form { 
-  padding: 3.5rem; 
-  display: flex; 
-  flex-direction: column; 
-  gap: 2.5rem; 
+.inputGroup input:focus, .inputGroup textarea:focus { 
+  background: #FFF; 
+  box-shadow: 6px 6px 0px #F2C94C; 
+  transform: translate(-3px, -3px); 
 }
 
-.formGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-}
-
-.label {
-  color: #00ED64;
-  font-weight: 900;
-  text-transform: uppercase;
-  font-size: 1rem;
-}
-
-.input, .textarea {
+.submitBtn {
   width: 100%;
-  background: #001821; 
-  border: 4px solid #000;
   padding: 1.2rem;
-  color: #F9FBFA;
-  font-family: inherit;
-  font-size: 1.1rem;
-  transition: 0.1s;
-}
-
-.textarea { min-height: 150px; resize: vertical; }
-
-.input:focus, .textarea:focus {
-  background: #002a3a;
-  outline: none;
-  box-shadow: 6px 6px 0px #00ED64;
-}
-
-/* --- ACTION BUTTON --- */
-.submitButton {
-  background-color: #F691DE;
-  color: #000;
-  border: 4px solid #000;
-  padding: 1.2rem 3rem;
-  font-weight: 900;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  box-shadow: 8px 8px 0px #000;
+  background: #1A1A1A;
+  color: #FFF;
+  font-weight: 950;
+  border: 3px solid #1A1A1A;
+  border-radius: 6px;
   cursor: pointer;
-  align-self: flex-start;
-  transition: 0.1s;
-  display: flex;
+  box-shadow: 6px 6px 0px #27AE60;
+  transition: all 0.1s ease;
 }
 
-.submitButton:hover {
-  background-color: #FFE162;
-  transform: translate(3px, 3px);
-  box-shadow: 4px 4px 0px #000;
-}
+.submitBtn:hover { background: #27AE60; transform: translate(-2px, -2px); box-shadow: 8px 8px 0px #1A1A1A; }
+.submitBtn:active { transform: translate(4px, 4px); box-shadow: 0px 0px 0px #1A1A1A; }
 
-.successBox {
-  background: #00ED64;
-  color: #000;
-  padding: 1rem;
-  border: 4px solid #000;
-  font-weight: 900;
-  box-shadow: 6px 6px 0px #000;
-  margin-top: 1.5rem;
-}
+@keyframes blink { 50% { opacity: 0.4; } }
 
-/* --- RESPONSIVE --- */
-@media (max-width: 768px) {
-  .form { padding: 1.5rem; }
-  .sectionHeader { font-size: 1.8rem; }
-  .submitButton { width: 100%; text-align: center; }
+@media (max-width: 1000px) {
+  .contactContainer { grid-template-columns: 1fr; text-align: center; }
+  .contactTitle { font-size: 3.5rem; }
+  .iconGrid { justify-content: center; }
+  .contactDesc { margin: 2rem auto; }
 }

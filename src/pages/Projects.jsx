@@ -1,53 +1,54 @@
 import React from 'react';
 import ProjectCard from '../components/ProjectCard';
-import pageStyles from './PageStyles.module.css';
-import gridStyles from './Projects.module.css';
+import styles from './Projects.module.css';
+
+// 1. IMPORT YOUR REAL IMAGES HERE
 import tasksyncImg from '../assets/tasksync.png';
 import horizonImg from '../assets/horizon.png';
 
 const projectsData = [
   {
-    title: 'TaskSync',
+    id: "01",
+    title: 'TASKSYNC',
     description: 'A full-stack Kanban board application for team project management. Features drag-and-drop tasks, user auth, and real-time updates.',
-    techStack: ['React', 'Node.js', 'Express', 'MongoDB', 'Socket.io'],
+    techStack: ['REACT', 'NODE.JS', 'EXPRESS', 'MONGODB'],
+    imageSrc: tasksyncImg, // Standard Screenshot
     repoLink: 'https://github.com/ShivaniGujjar/tasksync',
-    liveLink: 'https://tasksyncboard.netlify.app/',
-    imageSrc: tasksyncImg
+    liveLink: 'https://tasksync-live.vercel.app'
   },
   {
+    id: "02",
     title: 'HORIZON COURTS',
-    description: (
-      <>
-        A <strong>high-fidelity Frontend UI</strong> built for a premium sports club. 
-        Focused on a <strong>modular component architecture</strong> using React, 
-        this project features complex layouts, custom <strong>CSS Grid</strong> 
-        designs, and a fully <strong>responsive UX</strong> that maintains a 
-        luxury aesthetic across all screen sizes.
-      </>
-    ),
-    techStack: ['React', 'Redux', 'CSS Modules', 'Framer Motion', 'Vite'],
-    repoLink: 'https://github.com/Shivani-Gujjar/horizon-courts-ui',
-    liveLink: 'https://horizon-courts-ui.vercel.app',
-    imageSrc: horizonImg 
-  },
+    description: 'A high-fidelity Frontend UI built for a premium sports club. Focused on a modular component architecture and responsive UX.',
+    techStack: ['REACT', 'REDUX', 'FRAMER MOTION', 'VITE'],
+    imageSrc: horizonImg, // Grayscale Screenshot
+    repoLink: 'https://github.com/ShivaniGujjar/horizon-courts',
+    liveLink: 'https://horizon-courts.vercel.app'
+  }
 ];
-
-// ... keep your imports same ...
 
 function Projects() {
   return (
-    <section className={gridStyles.projectsWrapper}>
-      {/* Container for the flush heading */}
-      <div className={gridStyles.headerContainer}>
-        <h2 className={gridStyles.sectionHeader}>PROJECTS</h2>
+    <section className={styles.projectsWrapper} id="projects">
+      <div className={styles.sectionHeader}>
+        <div className={styles.headerTitleRow}>
+          <span className={styles.label}>FEATURED_WORKS</span>
+          <div className={styles.dataLine}></div>
+          <span className={styles.count}>[ {projectsData.length} ]</span>
+        </div>
+        <h2 className={styles.headerDesc}>
+          Exploring the intersection of <span>Performance</span> and <span>Creative UI</span>.
+        </h2>
       </div>
 
-      <div className={gridStyles.projectList}>
+      <div className={styles.projectList}>
         {projectsData.map((project, index) => (
-          <ProjectCard
-            key={index}
-            isEven={index % 2 === 0} 
+          <ProjectCard 
+            key={project.id}
             {...project}
+            isReversed={index % 2 !== 0}
+            // Cycle through Green, Blue themes
+            themeColor={index % 2 === 0 ? "#2D9CDB" : "#27AE60"} 
           />
         ))}
       </div>

@@ -1,19 +1,22 @@
 import React from 'react';
-import styles from './SkillCard.module.css';
+import styles from './SkillCard.module.css'; // Or wherever your styles are
 
-const SkillCard = ({ title, description, percentage }) => {
+const SkillCard = ({ title, percentage, description }) => {
   return (
-    <div className={styles.card}>
-      <h4 className={styles.title}>{title}</h4>
-      <p className={styles.desc}>{description}</p>
+    <div className={styles.skillCard}>
+      <div className={styles.skillInfo}>
+        <h4 className={styles.skillName}>{title}</h4>
+        <p className={styles.skillDescription}>{description}</p>
+      </div>
       
-      {/* Retro Progress Bar */}
-      <div className={styles.progressContainer}>
-        <div 
-          className={styles.progressBar} 
-          style={{ width: `${percentage}%` }}
-        ></div>
-        <span className={styles.percentText}>{percentage}%</span>
+      <div className={styles.progressWrapper}>
+        <div className={styles.progressBarBg}>
+          <div 
+            className={styles.progressBarFill} 
+            style={{ width: `${percentage}%` }}
+          ></div>
+        </div>
+        <span className={styles.percentageText}>{percentage}%</span>
       </div>
     </div>
   );

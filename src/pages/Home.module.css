@@ -1,127 +1,200 @@
 .heroContainer {
-  padding: 4rem 5% 2rem; /* controlled spacing */
   display: flex;
-  align-items: flex-start; /* FIX: no vertical centering */
   justify-content: space-between;
+  align-items: flex-start; 
+  padding: 3.5rem 5rem 2rem 5rem; /* Reduced bottom padding to 2rem */
+  max-width: 1440px;
+  margin: 0 auto;
+  
+  /* CHANGE THIS: from height to min-height and reduce the value */
+  min-height: 80vh; 
+  
   position: relative;
-  gap: 2rem;
-
-  /* ❌ removed min-height */
+  background-color: #F9F9F7;
+  overflow: hidden;
 }
 
-/* LEFT CONTENT */
-.heroContent {
+/* --- LEFT CONTENT --- */
+.heroText {
   flex: 1.2;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  z-index: 10;
+  /* Additional nudge for the text side specifically if needed */
+  margin-top: 1rem; 
+}
 
-  /* ❌ removed margin-top */
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #1A1A1A;
+  padding: 6px 14px;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
+.statusText {
+  color: #27AE60;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 1px;
 }
 
 .heroHeading {
-  font-size: 4.2rem;
-  font-weight: 900;
-  color: #000;
-  line-height: 0.85;
-  margin-bottom: 1.5rem;
-  letter-spacing: -3px;
-  text-transform: uppercase;
+  font-size: clamp(3rem, 9vh, 5.2rem); 
+  font-weight: 950;
+  line-height: 0.85; 
+  color: #1A1A1A;
+  letter-spacing: -4px;
+  margin-bottom: 0.5rem;
 }
 
-.heroHeading .highlight {
-  background-color: #00ED64;
-  padding: 0.1rem 0.8rem;
-  border: 4px solid #000;
-  box-shadow: 6px 6px 0px #000;
-  transform: rotate(-2deg);
+.outlineText {
+  -webkit-text-stroke: 2px #1A1A1A;
+  color: transparent;
+}
+
+.highlightWrapper {
+  position: relative;
   display: inline-block;
-  margin: 0.5rem 0;
+  margin: 5px 0;
+  transform: rotate(-1.5deg);
+}
+
+.highlight {
+  position: relative;
+  z-index: 2;
+  background-color: #F2C94C;
+  color: #1A1A1A;
+  padding: 6px 25px;
+  border: 4px solid #1A1A1A;
+  display: inline-block;
+  box-shadow: 8px 8px 0px #1A1A1A;
 }
 
 .heroSubtext {
   font-size: 1.1rem;
-  color: #001E2B;
-  line-height: 1.4;
-  margin-bottom: 2rem;
-  max-width: 500px;
+  color: #475569;
+  max-width: 480px;
+  line-height: 1.5;
   font-weight: 600;
+  margin: 1.2rem 0;
 }
 
-/* BUTTON */
+.techLink {
+  color: #1A1A1A;
+  font-weight: 800;
+  background: rgba(45, 156, 219, 0.1);
+}
+
+/* --- THE CTA --- */
 .ctaButton {
-  display: inline-block;
-  text-decoration: none;
-  background-color: #F691DE;
-  color: #000;
-  border: 4px solid #000;
-  padding: 1rem 2.5rem;
+  position: relative;
+  background-color: #1A1A1A;
+  color: #FFFFFF;
+  padding: 16px 38px;
   font-weight: 900;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  box-shadow: 8px 8px 0px #000;
-  cursor: pointer;
-  transition: all 0.1s;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 3px solid #1A1A1A;
+  border-radius: 6px;
+  display: inline-block;
+  box-shadow: 6px 6px 0px #F691DE;
+  transition: all 0.1s ease;
 }
 
 .ctaButton:hover {
-  transform: translate(3px, 3px);
-  box-shadow: 4px 4px 0px #000;
-  background-color: #FFF58A;
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px #1A1A1A;
+  background-color: #F691DE;
+  color: #1A1A1A;
 }
 
-/* RIGHT IMAGE */
-.heroImageWrapper {
-  flex: 1;
-  position: relative;
+.ctaButton:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0px #1A1A1A;
+}
+
+/* --- THE STACK --- */
+.mernStackGraphic {
+  flex: 0.8;
   display: flex;
-  justify-content: flex-end;
-
-  /* ❌ removed margin-top */
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: flex-end;
+  position: relative;
+  /* Matches text alignment nudge */
+  margin-top: 1rem; 
 }
 
-.polaroidFrame {
-  background: #FFFFFF;
-  padding: 12px;
-  border: 5px solid #000;
-  box-shadow: 15px 15px 0px #F691DE;
-  transform: rotate(3deg);
+.techLayer {
+  position: relative;
+  background: #FFF;
+  border: 4px solid #1A1A1A;
+  padding: 0.8rem 1.2rem;
+  width: 320px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+  transition: all 0.2s ease;
 }
 
-.heroImage {
-  width: 100%;
-  max-width: 380px;
-  height: auto;
-  border: 4px solid #000;
-  display: block;
+.techLayer:hover {
+  transform: translate(-4px, -4px);
 }
 
-.starGraphic {
+.layerBlock {
   position: absolute;
-  width: 90px;
-  bottom: -40px;
-  right: -20px;
-  filter: drop-shadow(4px 4px 0px #000);
+  inset: -4px;
+  background: var(--accent);
+  transform: translate(8px, 8px);
+  z-index: -1;
+  border: 4px solid #1A1A1A;
+  transition: all 0.2s ease;
 }
 
-/* 📱 RESPONSIVE */
-@media (max-width: 768px) {
-  .heroContainer {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 2rem 5%;
-  }
+.layerContent {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
-  .heroContent {
-    align-items: center;
-  }
+.layerId {
+  background: #1A1A1A; 
+  color: #FFF;
+  padding: 4px 10px; 
+  font-family: 'JetBrains Mono', monospace; 
+  font-weight: 900;
+  font-size: 0.85rem;
+}
 
-  .heroHeading {
-    font-size: 2.8rem;
-  }
+.monoText { 
+  font-family: 'JetBrains Mono', monospace; 
+  font-weight: 800; 
+  font-size: 0.75rem; 
+}
 
-  .heroImageWrapper {
-    justify-content: center;
-  }
+.layerStatus { 
+  font-family: 'JetBrains Mono', monospace; 
+  font-size: 0.65rem; 
+  font-weight: 950; 
+  opacity: 0.4;
+}
+
+/* ANIMATIONS */
+.pulseDot {
+  width: 10px; height: 10px; background: #27AE60; border-radius: 50%;
+  animation: statusBlink 1.5s infinite;
+}
+
+@keyframes statusBlink { 
+  50% { opacity: 0.3; transform: scale(1.1); } 
+}
+
+@media (max-width: 1100px) {
+  .heroContainer { flex-direction: column; text-align: center; padding: 2rem; height: auto; overflow: visible; }
+  .heroHeading { font-size: 3.5rem; letter-spacing: -2px; }
+  .mernStackGraphic { align-items: center; margin-top: 3rem; width: 100%; }
+  .techLayer { width: 100%; max-width: 320px; }
 }
