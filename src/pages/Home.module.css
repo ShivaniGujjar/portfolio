@@ -198,3 +198,43 @@
   .mernStackGraphic { align-items: center; margin-top: 3rem; width: 100%; }
   .techLayer { width: 100%; max-width: 320px; }
 }
+
+@media (max-width: 1024px) {
+  /* 1. Fix spacing between button and graphic */
+  .buttonGroup {
+    margin-top: 2rem !important;
+    margin-bottom: 3rem !important; /* Adds breathing room before the graphic */
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  /* 2. Center the MERN Graphic container */
+  .mernStackGraphic {
+    width: 90% !important; /* Slightly narrower than screen for a margin */
+    max-width: 420px !important; 
+    margin: 0 auto !important;
+    gap: 20px !important; /* Consistent spacing between layers */
+  }
+
+  /* 3. Refine Layer Content alignment */
+  .techLayer {
+    padding: 12px 20px !important;
+    justify-content: flex-start !important; /* Keeps ID and Text grouped left */
+    gap: 15px !important;
+    width: 100% !important;
+  }
+
+  /* 4. Handle the "LIVE/READY" status text */
+  .layerStatus {
+    margin-left: auto !important; /* Pushes status to the far right */
+    font-size: 0.65rem !important;
+    letter-spacing: 1px !important;
+  }
+
+  /* 5. Fluid typography for the subtext */
+  .heroSubtext {
+    padding: 0 10px !important;
+    max-width: 90% !important;
+    line-height: 1.4 !important;
+  }
+}

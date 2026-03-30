@@ -39,13 +39,13 @@ const About = () => {
             
             <p className={styles.bioText}>
               I specialize in building high-performance web applications with a focus on 
-              <span className={styles.mernHighlight}>MERN Stack</span> and 2D Retro architecture.
+              <span className={styles.mernHighlight}>MERN Stack</span> and Interactive Interfaces.
             </p>
 
             <div className={styles.quickTags}>
               <div className={styles.qTag}><span>⚡</span> PERFORMANCE</div>
               <div className={styles.qTag}><span>🛠️</span> SCALABLE</div>
-              <div className={styles.qTag}><span>🎨</span> PIXEL_PERFECTION</div>
+              <div className={styles.qTag}><span>🎨</span> PIXEL PERFECTION</div>
             </div>
           </div>
 
