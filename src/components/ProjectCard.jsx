@@ -23,7 +23,7 @@ const ProjectCard = ({ title, description, techStack, repoLink, liveLink, imageS
       <div className={styles.contentSide}>
         <div className={styles.headerMeta}>
           {/* UPDATED: Dynamic Project Label */}
-          <span className={styles.status}>// PROJECT {id}</span>
+          <span className={styles.status}># PROJECT {id}</span>
           <div className={styles.colorLine}></div>
         </div>
 

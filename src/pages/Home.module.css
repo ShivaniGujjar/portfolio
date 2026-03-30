@@ -2,13 +2,17 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start; 
-  padding: 3.5rem 5rem 2rem 5rem;
-  max-width: 1440px;
+  /* Top padding navbar ke liye balanced rakhi hai */
+  padding: 2rem 2rem 2rem 2rem; 
+  
+  /* CRUCIAL FIX: Width ko 1200px kiya taaki About/Projects se match kare */
+  max-width: 1200px; 
   margin: 0 auto;
-  min-height: 80vh; 
+  
+  min-height: auto !important; 
+  height: auto !important;
   position: relative;
   background-color: #F9F9F7;
-  /* Crucial for mobile: */
   overflow-x: hidden; 
   width: 100%;
 }
@@ -41,7 +45,8 @@
 .heroHeading {
   font-size: clamp(3rem, 9vh, 5.2rem); 
   font-weight: 950;
-  line-height: 0.85; 
+  /* CHANGE 2: Line height 0.9 (MERN Stack aur Applications ke beech space) */
+  line-height: 0.9; 
   color: #1A1A1A;
   letter-spacing: -4px;
   margin-bottom: 0.5rem;
@@ -55,7 +60,8 @@
 .highlightWrapper {
   position: relative;
   display: inline-block;
-  margin: 5px 0;
+  /* Vertical margin 8px (Applications ko touch na karne ke liye) */
+  margin: 8px 0; 
   transform: rotate(-1.5deg);
 }
 
@@ -79,10 +85,20 @@
   margin: 1.2rem 0;
 }
 
-.techLink {
-  color: #1A1A1A;
-  font-weight: 800;
-  background: rgba(45, 156, 219, 0.1);
+/* Specific Branding Colors */
+.reactColor {
+  color: #3aa4c1; /* React Blue */
+  font-weight: 900;
+}
+
+.nodeColor {
+  color: #296729; /* Node.js Green */
+  font-weight: 900;
+}
+
+.mongoColor {
+  color: #47A248; /* MongoDB Dark Green */
+  font-weight: 900;
 }
 
 /* --- THE CTA --- */
@@ -97,15 +113,15 @@
   border: 3px solid #1A1A1A;
   border-radius: 6px;
   display: inline-block;
-  box-shadow: 6px 6px 0px #F691DE;
+  box-shadow: 6px 6px 0px #F2C94C; 
   transition: all 0.1s ease;
 }
 
 .ctaButton:hover {
   transform: translate(-2px, -2px);
   box-shadow: 8px 8px 0px #1A1A1A;
-  background-color: #F691DE;
-  color: #1A1A1A;
+  background-color: #2D9CDB; 
+  color: #FFFFFF;
 }
 
 .ctaButton:active {
@@ -113,7 +129,7 @@
   box-shadow: 0px 0px 0px #1A1A1A;
 }
 
-/* --- THE STACK --- */
+/* --- THE STACK (Original Colors Restored) --- */
 .mernStackGraphic {
   flex: 0.8;
   display: flex;
@@ -121,7 +137,7 @@
   gap: 0.8rem;
   align-items: flex-end;
   position: relative;
-  margin-top: 1rem; 
+  margin-top: 3rem; 
 }
 
 .techLayer {
@@ -129,7 +145,7 @@
   background: #FFF;
   border: 4px solid #1A1A1A;
   padding: 0.8rem 1.2rem;
-  width: 320px; /* Fixed width for desktop */
+  width: 320px; 
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -144,111 +160,34 @@
 .layerBlock {
   position: absolute;
   inset: -4px;
-  background: var(--accent);
+  /* RESTORED: Back to your original variable */
+  background: var(--accent); 
   transform: translate(8px, 8px);
   z-index: -1;
   border: 4px solid #1A1A1A;
   transition: all 0.2s ease;
 }
 
-.layerContent {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.layerId {
-  background: #1A1A1A; 
-  color: #FFF;
-  padding: 4px 10px; 
-  font-family: 'JetBrains Mono', monospace; 
-  font-weight: 900;
-  font-size: 0.85rem;
-}
-
-.monoText { 
-  font-family: 'JetBrains Mono', monospace; 
-  font-weight: 800; 
-  font-size: 0.75rem; 
-}
-
-.layerStatus { 
-  font-family: 'JetBrains Mono', monospace; 
-  font-size: 0.65rem; 
-  font-weight: 950; 
-  opacity: 0.4;
-}
-
-/* --- ANIMATIONS --- */
-.pulseDot {
-  width: 10px; height: 10px; background: #27AE60; border-radius: 50%;
-  animation: statusBlink 1.5s infinite;
-}
-
-@keyframes statusBlink { 
-  50% { opacity: 0.3; transform: scale(1.1); } 
-}
-
-/* --- RESPONSIVE FIXES --- */
+/* Baaki sara responsive aur animations wahi purana... */
+.layerContent { display: flex; align-items: center; gap: 12px; }
+.layerId { background: #1A1A1A; color: #FFF; padding: 4px 10px; font-family: 'JetBrains Mono', monospace; font-weight: 900; font-size: 0.85rem; }
+.monoText { font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 0.75rem; }
+.layerStatus { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 950; opacity: 0.4; }
+.pulseDot { width: 10px; height: 10px; background: #27AE60; border-radius: 50%; animation: statusBlink 1.5s infinite; }
+@keyframes statusBlink { 50% { opacity: 0.3; transform: scale(1.1); } }
 
 @media (max-width: 768px) {
   .heroContainer {
     flex-direction: column;
     text-align: center;
-    padding: 3rem 1.5rem;
+    padding: 3.5rem 1.5rem 1.5rem 1.5rem; 
     align-items: center;
     overflow: hidden;
+    min-height: auto !important;
   }
-
-  .heroText {
-    width: 100%;
-    margin-top: 0;
-  }
-
-  .heroHeading {
-    font-size: 2.2rem; /* Shrunk for phone screens */
-    letter-spacing: -1px;
-    line-height: 1.1;
-  }
-
-  .highlightWrapper {
-    transform: rotate(0deg); /* Straighten for mobile readability */
-    margin: 15px 0;
-    width: 100%;
-  }
-
-  .highlight {
-    font-size: 1.8rem;
-    padding: 8px 15px;
-    width: 90%; /* Forces it to stay inside screen */
-    box-shadow: 4px 4px 0px #1A1A1A;
-  }
-
-  .heroSubtext {
-    font-size: 1rem;
-    margin: 1.5rem auto;
-    max-width: 100%;
-  }
-
-  .mernStackGraphic {
-    align-items: center;
-    margin-top: 3.5rem;
-    width: 100%;
-    flex: none;
-  }
-
-  .techLayer {
-    width: 100%;
-    max-width: 300px; /* Limits width so it doesn't look stretched */
-    padding: 0.8rem;
-    box-shadow: 4px 4px 0px #1A1A1A;
-  }
-
-  .layerBlock {
-    transform: translate(4px, 4px); /* Smaller shadow for mobile */
-  }
-
-  .monoText {
-    font-size: 0.65rem;
-  }
+  .heroHeading { font-size: 2.2rem; line-height: 1.1; }
+  .highlightWrapper { transform: rotate(0deg); margin: 15px 0; width: 100%; }
+  .highlight { font-size: 1.8rem; padding: 8px 15px; width: 90%; }
+  .mernStackGraphic { align-items: center; margin-top: 2rem; width: 100%; flex: none; }
+  .techLayer { width: 100%; max-width: 300px; }
 }

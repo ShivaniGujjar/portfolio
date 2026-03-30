@@ -65,7 +65,8 @@
   transform: translate(-3px, -3px); 
 }
 
-/* CONNECT BUTTON */
+/* Baaki sara code tera purane wala hi rahega... */
+
 .connectBtn {
   text-decoration: none;
   background-color: #1A1A1A;
@@ -75,18 +76,19 @@
   font-weight: 950;
   border: 3px solid #1A1A1A;
   border-radius: 6px; 
-  box-shadow: 6px 6px 0px #F691DE; 
+  box-shadow: 6px 6px 0px #2D9CDB; /* Pink ki jagah Blue shadow */
   display: inline-block;
   transition: all 0.1s ease;
 }
 
 .connectBtn:hover {
-  background-color: #F691DE;
+  background-color: #F2C94C; /* Pink ki jagah Yellow Hover - mast lagega */
   color: #1A1A1A;
   transform: translate(-3px, -3px);
   box-shadow: 9px 9px 0px #1A1A1A; 
 }
 
+/* ... baaki tera pura responsive logic wahi purane wala */
 /* MECHANICAL PRESS (DESKTOP) */
 .link:active,
 .connectBtn:active {

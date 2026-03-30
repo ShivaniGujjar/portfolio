@@ -42,7 +42,7 @@
 
 .cardMain { display: grid; grid-template-columns: 1.1fr 1fr; }
 
-/* BIO SECTION */
+/* --- BIO SECTION --- */
 .bioSection { padding: 3.5rem; border-right: 4px solid #1A1A1A; }
 .headerRow { display: flex; gap: 10px; margin-bottom: 1.5rem; }
 .roleTag { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 900; background: #1A1A1A; color: #FFF; padding: 4px 12px; }
@@ -62,7 +62,7 @@
   margin: 0 4px;
 }
 
-/* QUICK TAGS */
+/* --- QUICK TAGS --- */
 .quickTags { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 2.5rem; }
 .qTag {
   background: #FFFFFF; border: 2px solid #1A1A1A; padding: 8px 14px;
@@ -72,28 +72,74 @@
 }
 .qTag:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0px #F691DE; }
 
-/* SKILLS */
+/* --- SKILLS SECTION (COMPACT HEIGHT) --- */
 .skillsZone { display: flex; flex-direction: column; }
+
 .skillBlock {
-  flex: 1; padding: 2rem; border-bottom: 4px solid #1A1A1A;
-  transition: all 0.2s ease;
-  cursor: pointer; position: relative;
+  flex: 1; 
+  padding: 1.5rem 2.5rem; /* Reduced from 2.5rem to save height */
+  border-bottom: 4px solid #1A1A1A;
+  transition: all 0.3s ease; 
+  cursor: pointer; 
+  position: relative;
 }
 .skillBlock:last-child { border-bottom: none; }
-.skillBlock:hover { background-color: rgba(0, 0, 0, 0.03); padding-left: 2.5rem; }
 
-.label { font-size: 0.65rem; font-weight: 900; text-transform: uppercase; background: #1A1A1A; color: #FFF; padding: 4px 10px; display: inline-block; margin-bottom: 0.5rem; }
-.skillBlock h3 { font-size: 1.4rem; font-weight: 900; margin: 0.5rem 0; letter-spacing: -0.5px; }
-.skillBlock p { font-size: 0.9rem; font-weight: 600; margin: 0; opacity: 0.9; }
+.skillBlock h3 { 
+  font-size: 1.3rem; /* Slightly smaller for compactness */
+  font-weight: 950; 
+  margin: 0.4rem 0; 
+  letter-spacing: -0.5px; 
+}
+.skillBlock p { 
+  font-size: 0.85rem; /* Smaller subtext */
+  font-weight: 600; 
+  margin: 0; 
+  opacity: 0.95; 
+}
 
-.greenBg { background-color: #27AE60; color: #FFF; }
-.blueBg { background-color: #2D9CDB; color: #FFF; }
-.pinkBg { background-color: #F691DE; }
+/* 1. FRONTEND: React Blue Default */
+.skillBlock:nth-child(1) { background-color: #3cadcd !important; color: #FFFFFF !important; } 
+.skillBlock:nth-child(1):hover { 
+  background-color: #003140 !important; color: #61DAFB !important; padding-left: 3rem; 
+}
 
-.progressLine { position: absolute; bottom: 0; left: 0; width: 0%; height: 8px; background: #1A1A1A; transition: width 0.4s ease; }
+/* 2. BACKEND: Node Green Default */
+.skillBlock:nth-child(2) { background-color: #339933 !important; color: #FFFFFF !important; } 
+.skillBlock:nth-child(2):hover { 
+  background-color: #003000 !important; color: #339933 !important; padding-left: 3rem; 
+}
+
+/* 3. TOOLS: Postman Orange Default */
+.skillBlock:nth-child(3) { background-color: #FF6C37 !important; color: #FFFFFF !important; } 
+.skillBlock:nth-child(3):hover { 
+  background-color: #1A1A1A !important; color: #FF6C37 !important; padding-left: 3rem; 
+}
+
+/* Label: Compact sizes */
+.label { 
+  font-size: 0.6rem; 
+  font-weight: 900; 
+  background: #1A1A1A; 
+  color: #FFF; 
+  padding: 3px 10px; 
+  display: inline-block; 
+  margin-bottom: 0.4rem; 
+}
+
+/* Label inversion on hover */
+.skillBlock:hover .label {
+  background: #FFFFFF;
+  color: #1A1A1A;
+}
+
+.progressLine { 
+  position: absolute; bottom: 0; left: 0; width: 0%; height: 6px; 
+  background: currentColor; transition: width 0.4s ease; 
+}
 .skillBlock:hover .progressLine { width: 100%; }
 
-/* DOCK */
+/* --- DOCK & BUTTONS --- */
 .dockContainer { display: flex; gap: 1.2rem; margin-top: 2rem; }
 .dockItem, .socialTile {
   flex: 1; border: 3px solid #1A1A1A; border-radius: 8px; padding: 1.2rem;
@@ -112,37 +158,17 @@
 @keyframes pulse { 50% { opacity: 0.4; transform: scale(1.2); } }
 
 /* --- RESPONSIVE OVERRIDES --- */
-
 @media (max-width: 900px) {
   .aboutWrapper { padding: 2rem 1rem; }
   .commandCenter { box-shadow: 8px 8px 0px #1A1A1A; }
-  
   .cardMain { grid-template-columns: 1fr; }
-  
-  .bioSection { 
-    border-right: none; 
-    border-bottom: 4px solid #1A1A1A; 
-    padding: 2rem 1.5rem; 
-  }
-  
-  .mainTitle { 
-    font-size: 2.5rem; 
-    letter-spacing: -1.5px; 
-  }
-  
+  .bioSection { border-right: none; border-bottom: 4px solid #1A1A1A; padding: 2rem 1.5rem; }
+  .mainTitle { font-size: 2.5rem; letter-spacing: -1.5px; }
   .bioText { font-size: 1rem; }
-
-  .dockContainer { 
-    flex-wrap: wrap; 
-    gap: 1rem;
-  }
-  
-  .dockItem, .socialTile { 
-    flex: 1 1 calc(50% - 1rem); 
-    padding: 1rem;
-  }
-
+  .dockContainer { flex-wrap: wrap; gap: 1rem; }
+  .dockItem, .socialTile { flex: 1 1 calc(50% - 1rem); padding: 1rem; }
   .headerTerminal { font-size: 0.6rem; }
+  .skillBlock:hover { padding-left: 2rem; }
 }
 
 @media (max-width: 480px) {

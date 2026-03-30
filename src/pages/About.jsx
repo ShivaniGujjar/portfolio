@@ -32,7 +32,7 @@ const About = () => {
           <div className={styles.bioSection}>
             <div className={styles.headerRow}>
               <span className={styles.roleTag}>CORE_DEVELOPER</span>
-              <span className={styles.statusTag}>V2.0_STABLE</span>
+              
             </div>
 
             <h2 className={styles.mainTitle}>CREATIVE <br/> <span className={styles.blueText}>DEVELOPER</span></h2>
@@ -53,7 +53,7 @@ const About = () => {
           <div className={styles.skillsZone}>
             <div className={`${styles.skillBlock} ${styles.greenBg}`}>
               <span className={styles.label}>Frontend</span>
-              <h3>REACT • JS • TAILWIND</h3>
+              <h3>TAILWIND • JS • REACT</h3>
               <p>Modern interactive interfaces & animations.</p>
               <div className={styles.progressLine}></div>
             </div>
@@ -67,7 +67,7 @@ const About = () => {
 
             <div className={`${styles.skillBlock} ${styles.pinkBg}`}>
               <span className={styles.label}>Tools</span>
-              <h3>GIT • VITE • REDUX • POSTMAN</h3>
+              <h3>POSTMAN • VITE • REDUX • GIT</h3>
               <p>Advanced workflow & state management.</p>
               <div className={styles.progressLine}></div>
             </div>
@@ -82,7 +82,7 @@ const About = () => {
           <p>STATUS: <b>AVAILABLE</b></p>
         </div>
         <div className={`${styles.dockItem} ${styles.whiteDock}`}>
-          <p>LOC: <b>INDIA // 28.6° N</b></p>
+          <p>LOC: <b>INDIA | 28.6° N</b></p>
         </div>
         <div className={`${styles.dockItem} ${styles.blueDock}`}>
           <p>TIME: <b>{time}</b></p>
