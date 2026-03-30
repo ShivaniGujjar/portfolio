@@ -1,6 +1,7 @@
 .contactWrapper {
   padding: 2rem 4rem 4rem 4rem;
   background-color: #F9F9F7;
+  overflow-x: hidden; /* Prevent form shadows from causing side-scroll */
 }
 
 .contactContainer {
@@ -53,7 +54,7 @@
   line-height: 1.6;
 }
 
-/* --- REFINED ICON HOVER KINETICS --- */
+/* --- ICON HOVER KINETICS --- */
 .iconGrid { 
   display: flex; 
   gap: 15px; 
@@ -66,49 +67,24 @@
   display: flex;
   border: 3px solid #1A1A1A;
   border-radius: 8px;
-  /* Snappy spring transition */
   transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   box-shadow: 5px 5px 0px #1A1A1A;
   cursor: pointer;
+  text-decoration: none;
 }
 
-/* GITHUB: Green -> Black */
 .github { background: #27AE60; color: #FFF; }
-.github:hover { 
-  background: #1A1A1A; 
-  color: #27AE60; 
-  transform: translate(-4px, -4px); 
-  box-shadow: 10px 10px 0px #27AE60; 
-}
+.github:hover { background: #1A1A1A; color: #27AE60; transform: translate(-4px, -4px); box-shadow: 10px 10px 0px #27AE60; }
 
-/* LINKEDIN: Blue -> Black */
 .linkedin { background: #0077B5; color: #FFF; }
-.linkedin:hover { 
-  background: #1A1A1A; 
-  color: #0077B5; 
-  transform: translate(-4px, -4px); 
-  box-shadow: 10px 10px 0px #0077B5; 
-}
+.linkedin:hover { background: #1A1A1A; color: #0077B5; transform: translate(-4px, -4px); box-shadow: 10px 10px 0px #0077B5; }
 
-/* TWITTER/X: Black -> Blue */
 .twitter { background: #1A1A1A; color: #FFF; }
-.twitter:hover { 
-  background: #2D9CDB; 
-  color: #FFF; 
-  transform: translate(-4px, -4px); 
-  box-shadow: 10px 10px 0px #1A1A1A; 
-}
+.twitter:hover { background: #2D9CDB; color: #FFF; transform: translate(-4px, -4px); box-shadow: 10px 10px 0px #1A1A1A; }
 
-/* INSTAGRAM: Gradient -> Black */
 .instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%,#d6249f 60%,#285AEB 90%); color: #FFF; }
-.instagram:hover { 
-  background: #1A1A1A; 
-  color: #d6249f; 
-  transform: translate(-4px, -4px); 
-  box-shadow: 10px 10px 0px #d6249f; 
-}
+.instagram:hover { background: #1A1A1A; color: #d6249f; transform: translate(-4px, -4px); box-shadow: 10px 10px 0px #d6249f; }
 
-/* THE CLICK ACTION */
 .iconLink:active { 
   transform: translate(6px, 6px); 
   box-shadow: 0px 0px 0px transparent; 
@@ -147,6 +123,7 @@
   background: #F9F9F7; 
   outline: none; 
   transition: 0.15s; 
+  width: 100%;
 }
 
 .inputGroup input:focus, .inputGroup textarea:focus { 
@@ -169,13 +146,32 @@
 }
 
 .submitBtn:hover { background: #27AE60; transform: translate(-2px, -2px); box-shadow: 8px 8px 0px #1A1A1A; }
-.submitBtn:active { transform: translate(4px, 4px); box-shadow: 0px 0px 0px #1A1A1A; }
 
 @keyframes blink { 50% { opacity: 0.4; } }
 
-@media (max-width: 1000px) {
-  .contactContainer { grid-template-columns: 1fr; text-align: center; }
-  .contactTitle { font-size: 3.5rem; }
-  .iconGrid { justify-content: center; }
-  .contactDesc { margin: 2rem auto; }
+/* --- RESPONSIVE OVERRIDES --- */
+
+@media (max-width: 1024px) {
+  .contactWrapper { padding: 4rem 1.5rem; }
+  .contactContainer { grid-template-columns: 1fr; gap: 4rem; text-align: center; }
+  
+  .contactTitle { font-size: 3rem; letter-spacing: -2px; }
+  
+  .contactDesc { margin: 1.5rem auto; max-width: 100%; }
+  
+  .iconGrid { justify-content: center; flex-wrap: wrap; }
+  
+  .formSide { box-shadow: 10px 10px 0px #1A1A1A; width: 100%; }
+  
+  .contactForm { padding: 2rem; } /* Less padding inside form on mobile */
+}
+
+@media (max-width: 480px) {
+  .contactTitle { font-size: 2.2rem; }
+  
+  .iconLink { padding: 12px; font-size: 1.2rem; }
+  
+  .inputGroup input, .inputGroup textarea { padding: 14px; }
+  
+  .submitBtn { font-size: 1rem; padding: 1rem; }
 }

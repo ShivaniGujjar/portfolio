@@ -1,16 +1,15 @@
 .aboutWrapper {
-  /* CHANGE: Reduce the 3rd value (bottom padding) to 1rem or 2rem */
   padding: 4rem 2rem 1rem 2rem; 
-  
   max-width: 1200px;
   margin: 0 auto;
   background-color: #F9F9F7;
+  overflow-x: hidden;
 }
 
 .commandCenter {
   background: #FFF;
   border: 4px solid #1A1A1A;
-  border-radius: 8px; /* Matching the 6px-8px theme */
+  border-radius: 8px;
   box-shadow: 12px 12px 0px #1A1A1A;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -22,11 +21,24 @@
   display: flex; 
   justify-content: space-between; 
   align-items: center; 
+  border-bottom: 3px solid #1A1A1A;
 }
 
 .windowControls { display: flex; gap: 8px; }
-.dot { width: 12px; height: 12px; border: 2.5px solid #FFF; border-radius: 2px; }
-.headerText { color: #FFF; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 800; letter-spacing: 1px; }
+.dot { width: 10px; height: 10px; border: 2.5px solid #FFF; border-radius: 2px; }
+
+.headerTerminal {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.terminalUser { color: #27AE60; }
+.terminalPath { color: #2D9CDB; }
+.terminalCursor { color: #F2C94C; animation: blink 1s step-end infinite; }
+
+@keyframes blink { 50% { opacity: 0; } }
 
 .cardMain { display: grid; grid-template-columns: 1.1fr 1fr; }
 
@@ -40,7 +52,6 @@
 .blueText { color: #2D9CDB; }
 .bioText { font-size: 1.15rem; font-weight: 600; color: #475569; line-height: 1.6; }
 
-/* --- MERN HIGHLIGHT --- */
 .mernHighlight {
   position: relative;
   font-weight: 900;
@@ -51,7 +62,7 @@
   margin: 0 4px;
 }
 
-/* --- QUICK TAGS --- */
+/* QUICK TAGS */
 .quickTags { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 2.5rem; }
 .qTag {
   background: #FFFFFF; border: 2px solid #1A1A1A; padding: 8px 14px;
@@ -61,7 +72,7 @@
 }
 .qTag:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0px #F691DE; }
 
-/* --- SKILLS --- */
+/* SKILLS */
 .skillsZone { display: flex; flex-direction: column; }
 .skillBlock {
   flex: 1; padding: 2rem; border-bottom: 4px solid #1A1A1A;
@@ -69,20 +80,20 @@
   cursor: pointer; position: relative;
 }
 .skillBlock:last-child { border-bottom: none; }
-.skillBlock:hover { background-color: rgba(255, 255, 255, 0.1); padding-left: 2.5rem; }
+.skillBlock:hover { background-color: rgba(0, 0, 0, 0.03); padding-left: 2.5rem; }
 
 .label { font-size: 0.65rem; font-weight: 900; text-transform: uppercase; background: #1A1A1A; color: #FFF; padding: 4px 10px; display: inline-block; margin-bottom: 0.5rem; }
 .skillBlock h3 { font-size: 1.4rem; font-weight: 900; margin: 0.5rem 0; letter-spacing: -0.5px; }
 .skillBlock p { font-size: 0.9rem; font-weight: 600; margin: 0; opacity: 0.9; }
 
-.greenBg { background-color: #27AE60; }
-.blueBg { background-color: #2D9CDB; }
+.greenBg { background-color: #27AE60; color: #FFF; }
+.blueBg { background-color: #2D9CDB; color: #FFF; }
 .pinkBg { background-color: #F691DE; }
 
 .progressLine { position: absolute; bottom: 0; left: 0; width: 0%; height: 8px; background: #1A1A1A; transition: width 0.4s ease; }
 .skillBlock:hover .progressLine { width: 100%; }
 
-/* --- DOCK --- */
+/* DOCK */
 .dockContainer { display: flex; gap: 1.2rem; margin-top: 2rem; }
 .dockItem, .socialTile {
   flex: 1; border: 3px solid #1A1A1A; border-radius: 8px; padding: 1.2rem;
@@ -92,8 +103,6 @@
 .dockItem p { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 800; margin: 0; }
 
 .dockItem:hover, .socialTile:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0px #1A1A1A; }
-.dockItem:active, .socialTile:active { transform: translate(4px, 4px); box-shadow: 0px 0px 0px #1A1A1A; }
-
 .yellowDock { background-color: #F2C94C; }
 .whiteDock { background-color: #FFFFFF; }
 .blueDock { background-color: #2D9CDB; color: #FFF; }
@@ -102,54 +111,43 @@
 .livePulse { width: 10px; height: 10px; background-color: #27AE60; border-radius: 50%; animation: pulse 1.5s infinite; }
 @keyframes pulse { 50% { opacity: 0.4; transform: scale(1.2); } }
 
+/* --- RESPONSIVE OVERRIDES --- */
+
 @media (max-width: 900px) {
+  .aboutWrapper { padding: 2rem 1rem; }
+  .commandCenter { box-shadow: 8px 8px 0px #1A1A1A; }
+  
   .cardMain { grid-template-columns: 1fr; }
-  .bioSection { border-right: none; border-bottom: 4px solid #1A1A1A; padding: 2rem; }
-  .dockContainer { flex-wrap: wrap; }
-  .dockItem { flex: 1 1 40%; }
+  
+  .bioSection { 
+    border-right: none; 
+    border-bottom: 4px solid #1A1A1A; 
+    padding: 2rem 1.5rem; 
+  }
+  
+  .mainTitle { 
+    font-size: 2.5rem; 
+    letter-spacing: -1.5px; 
+  }
+  
+  .bioText { font-size: 1rem; }
+
+  .dockContainer { 
+    flex-wrap: wrap; 
+    gap: 1rem;
+  }
+  
+  .dockItem, .socialTile { 
+    flex: 1 1 calc(50% - 1rem); 
+    padding: 1rem;
+  }
+
+  .headerTerminal { font-size: 0.6rem; }
 }
 
-.cardHeader { 
-  background: #1A1A1A; 
-  padding: 0.8rem 1.5rem; 
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  border-bottom: 3px solid #1A1A1A;
-}
-
-.windowControls { 
-  display: flex; 
-  gap: 8px; 
-}
-
-.dot { 
-  width: 10px; 
-  height: 10px; 
-  border: 2px solid #FFF; 
-  border-radius: 2px; 
-}
-
-.headerTerminal {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-
-.terminalUser {
-  color: #27AE60; /* Terminal Green */
-}
-
-.terminalPath {
-  color: #2D9CDB; /* System Blue */
-}
-
-.terminalCursor {
-  color: #F2C94C; /* Accent Yellow */
-  animation: blink 1s step-end infinite;
-}
-
-@keyframes blink {
-  50% { opacity: 0; }
+@media (max-width: 480px) {
+  .mainTitle { font-size: 2rem; }
+  .dockItem, .socialTile { flex: 1 1 100%; }
+  .quickTags { gap: 8px; }
+  .qTag { font-size: 0.6rem; padding: 6px 10px; }
 }
