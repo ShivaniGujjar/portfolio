@@ -31,10 +31,10 @@ const Contact = () => {
             <a href="#" target="_blank" rel="noreferrer" className={`${styles.iconLink} ${styles.linkedin}`}>
               <FaLinkedinIn />
             </a>
-            <a href="#" target="_blank" rel="noreferrer" className={`${styles.iconLink} ${styles.twitter}`}>
+            <a href="https://x.com/Inavish_Buttar" target="_blank" rel="noreferrer" className={`${styles.iconLink} ${styles.twitter}`}>
               <FaXTwitter />
             </a>
-            <a href="#" target="_blank" rel="noreferrer" className={`${styles.iconLink} ${styles.instagram}`}>
+            <a href="https://www.instagram.com/shivani_gujjar04/" target="_blank" rel="noreferrer" className={`${styles.iconLink} ${styles.instagram}`}>
               <FaInstagram />
             </a>
           </div>

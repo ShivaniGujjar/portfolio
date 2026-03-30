@@ -37,11 +37,11 @@ const ProjectCard = ({ title, description, techStack, repoLink, liveLink, imageS
         </div>
 
         <div className={styles.buttonStack}>
-          <a href={liveLink} target="_blank" rel="noreferrer" className={styles.mainBtn}>
-            RUN_APPLICATION →
+          <a href="https://tasksyncboard.netlify.app/" target="_blank" rel="noreferrer" className={styles.mainBtn}>
+            RUN APPLICATION →
           </a>
           <a href={repoLink} target="_blank" rel="noreferrer" className={styles.sideBtn}>
-            SOURCE_CODE
+            SOURCE CODE
           </a>
         </div>
       </div>
