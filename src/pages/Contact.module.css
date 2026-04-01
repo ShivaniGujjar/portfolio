@@ -1,232 +1,405 @@
+/* ============================================================
+   CONTACT SECTION - THE NEURONAL BRUTALIST UPGRADE
+   Light: Heavy 3D Retro | Dark: OLED Stealth
+   ============================================================ */
+
+/* --- DARK MODE OVERRIDES (Sheryians Inspired) --- */
+[data-theme='dark'] .contactWrapper {
+  background-color: #000000 !important;
+}
+
+[data-theme='dark'] .contactTitle { color: #FFFFFF !important; }
+[data-theme='dark'] .contactDesc { color: #94A3B8 !important; }
+
+[data-theme='dark'] .statusBadge {
+  background: #111111 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #27AE60 !important;
+}
+
+[data-theme='dark'] .formSide {
+  background: #080808 !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8) !important;
+}
+
+[data-theme='dark'] .inputGroup input, 
+[data-theme='dark'] .inputGroup textarea {
+  background: #000 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #FFFFFF !important;
+  box-shadow: none !important;
+}
+
+[data-theme='dark'] .inputGroup input:focus, 
+[data-theme='dark'] .inputGroup textarea:focus {
+  border-color: #27AE60 !important;
+  box-shadow: 0 0 15px rgba(39, 174, 96, 0.1) !important;
+}
+
+[data-theme='dark'] .submitBtn {
+  background: #FFFFFF !important;
+  color: #000000 !important;
+  border: none !important;
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1) !important;
+}
+
+/* --- LIGHT MODE & BASE STYLES --- */
+
 .contactWrapper {
-  padding: 2rem 4rem 4rem 4rem;
-  background-color: #F9F9F7;
-  overflow-x: hidden; /* Prevent form shadows from causing side-scroll */
+  padding: 6rem 4rem;
+  background-color: var(--bg-color);
+  transition: background 0.4s ease;
 }
 
 .contactContainer {
-  max-width: 1200px;
+  max-width: 1250px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1.1fr;
-  gap: 6rem;
+  gap: 8rem;
   align-items: center;
 }
 
-/* --- LEFT SIDE: TEXT --- */
 .statusBadge {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   background: #1A1A1A;
-  color: #27AE60;
-  padding: 6px 14px;
+  color: #00ff41;
+  padding: 8px 18px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
   font-weight: 950;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   border-radius: 4px;
 }
 
 .pulse {
   width: 10px; height: 10px;
-  background: #27AE60;
+  background: #00ff41;
   border-radius: 50%;
   animation: blink 1.5s infinite;
 }
 
 .contactTitle { 
-  font-size: 4.5rem; 
+  font-size: clamp(3rem, 7vw, 4.5rem); 
   font-weight: 950; 
-  line-height: 0.85; 
+  line-height: 0.9; 
   letter-spacing: -3px; 
-  color: #1A1A1A;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
 }
 
 .blueText { color: #2D9CDB; }
 
 .contactDesc {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: #475569;
-  margin: 1.5rem 0;
-  max-width: 450px;
+  margin-bottom: 3rem;
+  max-width: 480px;
   line-height: 1.6;
 }
 
-/* --- ICON HOVER KINETICS --- */
-.iconGrid { 
-  display: flex; 
-  gap: 15px; 
-  margin-top: 2rem; 
+/* ============================================================
+   LIGHT MODE: THE NEO-BRUTALIST POP BADGES
+   Replacing plain white with aggressive 3D color blocks.
+   ============================================================ */
+
+.iconGrid {
+  display: flex;
+  gap: 20px;
+  margin-top: 3.5rem;
+  justify-content: flex-start;
 }
 
 .iconLink {
-  font-size: 1.5rem;
-  padding: 15px;
+  font-size: 1.8rem;
+  padding: 20px;
   display: flex;
-  border: 3px solid #1A1A1A;
-  border-radius: 8px;
-  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 5px 5px 0px #1A1A1A;
+  align-items: center;
+  justify-content: center;
+  
+  /* Heavy Brutalist Border */
+  border: 4px solid #1A1A1A !important;
+  border-radius: 12px; /* Slight round, clean look */
+  
+  /* Initial Aggressive 3D Shadow (Matches the Pop style) */
+  box-shadow: 8px 8px 0px #1A1A1A !important;
+  
+  transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: pointer;
+  position: relative;
   text-decoration: none;
 }
 
-.github { background: #27AE60; color: #FFF; }
-.github:hover { background: #1A1A1A; color: #27AE60; transform: translate(-4px, -4px); box-shadow: 10px 10px 0px #27AE60; }
+/* --- THE COLOR POP DEFINITIONS (Matching MERN aesthetic) --- */
 
-.linkedin { background: #0077B5; color: #FFF; }
-.linkedin:hover { background: #1A1A1A; color: #0077B5; transform: translate(-4px, -4px); box-shadow: 10px 10px 0px #0077B5; }
-
-.twitter { background: #1A1A1A; color: #FFF; }
-.twitter:hover { background: #2D9CDB; color: #FFF; transform: translate(-4px, -4px); box-shadow: 10px 10px 0px #1A1A1A; }
-
-.instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%,#d6249f 60%,#285AEB 90%); color: #FFF; }
-.instagram:hover { background: #1A1A1A; color: #d6249f; transform: translate(-4px, -4px); box-shadow: 10px 10px 0px #d6249f; }
-
-.iconLink:active { 
-  transform: translate(6px, 6px); 
-  box-shadow: 0px 0px 0px transparent; 
+/* GitHub -> Solid Green Pop */
+.github { 
+  background-color: #27AE60 !important; 
+  color: #111111 !important; 
 }
 
+/* LinkedIn -> Solid Blue Pop */
+.linkedin { 
+  background-color: #2D9CDB !important; 
+  color: #FFFFFF !important; 
+}
+
+/* X (Twitter) -> Solid Black/Gray Pop */
+.twitter { 
+  background-color: #1A1A1A !important; 
+  color: #FFFFFF !important; 
+  box-shadow: 8px 8px 0px #0077B5 !important; /* Contrasting Yellow shadow from Reference */
+}
+
+/* Instagram -> Solid Orange/Red Pop */
+.instagram { 
+  background-color: #C13584 !important; 
+  color: #FFFFFF !important; 
+}
+
+/* --- THE HOVER PHYSICS: THE PHYSICAL "PUSH-DOWN" EFFECT --- */
+
+.iconLink:hover {
+  /* Button moves deeper into its shadow, creating that physical "press" feel */
+  transform: translate(-3px, -3px);
+  box-shadow: 12px 12px 0px #1A1A1A !important;
+}
+
+/* Special hover behavior for the Twitter block from reference */
+
+.github:hover {
+  box-shadow: 12px 12px 0px #27AE60 !important;
+  background-color: #1A1A1A !important;
+  color: white !important;
+
+}
+
+.linkedin:hover { 
+  box-shadow: 12px 12px 0px #0077B5 !important;
+  background-color: #1A1A1A !important;
+  color: white !important;
+}
+.twitter:hover {
+  box-shadow: 12px 12px 0px #1A1A1A !important;
+  background-color: #0077B5 !important;
+}
+
+.instagram:hover { 
+  box-shadow: 12px 12px 0px #833BB5 !important;
+  background-color: #1A1A1A !important;
+  color: white !important;
+}
+
+/* THE "ACTIVE" DAB (When clicked, it pushes all the way down) */
+.iconLink:active {
+  transform: translate(6px, 6px);
+  box-shadow: 0px 0px 0px transparent !important;
+}
+
+/* Ensure icons scale slightly on hover */
+.iconLink svg {
+  transition: transform 0.2s ease;
+}
+
+.iconLink:hover svg {
+  transform: scale(1.1);
+}
 /* --- FORM SIDE --- */
-/* --- FORM SIDE UPDATE --- */
 .formSide {
   background: #FFFFFF;
   border: 4px solid #1A1A1A;
-  border-radius: 8px;
-  box-shadow: 12px 12px 0px #1A1A1A; /* Shadow thoda compact kiya */
-  overflow: visible; /* Labels bahar nikalne ke liye visible rakha hai */
+  border-radius: 12px;
+  box-shadow: 16px 16px 0px #1A1A1A;
+  overflow: hidden;
 }
 
 .formHeader {
   background: #1A1A1A;
-  padding: 10px 20px;
+  padding: 1rem 1.5rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 15px;
 }
 
-.contactForm { 
-  padding: 2rem; /* Padding 3rem se 2rem ki height control ke liye */
-}
+.dots { display: flex; gap: 6px; }
+.dot { width: 10px; height: 10px; border-radius: 2px; border: 2px solid #FFF; }
+.headerText { color: #FFF; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 900; letter-spacing: 1px; }
+
+.contactForm { padding: 3rem; }
 
 .inputGroup { 
-  margin-bottom: 1.8rem; 
+  margin-bottom: 2.5rem; 
   display: flex; 
   flex-direction: column; 
-  position: relative; 
 }
 
-/* Labels as Colorful Retro Stickers */
+/* STICKER LABELS (Key Aesthetic) */
 .inputGroup label { 
   font-family: 'JetBrains Mono', monospace; 
-  font-size: 0.7rem; 
+  font-size: 0.75rem; 
   font-weight: 950; 
-  margin-bottom: -10px; /* Input ke upar overlap */
-  margin-left: 10px;
-  padding: 3px 12px;
+  margin-bottom: -12px; 
+  margin-left: 15px; 
+  padding: 5px 15px;
   border: 3px solid #1A1A1A;
-  width: fit-content;
-  z-index: 5;
+  width: fit-content; 
+  z-index: 5; 
   text-transform: uppercase;
-  box-shadow: 3px 3px 0px #1A1A1A;
+  box-shadow: 4px 4px 0px #1A1A1A;
+  transition: 0.2s;
 }
 
-/* Assigning Palette Colors to Labels */
-.inputGroup:nth-child(1) label { 
-  background: #FB7DA8; /* Pink */
-  transform: rotate(-2deg); 
-}
-
-.inputGroup:nth-child(2) label { 
-  background: #FFC567; /* Yellow */
-  transform: rotate(1.5deg); 
-}
-
-.inputGroup:nth-child(3) label { 
-  background: #058CD7; /* Blue */
-  color: #FFFFFF;
-  transform: rotate(-1deg); 
-}
+.inputGroup:nth-child(1) label { background: #FB7DA8; transform: rotate(-2deg); }
+.inputGroup:nth-child(2) label { background: #FFC567; transform: rotate(1.5deg); }
+.inputGroup:nth-child(3) label { background: #058CD7; color: #FFF; transform: rotate(-1deg); }
 
 .inputGroup input, .inputGroup textarea { 
-  border: 3px solid #1A1A1A; 
-  padding: 15px; 
-  font-weight: 700; 
-  font-size: 0.95rem; 
+  border: 4px solid #1A1A1A; 
+  padding: 20px 15px 15px 15px; 
+  font-weight: 800; 
+  font-size: 1rem; 
   background: #FFFFFF; 
-  box-shadow: 6px 6px 0px #1A1A1A; /* Hard 2D shadow */
-  transition: 0.2s ease; 
   outline: none;
+  font-family: inherit;
 }
 
-/* Focus Effect: Input pops up */
-.inputGroup input:focus, .inputGroup textarea:focus { 
-  transform: translate(-2px, -2px);
-  box-shadow: 9px 9px 0px #FD5A46; /* Orange shadow on focus */
-  background: #FFF;
+.inputGroup input:focus, .inputGroup textarea:focus {
+  background: #fcfcfc;
+  box-shadow: inset 4px 4px 0px rgba(0,0,0,0.05);
 }
 
-/* Submit Button with Retro Pop */
+/* --- SUBMIT BUTTON: THE NEURONAL UPGRADE --- */
+
 .submitBtn {
-  width: 100%;
-  padding: 1rem;
-  background: #1A1A1A;
-  color: #FFF;
-  font-weight: 950;
+  width: 100%; 
+  padding: 1.2rem;
+  /* Light Mode Base: Solid Black */
+  background: #1A1A1A !important; 
+  color: #FFFFFF !important;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 950; 
   font-size: 1.1rem;
-  border: 3px solid #1A1A1A;
-  border-radius: 4px;
+  border: 4px solid #1A1A1A !important;
+  border-radius: 8px; 
   cursor: pointer;
-  box-shadow: 6px 6px 0px #159c50; /* Pink shadow by default */
-  transition: all 0.2s ease;
+  /* Solid Green Shadow (Brutalist Style) */
+  box-shadow: 8px 8px 0px #27AE60 !important; 
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  margin-top: 1rem;
 }
 
-.submitBtn:hover { 
-  background: #2abe6d; /* Hover par Pink background */
-  color: #1A1A1A; 
-  transform: translate(-4px, -4px); 
-  box-shadow: 10px 10px 0px #1A1A1A; 
+/* Light Mode Hover: Mechanical Pop */
+.submitBtn:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0px #1A1A1A !important;
+  background: #27AE60 !important;
 }
 
-/* --- HEIGHT ADJUSTMENT FOR LEFT SIDE TOO --- */
-.contactTitle {
-  font-size: 4rem; /* 4.5 se thoda chota kiya height manage karne ko */
+.submitBtn:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0px transparent !important;
 }
 
-.contactDesc {
-  margin: 1rem 0; /* Margin kam ki */
+/* ------------------------------------------------------------
+   DARK MODE OVERRIDES: NEON STEALTH BUTTON
+   ------------------------------------------------------------ */
+
+[data-theme='dark'] .submitBtn {
+  /* Dark Mode Base: Outline Style */
+  background: #000000 !important; 
+  color: #27AE60 !important;      /* Neon Green Text */
+  border: 2.5px solid #27AE60 !important; 
+  box-shadow: 6px 6px 0px rgba(39, 174, 96, 0.1) !important;
+  border-radius: 10px !important;
 }
 
-@keyframes blink { 50% { opacity: 0.4; } }
+/* Dark Mode Hover: The Neon Glow Pop */
+[data-theme='dark'] .submitBtn:hover {
+  background: #27AE60 !important; /* Fills with Green */
+  color: #000000 !important;      /* Contrast Black Text */
+  transform: translateY(-5px) !important;
+  /* Intense Neon Glow */
+  box-shadow: 0px 0px 30px rgba(39, 174, 96, 0.6) !important; 
+  border-color: #27AE60 !important;
+}
 
-/* --- RESPONSIVE OVERRIDES --- */
+/* Dark Mode Active State */
+[data-theme='dark'] .submitBtn:active {
+  transform: translateY(2px) !important;
+  box-shadow: 0px 0px 15px rgba(39, 174, 96, 0.3) !important;
+}
 
+
+/* --- DARK MODE: SOCIAL ICONS PRO --- */
+
+/* Sabse pehle white boxes ko hatate hain */
+[data-theme='dark'] .iconLink {
+  background: rgba(255, 255, 255, 0.03) !important; /* Super subtle glassy bg */
+  border: 1px solid rgba(255, 255, 255, 0.1) !important; /* Fine border */
+  box-shadow: none !important; /* No heavy shadows */
+  color: #94A3B8 !important; /* Muted grey by default */
+  border-radius: 12px !important;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) !important;
+  padding: 18px !important;
+}
+
+/* Hover Pe Icons apne Brand Colors mein chamkenge */
+
+/* GitHub: White Glow */
+[data-theme='dark'] .github:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #FFFFFF !important;
+  border-color: #1b7744 !important;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2) !important;
+  transform: translateY(-5px);
+}
+
+/* LinkedIn: Blue Glow */
+[data-theme='dark'] .linkedin:hover {
+  background: rgba(0, 119, 181, 0.1) !important;
+  color: #0077B5 !important;
+  border-color: #0077B5 !important;
+  box-shadow: 0 0 20px rgba(0, 119, 181, 0.3) !important;
+  transform: translateY(-5px);
+}
+
+/* Twitter/X: Light Blue/White Glow */
+[data-theme='dark'] .twitter:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #FFFFFF !important;
+  border-color: #FFFFFF !important;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2) !important;
+  transform: translateY(-5px);
+}
+
+/* Instagram: Pink/Gradient Glow */
+[data-theme='dark'] .instagram:hover {
+  background: rgba(228, 64, 95, 0.1) !important;
+  color: #E4405F !important;
+  border-color: #E4405F !important;
+  box-shadow: 0 0 20px rgba(228, 64, 95, 0.3) !important;
+  transform: translateY(-5px);
+}
+
+/* Icon Size Refinement */
+[data-theme='dark'] .iconLink svg {
+  font-size: 1.4rem;
+}
+
+
+@keyframes blink { 50% { opacity: 0.3; } }
+
+/* RESPONSIVE */
 @media (max-width: 1024px) {
-  .contactWrapper { padding: 4rem 1.5rem; }
   .contactContainer { grid-template-columns: 1fr; gap: 4rem; text-align: center; }
-  
-  .contactTitle { font-size: 3rem; letter-spacing: -2px; }
-  
-  .contactDesc { margin: 1.5rem auto; max-width: 100%; }
-  
-  .iconGrid { justify-content: center; flex-wrap: wrap; }
-  
-  .formSide { box-shadow: 10px 10px 0px #1A1A1A; width: 100%; }
-  
-  .contactForm { padding: 2rem; } /* Less padding inside form on mobile */
-}
-
-@media (max-width: 480px) {
-  .contactTitle { font-size: 2.2rem; }
-  
-  .iconLink { padding: 12px; font-size: 1.2rem; }
-  
-  .inputGroup input, .inputGroup textarea { padding: 14px; }
-  
-  .submitBtn { font-size: 1rem; padding: 1rem; }
+  .contactTitle { font-size: 3.5rem; }
+  .contactDesc { margin: 1.5rem auto 3rem auto; }
+  .iconGrid { justify-content: center; }
+  .inputGroup label { margin-left: auto; margin-right: auto; }
 }

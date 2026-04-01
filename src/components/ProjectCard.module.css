@@ -1,23 +1,48 @@
+/* ============================================================
+   PROJECT CARD - THE ULTIMATE HYBRID UPGRADE
+   Light Mode: Heavy Neo-Brutalism | Dark Mode: SaaS Ghost
+   ============================================================ */
+
 .projectSection {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: 5rem;
   align-items: center;
-  /* Balanced spacing between projects */
-  margin-bottom: 8rem; 
+  margin-bottom: 10rem;
   --project-color: #2D9CDB;
+  transition: all 0.4s ease;
 }
 
-/* THE FIX: Remove space after the second project */
 .projectSection:last-child {
   margin-bottom: 0 !important;
 }
 
-.reversed { direction: rtl; }
-.reversed > * { direction: ltr; }
+.reversed {
+  direction: rtl;
+}
 
-/* --- VISUAL SIDE --- */
-.visualSide { position: relative; perspective: 1000px; }
+.reversed > * {
+  direction: ltr;
+}
+
+
+
+
+
+/* --- VISUAL SIDE (LEFT) --- */
+.visualSide {
+  position: relative;
+  padding: 2rem; /* Space for the yellow offset box */
+}
+
+/* 1. THE YELLOW OFFSET BOX (Sabsle peeche wala dabba) */
+.visualSide::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 90%; /* Pura nahi, thoda offset */
+}
 
 .colorBlock {
   position: relative;
@@ -26,7 +51,6 @@
   padding: 2.5rem;
   box-shadow: 20px 20px 0px #1A1A1A;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  overflow: hidden;
 }
 
 .checkerboard {
@@ -56,45 +80,10 @@
   transition: 0.4s ease;
 }
 
-.scanLaser {
-  position: absolute;
-  top: -100%; left: 0;
-  width: 100%; height: 4px;
-  background: #FFF;
-  box-shadow: 0 0 15px #FFF, 0 0 30px var(--project-color);
-  z-index: 5;
-  opacity: 0;
-}
-
-/* --- HOVER KINETICS --- */
-.projectSection:hover .colorBlock {
-  transform: translate(-8px, -8px);
-  box-shadow: 35px 35px 0px #F2C94C;
-}
-
-.projectSection:hover .imageFrame {
-  transform: translate(-4px, -4px);
-  box-shadow: 18px 18px 0px #FFF;
-}
-
-.projectSection:hover .projectImg {
-  filter: grayscale(0%) contrast(1);
-  transform: scale(1.03);
-}
-
-.projectSection:hover .scanLaser {
-  opacity: 1;
-  animation: sweep 2s infinite linear;
-}
-
-@keyframes sweep {
-  0% { top: -10%; }
-  100% { top: 110%; }
-}
-
 .idBadge {
   position: absolute;
-  top: 15px; right: 15px;
+  top: 15px;
+  right: 15px;
   background: #F2C94C;
   color: #1A1A1A;
   padding: 4px 12px;
@@ -105,19 +94,29 @@
   z-index: 10;
 }
 
-/* --- CONTENT SIDE --- */
-.headerMeta { display: flex; align-items: center; gap: 15px; margin-bottom: 2rem; }
+/* --- CONTENT SIDE (RIGHT) --- */
+.headerMeta {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 2rem;
+}
 
-.status { 
-  font-family: 'JetBrains Mono', monospace; 
-  font-size: 0.85rem; 
-  font-weight: 950; 
-  color: var(--project-color); 
+.status {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 950;
+  color: var(--project-color);
   letter-spacing: 1.5px;
   text-transform: uppercase;
 }
 
-.colorLine { flex: 1; height: 4px; background: var(--project-color); border: 2px solid #1A1A1A; }
+.colorLine {
+  flex: 1;
+  height: 4px;
+  background: var(--project-color);
+  border: 2px solid #1A1A1A;
+}
 
 .title {
   font-size: 4rem;
@@ -128,59 +127,349 @@
   color: #1A1A1A;
 }
 
-.projectSection:hover .title { transform: skewX(-4deg); }
-
 .description {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 600;
   color: #475569;
-  line-height: 1.5;
+  line-height: 1.6;
   margin-bottom: 2.5rem;
 }
 
-.techCloud { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 3.5rem; }
-.techPill {
+/* --- TECHNOLOGY SECTION (FIXED FOR LIGHT MODE) --- */
+.techTitle {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   font-weight: 900;
-  padding: 6px 14px;
-  background: #FFF;
-  border: 3px solid #1A1A1A;
-  box-shadow: 4px 4px 0px #1A1A1A;
-  transition: 0.15s;
+  color: #1A1A1A;
+  margin-bottom: 1.2rem;
+  letter-spacing: 1px;
+  
 }
 
-.projectSection:hover .techPill {
-  background: var(--project-color);
-  color: #FFF;
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #1A1A1A;
+.techCloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 3.5rem;
 }
 
-.buttonStack { display: flex; gap: 15px; }
-.mainBtn, .sideBtn {
-  flex: 1; text-align: center; text-decoration: none; padding: 18px 10px;
-  font-weight: 950; font-size: 0.85rem; border: 3px solid #1A1A1A;
-  border-radius: 6px;
-  box-shadow: 6px 6px 0px #1A1A1A;
+/* Light Mode Pills: Solid 3D Dabba */
+.techPill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #FFFFFF;
+  border: 3px solid #1A1A1A; /* Solid border for that brutalist feel */
+  padding: 8px 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 900;
+  color: #1A1A1A;
+  box-shadow: 4px 4px 0px #1A1A1A; /* Heavy solid shadow */
   transition: all 0.1s ease;
-  letter-spacing: 0.5px;
-  margin-bottom: 0.5rem;
+  cursor: pointer;
+  border-radius: 10px;
 }
 
-.mainBtn { background: #1A1A1A; color: #FFF; }
-.sideBtn { background: #279f5d; color: #1A1A1A; }
+.techPill:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #1A1A1A;
+}
 
-.mainBtn:hover { background: var(--project-color); transform: translate(-2px, -2px); box-shadow: 8px 8px 0px #1A1A1A; }
-.sideBtn:hover { background: #F2C94C; transform: translate(-2px, -2px); box-shadow: 8px 8px 0px #1A1A1A; }
+.brandIcon {
+  display: flex;
+  align-items: center;
+}
 
+/* --- LIGHT MODE: NEO-BRUTALIST PRO BUTTONS --- */
+
+.buttonStack {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+
+.mainBtn, .sideBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 24px;
+  border-radius: 10px; /* Refined rounded corners */
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 3.5px solid #1A1A1A !important; /* Thick brutalist border */
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+}
+
+/* 1. RUN APPLICATION (Solid Black Sticker) */
+.mainBtn {
+  background-color: #1A1A1A !important;
+  color: #FFFFFF !important;
+  /* Green Solid Offset Shadow */
+  box-shadow: 6px 6px 0px #27AE60 !important; 
+}
+
+.mainBtn:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 10px 10px 0px #27AE60 !important;
+  background-color: #222 !important;
+}
+
+/* 2. SOURCE CODE (Solid Green Sticker) */
+.sideBtn {
+  background-color: #27AE60 !important;
+  color: #FFFFFF !important;
+  /* Black Solid Offset Shadow */
+  box-shadow: 6px 6px 0px #1A1A1A !important;
+}
+
+.sideBtn:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 10px 10px 0px #1A1A1A !important;
+  background-color: #2ecc71 !important; /* Lighter green on hover */
+}
+
+/* Active "Press" Effect for both */
 .mainBtn:active, .sideBtn:active {
   transform: translate(4px, 4px);
-  box-shadow: 0px 0px 0px #1A1A1A;
+  box-shadow: 0px 0px 0px transparent !important;
 }
 
+/* Icon Refinement */
+.mainBtn svg, .sideBtn svg {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+}
+
+.mainBtn:hover svg {
+  transform: translate(3px, -3px);
+}
+
+.sideBtn:hover svg {
+  transform: rotate(-12deg) scale(1.1);
+}
+/* --- ONLY LASER EFFECT & IMAGE HOVER --- */
+
+/* 1. Laser line ki styling */
+.scanLaser {
+  position: absolute;
+  top: -100%; 
+  left: 0;
+  width: 100%; 
+  height: 8px;
+  background: #FFFFFF;
+  /* Glow color based on project theme */
+  box-shadow: 
+    0 0 15px #FFFFFF, 
+    0 0 30px var(--project-color);
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none; /* Mouse move mein rukawat na bane */
+}
+
+/* 2. Hover trigger (Animation start) */
+.projectSection:hover .scanLaser {
+  opacity: 1;
+  animation: laserSweep 2s infinite linear;
+}
+
+/* 3. Image Color Restoration on Hover */
+.projectSection:hover .projectImg {
+  filter: grayscale(0%) contrast(1);
+  transform: scale(1.05); /* Slight zoom */
+}
+
+/* 4. Animation Keyframes */
+@keyframes laserSweep {
+  0% { top: -10%; }
+  100% { top: 110%; }
+}
+
+/* --- DARK MODE: PRO BUTTON STYLING --- */
+
+[data-theme='dark'] .buttonStack {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+[data-theme='dark'] .mainBtn,
+[data-theme='dark'] .sideBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 14px 24px;
+  border-radius: 10px !important;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 1. RUN APPLICATION (Solid White with Gloss) */
+[data-theme='dark'] .mainBtn {
+  background: #FFFFFF !important;
+  color: #000000 !important;
+  box-shadow: 0 4px 0px #CCCCCC !important; /* Subtle 3D base */
+}
+
+[data-theme='dark'] .mainBtn:hover {
+  transform: translateY(-3px);
+  background: #FFFFFF !important;
+  box-shadow: 0 15px 30px rgba(255, 255, 255, 0.15), 0 8px 0px #DDDDDD !important;
+}
+
+/* 2. SOURCE CODE (Stealth Green Ghost) */
+[data-theme='dark'] .sideBtn {
+  background: rgba(39, 174, 96, 0.03) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(39, 174, 96, 0.3) !important;
+}
+
+[data-theme='dark'] .sideBtn:hover {
+  transform: translateY(-3px);
+  background: rgba(39, 174, 96, 0.1) !important;
+  color: #27AE60 !important;
+  border-color: #27AE60 !important;
+  box-shadow: 0 0 20px rgba(39, 174, 96, 0.15) !important;
+}
+
+/* 3. ICON REFINEMENT */
+[data-theme='dark'] .mainBtn svg,
+[data-theme='dark'] .sideBtn svg {
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+[data-theme='dark'] .mainBtn:hover svg {
+  transform: translate(2px, -2px); /* External link moves up-right */
+}
+
+[data-theme='dark'] .sideBtn:hover svg {
+  transform: rotate(12deg) scale(1.1); /* Github icon subtle tilt */
+}
+
+/* Active State (Press effect) */
+[data-theme='dark'] .mainBtn:active,
+[data-theme='dark'] .sideBtn:active {
+  transform: translateY(1px);
+  box-shadow: none !important;
+}
+/* ------------------------------------------------------------
+   DARK MODE OVERRIDES (The SaaS Ghost Look)
+   ------------------------------------------------------------ */
+
+[data-theme='dark'] .title { color: #FFFFFF !important; }
+[data-theme='dark'] .description { color: #94A3B8 !important; }
+
+/* Dark Mode Tech: Floating Glass Pills */
+[data-theme='dark'] .techTitle {
+  color: #555555 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+[data-theme='dark'] .techCloud {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+[data-theme='dark'] .techPill {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #E0E0E0 !important;
+  box-shadow: none !important;
+  border-radius: 10px !important;
+  padding: 6px 16px !important;
+}
+
+[data-theme='dark'] .techPill:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  color: #FFFFFF !important;
+}
+
+/* --- DARK MODE: SYMMETRICAL PRO BUTTONS --- */
+
+/* 1. RUN APPLICATION (Default: Ghost White) */
+[data-theme='dark'] .mainBtn {
+  background: rgba(255, 255, 255, 0.05) !important; /* Muted transparent */
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) !important;
+  box-shadow: none !important;
+}
+
+/* Run App: Hover pe Pure White Fill + Glow */
+[data-theme='dark'] .mainBtn:hover {
+  transform: translateY(-5px);
+  background: #FFFFFF !important; /* Solid fill like Side Btn */
+  color: #000000 !important;      /* Contrast black text */
+  border-color: #FFFFFF !important;
+  /* Intense White Neon Glow */
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3) !important;
+}
+
+/* 2. SOURCE CODE (Default: Ghost Green) */
+[data-theme='dark'] .sideBtn {
+  background: rgba(39, 174, 96, 0.05) !important;
+  color: #27AE60 !important;
+  border: 1px solid rgba(39, 174, 96, 0.3) !important;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) !important;
+  box-shadow: none !important;
+}
+
+/* Side Btn: Hover pe Neon Green Fill + Glow */
+[data-theme='dark'] .sideBtn:hover {
+  transform: translateY(-5px);
+  background: #27AE60 !important; /* Solid Green Fill */
+  color: #000000 !important;      /* Contrast black text */
+  border-color: #27AE60 !important;
+  /* Intense Green Neon Glow */
+  box-shadow: 0 0 30px rgba(39, 174, 96, 0.4) !important;
+}
+
+/* Icon Slide Logic */
+[data-theme='dark'] .mainBtn:hover svg {
+  transform: translate(4px, -4px); /* External Link pop out */
+}
+
+[data-theme='dark'] .sideBtn:hover svg {
+  transform: scale(1.2) rotate(-10deg); /* GitHub tilt */
+}
+
+/* Keep Visual Integrity */
+[data-theme='dark'] .colorBlock { border-color: #333 !important; box-shadow: 20px 20px 0px #080808 !important; }
+[data-theme='dark'] .imageFrame { border-color: #333 !important; }
+
+/* --- RESPONSIVE --- */
 @media (max-width: 1100px) {
-  .projectSection { grid-template-columns: 1fr; gap: 3rem; margin-bottom: 6rem; }
+  .projectSection {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-bottom: 6rem;
+  }
   .title { font-size: 3rem; }
   .reversed { direction: ltr; }
+}
+
+@media (max-width: 768px) {
+  .title { font-size: 2.5rem; }
+  .buttonStack { flex-direction: column; }
 }

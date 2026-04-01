@@ -2,28 +2,31 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: #F9F9F7; 
-  border-bottom: 5px solid #1A1A1A; 
+  background-color: var(--bg-color); 
+  border-bottom: 5px solid var(--border-main);
   width: 100%;
+  transition: all 0.3s ease;
 }
 
 .navContainer {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 1.2rem 4rem;
+  padding: 1rem 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* LOGO: Sharp & Bold */
+/* LOGO */
 .logoMain {
   text-decoration: none;
   font-size: 1.8rem;
   font-weight: 950;
   letter-spacing: -1.5px;
-  color: #1A1A1A;
+  color: var(--text-main);
   transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
 }
 
 .logoMain:hover {
@@ -34,10 +37,15 @@
   color: #2D9CDB; 
 }
 
-/* NAV LINKS */
+/* NAVIGATION */
 .navLinks {
   display: flex;
-  gap: 0.8rem;
+  gap: 0.5rem;
+  list-style: none;
+  align-items: center;
+}
+
+.navItem {
   list-style: none;
 }
 
@@ -45,149 +53,191 @@
   text-decoration: none;
   font-size: 0.85rem;
   font-weight: 950;
-  color: #1A1A1A;
-  padding: 10px 20px;
+  color: var(--text-main);
+  padding: 10px 18px;
   border: 3px solid transparent;
   border-radius: 6px; 
   text-transform: uppercase;
-  transition: all 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: block;
 }
 
 /* DESKTOP HOVER STATES */
-.homeHover:hover { background: #F2C94C; border: 3px solid #1A1A1A; box-shadow: 4px 4px 0px #1A1A1A; transform: translate(-2px, -2px); }
-.aboutHover:hover { background: #2D9CDB; border: 3px solid #1A1A1A; color: #FFF; box-shadow: 4px 4px 0px #1A1A1A; transform: translate(-2px, -2px); }
-.projectsHover:hover { background: #F691DE; border: 3px solid #1A1A1A; box-shadow: 4px 4px 0px #1A1A1A; transform: translate(-2px, -2px); }
-.contactHover:hover { 
-  background: #27AE60; 
-  border: 3px solid #1A1A1A; 
-  color: #FFF; 
-  box-shadow: 5px 5px 0px #1A1A1A; 
-  transform: translate(-3px, -3px); 
+.homeHover:hover { background: #F2C94C; border: 3px solid var(--border-main); box-shadow: 4px 4px 0px var(--shadow-main); transform: translate(-2px, -2px); color: #1A1A1A; }
+.aboutHover:hover { background: #2D9CDB; border: 3px solid var(--border-main); color: #FFF; box-shadow: 4px 4px 0px var(--shadow-main); transform: translate(-2px, -2px); }
+.projectsHover:hover { background: #F691DE; border: 3px solid var(--border-main); box-shadow: 4px 4px 0px var(--shadow-main); transform: translate(-2px, -2px); color: #1A1A1A; }
+.contactHover:hover { background: #27AE60; border: 3px solid var(--border-main); color: #FFF; box-shadow: 4px 4px 0px var(--shadow-main); transform: translate(-2px, -2px); }
+
+/* --- THEME TOGGLE --- */
+.themeBtn {
+  background: transparent;
+  color: #F2C94C;
+  border: none;
+  padding: 10px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s ease;
 }
 
-/* Baaki sara code tera purane wala hi rahega... */
+.themeBtn:hover {
+  transform: rotate(15deg) scale(1.1);
+}
+
+/* --- Navbar.module.css (LET'S CONNECT FIX) --- */
 
 .connectBtn {
   text-decoration: none;
-  background-color: #1A1A1A;
-  color: #FFF;
+  background-color: #1A1A1A !important; /* Tera exact orange color */
+  color: white !important; /* Dark text for contrast */
   padding: 12px 28px;
   font-size: 0.85rem;
   font-weight: 950;
-  border: 3px solid #1A1A1A;
-  border-radius: 6px; 
-  box-shadow: 6px 6px 0px #2D9CDB; /* Pink ki jagah Blue shadow */
-  display: inline-block;
-  transition: all 0.1s ease;
+  text-transform: uppercase;
+  
+  /* Brutalist Fix: Solid borders and heavy shadow */
+  /* border: 3px solid #FF7A50 !important;  */
+  border-radius: 6px !important; /* Thoda sa round jaisa tune baaki jagah rakha hai */
+  box-shadow: 5px 5px 0px #e55f2e !important; /* Solid shadow, no glow */
+  
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.1s ease !important;
+  white-space: nowrap;
 }
 
 .connectBtn:hover {
-  background-color: #2D9CDB; /* Pink ki jagah Yellow Hover - mast lagega */
-  color: #1A1A1A;
-  transform: translate(-3px, -3px);
-  box-shadow: 9px 9px 0px #1A1A1A; 
+  transform: translate(-2px, -2px);
+  /* Hover shadow matching the "VIEW PROJECTS" pink shadow vibe or solid black */
+  box-shadow: 7px 7px 0px #1A1A1A !important; 
+  background-color: #e55f2e !important;
+  border: 3px solid #1A1A1A !important;
 }
 
-/* ... baaki tera pura responsive logic wahi purane wala */
-/* MECHANICAL PRESS (DESKTOP) */
-.link:active,
 .connectBtn:active {
   transform: translate(3px, 3px);
-  box-shadow: 0px 0px 0px #1A1A1A;
+  box-shadow: 0px 0px 0px transparent !important;
+}
+
+/* --- DARK MODE SAFETY --- */
+[data-theme='dark'] .connectBtn {
+  background-color: #d2cbc9 !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 0 20px rgba(255, 122, 80, 0.3) !important; /* Dark mein glow chalega */
+  color: #1A1A1A !important;
+}
+
+[data-theme='dark'] .connectBtn:hover {
+  background-color: var(--accent-orange) !important;
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 108, 55, 0.2) !important;
+}
+
+
+/* --- DUPLICATE FIX LOGIC --- */
+.mobileCTA {
+  display: none; /* Desktop pe chhupa do */
+}
+
+.ctaWrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: 1rem;
+}
+
+/* --- DARK MODE OVERRIDES --- */
+[data-theme='dark'] .navbar {
+  background-color: #080808;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='dark'] .link {
+  color: #a0a0a0;
+}
+
+[data-theme='dark'] .link:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 /* --- MOBILE RESPONSIVENESS --- */
-
 .hamburger {
   display: none;
   flex-direction: column;
-  justify-content: space-around;
-  width: 35px;
-  height: 25px;
+  gap: 6px;
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 0;
   z-index: 1010;
 }
 
 .bar {
-  width: 35px;
-  height: 5px;
-  background: #1A1A1A;
-  border: 2px solid #1A1A1A;
+  width: 30px;
+  height: 4px;
+  background: var(--text-main);
   border-radius: 10px;
-  transition: all 0.3s linear;
-  position: relative;
+  transition: 0.3s;
 }
 
-.mobileCTA { display: none; }
-
 @media (max-width: 1024px) {
-  .navContainer {
-    padding: 1.2rem 2rem;
-  }
-
-  .hamburger {
-    display: flex;
-  }
-
-  .ctaWrapper {
+  .navContainer { padding: 1rem 1.5rem; }
+  
+  /* Desktop ka connect button chhupa do, hamburger dikhao */
+  .ctaWrapper .connectBtn {
     display: none;
   }
-
-  .mobileCTA {
-    display: block;
-    margin-top: 1rem;
-    width: 100%;
-    text-align: center;
-  }
+  
+  .hamburger { display: flex; }
 
   .navLinks {
     position: absolute;
     top: 100%;
     left: 0;
-    right: 0;
+    width: 100%;
     flex-direction: column;
-    background-color: #F9F9F7;
-    border-bottom: 5px solid #1A1A1A;
-    padding: 2.5rem 2rem;
-    gap: 1.5rem;
+    background-color: var(--bg-color);
+    padding: 2rem;
+    gap: 1.2rem;
+    border-bottom: 5px solid var(--border-main);
     transform: translateY(-150%);
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.4s ease-in-out;
     z-index: -1;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
   }
 
   .navLinksActive {
     transform: translateY(0);
   }
 
-  .link {
+  /* Mobile menu ke andar waala button dikhao */
+  .mobileCTA {
     display: block;
     width: 100%;
-    text-align: center;
-    font-size: 1.2rem;
-    padding: 15px; /* Bigger tap area for mobile */
+    margin-top: 0.5rem;
   }
 
-  /* MOBILE TAP (HOVER) EFFECTS 
-     On mobile, we trigger the hover style when the user clicks/touches. 
-  */
-  .homeHover:active { background: #F2C94C; border: 3px solid #1A1A1A; box-shadow: 4px 4px 0px #1A1A1A; transform: scale(0.98); }
-  .aboutHover:active { background: #2D9CDB; border: 3px solid #1A1A1A; color: #FFF; box-shadow: 4px 4px 0px #1A1A1A; transform: scale(0.98); }
-  .projectsHover:active { background: #F691DE; border: 3px solid #1A1A1A; box-shadow: 4px 4px 0px #1A1A1A; transform: scale(0.98); }
-  .contactHover:active { background: #27AE60; border: 3px solid #1A1A1A; color: #FFF; box-shadow: 5px 5px 0px #1A1A1A; transform: scale(0.98); }
+  .mobileCTA .connectBtn {
+    width: 100%;
+  }
 
-  /* Mobile Connect Button Tap */
-  .connectBtn:active {
-    background-color: #F691DE !important;
-    color: #1A1A1A !important;
-    box-shadow: 2px 2px 0px #1A1A1A !important;
-    transform: translate(2px, 2px);
+  .link {
+    width: 100%;
+    text-align: center;
+    font-size: 1.1rem;
   }
 }
 
-/* Hamburger Animation Styles */
-.hamburgerActive .bar:nth-child(1) { transform: rotate(45deg) translate(7px, 7px); }
+/* Hamburger Animations */
+.hamburgerActive .bar:nth-child(1) { transform: translateY(10px) rotate(45deg); }
 .hamburgerActive .bar:nth-child(2) { opacity: 0; }
-.hamburgerActive .bar:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+.hamburgerActive .bar:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
+
+/* Global Active State */
+.link:active, .connectBtn:active, .themeBtn:active {
+  transform: scale(0.95);
+}

@@ -1,51 +1,26 @@
-body{
-  background-color: #FCFDE6;
-}
 #root {
-  max-width: 1280px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-/* Add this to your global CSS if sections still feel far apart */
+/* Remove hardcoded background from body/sections */
 section {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
+  background-color: transparent !important;
+  margin: 0 !important;
 }
+
+.retro-card {
+  background: var(--card-primary);
+  border: 3px solid var(--border-main);
+  box-shadow: 6px 6px 0 var(--shadow-main);
+  transition: all 0.2s ease;
+}
+
+.highlight {
+  background: var(--accent-green);
+  padding: 4px 8px;
+  border: 2px solid var(--border-main);
+  color: #1A1A1A; /* Text black hi rahega highlight pe */
+}
+

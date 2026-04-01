@@ -1,8 +1,11 @@
+/* --- FOOTER: SYSTEM STATUS BAR UPGRADE --- */
+
 .footerWrapper {
-  padding: 3rem 5rem;
-  background-color: #1A1A1A; 
-  border-top: 4px solid #000;
+  padding: 2.5rem 5rem;
+  background-color: #FFFFFF; /* Pure White for Light Mode */
+  border-top: 4px solid #1A1A1A; /* Heavy Brutalist Top Border */
   width: 100%;
+  transition: all 0.4s ease;
 }
 
 .footerContainer {
@@ -13,116 +16,101 @@
   align-items: center;
 }
 
-/* --- BRANDING --- */
+/* --- BRANDING (Left) --- */
 .brand {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 900;
-  color: #F9F9F7;
+  font-family: 'JetBrains Mono', monospace; /* Switched to Mono for pro look */
+  font-size: 0.85rem;
+  font-weight: 950;
+  color: #1A1A1A; /* Black text in Light Mode */
   letter-spacing: 1px;
-  margin: 0;
+  text-transform: uppercase;
 }
 
 .subText {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   font-weight: 800;
-  color: #94a3b8;
+  color: #64748b; /* Muted slate */
   letter-spacing: 1px;
   margin-top: 4px;
 }
 
-/* --- SYSTEM STATUS --- */
-.statusText {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  font-weight: 900;
-  color: #A3E635; 
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 10px;
-  margin: 0;
-}
-
-/* --- REFINED MECHANICAL BUTTON --- */
+/* --- REFINED MECHANICAL BUTTON (Middle) --- */
 .topButton {
-  background: transparent;
-  color: #F9F9F7;
-  border: 2px solid #F9F9F7;
-  padding: 8px 20px;
+  background: #FFFFFF;
+  color: #1A1A1A;
+  border: 3px solid #1A1A1A; /* Thick Border */
+  padding: 10px 24px;
   font-family: 'JetBrains Mono', monospace;
   font-weight: 950;
   font-size: 0.7rem;
   letter-spacing: 1px;
   cursor: pointer;
-  box-shadow: 4px 4px 0px #2D9CDB; 
+  /* Solid Blue Offset Shadow */
+  box-shadow: 5px 5px 0px #2D9CDB; 
   transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   margin: 0 auto;
   text-transform: uppercase;
 }
 
 .topButton:hover {
-  background: #559fca; 
-  color: #1A1A1A;     
-  border-color: #2D9CDB;
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #138544; 
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0px #1A1A1A; /* Shadow turns black on hover */
+  background: #f8fafc;
 }
 
 .topButton:active {
-  transform: translate(4px, 4px);
+  transform: translate(5px, 5px);
   box-shadow: 0px 0px 0px transparent;
 }
 
-/* --- ANIMATION --- */
+/* --- SYSTEM STATUS (Right) --- */
+.statusText {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 950;
+  color: #15803d; /* Deeper Green for better contrast on white */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  letter-spacing: 1px;
+}
+
 .cyanPulse {
-  width: 8px;
-  height: 8px;
-  background: #2D9CDB;
+  width: 10px;
+  height: 10px;
+  background: #22c55e; /* Bright Green */
   border-radius: 50%;
-  box-shadow: 0 0 10px rgba(45, 156, 219, 0.6);
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
   animation: pulse 2s infinite;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.3); opacity: 0.4; }
-  100% { transform: scale(1); opacity: 1; }
+/* ------------------------------------------------------------
+   DARK MODE OVERRIDES (Restoring your original dark look)
+   ------------------------------------------------------------ */
+
+[data-theme='dark'] .footerWrapper {
+  background-color: #000000 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
-/* --- FINAL RESPONSIVE REFINEMENTS --- */
-@media (max-width: 900px) {
-  .footerWrapper { 
-    padding: 3rem 1.5rem; 
-  }
+[data-theme='dark'] .brand { color: #FFFFFF !important; }
+[data-theme='dark'] .subText { color: #555 !important; }
 
-  .footerContainer {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    text-align: center;
-  }
+[data-theme='dark'] .topButton {
+  background: transparent !important;
+  color: #FFFFFF !important;
+  border-color: #FFFFFF !important;
+  box-shadow: 4px 4px 0px #2D9CDB !important;
+}
 
-  /* Re-ordering the sections for better mobile UX */
-  .footerSection:nth-child(1) { order: 2; } /* Brand middle */
-  .footerSection:nth-child(2) { order: 1; } /* Button top */
-  .footerSection:nth-child(3) { order: 3; } /* Status bottom */
+[data-theme='dark'] .statusText { color: #A3E635 !important; }
 
-  .statusText { 
-    justify-content: center; 
-    font-size: 0.65rem;
-  }
+/* ------------------------------------------------------------ */
 
-  .brand {
-    font-size: 0.85rem;
-  }
-
-  .subText {
-    font-size: 0.6rem;
-  }
-
-  .topButton {
-    width: fit-content;
-    padding: 10px 24px; /* Larger tap target */
-  }
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 1; }
 }

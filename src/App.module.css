@@ -1,110 +1,16 @@
-/* 1. Global Page Background (Professional Off-White) */
-
-
-
-main {
-  background-color: #F5F5F0; 
-  padding: 0;
-  min-height: 100vh;
-}
-
-.contentWrapper {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-/* --- HEADER (Clean & Thin) --- */
-.header {
-  padding: 1rem 0; /* Reduced padding */
-  border-bottom: 2px solid #1A1A1A; /* Thinner professional line */
-  background-color: #FFFFFF;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-/* --- HOME SECTION (Transparent Background) --- */
-.homeSection {
-  background: transparent; /* Remove the gradient for a cleaner look */
-  padding: 4rem 0 6rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* --- SECTION CARD RESET --- */
-/* We remove the background and border from the FULL SECTION */
-.sectionCard {
-  padding: 4rem 1rem;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 1200px;
-  background-color: transparent !important; /* Forces the clean background */
-  border: none !important;
-  box-shadow: none !important;
-}
-
-/* These now act only as 'containers' without background colors */
-.sectionCardYellow, 
-.sectionCardPink, 
-.sectionCardGreen {
-  composes: sectionCard;
-}
-
-/* --- FOOTER --- */
-.footer {
-  padding: 3rem 0;
-  border-top: 2px solid #1A1A1A;
-  background-color: #FFFFFF;
-}
-
-/* --- SOCIAL ICONS (Cleaned up) --- */
-.socialIcon {
-  font-size: 1.5rem;
-  color: #1A1A1A;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 45px;
-  height: 45px;
-  border: 2px solid #1A1A1A;
-  transition: all 0.2s ease;
-}
-
-.socialIcon:hover {
-  background-color: #F2C94C; /* Matte Yellow hover */
-  transform: translate(-2px, -2px);
-  box-shadow: 4px 4px 0px #1A1A1A;
-}
-
-/* --- APP.MODULE.CSS --- */
-.sectionCardPink {
-  background-color: transparent !important; /* Keep our clean look */
-  padding: 4rem 2rem;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  /* FORCE RESET: Ensure no flexbox is squashing the children */
-  display: block !important; 
-}
-
-/* App.module.css */
-
 .appWrapper {
-  background-color: #F8F9FA; /* The clean Digital Cream/Gray background */
+  background-color: var(--bg-primary);
   min-height: 100vh;
+  transition: background-color 0.3s ease;
 }
 
 .header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(248, 249, 250, 0.8);
-  backdrop-filter: blur(10px);
-  border-bottom: 2px solid #1A1A1A;
+  background-color: var(--bg-primary); /* Glass effect hata diya simplicity ke liye */
+  border-bottom: 3px solid var(--border-main);
+  transition: all 0.3s ease;
 }
 
 .contentWrapper {
@@ -113,22 +19,28 @@ main {
   padding: 0 2rem;
 }
 
-/* Unified sections - No more giant color blocks! */
 .mainSection {
   padding: 4rem 0;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Remove old color block classes if they still exist */
-.sectionCardYellow, .sectionCardPink, .sectionCardGreen {
   background-color: transparent !important;
-  padding: 2rem 0;
 }
 
-/* Add this to your global CSS if sections still feel far apart */
-section {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
+/* Footer uses variables now */
+.footer {
+  padding: 3rem 0;
+  border-top: 3px solid var(--border-main);
+  background-color: var(--card-primary);
+  color: var(--text-main);
 }
+
+.socialIcon {
+  border: 2px solid var(--border-main);
+  color: var(--text-main);
+  background: transparent;
+}
+
+.socialIcon:hover {
+  background-color: var(--accent-yellow);
+  box-shadow: 4px 4px 0 var(--border-main);
+  transform: translate(-2px, -2px);
+}
+

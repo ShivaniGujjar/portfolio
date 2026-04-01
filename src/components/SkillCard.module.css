@@ -36,7 +36,7 @@
 .skillName {
   font-size: 1.1rem;
   font-weight: 800;
-  color: #1A1A1A;
+  color: var(--text-primary);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }

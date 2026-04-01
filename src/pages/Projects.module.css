@@ -1,13 +1,67 @@
+/* ============================================================
+   PROJECTS SECTION - THE MODERN SAAS GHOST UPGRADE
+   ============================================================ */
+
+/* --- DARK MODE OVERRIDES --- */
+[data-theme='dark'] .projectsWrapper {
+  background-color: #000000 !important;
+}
+
+[data-theme='dark'] .headerDesc {
+  color: #FFFFFF !important;
+  font-size: 3.5rem !important; 
+  letter-spacing: -2px;
+}
+
+[data-theme='dark'] .headerDesc span {
+  color: #3ABFF8 !important; 
+}
+
+/* THE FLOATING PROJECT CARD (Dark Mode) */
+[data-theme='dark'] .projectCard {
+  background: #080808 !important; 
+  border: 1px solid rgba(255, 255, 255, 0.05) !important; 
+  border-radius: 16px;
+  padding: 3rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  margin-bottom: 5rem;
+}
+
+[data-theme='dark'] .projectCard:hover {
+  transform: translateY(-8px);
+  border-color: rgba(58, 191, 248, 0.3) !important;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8), 
+              0 0 20px rgba(58, 191, 248, 0.1) !important;
+}
+
+/* MODERN TECH STACK: Dark Mode Pils */
+[data-theme='dark'] .techTag {
+  background: rgba(255, 255, 255, 0.03) !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+}
+
+[data-theme='dark'] .techTag:hover {
+  background: #FFFFFF !important;
+  color: #000000 !important;
+  border-color: #FFFFFF !important;
+}
+
+/* --- LIGHT MODE CODE (Fixed Technology Cards) --- */
+
 .projectsWrapper {
-  padding: 2rem 4rem 0rem 4rem; 
+  padding: 4rem 4rem; 
   max-width: 1400px;
   margin: 0 auto;
-  background-color: #F9F9F7;
+  background-color: var(--bg-color);
   overflow-x: hidden;
+  transition: background 0.4s ease;
 }
 
 .sectionHeader { 
-  margin-top: 0; 
   margin-bottom: 4rem; 
 }
 
@@ -38,19 +92,45 @@
 .count { 
   font-family: 'JetBrains Mono', monospace; 
   font-weight: 900; 
-  color: #1A1A1A; 
+  color: var(--text-primary); 
 }
 
 .headerDesc {
-  font-size: 3rem;
-  font-weight: 900;
-  letter-spacing: -2px;
-  color: #1A1A1A;
-  max-width: 700px;
-  line-height: 1;
+  font-size: 3.5rem;
+  font-weight: 950;
+  letter-spacing: -3px;
+  color: var(--text-primary);
+  max-width: 800px;
+  line-height: 0.95;
 }
 
 .headerDesc span { color: #2D9CDB; }
+
+/* FIX: Technology Cards in Light Mode */
+.techTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f1f5f9; /* Light grey bg */
+  color: #1A1A1A;
+  border: 1px solid #e2e8f0; /* Soft border */
+  padding: 6px 14px;
+  border-radius: 8px; /* Matching the dark mode rounded vibe */
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.techTag:hover {
+  background-color: #FFFFFF;
+  border-color: #1A1A1A;
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0px #1A1A1A; /* Neo-brutalism touch */
+}
 
 .projectList { 
   display: flex; 
@@ -58,65 +138,14 @@
   gap: 8rem; 
 }
 
-/* --- RESPONSIVE OVERRIDES --- */
-
+/* RESPONSIVE */
 @media (max-width: 1024px) {
-  .projectsWrapper {
-    padding: 2rem 1.5rem;
-  }
-
-  .headerTitleRow {
-    gap: 10px;
-  }
-
-  .label {
-    padding: 6px 12px;
-    font-size: 0.65rem;
-  }
-
-  .headerDesc {
-    font-size: 2.2rem;
-    max-width: 100%;
-    line-height: 1.1;
-  }
-
-  .projectList {
-    gap: 5rem; /* Closer together on tablets/phones */
-  }
+  .projectsWrapper { padding: 2rem 1.5rem; }
+  .headerDesc { font-size: 2.5rem; }
 }
 
 @media (max-width: 768px) {
-  /* Ensure the header doesn't get too cramped */
-  .headerTitleRow {
-    justify-content: space-between;
-  }
-
-  .dataLine {
-    display: none; /* Hide the dashed line on small phones to save space */
-  }
-
-  .headerDesc {
-    font-size: 1.8rem;
-    letter-spacing: -1px;
-    text-align: left;
-  }
-
-  /* Targeting the actual Project Cards (assuming they are children of projectList) 
-     This forces them to stack vertically and centers images.
-  */
-  .projectList > div {
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .headerDesc {
-    font-size: 1.5rem;
-  }
-  
-  .projectsWrapper {
-    padding: 1.5rem 1rem;
-  }
+  .headerTitleRow { justify-content: space-between; }
+  .dataLine { display: none; }
+  .headerDesc { font-size: 2rem; }
 }

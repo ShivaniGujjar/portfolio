@@ -1,3 +1,59 @@
+/* --- DARK MODE PRECISION FIXES --- */
+
+/* --- SHERYIANS STYLE HERO --- */
+
+
+
+/* Button Fix: Black background with Orange Hover */
+[data-theme='dark'] .ctaButton {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+  border: 1px solid var(--border-main) !important; /* Very thin border */
+  padding: 14px 32px;
+  border-radius: 8px; /* Slightly rounded for that pro look */
+  box-shadow: none !important; /* Brutalist shadow hata di for this look */
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme='dark'] .ctaButton:hover {
+  background-color: var(--accent-orange) !important;
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 108, 55, 0.2) !important;
+}
+
+/* Stack Cards: Glassmorphism Touch */
+[data-theme='dark'] .techLayer {
+  background: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1) !important; /* Super thin border */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+[data-theme='dark'] .techLayer:hover {
+  background: rgba(255, 255, 255, 0.07) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  transform: translateX(-12px) scale(1.02);
+}
+
+/* Status text glow */
+[data-theme='dark'] .layerStatus {
+  color: #FFFFFF !important;
+  opacity: 0.8;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+/* Subtext color muted */
+[data-theme='dark'] .heroSubtext {
+  color: var(--text-sub) !important;
+}
+
+
+
+
 .heroContainer {
   display: flex;
   justify-content: space-between;
@@ -7,11 +63,14 @@
   margin: 0 auto;
   min-height: auto;
   position: relative;
-  background-color: #F9F9F7;
+  background-color: var(--bg-primary);
   overflow-x: hidden; 
   width: 100%;
 }
 
+[data-theme='dark'] .heroContainer {
+  background: transparent !important;
+}
 .heroText {
   flex: 1.2;
   z-index: 10;
@@ -40,14 +99,20 @@
   font-size: clamp(3rem, 9vh, 5.2rem); 
   font-weight: 950;
   line-height: 0.9; 
-  color: #1A1A1A;
+  color: var(--text-primary);
   letter-spacing: -4px;
   margin-bottom: 0.5rem;
 }
 
 .outlineText {
-  -webkit-text-stroke: 2px #1A1A1A;
-  color: #FF6C37
+  color: #FF6C37;
+  -webkit-text-stroke: 3px #1A1A1A;
+
+  /* 🔥 THIS IS THE REAL FIX */
+  paint-order: stroke fill;
+
+  /* Optional polish */
+  letter-spacing: -2px;
 }
 
 .highlightWrapper {
@@ -65,7 +130,7 @@
   padding: 6px 25px;
   border: 4px solid #1A1A1A;
   display: inline-block;
-  box-shadow: 8px 8px 0px #1A1A1A;
+  box-shadow: 8px 8px 0px var(--shadow-primary);
 }
 
 .heroSubtext {
@@ -81,25 +146,54 @@
 .nodeColor { color: #00995E; font-weight: 900; }  /* Green */
 .mongoColor { color: #FD5A46; font-weight: 900; } /* Orange/Red */
 
+/* --- HERO SECTION: VIEW PROJECTS BUTTON FIX --- */
+
 .ctaButton {
   position: relative;
-  background-color: #1A1A1A;
-  color: #FFFFFF;
-  padding: 16px 38px;
-  font-weight: 950;
-  font-size: 0.95rem;
-  text-decoration: none;
-  border: 3px solid #1A1A1A;
-  border-radius: 6px;
   display: inline-block;
-  box-shadow: 6px 6px 0px #FB7DA8; /* Palette Pink */
-  transition: all 0.15s ease;
+  
+  /* Solid Black Background for visibility */
+  background-color: #1A1A1A !important; 
+  color: #FFFFFF !important; /* Pure white text */
+  
+  padding: 18px 42px;
+  font-size: 0.95rem;
+  font-weight: 950;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  
+  /* Heavy Neo-Brutalist Border */
+  border: 4px solid #1A1A1A !important;
+  border-radius: 4px; /* Slight round like your Navbar button */
+  
+  /* Solid Pink Shadow (Matching your palette) */
+  box-shadow: 8px 8px 0px #e55f2e !important; 
+  
+  transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  margin-top: 1.5rem;
+  cursor: pointer;
+  z-index: 5;
 }
 
 .ctaButton:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 8px 8px 0px #1A1A1A;
-  background-color: #058CD7; /* Blue Hover */
+  /* Hover pe dabba thoda move hona chahiye mechanical feel ke liye */
+  transform: translate(-3px, -3px);
+  box-shadow: 11px 11px 0px #1A1A1A !important; /* Hover shadow turns black/heavy */
+  background-color: #e55f2e !important;
+}
+
+.ctaButton:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0px transparent !important;
+}
+
+/* --- DARK MODE SAFETY (Already good, but ensuring consistency) --- */
+[data-theme='dark'] .ctaButton {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  border-color: #FFFFFF !important;
+  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.1) !important;
 }
 
 /* --- THE STACK GRAPHIC --- */
@@ -164,7 +258,7 @@
 .nodeLayer .layerBlock { background-color: #FFC567; }
 
 .layerContent { display: flex; align-items: center; gap: 15px; }
-.monoText { font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 0.75rem; color: #1A1A1A; }
+.monoText { font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 0.75rem; color: var(--text-primary); }
 .layerStatus { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; font-weight: 950; opacity: 0.5; }
 .pulseDot { width: 10px; height: 10px; background: #00995E; border-radius: 50%; animation: statusBlink 1.5s infinite; }
 
@@ -176,3 +270,6 @@
   .mernStackGraphic { align-items: center; width: 100%; }
   .techLayer { width: 100%; max-width: 320px; }
 }
+
+
+

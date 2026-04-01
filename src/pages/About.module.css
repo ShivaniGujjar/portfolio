@@ -1,8 +1,130 @@
+/* ============================================================
+   ONLY DARK MODE OVERRIDES (Sheryians Inspired)
+   Bina Light Mode ko touch kiye
+   ============================================================ */
+
+[data-theme='dark'] .aboutWrapper {
+  background-color: #000000 !important; /* Pure Black Background */
+}
+
+/* 1. Terminal Window Fix (White box becomes Deep Charcoal) */
+[data-theme='dark'] .commandCenter {
+  background: #0D0D0D !important; 
+  border: 1px solid rgba(255, 255, 255, 0.1) !important; /* Thin border */
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8) !important; /* Deep shadow */
+  border-radius: 12px;
+}
+
+/* 2. Header Terminal (Muted look) */
+[data-theme='dark'] .cardHeader {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* 3. Left Side Bio Section Fix */
+[data-theme='dark'] .bioSection {
+  background: transparent !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-theme='dark'] .mainTitle {
+  color: #FFFFFF !important; /* Pure White Heading */
+}
+
+[data-theme='dark'] .bioText {
+  color: #999999 !important; /* Professional Muted Grey */
+}
+
+[data-theme='dark'] .nameHighlight {
+  color: #FFFFFF !important;
+}
+
+/* 4. Bottom Row (Available, Location, Time) */
+[data-theme='dark'] .qTag,
+[data-theme='dark'] .dockItem,
+[data-theme='dark'] .versionBadge {
+  background: #111111 !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: none !important; /* Brutalist shadow removed for Dark Mode depth */
+}
+
+/* 5. Right Side Skill Blocks (Soft Glow) */
+[data-theme='dark'] .skillBlock {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+[data-theme='dark'] .skillBlock:hover {
+  background: rgba(255, 255, 255, 0.02) !important;
+  padding-left: 3rem;
+}
+
+/* 6. "LET'S BUILD" Button (CTA) */
+[data-theme='dark'] .socialTile {
+  background: #FFFFFF !important; /* High contrast white button */
+  color: #000000 !important;
+  border: none !important;
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.05) !important;
+}
+
+[data-theme='dark'] .socialTile:hover {
+  background: #FF6C37 !important; /* Scalable Orange pop on hover */
+  color: #FFFFFF !important;
+  box-shadow: 0 10px 30px rgba(255, 108, 55, 0.4) !important;
+}
+
+/* 7. Tags (Scalable, Performance etc.) */
+[data-theme='dark'] .qTag:hover {
+  border-color: #FF6C37 !important;
+  color: #FF6C37 !important;
+}
+
+
+/* --- DARK MODE SKILL CARDS FIX --- */
+
+[data-theme='dark'] .skillsZone .skillBlock {
+  background-color: #0D0D0D !important; /* Pure Dark Grey/Black */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Inke left mein patli indicator lines */
+[data-theme='dark'] .skillsZone .skillBlock:nth-child(1) { border-left: 5px solid #058CD7 !important; }
+[data-theme='dark'] .skillsZone .skillBlock:nth-child(2) { border-left: 5px solid #339933 !important; }
+[data-theme='dark'] .skillsZone .skillBlock:nth-child(3) { border-left: 5px solid #FF6C37 !important; }
+
+/* Text aur Icons ko white karna zaroori hai */
+[data-theme='dark'] .skillsZone .skillBlock h3,
+[data-theme='dark'] .skillsZone .skillBlock .skillIcons,
+[data-theme='dark'] .skillsZone .skillBlock .monoText {
+  color: #FFFFFF !important;
+}
+
+[data-theme='dark'] .skillsZone .skillBlock p {
+  color: #888888 !important; /* Muted description */
+}
+
+/* Hover par halka sa premium glow */
+[data-theme='dark'] .skillsZone .skillBlock:hover {
+  background-color: #161616 !important;
+  padding-left: 3.5rem !important;
+}
+
+/* Label fix (Frontend, Backend, Tools tags) */
+[data-theme='dark'] .skillsZone .label {
+  background: #222 !important;
+  color: #fff !important;
+  border: 1px solid #444 !important;
+}
+
+
+
+
+
 .aboutWrapper {
   padding: 4rem 2rem 1rem 2rem; 
   max-width: 1200px;
   margin: 0 auto;
-  background-color: #F9F9F7;
+  background-color: var(--bg-color);
   overflow-x: hidden;
 }
 
@@ -51,7 +173,7 @@
 .roleTag { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 900; background: #1A1A1A; color: #FFF; padding: 4px 12px; }
 .statusTag { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 900; border: 2px solid #1A1A1A; padding: 2px 10px; }
 
-.mainTitle { font-size: 4rem; font-weight: 950; line-height: 0.85; letter-spacing: -3px; margin-bottom: .5rem; color: #1A1A1A; }
+.mainTitle { font-size: 4rem; font-weight: 950; line-height: 0.85; letter-spacing: -3px; margin-bottom: .5rem; color: var(--text-primary); }
 .blueText { color: #2D9CDB; }
 .bioText { font-size: 1.15rem; font-weight: 600; color: #475569; line-height: 1.6; }
 
@@ -85,12 +207,12 @@
 
 .versionBadge {
   background-color: #FFFFFF;
-  color: #1A1A1A;
+  color: var(--text-primary);
   padding: 4px 10px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
   font-weight: 800;
-  border: 3px solid #1A1A1A;
+  border: 3px solid var(--border-primary);
   box-shadow: 4px 4px 0px #1A1A1A;
   align-self: center;
 }
@@ -118,7 +240,7 @@
 /* 1. Tera Naam (Palette Yellow underline) */
 .nameHighlight {
   position: relative;
-  color: #1A1A1A;
+  color: var(--text-primary);
   font-weight: 950;
   z-index: 1;
   display: inline-block;
@@ -277,7 +399,7 @@
 /* Label inversion on hover */
 .skillBlock:hover .label {
   background: #FFFFFF;
-  color: #1A1A1A;
+  color: var(--text-primary);
 }
 
 .progressLine { 
@@ -289,41 +411,57 @@
 /* --- DOCK & BUTTONS --- */
 .dockContainer { display: flex; gap: 1.2rem; margin-top: 2rem; }
 .dockItem, .socialTile {
-  flex: 1; border: 3px solid #1A1A1A; border-radius: 8px; padding: 1.2rem;
+  flex: 1; border: 3px solid var(--border-primary); border-radius: 8px; padding: 1.2rem;
   box-shadow: 6px 6px 0px #1A1A1A; transition: all 0.15s ease;
   display: flex; align-items: center; justify-content: center; gap: 10px;
 }
 .dockItem p { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 800; margin: 0; }
 
-.dockItem:hover, .socialTile:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0px #1A1A1A; }
+.dockItem:hover, .socialTile:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0px var(--shadow-primary); }
 .yellowDock { background-color: #F2C94C; }
 .whiteDock { background-color: #FFFFFF; }
 .blueDock { background-color: #2D9CDB; color: #FFF; }
-.socialTile { background-color: #F691DE; text-decoration: none; color: #1A1A1A; font-weight: 900; }
+.socialTile { background-color: #F691DE; text-decoration: none; color: var(--text-primary); font-weight: 900; }
 
 .livePulse { width: 10px; height: 10px; background-color: #27AE60; border-radius: 50%; animation: pulse 1.5s infinite; }
 @keyframes pulse { 50% { opacity: 0.4; transform: scale(1.2); } }
 
-/* LET'S BUILD BUTTON FIX */
+/* --- Home.module.css ya About.module.css jahan ye button hai --- */
+
 .socialTile { 
-  background-color: #1A1A1A; 
+  background-color: #1A1A1A; /* Solid Black Background */
   text-decoration: none; 
-  color: #FFFFFF; 
-  font-weight: 900; 
-  box-shadow: 6px 6px 0px #2D9CDB; /* Initial Blue Shadow */
+  color: #FFFFFF !important; /* Force white text visibility */
+  font-weight: 950; 
+  border: 4px solid #1A1A1A;
+  border-radius: 12px;
+  padding: 1.2rem;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  box-shadow: 8px 8px 0px #2D9CDB; /* Blue shadow from your screenshot */
+  transition: all 0.2s ease;
 }
 
 .socialTile:hover { 
-  background-color: #F2C94C; /* Yellow Hover */
-  color: #1A1A1A; 
-  transform: translate(-3px, -3px);
-  box-shadow: 9px 9px 0px #1A1A1A;
+  background-color: #2D9CDB; /* Orange on hover */
+  color: #FFFFFF !important; 
+  transform: translate(-3px, -3px); 
+  box-shadow: 11px 11px 0px #1A1A1A;
+}
+
+/* Dark Mode Override taaki dark mein white ho jaye button */
+[data-theme='dark'] .socialTile {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  border-color: #FFFFFF !important;
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1) !important;
 }
 
 /* --- RESPONSIVE OVERRIDES --- */
 @media (max-width: 900px) {
   .aboutWrapper { padding: 2rem 1rem; }
-  .commandCenter { box-shadow: 8px 8px 0px #1A1A1A; }
+  .commandCenter { box-shadow: 8px 8px 0px var(--shadow-primary); }
   .cardMain { grid-template-columns: 1fr; }
   .bioSection { border-right: none; border-bottom: 4px solid #1A1A1A; padding: 2rem 1.5rem; }
   .mainTitle { font-size: 2.5rem; letter-spacing: -1.5px; }
