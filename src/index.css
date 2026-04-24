@@ -11,6 +11,31 @@
   --border-main: #1A1A1A;
 }
 
+
+/* =========================================
+   🌐 GLOBAL LIGHT MODE ELEVATION
+   ========================================= */
+
+[data-theme='light'] {
+  /* 🎨 The "Ghost Slate" background */
+  --bg-global: #F8FAFC; 
+  /* ☁️ Pure White for cards/elements to pop */
+  --bg-card: #FFFFFF;
+  /* 🖋️ Soft Navy for text (more premium than pure black) */
+  --text-main: #0F172A;
+  --text-muted: #64748B;
+}
+
+[data-theme='light'] body {
+  background-color: var(--bg-global) !important;
+  /* ✨ Adds a professional 'blueprint' texture across the whole site */
+  background-image: 
+    radial-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+  color: var(--text-main);
+  transition: background 0.4s ease;
+}
+
 [data-theme='dark'] {
   /* 🌑 DARK MODE */
   --bg-primary: #050403;
@@ -118,4 +143,68 @@ a {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-orange);
+}
+
+
+
+
+
+
+
+/* ============================================================
+   🚀 SHERYIANS STYLE UPGRADE (ADD THIS AT THE BOTTOM)
+   ============================================================ */
+
+:root {
+  --font-mono: 'JetBrains Mono', monospace;
+  --shery-orange: #FF6C37;
+  --shery-bg: #050403;
+}
+
+[data-theme='dark'] body {
+  background-color: var(--shery-bg) !important;
+  /* Adding the subtle grid pattern seen in the video */
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-attachment: fixed;
+}
+
+/* Improving the Radial Glow for more depth */
+[data-theme='dark'] body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 50% -10%, rgba(255, 108, 55, 0.15), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Sheryians-style Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* High-End Typography Reset */
+h1, h2 {
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+}
+
+/* Custom Selection Glow */
+::selection {
+  background: var(--shery-orange);
+  color: #fff;
+}
+
+/* Scrollbar Upgrade for Dark Mode */
+[data-theme='dark']::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border: 2px solid var(--shery-bg);
+}
+
+[data-theme='dark']::-webkit-scrollbar-thumb:hover {
+  background: var(--shery-orange);
 }

@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './About.module.css';
-import { 
-  SiTailwindcss, SiJavascript, SiReact, 
-  SiNodedotjs, SiExpress, SiMongodb, 
-  SiPostman, SiVite, SiRedux, SiGit 
-} from 'react-icons/si';
+import { SiTailwindcss, SiJavascript, SiReact, SiNodedotjs, SiExpress, SiMongodb, SiPostman, SiVite, SiRedux, SiGit } from 'react-icons/si';
 
 const About = () => {
   const [time, setTime] = useState(new Date().toLocaleTimeString());
@@ -16,106 +12,98 @@ const About = () => {
     return () => clearInterval(timer);
   }, []);
 
+  const skillData = [
+    { label: "Frontend", icons: [<SiTailwindcss />, <SiJavascript />, <SiReact />], title: "TAILWIND • JS • REACT", desc: "Modern interactive interfaces & animations.", color: "#3ABFF8" },
+    { label: "Backend", icons: [<SiNodedotjs />, <SiExpress />, <SiMongodb />], title: "NODE • EXPRESS • MONGODB", desc: "Scalable server-side logic & architecture.", color: "#00ED64" },
+    { label: "Tools", icons: [<SiPostman />, <SiVite />, <SiRedux />, <SiGit />], title: "POSTMAN • VITE • REDUX • GIT", desc: "Advanced workflow & state management.", color: "#FF6C37" }
+  ];
+
   return (
     <section className={styles.aboutWrapper} id="about">
+      
+      {/* --- 1. THE TERMINAL WINDOW (BIO) --- */}
+      {/* --- 1. THE TERMINAL WINDOW (BIO) --- */}
       <div className={styles.commandCenter}>
-        {/* WINDOW HEADER */}
         <div className={styles.cardHeader}>
-          <div className={styles.windowControls}>
-            <span className={styles.dot}></span>
-            <span className={styles.dot}></span>
-            <span className={styles.dot}></span>
-          </div>
-          <div className={styles.headerTerminal}>
-            <span className={styles.terminalUser}>root@shivani:</span>
-            <span className={styles.terminalPath}> ~/portfolio/about_me</span>
-            <span className={styles.terminalCursor}>_</span>
-          </div>
+          <div className={styles.windowControls}><span/><span/><span/></div>
         </div>
 
-        <div className={styles.cardMain}>
-          {/* LEFT BIO SECTION */}
-          
-          <div className={styles.bioSection}>
-          <div className={styles.aboutHeader}>
-  <h2 className={styles.simpleTitle}>ABOUT ME</h2>
-  
-</div>
-           <div className={styles.stickerWrapper}>
-  
-  
-</div>
-
-            <h2 className={styles.mainTitle}>
-              CREATIVE <br/> 
-              <span className={styles.blueText}>DEVELOPER</span>
-            </h2>
+        <div className={styles.bioContent}>
+          {/* LEFT SIDE: Your Bio */}
+          <div className={styles.textSide}>
+            <div className={styles.aboutHeader}>
+              <h2 className={styles.simpleTitle}>ABOUT ME</h2>
+            </div>
+            <h2 className={styles.mainTitle}>CREATIVE <br/> <span className={styles.blueText}>DEVELOPER</span></h2>
             
             <p className={styles.bioText}>
-              I’m <span className={styles.nameHighlight}>Shivani Gujjar</span>, a final-year MCA student and  <br />
-              full-stack enthusiast. I don't just write code, I craft 
-              <span className={styles.uiHighlight}> Interactive Interfaces </span> 
-              using the <span className={styles.mernTag}>MERN STACK</span>.
+              I’m <span className={styles.nameHighlight}>Shivani Gujjar</span>, MCA Graduate and full-stack enthusiast. <br /> I craft 
+              <span className={styles.uiHighlight}> Interactive Interfaces</span> using the <span className={styles.mernTag}>MERN STACK</span>.
             </p>
 
             <div className={styles.quickTags}>
-              <div className={`${styles.qTag} ${styles.tagYellow}`}>SCALABLE</div>
-              <div className={`${styles.qTag} ${styles.tagPink}`}>⚡ PERFORMANCE</div>
-              <div className={`${styles.qTag} ${styles.tagPurple}`}>🎨 PIXEL PERFECT</div>
+              <div className={styles.qTag}>SCALABLE</div>
+              <div className={styles.qTag}>⚡ PERFORMANCE</div>
+              <div className={styles.qTag}>🎨 PIXEL PERFECT</div>
             </div>
           </div>
 
-          {/* RIGHT SKILLS SECTION */}
-          <div className={styles.skillsZone}>
-            <div className={styles.skillBlock}>
-              <span className={styles.label}>Frontend</span>
-              <div className={styles.skillIcons}>
-                <SiTailwindcss /> <SiJavascript /> <SiReact />
-              </div>
-              <h3>TAILWIND • JS • REACT</h3>
-              <p>Modern interactive interfaces & animations.</p>
-              <div className={styles.progressLine}></div>
-            </div>
-
-            <div className={styles.skillBlock}>
-              <span className={styles.label}>Backend</span>
-              <div className={styles.skillIcons}>
-                <SiNodedotjs /> <SiExpress /> <SiMongodb />
-              </div>
-              <h3>NODE • EXPRESS • MONGODB</h3>
-              <p>Scalable server-side logic & architecture.</p>
-              <div className={styles.progressLine}></div>
-            </div>
-
-            <div className={styles.skillBlock}>
-              <span className={styles.label}>Tools</span>
-              <div className={styles.skillIcons}>
-                <SiPostman /> <SiVite /> <SiRedux /> <SiGit />
-              </div>
-              <h3>POSTMAN • VITE • REDUX • GIT</h3>
-              <p>Advanced workflow & state management.</p>
-              <div className={styles.progressLine}></div>
-            </div>
-          </div>
+          {/* RIGHT SIDE: The Animated Icons */}
+          <div className={styles.visualSide}>
+  <div className={styles.techMesh}></div> {/* New texture layer */}
+  <div className={styles.floatingIcons}>
+    <SiReact className={styles.iconReact} />
+    <SiNodedotjs className={styles.iconNode} />
+    <SiMongodb className={styles.iconMongo} />
+    <SiJavascript className={styles.iconJs} />
+    <SiTailwindcss className={styles.iconTailwind} />
+    <SiRedux className={styles.iconRedux} />
+    <SiGit className={styles.iconGit} />
+  </div>
+</div>
         </div>
       </div>
 
-      {/* SYSTEM DOCK */}
+      {/* --- 2. SEPARATE DOCK --- */}
       <div className={styles.dockContainer}>
-        <div className={`${styles.dockItem} ${styles.yellowDock}`}>
-          <span className={styles.livePulse}></span>
-          <p>STATUS: <b>AVAILABLE</b></p>
-        </div>
-        <div className={`${styles.dockItem} ${styles.whiteDock}`}>
-          <p>LOCATION: <b>INDIA</b></p>
-        </div>
-        <div className={`${styles.dockItem} ${styles.blueDock}`}>
-          <p>TIME: <b>{time}</b></p>
-        </div>
-        <a href="#contact" className={styles.socialTile}>
-          LET'S BUILD →
-        </a>
+        <div className={styles.dockItem}><span className={styles.livePulse}></span>STATUS: AVAILABLE</div>
+        <div className={styles.dockItem}>LOCATION: INDIA</div>
+        <div className={styles.dockItem}>TIME: {time}</div>
+        <a href="#contact" className={styles.socialTile}>LET'S BUILD →</a>
       </div>
+
+      {/* --- 3. SKILLS INTRO --- */}
+      <div className={styles.skillsIntro}>
+        
+        <h2 className={styles.introTitle}>MY <span>TECH STACK</span></h2>
+      </div>
+
+      {/* --- 4. INDEPENDENT STACKING CARDS --- */}
+      <div className={styles.skillsStackSection}>
+  {skillData.map((skill, index) => (
+    <div key={index} className={styles.skillCard}>
+      
+      {/* LEFT CONTENT */}
+      <div className={styles.skillContent}>
+        <span className={styles.label}>{skill.label}</span>
+
+        <h3 className={styles.title}>{skill.title}</h3>
+
+        <p className={styles.desc}>{skill.desc}</p>
+      </div>
+
+      {/* RIGHT ICONS */}
+      <div className={styles.iconWrapper}>
+        {skill.icons.map((icon, i) => (
+          <div key={i} className={styles.iconBox}>
+            {icon}
+          </div>
+        ))}
+      </div>
+
+    </div>
+  ))}
+</div>
     </section>
   );
 };

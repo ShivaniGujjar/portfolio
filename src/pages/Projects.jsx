@@ -2,34 +2,32 @@ import React from 'react';
 import ProjectCard from '../components/ProjectCard';
 import styles from './Projects.module.css';
 
-// ICONS (React Icons use kar raha hoon, install nahi hai toh npm install react-icons kar lena)
 import { RiReactjsLine, RiNodejsLine } from 'react-icons/ri';
-import { SiMongodb, SiExpress, SiRedux, SiFramer, SiVite, SiRedis } from 'react-icons/si';
+import { SiMongodb, SiExpress, SiRedux, SiFramer, SiVite, SiRedis, SiTailwindcss } from 'react-icons/si';
 
 import tasksyncImg from '../assets/tasksync.png';
-import horizonImg from '../assets/horizon.png';
+// Horizon hata diya, Unravel ka image import kar lo
+import unravelImg from '../assets/unravel.png'; 
 
 const projectsData = [
   {
     id: "01",
     title: 'TASKSYNC',
     description: 'A full-stack Kanban board application for team project management. Features drag-and-drop tasks, user auth, and real-time updates.',
-    // Icons array pass kar rahe hain
-    techIcons: [<RiReactjsLine />, <RiNodejsLine />, <SiExpress />, <SiMongodb />, <SiRedis />],
     techStack: ['REACT', 'NODE.JS', 'EXPRESS', 'MONGODB', 'REDIS'],
     imageSrc: tasksyncImg,
     repoLink: 'https://github.com/ShivaniGujjar/tasksync',
-    liveLink: 'https://tasksync-live.vercel.app'
+    liveLink: 'https://tasksync-delta.vercel.app/'
   },
   {
     id: "02",
-    title: 'HORIZON COURTS',
-    description: 'A high-fidelity Frontend UI built for a premium sports club. Focused on a modular component architecture and responsive UX.',
-    techIcons: [<RiReactjsLine />, <SiRedux />, <SiFramer />, <SiVite />],
-    techStack: ['REACT', 'REDUX', 'FRAMER', 'VITE'],
-    imageSrc: horizonImg,
-    repoLink: 'https://github.com/ShivaniGujjar/horizon-courts',
-    liveLink: 'https://horizon-courts.vercel.app'
+    title: 'UNRAVEL',
+    // Refined description to highlight the AI and Real-time aspect
+    description: 'An AI-powered assistant designed to unravel complex thoughts. Features real-time response streaming using Socket.io and robust state management with Redux.',
+    techStack: ['REACT', 'NODE.JS', 'MONGODB', 'SOCKET.IO', 'REDUX'],
+    imageSrc: unravelImg, // Use the screenshot you just showed me
+    repoLink: 'https://github.com/ShivaniGujjar/unravel',
+    liveLink: 'https://unravel-liart.vercel.app/'
   }
 ];
 
@@ -53,7 +51,8 @@ function Projects() {
             key={project.id}
             {...project}
             isReversed={index % 2 !== 0}
-            themeColor={index % 2 === 0 ? "#2D9CDB" : "#27AE60"} 
+            // Pehle blue, dusra olive (apne "mature" theme ke hisaab se)
+            themeColor={index % 2 === 0 ? "#2D9CDB" : "#448759"} 
           />
         ))}
       </div>

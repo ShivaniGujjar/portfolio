@@ -395,11 +395,77 @@
 
 @keyframes blink { 50% { opacity: 0.3; } }
 
-/* RESPONSIVE */
+/* =========================================
+   📱 CONTACT SECTION: MOBILE REFINEMENT
+   ========================================= */
+
 @media (max-width: 1024px) {
-  .contactContainer { grid-template-columns: 1fr; gap: 4rem; text-align: center; }
-  .contactTitle { font-size: 3.5rem; }
-  .contactDesc { margin: 1.5rem auto 3rem auto; }
-  .iconGrid { justify-content: center; }
-  .inputGroup label { margin-left: auto; margin-right: auto; }
+  .contactWrapper {
+    padding: 1rem 1.5rem;
+    min-height: auto;
+  }
+
+  .contactContainer {
+    grid-template-columns: 1fr; /* Stack Left and Right sides */
+    gap: 4rem;
+    text-align: center;
+  }
+
+  .statusBadge {
+    margin: 0 auto 1.5rem auto;
+  }
+
+  .contactTitle {
+    font-size: clamp(2.5rem, 12vw, 3.8rem);
+    line-height: 1;
+    letter-spacing: -2px;
+  }
+
+  .contactDesc {
+    margin: 1.5rem auto 3rem auto;
+    max-width: 100%;
+    font-size: 1rem;
+  }
+
+  /* Center the Social Icons */
+  .iconGrid {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  /* Form Side Tweaks */
+  .formSide {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .contactForm {
+    padding: 2rem 1.5rem;
+  }
+
+  .inputGroup label {
+    text-align: left;
+    display: block;
+    font-size: 0.7rem;
+  }
+
+  .submitBtn {
+    width: 100%;
+    padding: 18px;
+    font-size: 0.9rem;
+  }
+}
+
+/* 🌑 DARK MODE MOBILE TWEAK */
+[data-theme='dark'] .contactForm {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* 📱 EXTRA SMALL PHONES */
+@media (max-width: 400px) {
+  .contactTitle { font-size: 2.2rem; }
+  .iconLink { width: 50px; height: 50px; font-size: 1.2rem; }
 }

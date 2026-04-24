@@ -1,8 +1,11 @@
 import React from 'react';
 import styles from './ProjectCard.module.css';
 import { RiReactjsLine, RiNodejsLine } from 'react-icons/ri';
-import { SiMongodb, SiExpress, SiRedis, SiTailwindcss, SiRedux, SiFramer, SiVite, SiJavascript } from 'react-icons/si';
-import { FiExternalLink, FiGithub } from 'react-icons/fi'; // Inhe top pe import karle
+import { 
+  SiMongodb, SiExpress, SiRedis, SiTailwindcss, 
+  SiRedux, SiFramer, SiVite, SiJavascript, SiSocketdotio 
+} from 'react-icons/si';
+import { FiExternalLink, FiGithub } from 'react-icons/fi';
 
 const ProjectCard = ({ title, description, techStack, repoLink, liveLink, imageSrc, id, isReversed, themeColor }) => {
   
@@ -11,9 +14,7 @@ const ProjectCard = ({ title, description, techStack, repoLink, liveLink, imageS
     switch (tech.toUpperCase()) {
       case 'REACT': return <RiReactjsLine style={{ ...iconStyle, color: '#61DAFB' }} />;
       case 'NODE.JS': case 'NODE': return <RiNodejsLine style={{ ...iconStyle, color: '#339933' }} />;
-      case 'EXPRESS': 
-  // Agar dark mode hai toh white, varna light mode mein black/dark grey
-  return <SiExpress style={{ ...iconStyle, color: 'var(--text-primary, #686666)' }} />;
+      case 'EXPRESS': return <SiExpress style={{ ...iconStyle, color: 'var(--text-primary, #686666)' }} />;
       case 'MONGODB': return <SiMongodb style={{ ...iconStyle, color: '#47A248' }} />;
       case 'REDIS': return <SiRedis style={{ ...iconStyle, color: '#DC382D' }} />;
       case 'TAILWIND': return <SiTailwindcss style={{ ...iconStyle, color: '#06B6D4' }} />;
@@ -21,6 +22,7 @@ const ProjectCard = ({ title, description, techStack, repoLink, liveLink, imageS
       case 'REDUX': return <SiRedux style={{ ...iconStyle, color: '#764ABC' }} />;
       case 'FRAMER': case 'FRAMER MOTION': return <SiFramer style={{ ...iconStyle, color: '#0055FF' }} />;
       case 'VITE': return <SiVite style={{ ...iconStyle, color: '#646CFF' }} />;
+      case 'SOCKET.IO': return <SiSocketdotio style={{ ...iconStyle, color: '#ffffff' }} />;
       default: return null;
     }
   };
@@ -30,11 +32,22 @@ const ProjectCard = ({ title, description, techStack, repoLink, liveLink, imageS
       <div className={styles.visualSide}>
         <div className={styles.colorBlock}>
           <div className={styles.checkerboard} />
+          
           <div className={styles.imageFrame}>
-  <div className={styles.scanLaser} /> {/* Laser yahan baithega */}
-  <img src={imageSrc} className={styles.projectImg} />
-  <div className={styles.idBadge}>NO.{id}</div>
-</div>
+            {/* NEW: Window Controls Bar */}
+            <div className={styles.windowHeader}>
+              <div className={styles.dotGroup}>
+                <span className={styles.wDot}></span>
+                <span className={styles.wDot}></span>
+                <span className={styles.wDot}></span>
+              </div>
+              <div className={styles.windowTitle}>{title.toLowerCase()}_v2.0.exe</div>
+            </div>
+
+            <div className={styles.scanLaser} />
+            <img src={imageSrc} className={styles.projectImg} alt={title} />
+            <div className={styles.idBadge}>NO.{id}</div>
+          </div>
         </div>
       </div>
 
@@ -59,13 +72,13 @@ const ProjectCard = ({ title, description, techStack, repoLink, liveLink, imageS
         </div>
 
         <div className={styles.buttonStack}>
-  <a href={liveLink} target="_blank" rel="noreferrer" className={styles.mainBtn}>
-    <FiExternalLink /> RUN APPLICATION
-  </a>
-  <a href={repoLink} target="_blank" rel="noreferrer" className={styles.sideBtn}>
-    <FiGithub /> SOURCE CODE
-  </a>
-</div>
+          <a href={liveLink} target="_blank" rel="noreferrer" className={styles.mainBtn}>
+            <FiExternalLink /> RUN APPLICATION
+          </a>
+          <a href={repoLink} target="_blank" rel="noreferrer" className={styles.sideBtn}>
+            <FiGithub /> SOURCE CODE
+          </a>
+        </div>
       </div>
     </div>
   );

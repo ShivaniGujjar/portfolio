@@ -144,8 +144,29 @@
   .headerDesc { font-size: 2.5rem; }
 }
 
+/* 1. Fix the Heading Size for Mobile (Light & Dark) */
 @media (max-width: 768px) {
-  .headerTitleRow { justify-content: space-between; }
-  .dataLine { display: none; }
-  .headerDesc { font-size: 2rem; }
+  .headerDesc, 
+  [data-theme='dark'] .headerDesc { 
+    font-size: clamp(1.8rem, 8vw, 2.2rem) !important; /* Scaled down perfectly */
+    letter-spacing: -1px !important;
+    line-height: 1.1 !important;
+    max-width: 100% !important;
+    margin-top: 1rem;
+  }
+
+  /* 2. Remove that unnecessary bottom space */
+  .projectList {
+    gap: 1rem !important; /* Reduced gap between project 1 and 2 on mobile */
+  }
+
+  /* Target the last card specifically to kill its extra margin */
+  /* Add this to Projects.module.css */
+.projectList > div:last-child {
+  margin-bottom: 2rem !important; /* Forces the last project to sit closer to the contact form */
+}
+
+.projectsWrapper {
+  padding-bottom: 0 !important; /* Removes internal container padding */
+}
 }

@@ -1,243 +1,309 @@
+/* ============================================================
+   🚀 PREMIER 2026 INDUSTRIAL NAVBAR (JACKPOT OPTIMIZED)
+   ============================================================ */
+
 .navbar {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: var(--bg-color); 
-  border-bottom: 5px solid var(--border-main);
   width: 100%;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
+  background-color: #FAFAFA; 
+  border-bottom: 1px solid #EEEEEE;
+}
+
+/* 🌑 DARK MODE BASE */
+[data-theme='dark'] .navbar {
+  background-color: rgba(5, 4, 3, 0.9) !important;
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
 
 .navContainer {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 1rem 4rem;
+  padding: 0.8rem 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* LOGO */
+/* --- LOGO --- */
 .logoMain {
   text-decoration: none;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 950;
   letter-spacing: -1.5px;
-  color: var(--text-main);
-  transition: transform 0.2s ease;
-  display: flex;
-  align-items: center;
+  color: #0F172A;
 }
+[data-theme='dark'] .logoMain { color: #FFFFFF !important; }
+.dot { color: #2D9CDB; }
 
-.logoMain:hover {
-  transform: skewX(-5deg);
-}
-
-.dot { 
-  color: #2D9CDB; 
-}
-
-/* NAVIGATION */
+/* --- 🎰 2026 REFINED NAVIGATION (JACKPOT) --- */
 .navLinks {
   display: flex;
-  gap: 0.5rem;
+  gap: 8px;
   list-style: none;
   align-items: center;
+  background: rgba(255, 255, 255, 0.02); /* Subtle housing */
+  padding: 6px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .navItem {
   list-style: none;
+  border-radius: 8px; 
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover Interactivity */
+.navItem:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .link {
   text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 950;
-  color: var(--text-main);
-  padding: 10px 18px;
-  border: 3px solid transparent;
-  border-radius: 6px; 
-  text-transform: uppercase;
-  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   display: block;
+  height: 38px; 
+  overflow: hidden; 
+  padding: 0 22px;
 }
 
-/* DESKTOP HOVER STATES */
-.homeHover:hover { background: #F2C94C; border: 3px solid var(--border-main); box-shadow: 4px 4px 0px var(--shadow-main); transform: translate(-2px, -2px); color: #1A1A1A; }
-.aboutHover:hover { background: #2D9CDB; border: 3px solid var(--border-main); color: #FFF; box-shadow: 4px 4px 0px var(--shadow-main); transform: translate(-2px, -2px); }
-.projectsHover:hover { background: #F691DE; border: 3px solid var(--border-main); box-shadow: 4px 4px 0px var(--shadow-main); transform: translate(-2px, -2px); color: #1A1A1A; }
-.contactHover:hover { background: #27AE60; border: 3px solid var(--border-main); color: #FFF; box-shadow: 4px 4px 0px var(--shadow-main); transform: translate(-2px, -2px); }
-
-/* --- THEME TOGGLE --- */
-.themeBtn {
-  background: transparent;
-  color: #F2C94C;
-  border: none;
-  padding: 10px;
-  font-size: 1.3rem;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  transition: all 0.3s ease;
+.rollWrapper {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.themeBtn:hover {
-  transform: rotate(15deg) scale(1.1);
-}
-
-/* --- Navbar.module.css (LET'S CONNECT FIX) --- */
-
-.connectBtn {
-  text-decoration: none;
-  background-color: #1A1A1A !important; /* Tera exact orange color */
-  color: white !important; /* Dark text for contrast */
-  padding: 12px 28px;
-  font-size: 0.85rem;
-  font-weight: 950;
-  text-transform: uppercase;
-  
-  /* Brutalist Fix: Solid borders and heavy shadow */
-  /* border: 3px solid #FF7A50 !important;  */
-  border-radius: 6px !important; /* Thoda sa round jaisa tune baaki jagah rakha hai */
-  box-shadow: 5px 5px 0px #e55f2e !important; /* Solid shadow, no glow */
-  
-  display: inline-flex;
+.rollText {
+  height: 38px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.1s ease !important;
-  white-space: nowrap;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #94A3B8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.connectBtn:hover {
-  transform: translate(-2px, -2px);
-  /* Hover shadow matching the "VIEW PROJECTS" pink shadow vibe or solid black */
-  box-shadow: 7px 7px 0px #1A1A1A !important; 
-  background-color: #e55f2e !important;
-  border: 3px solid #1A1A1A !important;
+/* Light Mode Hover text switch */
+.rollText:nth-child(1) {
+  color: #FFFFFF; /* Pure white for readable Dark Mode */
 }
 
-.connectBtn:active {
-  transform: translate(3px, 3px);
-  box-shadow: 0px 0px 0px transparent !important;
+[data-theme='light'] .rollText:nth-child(1) {
+  color: #0F172A; /* Deep, sharp slate for Light Mode */
 }
 
-/* --- DARK MODE SAFETY --- */
-[data-theme='dark'] .connectBtn {
-  background-color: #d2cbc9 !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
-  box-shadow: 0 0 20px rgba(255, 122, 80, 0.3) !important; /* Dark mein glow chalega */
-  color: #1A1A1A !important;
+/* Secondary Roll (Orange Tech Accent) - Keep this as is! */
+.rollText:nth-child(2) {
+  color: #FF6C37 !important;
+  font-weight: 900;
+  text-shadow: 0 0 10px rgba(255, 108, 55, 0.3);
+}
+.navItem:hover .rollWrapper {
+  transform: translateY(-38px);
 }
 
-[data-theme='dark'] .connectBtn:hover {
-  background-color: var(--accent-orange) !important;
-  color: white !important;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(255, 108, 55, 0.2) !important;
-}
-
-
-/* --- DUPLICATE FIX LOGIC --- */
-.mobileCTA {
-  display: none; /* Desktop pe chhupa do */
-}
-
+/* --- BUTTONS & CONTROLS --- */
 .ctaWrapper {
   display: flex;
   align-items: center;
-  gap: 15px;
-  margin-left: 1rem;
+  gap: 1.5rem;
 }
 
-/* --- DARK MODE OVERRIDES --- */
-[data-theme='dark'] .navbar {
-  background-color: #080808;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+.connectBtn {
+  text-decoration: none;
+  padding: 12px 26px;
+  font-size: 0.85rem;
+  font-weight: 950;
+  border-radius: 8px !important; 
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  background-color: #0F172A !important;
+  color: #FFFFFF !important;
 }
 
-[data-theme='dark'] .link {
-  color: #a0a0a0;
+[data-theme='dark'] .connectBtn {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1) !important;
 }
 
-[data-theme='dark'] .link:hover {
-  color: #FFFFFF;
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.2);
+.connectBtn:hover {
+  background-color: #FF6C37 !important;
+  color: #FFFFFF !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 108, 55, 0.3) !important;
 }
 
-/* --- MOBILE RESPONSIVENESS --- */
+.themeBtn {
+  background: transparent;
+  color: #0F172A;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  transition: transform 0.3s ease;
+}
+[data-theme='dark'] .themeBtn { color: #F2C94C !important; }
+
+/* --- LIGHT MODE SPECIFIC OVERRIDES --- */
+[data-theme='light'] .navLinks { background: #F1F5F9; border-color: #E2E8F0; }
+[data-theme='light'] .navItem:hover { background: #0F172A; border-color: #0F172A; }
+[data-theme='light'] .rollText { color: #334155; }
+
+/* --- CLEANUP & RESPONSIVE --- */
+.mobileCTA { display: none !important; }
+
+/* ============================================================
+   📱 MOBILE RESPONSIVENESS & HAMBURGER MENU
+   ============================================================ */
+
+/* --- 1. THE HAMBURGER BUTTON (Hidden on Desktop) --- */
 .hamburger {
   display: none;
   flex-direction: column;
-  gap: 6px;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
   background: transparent;
   border: none;
   cursor: pointer;
-  z-index: 1010;
+  z-index: 1001;
+  padding: 0;
 }
 
 .bar {
-  width: 30px;
-  height: 4px;
-  background: var(--text-main);
-  border-radius: 10px;
-  transition: 0.3s;
+  width: 100%;
+  height: 2px;
+  background-color: #0F172A;
+  border-radius: 4px;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-origin: center;
 }
 
+[data-theme='dark'] .bar {
+  background-color: #FFFFFF;
+}
+
+/* 🍔 Hamburger to "X" Animation */
+.hamburgerActive .bar:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.hamburgerActive .bar:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+.hamburgerActive .bar:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* --- 2. MOBILE & TABLET LAYOUT --- */
 @media (max-width: 1024px) {
-  .navContainer { padding: 1rem 1.5rem; }
-  
-  /* Desktop ka connect button chhupa do, hamburger dikhao */
-  .ctaWrapper .connectBtn {
-    display: none;
+  .navContainer { 
+    padding: 0.8rem 1.5rem; 
   }
   
-  .hamburger { display: flex; }
+  /* Show Hamburger, Hide Desktop Connect Button */
+  .hamburger { 
+    display: flex; 
+  }
+  .desktopCTA { 
+    display: none !important; 
+  }
 
+  /* Redesigning the Nav Container for Mobile Dropdown */
   .navLinks {
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
+    background: #FAFAFA;
+    border: none;
+    border-top: 1px solid #EEEEEE;
+    border-radius: 0 0 16px 16px;
     flex-direction: column;
-    background-color: var(--bg-color);
     padding: 2rem;
-    gap: 1.2rem;
-    border-bottom: 5px solid var(--border-main);
-    transform: translateY(-150%);
-    transition: transform 0.4s ease-in-out;
-    z-index: -1;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    gap: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    
+    /* Animation defaults */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
+  [data-theme='dark'] .navLinks { 
+    background: rgba(5, 4, 3, 0.98); 
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Dropdown Active State */
   .navLinksActive {
+    opacity: 1;
+    visibility: visible;
     transform: translateY(0);
   }
 
-  /* Mobile menu ke andar waala button dikhao */
-  .mobileCTA {
-    display: block;
+  /* Make items stretch full width on mobile */
+  .navItem {
     width: 100%;
-    margin-top: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  
+  [data-theme='dark'] .navItem {
+    border-color: rgba(255, 255, 255, 0.05);
   }
 
+  /* 🔧 FIX: Prevent Jackpot text from stacking visibly */
+  .link {
+    display: block;
+    text-align: center;
+    height: 38px;
+  }
+  
+  .rollWrapper {
+    display: inline-flex;
+    width: auto;
+  }
+
+  /* Make the effect trigger on tap instead of hover for mobile */
+  .navItem:hover .rollWrapper {
+    transform: none; /* Disable standard hover */
+  }
+  .navItem:active .rollWrapper {
+    transform: translateY(-38px);
+  }
+
+  /* Show the Mobile Connect Button */
+  .mobileCTA { 
+    display: flex !important; 
+    width: 100%;
+    margin-top: 10px;
+  }
+  
   .mobileCTA .connectBtn {
     width: 100%;
-  }
-
-  .link {
-    width: 100%;
-    text-align: center;
-    font-size: 1.1rem;
+    padding: 16px;
+    font-size: 1rem;
   }
 }
 
-/* Hamburger Animations */
-.hamburgerActive .bar:nth-child(1) { transform: translateY(10px) rotate(45deg); }
-.hamburgerActive .bar:nth-child(2) { opacity: 0; }
-.hamburgerActive .bar:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
-
-/* Global Active State */
-.link:active, .connectBtn:active, .themeBtn:active {
-  transform: scale(0.95);
+/* 📱 EXTRA SMALL PHONES */
+@media (max-width: 480px) {
+  .logoMain { font-size: 1.4rem; }
+  .ctaWrapper { gap: 1rem; }
 }

@@ -2,8 +2,8 @@
 
 .footerWrapper {
   padding: 2.5rem 5rem;
-  background-color: #FFFFFF; /* Pure White for Light Mode */
-  border-top: 4px solid #1A1A1A; /* Heavy Brutalist Top Border */
+  background-color: #FFFFFF;
+  border-top: 4px solid #1A1A1A;
   width: 100%;
   transition: all 0.4s ease;
 }
@@ -18,10 +18,10 @@
 
 /* --- BRANDING (Left) --- */
 .brand {
-  font-family: 'JetBrains Mono', monospace; /* Switched to Mono for pro look */
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.85rem;
   font-weight: 950;
-  color: #1A1A1A; /* Black text in Light Mode */
+  color: #1A1A1A;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
@@ -30,23 +30,23 @@
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.6rem;
   font-weight: 800;
-  color: #64748b; /* Muted slate */
+  color: #64748b;
   letter-spacing: 1px;
   margin-top: 4px;
 }
 
 /* --- REFINED MECHANICAL BUTTON (Middle) --- */
 .topButton {
+  display: flex;
   background: #FFFFFF;
   color: #1A1A1A;
-  border: 3px solid #1A1A1A; /* Thick Border */
+  border: 3px solid #1A1A1A;
   padding: 10px 24px;
   font-family: 'JetBrains Mono', monospace;
   font-weight: 950;
   font-size: 0.7rem;
   letter-spacing: 1px;
   cursor: pointer;
-  /* Solid Blue Offset Shadow */
   box-shadow: 5px 5px 0px #2D9CDB; 
   transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   margin: 0 auto;
@@ -55,7 +55,7 @@
 
 .topButton:hover {
   transform: translate(-3px, -3px);
-  box-shadow: 8px 8px 0px #1A1A1A; /* Shadow turns black on hover */
+  box-shadow: 8px 8px 0px #1A1A1A;
   background: #f8fafc;
 }
 
@@ -69,7 +69,7 @@
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.7rem;
   font-weight: 950;
-  color: #15803d; /* Deeper Green for better contrast on white */
+  color: #15803d;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -80,16 +80,13 @@
 .cyanPulse {
   width: 10px;
   height: 10px;
-  background: #22c55e; /* Bright Green */
+  background: #22c55e;
   border-radius: 50%;
   box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
   animation: pulse 2s infinite;
 }
 
-/* ------------------------------------------------------------
-   DARK MODE OVERRIDES (Restoring your original dark look)
-   ------------------------------------------------------------ */
-
+/* --- DARK MODE OVERRIDES --- */
 [data-theme='dark'] .footerWrapper {
   background-color: #000000 !important;
   border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -97,17 +94,42 @@
 
 [data-theme='dark'] .brand { color: #FFFFFF !important; }
 [data-theme='dark'] .subText { color: #555 !important; }
-
 [data-theme='dark'] .topButton {
   background: transparent !important;
   color: #FFFFFF !important;
   border-color: #FFFFFF !important;
   box-shadow: 4px 4px 0px #2D9CDB !important;
 }
-
 [data-theme='dark'] .statusText { color: #A3E635 !important; }
 
-/* ------------------------------------------------------------ */
+/* =========================================
+   📱 FOOTER: MOBILE RESPONSIVE FIX
+   ========================================= */
+
+@media (max-width: 900px) {
+  .footerWrapper {
+    padding: 3rem 1.5rem;
+  }
+
+  .footerContainer {
+    grid-template-columns: 1fr; /* Stack everything vertically */
+    gap: 2.5rem;
+    text-align: center;
+  }
+
+  .statusText {
+    justify-content: center; /* Center the pulse on mobile */
+  }
+
+  .topButton {
+    order: -1; /* Moves "Back to Top" to the top of the footer for usability */
+    width: fit-content;
+  }
+
+  .subText {
+    margin-top: 8px;
+  }
+}
 
 @keyframes pulse {
   0% { transform: scale(1); opacity: 1; }

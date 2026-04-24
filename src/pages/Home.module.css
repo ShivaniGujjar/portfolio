@@ -1,17 +1,13 @@
 /* --- DARK MODE PRECISION FIXES --- */
 
-/* --- SHERYIANS STYLE HERO --- */
-
-
-
 /* Button Fix: Black background with Orange Hover */
 [data-theme='dark'] .ctaButton {
   background-color: #000000 !important;
   color: #FFFFFF !important;
-  border: 1px solid var(--border-main) !important; /* Very thin border */
+  border: 1px solid var(--border-main) !important;
   padding: 14px 32px;
-  border-radius: 8px; /* Slightly rounded for that pro look */
-  box-shadow: none !important; /* Brutalist shadow hata di for this look */
+  border-radius: 8px;
+  box-shadow: none !important;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -28,7 +24,7 @@
 [data-theme='dark'] .techLayer {
   background: rgba(255, 255, 255, 0.03) !important;
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1) !important; /* Super thin border */
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
@@ -51,9 +47,7 @@
   color: var(--text-sub) !important;
 }
 
-
-
-
+/* --- MAIN HERO LAYOUT --- */
 .heroContainer {
   display: flex;
   justify-content: space-between;
@@ -71,6 +65,7 @@
 [data-theme='dark'] .heroContainer {
   background: transparent !important;
 }
+
 .heroText {
   flex: 1.2;
   z-index: 10;
@@ -88,7 +83,7 @@
 }
 
 .statusText {
-  color: #00995E; /* Retro Green */
+  color: #00995E;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.7rem;
   font-weight: 900;
@@ -107,11 +102,7 @@
 .outlineText {
   color: #FF6C37;
   -webkit-text-stroke: 3px #1A1A1A;
-
-  /* 🔥 THIS IS THE REAL FIX */
   paint-order: stroke fill;
-
-  /* Optional polish */
   letter-spacing: -2px;
 }
 
@@ -125,7 +116,7 @@
 .highlight {
   position: relative;
   z-index: 2;
-  background-color: #FF6C37; /* Palette Yellow */
+  background-color: #FF6C37;
   color: white;
   padding: 6px 25px;
   border: 4px solid #1A1A1A;
@@ -142,34 +133,25 @@
   margin: 1.2rem 0;
 }
 
-.reactColor { color: #058CD7; font-weight: 900; } /* Blue */
-.nodeColor { color: #00995E; font-weight: 900; }  /* Green */
-.mongoColor { color: #FD5A46; font-weight: 900; } /* Orange/Red */
+.reactColor { color: #058CD7; font-weight: 900; } 
+.nodeColor { color: #00995E; font-weight: 900; }  
+.mongoColor { color: #FD5A46; font-weight: 900; } 
 
 /* --- HERO SECTION: VIEW PROJECTS BUTTON FIX --- */
-
 .ctaButton {
   position: relative;
   display: inline-block;
-  
-  /* Solid Black Background for visibility */
   background-color: #1A1A1A !important; 
-  color: #FFFFFF !important; /* Pure white text */
-  
+  color: #FFFFFF !important; 
   padding: 18px 42px;
   font-size: 0.95rem;
   font-weight: 950;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 1px;
-  
-  /* Heavy Neo-Brutalist Border */
   border: 4px solid #1A1A1A !important;
-  border-radius: 4px; /* Slight round like your Navbar button */
-  
-  /* Solid Pink Shadow (Matching your palette) */
+  border-radius: 4px; 
   box-shadow: 8px 8px 0px #e55f2e !important; 
-  
   transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   margin-top: 1.5rem;
   cursor: pointer;
@@ -177,9 +159,8 @@
 }
 
 .ctaButton:hover {
-  /* Hover pe dabba thoda move hona chahiye mechanical feel ke liye */
   transform: translate(-3px, -3px);
-  box-shadow: 11px 11px 0px #1A1A1A !important; /* Hover shadow turns black/heavy */
+  box-shadow: 11px 11px 0px #1A1A1A !important; 
   background-color: #e55f2e !important;
 }
 
@@ -188,7 +169,6 @@
   box-shadow: 0px 0px 0px transparent !important;
 }
 
-/* --- DARK MODE SAFETY (Already good, but ensuring consistency) --- */
 [data-theme='dark'] .ctaButton {
   background-color: #FFFFFF !important;
   color: #000000 !important;
@@ -201,75 +181,274 @@
   flex: 0.8;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 15px; 
   align-items: flex-end;
-  margin-top: 3rem; 
 }
 
 .techLayer {
   position: relative;
-  background: #FFF;
-  border: 4px solid #1A1A1A;
-  padding: 0.8rem 1.2rem;
-  width: 320px; 
+  background: linear-gradient(145deg, #0D0D0D 0%, #050505 100%);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 420px;
+  padding: 1.4rem 2.2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 2;
-  transition: all 0.2s ease;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.techLayer::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+}
+
+.techLayer::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; width: 4px; height: 100%;
+  background: var(--accent);
+  box-shadow: 4px 0 20px var(--accent);
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
 }
 
 .techLayer:hover {
-  transform: translate(-4px, -4px);
+  transform: translateX(-15px);
+  background: #0F0F0F;
+  border-color: var(--accent);
+  box-shadow: -20px 0 50px rgba(0, 0, 0, 0.7), inset 0 0 20px rgba(var(--accent-rgb), 0.05);
+}
+
+.techLayer:hover::before {
+  opacity: 1;
+}
+
+.layerContent {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  z-index: 2;
 }
 
 .layerIcon {
-  background: #1A1A1A;
+  font-size: 1.8rem;
+  color: #1A1A1A; 
+  transition: all 0.4s ease;
+}
+
+.techLayer:hover .layerIcon {
+  color: var(--accent);
+  transform: scale(1.1) rotate(-5deg);
+  filter: drop-shadow(0 0 10px var(--accent));
+}
+
+.monoText {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 850;
   color: #FFF;
-  width: 42px;
-  height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.4rem;
-  border: 2px solid #1A1A1A;
-  transition: all 0.2s ease;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
 }
 
-/* Individual Icon Hover Colors */
-.mongoLayer:hover .layerIcon { color: #00995E; background: #FFF; }
-.expressLayer:hover .layerIcon { color: #FB7DA8; background: #FFF; }
-.reactLayer:hover .layerIcon { color: #058CD7; background: #FFF; }
-.nodeLayer:hover .layerIcon { color: #FFC567; background: #FFF; }
-
-.layerBlock {
-  position: absolute;
-  inset: -4px;
-  transform: translate(8px, 8px);
-  z-index: -1;
-  border: 4px solid #1A1A1A;
-  transition: all 0.2s ease;
+.layerStatus {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  font-weight: 950;
+  color: #444;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 5px 12px;
+  border-radius: 4px; 
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  letter-spacing: 1.5px;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
-/* Layer Shadow Colors from Palette */
-.mongoLayer .layerBlock { background-color: #00995E; }
-.expressLayer .layerBlock { background-color: #FB7DA8; }
-.reactLayer .layerBlock { background-color: #058CD7; }
-.nodeLayer .layerBlock { background-color: #FFC567; }
+.techLayer:hover .layerStatus {
+  color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.1);
+  border-color: var(--accent);
+  text-shadow: 0 0 8px var(--accent);
+}
 
-.layerContent { display: flex; align-items: center; gap: 15px; }
-.monoText { font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 0.75rem; color: var(--text-primary); }
-.layerStatus { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; font-weight: 950; opacity: 0.5; }
-.pulseDot { width: 10px; height: 10px; background: #00995E; border-radius: 50%; animation: statusBlink 1.5s infinite; }
+.mongoLayer { --accent: #00ED64; --accent-rgb: 0, 237, 100; }
+.expressLayer { --accent: #E0E0E0; --accent-rgb: 224, 224, 224; }
+.reactLayer { --accent: #3ABFF8; --accent-rgb: 58, 191, 248; }
+.nodeLayer { --accent: #FFC567; --accent-rgb: 255, 197, 103; }
 
-@keyframes statusBlink { 50% { opacity: 0.3; transform: scale(1.1); } }
+/* --- HIGH-CONTRAST LIGHT MODE UPGRADE --- */
+[data-theme='light'] .techLayer {
+  background: #FFFFFF;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02), 0 12px 24px rgba(15, 23, 42, 0.04);
+}
 
+[data-theme='light'] .techLayer::before {
+  width: 6px;
+  opacity: 1;
+  background: var(--accent);
+  box-shadow: 4px 0 15px rgba(var(--accent-rgb), 0.2);
+}
+
+[data-theme='light'] .layerIcon {
+  color: #94A3B8;
+  opacity: 1;
+  font-size: 1.8rem;
+  transition: all 0.4s ease;
+}
+
+[data-theme='light'] .techLayer:hover .layerIcon {
+  color: var(--accent);
+  transform: scale(1.1) rotate(-5deg);
+  filter: drop-shadow(0 0 10px rgba(var(--accent-rgb), 0.3));
+}
+
+[data-theme='light'] .monoText {
+  color: #0F172A;
+  font-weight: 950;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+[data-theme='light'] .layerStatus {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  color: #64748B;
+  font-weight: 900;
+  padding: 6px 14px;
+  border-radius: 6px;
+  letter-spacing: 1px;
+}
+
+[data-theme='light'] .techLayer:hover .layerStatus {
+  background: var(--accent);
+  color: #FFFFFF;
+  border-color: var(--accent);
+}
+
+[data-theme='light'] .mongoLayer { --accent: #008D4C; --accent-rgb: 0, 141, 76; }
+[data-theme='light'] .expressLayer { --accent: #1E293B; --accent-rgb: 30, 41, 59; }
+[data-theme='light'] .reactLayer { --accent: #0284C7; --accent-rgb: 2, 132, 199; }
+[data-theme='light'] .nodeLayer { --accent: #D97706; --accent-rgb: 217, 119, 6; }
+
+[data-theme='light'] .techLayer:hover {
+  transform: translateX(-15px) translateY(-3px);
+  background: #FFFFFF;
+  box-shadow: -20px 20px 40px rgba(0, 0, 0, 0.05), 0 10px 20px rgba(var(--accent-rgb), 0.1);
+}
+
+/* =========================================
+   📱 CRITICAL MOBILE & TABLET RESPONSIVENESS
+   ========================================= */
+
+@media (max-width: 1000px) {
+  .heroContainer { 
+    flex-direction: column; 
+    align-items: flex-start;
+    /* 🔥 THE FIX: Reduced top padding from 2rem to 0.5rem */
+    padding: 0.5rem 1.5rem 2rem 1.5rem; 
+    margin-top: 0; /* Stripped out the top margin completely */
+  }
+
+  .heroText {
+    width: 100%;
+    margin-top: 0; /* Removed the extra text margin */
+    margin-bottom: 2rem; 
+  }
+
+  .mernStackGraphic { 
+    align-items: center; 
+    width: 100%; 
+    margin-top: 0; 
+  }
+}
+
+/* 📱 SPECIFIC MOBILE PHONE TWEAKS */
 @media (max-width: 768px) {
-  .heroContainer { flex-direction: column; text-align: center; align-items: center; }
-  .heroHeading { font-size: 2.5rem; }
-  .mernStackGraphic { align-items: center; width: 100%; }
-  .techLayer { width: 100%; max-width: 320px; }
+  
+  /* Stop 'APPLICATIONS' from overflowing */
+  .heroHeading {
+    font-size: clamp(2.2rem, 10vw, 3rem); 
+    letter-spacing: -1px; 
+    line-height: 1.1;
+  }
+
+  .outlineText {
+    -webkit-text-stroke: 2px #1A1A1A; 
+  }
+  [data-theme='light'] .outlineText {
+    -webkit-text-stroke: 2px #0F172A;
+  }
+
+  /* Fix the clunky orange brick */
+  .highlight {
+    padding: 2px 12px;
+    font-size: clamp(1.8rem, 8vw, 2.5rem); 
+    white-space: nowrap !important; /* Forces one line */
+    border-width: 2px;
+    box-shadow: 4px 4px 0px var(--shadow-primary);
+  }
+
+  .highlightWrapper {
+    margin: 2px 0; 
+  }
+
+  .heroSubtext {
+    font-size: 1rem;
+    margin: 1.5rem 0;
+    max-width: 100%;
+  }
+
+  /* Give the button its personality back */
+  .ctaButton {
+    display: flex;
+    justify-content: center;
+    width: 100%; 
+    padding: 16px 24px;
+    background-color: #FF6C37 !important; 
+    color: #000000 !important; 
+    border: 2px solid #FFFFFF !important;
+    box-shadow: 5px 5px 0px rgba(255, 255, 255, 0.8) !important;
+    font-weight: 900;
+  }
+  
+  .ctaButton:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0px 0px 0px transparent !important;
+  }
+
+  /* Mobile-Safe Tech Layers */
+  .techLayer { 
+    max-width: 100%; 
+    padding: 1.2rem 1.5rem;
+  }
+
+  .layerContent { gap: 15px; }
+  .monoText { font-size: 0.75rem; }
+  .layerIcon { color: rgba(255, 255, 255, 0.3); }
+
+  /* Disable horizontal sliding on mobile */
+  .techLayer:hover {
+    transform: translateY(-4px); 
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+  }
+  [data-theme='light'] .techLayer:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  }
 }
 
-
-
+/* 📱 EXTRA SMALL PHONES */
+@media (max-width: 380px) {
+  .heroHeading { font-size: 2rem; }
+  .layerStatus { display: none; } 
+}
