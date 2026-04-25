@@ -47,18 +47,28 @@
   color: var(--text-sub) !important;
 }
 
+
+.pulseDot {
+  width: 8px;
+  height: 8px;
+  background-color: #00995E;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 10px rgba(0, 153, 94, 0.6);
+}
+
 /* --- MAIN HERO LAYOUT --- */
 .heroContainer {
+  overflow-x: hidden;
   display: flex;
   justify-content: space-between;
   align-items: flex-start; 
   padding: 2rem; 
   max-width: 1200px; 
-  margin: 0 auto;
+  margin: 5rem auto;
   min-height: auto;
   position: relative;
   background-color: var(--bg-primary);
-  overflow-x: hidden; 
   width: 100%;
 }
 
@@ -196,7 +206,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background 0.3s ease, border-color 0.3s ease;
+  will-change: transform, opacity;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
@@ -346,109 +357,114 @@
   box-shadow: -20px 20px 40px rgba(0, 0, 0, 0.05), 0 10px 20px rgba(var(--accent-rgb), 0.1);
 }
 
-/* =========================================
-   📱 CRITICAL MOBILE & TABLET RESPONSIVENESS
-   ========================================= */
-
-@media (max-width: 1000px) {
-  .heroContainer { 
-    flex-direction: column; 
-    align-items: flex-start;
-    /* 🔥 THE FIX: Reduced top padding from 2rem to 0.5rem */
-    padding: 0.5rem 1.5rem 2rem 1.5rem; 
-    margin-top: 0; /* Stripped out the top margin completely */
+/* --- 📱 MOBILE HERO FIX (1024px & Below) --- */
+@media (max-width: 1024px) {
+  .heroContainer {
+    height: auto !important;
+    min-height: auto !important;
+    padding: 100px 1.5rem 0rem 1.5rem !important; /* Bottom padding zero kiya space hatane ke liye */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
   }
 
   .heroText {
-    width: 100%;
-    margin-top: 0; /* Removed the extra text margin */
-    margin-bottom: 2rem; 
+    text-align: center;
+    margin-bottom: 2rem;
   }
 
-  .mernStackGraphic { 
-    align-items: center; 
-    width: 100%; 
-    margin-top: 0; 
-  }
-}
-
-/* 📱 SPECIFIC MOBILE PHONE TWEAKS */
-@media (max-width: 768px) {
-  
-  /* Stop 'APPLICATIONS' from overflowing */
-  .heroHeading {
-    font-size: clamp(2.2rem, 10vw, 3rem); 
-    letter-spacing: -1px; 
-    line-height: 1.1;
-  }
-
-  .outlineText {
-    -webkit-text-stroke: 2px #1A1A1A; 
-  }
-  [data-theme='light'] .outlineText {
-    -webkit-text-stroke: 2px #0F172A;
-  }
-
-  /* Fix the clunky orange brick */
-  .highlight {
-    padding: 2px 12px;
-    font-size: clamp(1.8rem, 8vw, 2.5rem); 
-    white-space: nowrap !important; /* Forces one line */
-    border-width: 2px;
-    box-shadow: 4px 4px 0px var(--shadow-primary);
-  }
-
-  .highlightWrapper {
-    margin: 2px 0; 
-  }
-
-  .heroSubtext {
-    font-size: 1rem;
-    margin: 1.5rem 0;
-    max-width: 100%;
-  }
-
-  /* Give the button its personality back */
-  .ctaButton {
-    display: flex;
+  /* --- 🧪 THE GLOWING ICON ROW --- */
+  .mernStackGraphic {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap; /* Safety for very small screens */
     justify-content: center;
-    width: 100%; 
-    padding: 16px 24px;
-    background-color: #FF6C37 !important; 
-    color: #000000 !important; 
-    border: 2px solid #FFFFFF !important;
-    box-shadow: 5px 5px 0px rgba(255, 255, 255, 0.8) !important;
-    font-weight: 900;
-  }
-  
-  .ctaButton:active {
-    transform: translate(3px, 3px);
-    box-shadow: 0px 0px 0px transparent !important;
+    gap: 15px;
+    width: 100%;
+    margin: 0 auto 3rem auto !important; /* Space only below the row */
   }
 
-  /* Mobile-Safe Tech Layers */
-  .techLayer { 
-    max-width: 100%; 
-    padding: 1.2rem 1.5rem;
+  .techLayer {
+    width: 65px !important;
+    height: 65px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    position: relative;
+    background: #0A0A0A !important;
+    transition: all 0.4s ease;
   }
 
-  .layerContent { gap: 15px; }
-  .monoText { font-size: 0.75rem; }
-  .layerIcon { color: rgba(255, 255, 255, 0.3); }
+  /* ⚡ THE INTENSE GLOW (Restoring the Original Soul) */
+  .mongoLayer { 
+    border-left: 4px solid #47A248 !important;
+    box-shadow: 0 10px 30px rgba(71, 162, 72, 0.25), inset 0 0 15px rgba(71, 162, 72, 0.1) !important; 
+  }
+  .expressLayer { 
+    border-left: 4px solid #FFFFFF !important;
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15), inset 0 0 15px rgba(255, 255, 255, 0.05) !important; 
+  }
+  .reactLayer { 
+    border-left: 4px solid #61DAFB !important;
+    box-shadow: 0 10px 30px rgba(97, 218, 251, 0.25), inset 0 0 15px rgba(97, 218, 251, 0.1) !important; 
+  }
+  .nodeLayer { 
+    border-left: 4px solid #F2C94C !important;
+    box-shadow: 0 10px 30px rgba(242, 201, 76, 0.25), inset 0 0 15px rgba(242, 201, 76, 0.1) !important; 
+  }
 
-  /* Disable horizontal sliding on mobile */
+  .layerIcon {
+    font-size: 1.8rem !important;
+    margin: 0 !important;
+    filter: drop-shadow(0 0 5px currentColor); /* Icon focus glow */
+    opacity: 1 !important;
+  }
+
+  /* Hide everything else inside the card */
+  .monoText, .layerStatus, .layerBlock {
+    display: none !important;
+  }
+
+  /* Remove hover transform that breaks mobile touch */
   .techLayer:hover {
-    transform: translateY(-4px); 
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
-  }
-  [data-theme='light'] .techLayer:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    transform: translateY(-8px) !important;
   }
 }
 
-/* 📱 EXTRA SMALL PHONES */
-@media (max-width: 380px) {
-  .heroHeading { font-size: 2rem; }
-  .layerStatus { display: none; } 
+@media (max-width: 768px) {
+  .heroContainer {
+    height: auto !important;
+    min-height: auto !important; 
+    padding-top: 10px !important;
+    padding-bottom: 0px !important; /* Bottom padding zero */
+    margin-bottom: 0px !important; /* Bottom margin zero */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start !important;
+  }
+
+  .heroText {
+    margin-bottom: 0.5rem !important; /* Heading aur Button ke beech space kam */
+  }
+
+  .mernStackGraphic {
+    margin-top: 2rem !important;
+    margin-bottom: 0px !important; /* Icons ke niche ki space khatam */
+    padding-bottom: 0px !important;
+  }
+}
+
+/* 📱 SMALL PHONES FIX */
+@media (max-width: 480px) {
+  .heroHeading {
+    font-size: 2.5rem !important;
+  }
+  .techLayer {
+    width: 58px !important;
+    height: 58px !important;
+  }
 }

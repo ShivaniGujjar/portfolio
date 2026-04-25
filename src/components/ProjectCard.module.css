@@ -1,24 +1,33 @@
 /* ============================================================
-   PROJECT CARD - THE ULTIMATE HYBRID UPGRADE
-   Light Mode: Heavy Neo-Brutalism | Dark Mode: SaaS Ghost
+   🚀 PROJECT CARD - THE MASTER HYBRID BUILD
+   Light Mode: Neo-Brutalism | Dark Mode: SaaS Ghost
    ============================================================ */
 
 .projectSection {
+  perspective: 1000px;
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: 5rem;
   align-items: center;
-  margin-bottom: 10rem;
-  --project-color: #2D9CDB;
+  margin-bottom: 12rem;
+  --project-color: #2D9CDB; /* Dynamic variable set via JSX */
 }
 
-.reversed { direction: rtl; }
-.reversed > * { direction: ltr; }
+/* --- REVERSED LAYOUT LOGIC --- */
+.reversed {
+  direction: rtl;
+}
+.reversed > * {
+  direction: ltr;
+}
 
-/* --- VISUAL SIDE --- */
+/* --- VISUAL SIDE (3D CONTAINER) --- */
 .visualSide {
   position: relative;
-  padding: 2rem;
+  padding: 1.5rem;
+  transition: transform 0.1s ease-out;
+  transform-style: preserve-3d;
+  cursor: crosshair;
 }
 
 .colorBlock {
@@ -28,6 +37,7 @@
   padding: 2.5rem;
   box-shadow: 20px 20px 0px #1A1A1A;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
 }
 
 .checkerboard {
@@ -45,13 +55,14 @@
   border: 4px solid #1A1A1A;
   background: #000;
   box-shadow: 12px 12px 0px #1A1A1A;
-  overflow: hidden;
+  overflow: hidden; /* Clips the laser scan */
   transition: all 0.3s ease;
+  transform-style: preserve-3d;
 }
 
-/* --- WINDOW HEADER --- */
+/* --- WINDOW HEADER UI --- */
 .windowHeader {
-  height: 28px;
+  height: 32px;
   background: #1A1A1A;
   display: flex;
   align-items: center;
@@ -60,7 +71,7 @@
 }
 
 .dotGroup { display: flex; gap: 6px; }
-.wDot { width: 8px; height: 8px; border-radius: 50%; }
+.wDot { width: 8px; height: 8px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); }
 .wDot:nth-child(1) { background: #FF5F56; }
 .wDot:nth-child(2) { background: #FFBD2E; }
 .wDot:nth-child(3) { background: #27C93F; }
@@ -68,46 +79,83 @@
 .windowTitle {
   margin-left: auto;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  color: #666;
+  font-size: 10px;
+  color: #888;
   text-transform: lowercase;
+  font-weight: 800;
 }
 
 .projectImg {
   width: 100%;
   display: block;
   filter: grayscale(100%) contrast(1.1);
-  transition: 0.4s ease;
+  transition: 0.5s ease;
+  transform: scale(1.01); /* Prevents subpixel flickering */
 }
 
 .idBadge {
   position: absolute;
-  top: 45px;
-  right: 15px;
+  top: 50px;
+  right: 20px;
   background: #F2C94C;
   color: #1A1A1A;
-  padding: 4px 12px;
+  padding: 6px 14px;
   font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
   font-weight: 950;
   border: 3px solid #1A1A1A;
   z-index: 10;
+  box-shadow: 4px 4px 0px #1A1A1A;
+}
+
+/* --- SCAN LASER ANIMATION --- */
+.scanLaser {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #FFFFFF;
+  box-shadow: 0 0 15px #FFFFFF, 0 0 30px var(--project-color);
+  z-index: 5;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.visualSide:hover .scanLaser {
+  opacity: 1;
+  animation: laserSweep 2.5s infinite linear;
+}
+
+.visualSide:hover .projectImg {
+  filter: grayscale(0%) contrast(1);
+  transform: scale(1.08);
+}
+
+@keyframes laserSweep {
+  0% { top: -5%; }
+  100% { top: 105%; }
 }
 
 /* --- CONTENT SIDE --- */
+.contentSide {
+  display: flex;
+  flex-direction: column;
+}
+
 .headerMeta {
   display: flex;
   align-items: center;
   gap: 15px;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .status {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 950;
   color: var(--project-color);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .colorLine {
@@ -118,66 +166,60 @@
 }
 
 .title {
-  font-size: 4rem;
+  font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 950;
   letter-spacing: -3px;
-  line-height: 0.85;
+  line-height: 0.9;
   margin-bottom: 1.5rem;
   color: #1A1A1A;
 }
 
 .description {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: #475569;
   line-height: 1.6;
   margin-bottom: 2.5rem;
+  max-width: 500px;
 }
 
-/* --- TECHNOLOGY SECTION --- */
+/* --- TECH STACK PILLS --- */
 .techTitle {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.85rem;
-  font-weight: 900;
+  font-size: 0.75rem;
+  font-weight: 950;
   color: #1A1A1A;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1rem;
   letter-spacing: 1px;
 }
 
 .techCloud {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 3.5rem;
+  gap: 10px;
+  margin-bottom: 3rem;
 }
 
 .techPill {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   background: #FFFFFF;
   border: 3px solid #1A1A1A;
-  padding: 8px 16px;
+  padding: 6px 14px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 900;
   color: #1A1A1A;
   box-shadow: 4px 4px 0px #1A1A1A;
-  transition: all 0.1s ease;
+  border-radius: 8px;
   cursor: pointer;
-  border-radius: 10px;
 }
 
-.techPill:hover {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0px #1A1A1A;
-}
-
-/* --- LIGHT MODE BUTTONS --- */
+/* --- BUTTONS --- */
 .buttonStack {
   display: flex;
-  gap: 1.2rem;
-  margin-top: 2rem;
+  gap: 1rem;
 }
 
 .mainBtn, .sideBtn {
@@ -185,17 +227,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  padding: 16px 24px;
+  gap: 10px;
+  padding: 18px;
   border-radius: 10px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.8rem;
-  font-weight: 900;
+  font-size: 0.75rem;
+  font-weight: 950;
   text-transform: uppercase;
   border: 3.5px solid #1A1A1A !important;
-  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  cursor: pointer;
   text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .mainBtn { background: #1A1A1A !important; color: #FFF !important; box-shadow: 6px 6px 0px #27AE60 !important; }
@@ -204,7 +245,9 @@
 .mainBtn:hover, .sideBtn:hover { transform: translate(-3px, -3px); }
 .mainBtn:active, .sideBtn:active { transform: translate(4px, 4px); box-shadow: none !important; }
 
-/* --- 🌑 DARK MODE OVERRIDES (SaaS Ghost) --- */
+/* ============================================================
+   🌑 DARK MODE OVERRIDES: SAAS GHOST
+   ============================================================ */
 
 [data-theme='dark'] .colorBlock {
   background: rgba(255, 255, 255, 0.03) !important;
@@ -213,91 +256,89 @@
   backdrop-filter: blur(12px);
 }
 
-[data-theme='dark'] .imageFrame { border-color: #333 !important; box-shadow: none !important; }
+[data-theme='dark'] .colorBlock::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+    rgba(255, 255, 255, 0.08), 
+    transparent 40%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+[data-theme='dark'] .imageFrame { border-color: rgba(255,255,255,0.1) !important; box-shadow: none !important; }
 [data-theme='dark'] .title { color: #FFFFFF !important; }
 [data-theme='dark'] .description { color: #94A3B8 !important; }
+[data-theme='dark'] .techTitle { color: #64748B !important; }
 
 [data-theme='dark'] .techPill {
-  background: rgba(255, 255, 255, 0.05) !important;
+  background: rgba(255, 255, 255, 0.03) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  color: #E0E0E0 !important;
+  color: #E2E8F0 !important;
   box-shadow: none !important;
 }
 
-/* Dark Mode Buttons */
 [data-theme='dark'] .mainBtn {
   background: rgba(255, 255, 255, 0.05) !important;
-  color: #FFFFFF !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #FFF !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
   box-shadow: none !important;
 }
 
 [data-theme='dark'] .mainBtn:hover {
-  background: #FFFFFF !important;
-  color: #000000 !important;
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3) !important;
+  background: #FFF !important;
+  color: #000 !important;
+  box-shadow: 0 0 30px rgba(255,255,255,0.2) !important;
 }
 
 [data-theme='dark'] .sideBtn {
   background: rgba(39, 174, 96, 0.05) !important;
   color: #27AE60 !important;
-  border: 1px solid rgba(39, 174, 96, 0.3) !important;
+  border: 1px solid rgba(39, 174, 96, 0.2) !important;
   box-shadow: none !important;
 }
 
 [data-theme='dark'] .sideBtn:hover {
   background: #27AE60 !important;
-  color: #000000 !important;
+  color: #000 !important;
   box-shadow: 0 0 30px rgba(39, 174, 96, 0.4) !important;
 }
 
-/* --- ANIMATIONS & HOVERS --- */
-.scanLaser {
-  position: absolute; top: -100%; left: 0; width: 100%; height: 8px;
-  background: #FFFFFF; box-shadow: 0 0 15px #FFFFFF, 0 0 30px var(--project-color);
-  z-index: 10; opacity: 0; pointer-events: none;
-}
-
-.projectSection:hover .scanLaser { opacity: 1; animation: laserSweep 2s infinite linear; }
-.projectSection:hover .projectImg { filter: grayscale(0%) contrast(1); transform: scale(1.05); }
-
-@keyframes laserSweep {
-  0% { top: -10%; }
-  100% { top: 110%; }
-}
-
 /* =========================================
-   📱 CRITICAL MOBILE RESPONSIVENESS
+   📱 MOBILE RESPONSIVE
    ========================================= */
 
 @media (max-width: 1100px) {
   .projectSection { 
     grid-template-columns: 1fr; 
-    gap: 3rem; 
-    margin-bottom: 6rem;
+    gap: 4rem; 
+    margin-bottom: 8rem;
+    text-align: center;
   }
   
   .reversed { direction: ltr; }
-  .reversed > * { direction: ltr; }
-
-  .visualSide { padding: 0.5rem; }
-  .colorBlock { padding: 1.5rem; box-shadow: 10px 10px 0px #1A1A1A; }
   
-  .title { 
-    font-size: clamp(2.5rem, 10vw, 3.5rem); 
-    letter-spacing: -1px;
-  }
+  .visualSide { padding: 0; }
+  .colorBlock { padding: 1.5rem; box-shadow: 12px 12px 0px #1A1A1A; }
+  .imageFrame { box-shadow: 8px 8px 0px #1A1A1A; }
+  
+  .headerMeta { justify-content: center; }
+  .description { margin-left: auto; margin-right: auto; }
+  .techCloud { justify-content: center; }
 
-  .buttonStack { 
-    flex-direction: column; 
-    gap: 1rem;
-  }
+  .buttonStack { flex-direction: column; }
+  .mainBtn, .sideBtn { width: 100%; }
 
-  .mainBtn, .sideBtn { 
-    width: 100%; 
-    flex: none; 
-    padding: 18px;
-  }
-
-  .projectImg { filter: grayscale(0%); }
+  /* Disable 3D on mobile for better touch UX */
+  .visualSide { transform: none !important; }
 }
+
+@media (max-width: 640px) {
+  .title { font-size: 2.8rem; }
+  .projectSection { margin-bottom: 6rem; }
+}
+
+

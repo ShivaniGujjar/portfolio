@@ -1,81 +1,106 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import styles from './Home.module.css';
 import { SiMongodb, SiExpress, SiReact, SiNodedotjs } from 'react-icons/si';
 
 const Home = () => {
-  return (
-    <section className={styles.heroContainer} id="home">
-      <div className={styles.heroText}>
-        <div className={styles.statusBadge}>
-          <span className={styles.pulseDot}></span>
-          <span className={styles.statusText}>SYSTEM_STATUS: OPERATIONAL</span>
-        </div>
+  // Animation Variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, delayChildren: 0.3 },
+    },
+  };
 
-        <h1 className={styles.heroHeading}>
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { type: 'spring', stiffness: 100 },
+    },
+  };
+
+  const stackVariants = {
+    hidden: { x: 50, opacity: 0 },
+    visible: (i) => ({
+      x: 0,
+      opacity: 1,
+      transition: { delay: i * 0.1, type: 'spring', stiffness: 50, damping: 12 },
+    }),
+  };
+
+  return (
+    <motion.section 
+      className={styles.heroContainer} 
+      id="home"
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+    >
+      <div className={styles.heroText}>
+        <motion.div className={styles.statusBadge} variants={itemVariants}>
+          <motion.span 
+            className={styles.pulseDot}
+            animate={{ scale: [1, 1.2, 1], opacity: [1, 0.6, 1] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+          />
+          <span className={styles.statusText}>SYSTEM_STATUS: OPERATIONAL</span>
+        </motion.div>
+
+        <motion.h1 className={styles.heroHeading} variants={itemVariants}>
           BUILDING <br />
           <span className={styles.outlineText}>SCALABLE</span> <br />
           <div className={styles.highlightWrapper}>
             <span className={styles.highlight}>MERN STACK</span>
           </div> <br />
           APPLICATIONS
-        </h1>
+        </motion.h1>
         
-        <p className={styles.heroSubtext}>
+        <motion.p className={styles.heroSubtext} variants={itemVariants}>
           Specializing in high-performance web architecture with 
           <span className={styles.reactColor}> React</span> |
           <span className={styles.nodeColor}> Node.js</span> |
           <span className={styles.mongoColor}> MongoDB</span>.
-        </p>
+        </motion.p>
 
-        <div className={styles.buttonGroup}>
-          <a href="#projects" className={styles.ctaButton}>
+        <motion.div className={styles.buttonGroup} variants={itemVariants}>
+          <motion.a 
+            href="#projects" 
+            className={styles.ctaButton}
+            whileHover={{ scale: 1.05, x: 5 }}
+            whileTap={{ scale: 0.95 }}
+          >
             VIEW PROJECTS →
-          </a>
-        </div>
+          </motion.a>
+        </motion.div>
       </div>
 
       <div className={styles.mernStackGraphic}>
-        {/* MongoDB Layer */}
-        <div className={`${styles.techLayer} ${styles.mongoLayer}`}>
-          <div className={styles.layerContent}>
-            <div className={styles.layerIcon}><SiMongodb /></div>
-            <p className={styles.monoText}>DATABASE | MONGODB</p>
-          </div>
-          <div className={styles.layerStatus}>ACTIVE</div>
-          <div className={styles.layerBlock}></div>
-        </div>
-
-        {/* Express Layer */}
-        <div className={`${styles.techLayer} ${styles.expressLayer}`}>
-          <div className={styles.layerContent}>
-            <div className={styles.layerIcon}><SiExpress /></div>
-            <p className={styles.monoText}>SERVER | EXPRESS</p>
-          </div>
-          <div className={styles.layerStatus}>STABLE</div>
-          <div className={styles.layerBlock}></div>
-        </div>
-
-        {/* React Layer */}
-        <div className={`${styles.techLayer} ${styles.reactLayer}`}>
-          <div className={styles.layerContent}>
-            <div className={styles.layerIcon}><SiReact /></div>
-            <p className={styles.monoText}>CLIENT | REACT</p>
-          </div>
-          <div className={styles.layerStatus}>READY</div>
-          <div className={styles.layerBlock}></div>
-        </div>
-
-        {/* Node.js Layer */}
-        <div className={`${styles.techLayer} ${styles.nodeLayer}`}>
-          <div className={styles.layerContent}>
-            <div className={styles.layerIcon}><SiNodedotjs /></div>
-            <p className={styles.monoText}>RUNTIME | NODE.JS</p>
-          </div>
-          <div className={styles.layerStatus}>LIVE</div>
-          <div className={styles.layerBlock}></div>
-        </div>
+        {[
+          { icon: <SiMongodb />, label: 'DATABASE | MONGODB', status: 'ACTIVE', class: styles.mongoLayer },
+          { icon: <SiExpress />, label: 'SERVER | EXPRESS', status: 'STABLE', class: styles.expressLayer },
+          { icon: <SiReact />, label: 'CLIENT | REACT', status: 'READY', class: styles.reactLayer },
+          { icon: <SiNodedotjs />, label: 'RUNTIME | NODE.JS', status: 'LIVE', class: styles.nodeLayer },
+        ].map((tech, i) => (
+          <motion.div 
+            key={i}
+            custom={i}
+            variants={stackVariants}
+            className={`${styles.techLayer} ${tech.class}`}
+            whileHover={{ x: -15, transition: { duration: 0.2 } }}
+          >
+            <div className={styles.layerContent}>
+              <div className={styles.layerIcon}>{tech.icon}</div>
+              <p className={styles.monoText}>{tech.label}</p>
+            </div>
+            <div className={styles.layerStatus}>{tech.status}</div>
+            <div className={styles.layerBlock}></div>
+          </motion.div>
+        ))}
       </div>
-    </section>
+    </motion.section>
   );
 };
 

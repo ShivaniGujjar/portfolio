@@ -1,309 +1,134 @@
-/* ============================================================
-   🚀 PREMIER 2026 INDUSTRIAL NAVBAR (JACKPOT OPTIMIZED)
-   ============================================================ */
-
 .navbar {
-  position: sticky;
-  top: 0;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  width: 100%; height: 70px;
   z-index: 1000;
-  width: 100%;
-  transition: all 0.4s ease;
-  background-color: #FAFAFA; 
-  border-bottom: 1px solid #EEEEEE;
+  display: flex;
+  align-items: center;
+  background: #050403; 
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* 🌑 DARK MODE BASE */
-[data-theme='dark'] .navbar {
-  background-color: rgba(5, 4, 3, 0.9) !important;
-  backdrop-filter: blur(15px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+:global([data-theme='light']) .navbar {
+  background: #FFFFFF !important;
+  border-bottom: 1px solid #EEEEEE !important;
 }
 
 .navContainer {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0.8rem 4rem;
+  width: 100%; max-width: 1400px;
+  margin: 0 auto; padding: 0 2rem;
+  display: flex; justify-content: space-between; align-items: center;
+}
+
+/* 📈 PROGRESS BAR */
+.progressBar {
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: #FF6C37;
+  transform-origin: 0%; z-index: 1001;
+}
+
+/* 🖥️ DESKTOP LAYOUT (The Default) */
+.navMenuWrapper {
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
-/* --- LOGO --- */
-.logoMain {
-  text-decoration: none;
-  font-size: 1.6rem;
-  font-weight: 950;
-  letter-spacing: -1.5px;
-  color: #0F172A;
-}
-[data-theme='dark'] .logoMain { color: #FFFFFF !important; }
-.dot { color: #2D9CDB; }
-
-/* --- 🎰 2026 REFINED NAVIGATION (JACKPOT) --- */
 .navLinks {
   display: flex;
-  gap: 8px;
   list-style: none;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.02); /* Subtle housing */
-  padding: 6px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  gap: 10px;
+  margin: 0; padding: 0;
 }
 
-.navItem {
-  list-style: none;
-  border-radius: 8px; 
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-  border: 1px solid transparent;
-  position: relative;
-  overflow: hidden;
+.onlyForMobile {
+  display: none !important; /* Strictly hidden on desktop */
 }
 
-/* Hover Interactivity */
-.navItem:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+.onlyForDesktop {
+  background: #FFF; color: #000; padding: 10px 22px; border-radius: 6px; 
+  font-weight: 900; font-size: 0.8rem; text-decoration: none;
+}
+:global([data-theme='light']) .onlyForDesktop { background: #0F172A !important; color: #FFF !important; }
+
+.hamburger {
+  display: none; /* Hidden on desktop */
 }
 
+/* 🎰 JACKPOT ROLL EFFECT (Desktop) */
 .link {
-  text-decoration: none;
-  display: block;
-  height: 38px; 
-  overflow: hidden; 
-  padding: 0 22px;
+  text-decoration: none; display: block;
+  height: 34px; overflow: hidden; padding: 0 15px;
 }
-
 .rollWrapper {
-  display: flex;
-  flex-direction: column;
+  display: flex; flex-direction: column;
   transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
 }
-
 .rollText {
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.85rem;
-  font-weight: 800;
-  color: #94A3B8;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  height: 34px; display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem; font-weight: 800; color: #94A3B8; text-transform: uppercase;
 }
+:global([data-theme='light']) .rollText { color: #64748B; }
+.link:hover .rollWrapper { transform: translateY(-34px); }
+.rollText:nth-child(2) { color: #FF6C37 !important; }
 
-/* Light Mode Hover text switch */
-.rollText:nth-child(1) {
-  color: #FFFFFF; /* Pure white for readable Dark Mode */
-}
-
-[data-theme='light'] .rollText:nth-child(1) {
-  color: #0F172A; /* Deep, sharp slate for Light Mode */
-}
-
-/* Secondary Roll (Orange Tech Accent) - Keep this as is! */
-.rollText:nth-child(2) {
-  color: #FF6C37 !important;
-  font-weight: 900;
-  text-shadow: 0 0 10px rgba(255, 108, 55, 0.3);
-}
-.navItem:hover .rollWrapper {
-  transform: translateY(-38px);
-}
-
-/* --- BUTTONS & CONTROLS --- */
-.ctaWrapper {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.connectBtn {
-  text-decoration: none;
-  padding: 12px 26px;
-  font-size: 0.85rem;
-  font-weight: 950;
-  border-radius: 8px !important; 
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  background-color: #0F172A !important;
-  color: #FFFFFF !important;
-}
-
-[data-theme='dark'] .connectBtn {
-  background-color: #FFFFFF !important;
-  color: #000000 !important;
-  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1) !important;
-}
-
-.connectBtn:hover {
-  background-color: #FF6C37 !important;
-  color: #FFFFFF !important;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(255, 108, 55, 0.3) !important;
-}
-
-.themeBtn {
-  background: transparent;
-  color: #0F172A;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  display: flex;
-  transition: transform 0.3s ease;
-}
-[data-theme='dark'] .themeBtn { color: #F2C94C !important; }
-
-/* --- LIGHT MODE SPECIFIC OVERRIDES --- */
-[data-theme='light'] .navLinks { background: #F1F5F9; border-color: #E2E8F0; }
-[data-theme='light'] .navItem:hover { background: #0F172A; border-color: #0F172A; }
-[data-theme='light'] .rollText { color: #334155; }
-
-/* --- CLEANUP & RESPONSIVE --- */
-.mobileCTA { display: none !important; }
-
-/* ============================================================
-   📱 MOBILE RESPONSIVENESS & HAMBURGER MENU
-   ============================================================ */
-
-/* --- 1. THE HAMBURGER BUTTON (Hidden on Desktop) --- */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 20px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  z-index: 1001;
-  padding: 0;
-}
-
-.bar {
-  width: 100%;
-  height: 2px;
-  background-color: #0F172A;
-  border-radius: 4px;
-  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-  transform-origin: center;
-}
-
-[data-theme='dark'] .bar {
-  background-color: #FFFFFF;
-}
-
-/* 🍔 Hamburger to "X" Animation */
-.hamburgerActive .bar:nth-child(1) {
-  transform: translateY(9px) rotate(45deg);
-}
-.hamburgerActive .bar:nth-child(2) {
-  opacity: 0;
-  transform: translateX(-10px);
-}
-.hamburgerActive .bar:nth-child(3) {
-  transform: translateY(-9px) rotate(-45deg);
-}
-
-/* --- 2. MOBILE & TABLET LAYOUT --- */
+/* 📱 MOBILE OVERRIDES (1024px and below) */
 @media (max-width: 1024px) {
-  .navContainer { 
-    padding: 0.8rem 1.5rem; 
-  }
-  
-  /* Show Hamburger, Hide Desktop Connect Button */
-  .hamburger { 
-    display: flex; 
-  }
-  .desktopCTA { 
-    display: none !important; 
+  .navMenuWrapper {
+    position: fixed;
+    top: 70px; left: 0;
+    width: 100%; height: 0; /* Initially hidden */
+    background: #050403;
+    flex-direction: column; /* Stack on mobile */
+    justify-content: center;
+    transition: height 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    overflow: hidden;
   }
 
-  /* Redesigning the Nav Container for Mobile Dropdown */
+  :global([data-theme='light']) .navMenuWrapper { background: #FFFFFF !important; }
+
+  .menuActive {
+    height: calc(100vh - 70px);
+  }
+
   .navLinks {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: #FAFAFA;
-    border: none;
-    border-top: 1px solid #EEEEEE;
-    border-radius: 0 0 16px 16px;
     flex-direction: column;
-    padding: 2rem;
-    gap: 15px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    
-    /* Animation defaults */
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    gap: 2rem;
   }
 
-  [data-theme='dark'] .navLinks { 
-    background: rgba(5, 4, 3, 0.98); 
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  .onlyForMobile {
+    display: block !important; /* Visible ONLY on mobile */
+    margin-top: 3rem;
+    background: #FF6C37; color: #FFF;
+    padding: 12px 35px; border-radius: 8px; font-weight: 900;
   }
 
-  /* Dropdown Active State */
-  .navLinksActive {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+  .onlyForDesktop {
+    display: none !important; /* Hide desktop button on mobile */
   }
 
-  /* Make items stretch full width on mobile */
-  .navItem {
-    width: 100%;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-  }
-  
-  [data-theme='dark'] .navItem {
-    border-color: rgba(255, 255, 255, 0.05);
+  .hamburger {
+    display: flex; flex-direction: column; gap: 6px;
+    background: none; border: none; cursor: pointer; padding: 10px;
   }
 
-  /* 🔧 FIX: Prevent Jackpot text from stacking visibly */
-  .link {
-    display: block;
-    text-align: center;
-    height: 38px;
-  }
-  
-  .rollWrapper {
-    display: inline-flex;
-    width: auto;
-  }
-
-  /* Make the effect trigger on tap instead of hover for mobile */
-  .navItem:hover .rollWrapper {
-    transform: none; /* Disable standard hover */
-  }
-  .navItem:active .rollWrapper {
-    transform: translateY(-38px);
-  }
-
-  /* Show the Mobile Connect Button */
-  .mobileCTA { 
-    display: flex !important; 
-    width: 100%;
-    margin-top: 10px;
-  }
-  
-  .mobileCTA .connectBtn {
-    width: 100%;
-    padding: 16px;
-    font-size: 1rem;
-  }
+  /* Scale roll for mobile */
+  .rollText { font-size: 1.8rem; height: 50px; }
+  .link { height: 50px; }
+  .link:hover .rollWrapper { transform: translateY(-50px); }
 }
 
-/* 📱 EXTRA SMALL PHONES */
-@media (max-width: 480px) {
-  .logoMain { font-size: 1.4rem; }
-  .ctaWrapper { gap: 1rem; }
-}
+/* --- OTHER UTILS --- */
+.logoMain { font-size: 1.5rem; font-weight: 950; color: #FFF; text-decoration: none; }
+:global([data-theme='light']) .logoMain { color: #0F172A !important; }
+.dot { color: #3ABFF8; }
+
+.bar { width: 25px; height: 2px; background: #FFF; transition: 0.3s; }
+:global([data-theme='light']) .bar { background: #0F172A !important; }
+
+.hamburgerActive .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburgerActive .bar:nth-child(2) { opacity: 0; }
+.hamburgerActive .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+.ctaWrapper { display: flex; align-items: center; gap: 1rem; }
+.themeBtn { cursor: pointer; background: none; border: none; }

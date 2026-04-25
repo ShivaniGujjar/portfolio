@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import SkillCard from '../components/SkillCard';
 import styles from './About.module.css';
-import { SiTailwindcss, SiJavascript, SiReact, SiNodedotjs, SiExpress, SiMongodb, SiPostman, SiVite, SiRedux, SiGit } from 'react-icons/si';
+import { 
+  SiReact, SiNodedotjs, SiMongodb, SiJavascript, 
+  SiTailwindcss, SiExpress, SiGit, SiFramer 
+} from 'react-icons/si';
 
 const About = () => {
   const [time, setTime] = useState(new Date().toLocaleTimeString());
@@ -13,97 +18,106 @@ const About = () => {
   }, []);
 
   const skillData = [
-    { label: "Frontend", icons: [<SiTailwindcss />, <SiJavascript />, <SiReact />], title: "TAILWIND • JS • REACT", desc: "Modern interactive interfaces & animations.", color: "#3ABFF8" },
-    { label: "Backend", icons: [<SiNodedotjs />, <SiExpress />, <SiMongodb />], title: "NODE • EXPRESS • MONGODB", desc: "Scalable server-side logic & architecture.", color: "#00ED64" },
-    { label: "Tools", icons: [<SiPostman />, <SiVite />, <SiRedux />, <SiGit />], title: "POSTMAN • VITE • REDUX • GIT", desc: "Advanced workflow & state management.", color: "#FF6C37" }
+    { label: "Frontend", icons: [<SiTailwindcss />, <SiJavascript />, <SiReact />], title: "UI ARCHITECTURE", desc: "Crafting high-performance MERN interfaces.", color: "#3ABFF8", percentage: 90 },
+    { label: "Backend", icons: [<SiNodedotjs />, <SiExpress />, <SiMongodb />], title: "SYSTEM LOGIC", desc: "Engineered scalable server environments.", color: "#00ED64", percentage: 85 },
+    { label: "Workflow", icons: [<SiGit />, <SiFramer />], title: "DEV WORKFLOW", desc: "Optimized deployment & animations.", color: "#FF6C37", percentage: 80 }
   ];
+
+  // Hover Variant for Bento Boxes
+  const boxHover = {
+    hover: { 
+      y: -8, 
+      borderColor: "#3ABFF8", 
+      backgroundColor: "rgba(255, 255, 255, 0.05)",
+      transition: { duration: 0.3, ease: "easeOut" } 
+    }
+  };
 
   return (
     <section className={styles.aboutWrapper} id="about">
       
-      {/* --- 1. THE TERMINAL WINDOW (BIO) --- */}
-      {/* --- 1. THE TERMINAL WINDOW (BIO) --- */}
-      <div className={styles.commandCenter}>
-        <div className={styles.cardHeader}>
-          <div className={styles.windowControls}><span/><span/><span/></div>
-        </div>
-
-        <div className={styles.bioContent}>
-          {/* LEFT SIDE: Your Bio */}
-          <div className={styles.textSide}>
-            <div className={styles.aboutHeader}>
-              <h2 className={styles.simpleTitle}>ABOUT ME</h2>
-            </div>
-            <h2 className={styles.mainTitle}>CREATIVE <br/> <span className={styles.blueText}>DEVELOPER</span></h2>
-            
-            <p className={styles.bioText}>
-              I’m <span className={styles.nameHighlight}>Shivani Gujjar</span>, MCA Graduate and full-stack enthusiast. <br /> I craft 
-              <span className={styles.uiHighlight}> Interactive Interfaces</span> using the <span className={styles.mernTag}>MERN STACK</span>.
-            </p>
-
-            <div className={styles.quickTags}>
-              <div className={styles.qTag}>SCALABLE</div>
-              <div className={styles.qTag}>⚡ PERFORMANCE</div>
-              <div className={styles.qTag}>🎨 PIXEL PERFECT</div>
-            </div>
-          </div>
-
-          {/* RIGHT SIDE: The Animated Icons */}
-          <div className={styles.visualSide}>
-  <div className={styles.techMesh}></div> {/* New texture layer */}
-  <div className={styles.floatingIcons}>
-    <SiReact className={styles.iconReact} />
-    <SiNodedotjs className={styles.iconNode} />
-    <SiMongodb className={styles.iconMongo} />
-    <SiJavascript className={styles.iconJs} />
-    <SiTailwindcss className={styles.iconTailwind} />
-    <SiRedux className={styles.iconRedux} />
-    <SiGit className={styles.iconGit} />
-  </div>
-</div>
-        </div>
+      {/* 🌀 Background Marquee */}
+      <div className={styles.marqueeContainer}>
+        <motion.h1 
+          className={styles.bgText}
+          animate={{ x: [0, -1000] }}
+          transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
+        >
+          MERN STACK • CREATIVE DEVELOPER • MCA GRADUATE •
+        </motion.h1>
       </div>
 
-      {/* --- 2. SEPARATE DOCK --- */}
-      <div className={styles.dockContainer}>
-        <div className={styles.dockItem}><span className={styles.livePulse}></span>STATUS: AVAILABLE</div>
-        <div className={styles.dockItem}>LOCATION: INDIA</div>
-        <div className={styles.dockItem}>TIME: {time}</div>
-        <a href="#contact" className={styles.socialTile}>LET'S BUILD →</a>
-      </div>
-
-      {/* --- 3. SKILLS INTRO --- */}
-      <div className={styles.skillsIntro}>
+      {/* 🍱 THE INTERACTIVE BENTO GRID */}
+      <div className={styles.bentoGrid}>
         
-        <h2 className={styles.introTitle}>MY <span>TECH STACK</span></h2>
-      </div>
-
-      {/* --- 4. INDEPENDENT STACKING CARDS --- */}
-      <div className={styles.skillsStackSection}>
-  {skillData.map((skill, index) => (
-    <div key={index} className={styles.skillCard}>
-      
-      {/* LEFT CONTENT */}
-      <div className={styles.skillContent}>
-        <span className={styles.label}>{skill.label}</span>
-
-        <h3 className={styles.title}>{skill.title}</h3>
-
-        <p className={styles.desc}>{skill.desc}</p>
-      </div>
-
-      {/* RIGHT ICONS */}
-      <div className={styles.iconWrapper}>
-        {skill.icons.map((icon, i) => (
-          <div key={i} className={styles.iconBox}>
-            {icon}
+        {/* BOX 1: IDENTITY */}
+        <motion.div 
+          className={`${styles.gridBox} ${styles.identityBox}`}
+          variants={boxHover}
+          whileHover="hover"
+        >
+          <span className={styles.boxTag}>IDENTITY</span>
+          <h2 className={styles.nameTitle}>SHIVANI <br/> GUJJAR</h2>
+          <div className={styles.statusBadge}>
+            <span className={styles.pulse}></span> AVAILABLE FOR WORK
           </div>
-        ))}
+        </motion.div>
+
+        {/* BOX 2: MISSION (Orange Pop) */}
+        <motion.div 
+          className={`${styles.gridBox} ${styles.missionBox}`}
+          variants={boxHover}
+          whileHover={{ y: -8, scale: 1.01 }}
+        >
+          <span className={styles.boxTag}>MISSION</span>
+          <p className={styles.missionText}>
+            Developing <span className={styles.highlight}>Scalable</span> MERN solutions with pixel-perfect precision.
+          </p>
+        </motion.div>
+
+        {/* BOX 3: EDUCATION */}
+        <motion.div 
+          className={`${styles.gridBox} ${styles.eduBox}`}
+          variants={boxHover}
+          whileHover="hover"
+        >
+          <span className={styles.boxTag}>EDUCATION</span>
+          <div className={styles.eduContent}>
+            <h4>MCA GRADUATE</h4>
+            <p>2026 Batch • IT Specialization</p>
+            <div className={styles.verifiedTag}>CREDENTIALS_VERIFIED</div>
+          </div>
+        </motion.div>
+
+        {/* BOX 4: TECH ORBIT */}
+        <motion.div 
+          className={`${styles.gridBox} ${styles.techBox}`}
+          variants={boxHover}
+          whileHover="hover"
+        >
+          <span className={styles.boxTag}>CORE_STACK</span>
+          <div className={styles.iconOrbit}>
+            <motion.div whileHover={{ scale: 1.2, rotate: 15 }}><SiReact style={{ color: '#61DAFB' }} /></motion.div>
+            <motion.div whileHover={{ scale: 1.2, rotate: -15 }}><SiNodedotjs style={{ color: '#339933' }} /></motion.div>
+            <motion.div whileHover={{ scale: 1.2, rotate: 15 }}><SiMongodb style={{ color: '#47A248' }} /></motion.div>
+            <motion.div whileHover={{ scale: 1.2, rotate: -15 }}><SiJavascript style={{ color: '#F7DF1E' }} /></motion.div>
+          </div>
+        </motion.div>
       </div>
 
-    </div>
-  ))}
-</div>
+      {/* 📍 THE STICKY STACKING ENGINE */}
+      <div className={styles.stackContainer}>
+        <div className={styles.stackTitleSection}>
+          <h2 className={styles.stackTitle}>DETAILED <span>CAPABILITIES</span></h2>
+        </div>
+
+        <div className={styles.skillsStackContainer}>
+          {skillData.map((skill, index) => (
+            <SkillCard key={index} index={index} {...skill} />
+          ))}
+        </div>
+      </div>
+
     </section>
   );
 };

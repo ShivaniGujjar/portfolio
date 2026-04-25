@@ -1,24 +1,48 @@
 import React from 'react';
-import styles from './SkillCard.module.css'; // Or wherever your styles are
+import { motion } from 'framer-motion';
+import styles from './SkillCard.module.css';
 
-const SkillCard = ({ title, percentage, description }) => {
+const SkillCard = ({ label, title, desc, icons, color, percentage, index }) => {
   return (
-    <div className={styles.skillCard}>
-      <div className={styles.skillInfo}>
-        <h4 className={styles.skillName}>{title}</h4>
-        <p className={styles.skillDescription}>{description}</p>
-      </div>
-      
-      <div className={styles.progressWrapper}>
-        <div className={styles.progressBarBg}>
-          <div 
-            className={styles.progressBarFill} 
-            style={{ width: `${percentage}%` }}
-          ></div>
+    <motion.div 
+      className={styles.skillCard}
+      style={{ '--accent': color }}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+    >
+      <div className={styles.skillContent}>
+        <span className={styles.label}>{label}</span>
+        <h3 className={styles.title}>{title}</h3>
+        <p className={styles.desc}>{desc}</p>
+        
+        <div className={styles.progressContainer}>
+          <div className={styles.barBg}>
+            <motion.div 
+              className={styles.barFill} 
+              style={{ background: color }}
+              initial={{ width: 0 }}
+              whileInView={{ width: `${percentage}%` }}
+              transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
+            />
+          </div>
+          <span className={styles.percent}>{percentage}%</span>
         </div>
-        <span className={styles.percentageText}>{percentage}%</span>
       </div>
-    </div>
+
+      <div className={styles.iconWrapper}>
+        {icons.map((icon, i) => (
+          <motion.div 
+            key={i} 
+            className={styles.iconBox}
+            whileHover={{ y: -10, color: color, borderColor: color }}
+          >
+            {icon}
+          </motion.div>
+        ))}
+      </div>
+    </motion.div>
   );
 };
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { FiArrowUp, FiActivity } from 'react-icons/fi';
 import styles from './Footer.module.css';
 
 const Footer = () => {
@@ -7,29 +8,32 @@ const Footer = () => {
   return (
     <footer className={styles.footerWrapper}>
       <div className={styles.footerContainer}>
-        {/* LEFT: Identity */}
-        <div className={styles.footerSection}>
-          <p className={styles.brand}>SHIVANI GUJJAR</p>
-          <p className={styles.subText}>© {currentYear} • EST 2024</p>
+        
+        {/* LEFT: Branding & Registry */}
+        <div className={styles.footerLeft}>
+          <span className={styles.brand}>SHIVANI GUJJAR</span>
+          <span className={styles.divider}>|</span>
+          <span className={styles.registry}>©{currentYear}</span>
         </div>
 
-        {/* CENTER: Action */}
-        <div className={styles.footerSection}>
+        {/* CENTER: Clean Action */}
+        <div className={styles.footerCenter}>
           <button 
             onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} 
-            className={styles.topButton}
+            className={styles.scrollBtn}
           >
-            BACK TO TOP ↑
+            BACK_TO_TOP <FiArrowUp />
           </button>
         </div>
 
-        {/* RIGHT: Status */}
-        <div className={styles.footerSection}>
-          <p className={styles.statusText}>
-            <span className={styles.cyanPulse}></span> SYSTEM ONLINE
-          </p>
-          
+        {/* RIGHT: Operational Status */}
+        <div className={styles.footerRight}>
+          <div className={styles.statusBox}>
+            <span className={styles.pulseDot}></span>
+            <span className={styles.statusText}>SYSTEM_OPERATIONAL</span>
+          </div>
         </div>
+
       </div>
     </footer>
   );
