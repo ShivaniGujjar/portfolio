@@ -40,6 +40,7 @@ const Home = () => {
       variants={containerVariants}
     >
       <div className={styles.heroText}>
+        {/* Status Badge */}
         <motion.div className={styles.statusBadge} variants={itemVariants}>
           <motion.span 
             className={styles.pulseDot}
@@ -49,6 +50,7 @@ const Home = () => {
           <span className={styles.statusText}>SYSTEM_STATUS: OPERATIONAL</span>
         </motion.div>
 
+        {/* Main Heading */}
         <motion.h1 className={styles.heroHeading} variants={itemVariants}>
           BUILDING <br />
           <span className={styles.outlineText}>SCALABLE</span> <br />
@@ -58,13 +60,17 @@ const Home = () => {
           APPLICATIONS
         </motion.h1>
         
+        {/* Subtext Logic: span hidden on mobile via CSS */}
         <motion.p className={styles.heroSubtext} variants={itemVariants}>
-          Specializing in high-performance web architecture with 
-          <span className={styles.reactColor}> React</span> |
-          <span className={styles.nodeColor}> Node.js</span> |
-          <span className={styles.mongoColor}> MongoDB</span>.
+          Specializing in high-performance <br /> web architecture with
+          <span className={styles.techTextList}>
+            <span className={styles.reactColor}> React</span> |
+            <span className={styles.nodeColor}> Node.js</span> |
+            <span className={styles.mongoColor}> MongoDB</span>
+          </span>
         </motion.p>
 
+        {/* Action Button - Moved via CSS order on mobile */}
         <motion.div className={styles.buttonGroup} variants={itemVariants}>
           <motion.a 
             href="#projects" 
@@ -77,6 +83,7 @@ const Home = () => {
         </motion.div>
       </div>
 
+      {/* MERN Bricks Graphic - Moved via CSS order on mobile */}
       <div className={styles.mernStackGraphic}>
         {[
           { icon: <SiMongodb />, label: 'DATABASE | MONGODB', status: 'ACTIVE', class: styles.mongoLayer },

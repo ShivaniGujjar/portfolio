@@ -59,7 +59,7 @@ const Navbar = () => {
         </div>
 
         <div className={styles.ctaWrapper}>
-          <button 
+          {/* <button 
   className={styles.themeBtn} 
   onClick={() => setIsDark(!isDark)}
   aria-label="Toggle Theme"
@@ -80,7 +80,7 @@ const Navbar = () => {
       )}
     </motion.div>
   </AnimatePresence>
-</button>
+</button> */}
           
           <a href="#contact" className={styles.onlyForDesktop}>
             LET'S CONNECT

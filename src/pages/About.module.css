@@ -1,281 +1,265 @@
 .aboutWrapper {
-  padding: 8rem 2rem;
-  max-width: 1300px;
+  padding: 2rem 2rem;
+  max-width: 1250px;
   margin: 0 auto;
   position: relative;
   background: #000;
-  transition: background 0.3s ease;
 }
 
-/* 💡 LIGHT THEME SYNC - Colorful Update */
-:global([data-theme='light']) .aboutWrapper {
-  background: #FDFDFD !important;
-}
-
+/* 🌀 MARQUEE - CENTERED VERTICALLY BEHIND BENTO */
 .marqueeContainer {
   position: absolute; 
-  top: 10%; 
+  top: 40%; /* Changed from 10% to center it vertically behind the cards */
   left: 0; 
   width: 100%; 
   white-space: nowrap; 
   opacity: 0.03; 
   pointer-events: none;
+  transform: translateY(-50%); /* Perfectly centers relative to the container */
 }
 
-.bgText { 
-  font-size: 15rem; 
-  font-weight: 950; 
-  color: #fff; 
+.bgText { font-size: 15rem; font-weight: 950; color: #fff; }
+
+/* 🏆 CENTERED HEADING */
+.introHeader {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 5rem;
+  z-index: 10;
+  position: relative;
 }
 
-:global([data-theme='light']) .bgText {
-  color: #000 !important;
-  opacity: 0.05 !important;
+.mainTitle, .stackTitle {
+  font-size: clamp(2.5rem, 7vw, 4.2rem);
+  font-weight: 950;
+  color: #fff;
+  letter-spacing: -2.5px;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1;
+}
+.mainTitle span, .stackTitle span { color: #3ABFF8; }
+
+.headerLine {
+  width: 50px;
+  height: 5px;
+  background: #3ABFF8;
+  margin: 20px auto 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(58, 191, 248, 0.4);
 }
 
 /* 🍱 BENTO GRID LOGIC */
 .bentoGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 350px 350px;
+  grid-template-rows: 260px 260px;
   gap: 20px;
-  position: relative;
-  z-index: 2;
+  position: relative; z-index: 2;
   margin-bottom: 12rem;
 }
 
 .gridBox {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1.5px solid rgba(255, 255, 255, 0.08);
-  border-radius: 30px;
-  padding: 40px;
+  background: #080808;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 32px;
+  padding: 35px;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  display: flex; flex-direction: column; justify-content: flex-end;
   transition: all 0.3s ease;
 }
 
-/* 💡 LIGHT THEME SYNC - Colorful Borders */
-:global([data-theme='light']) .gridBox {
-  border: 1.5px solid rgba(0, 0, 0, 0.03) !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03) !important;
-}
-
 .boxTag {
-  position: absolute; 
-  top: 30px; 
-  left: 35px;
+  position: absolute; top: 30px; left: 35px;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; 
+  font-weight: 900; color: #444; letter-spacing: 2px;
+}
+
+/* --- IDENTITY BOX --- */
+.identityBox { grid-column: span 2; }
+.idBody { margin-bottom: 20px; }
+.mernLabel {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem; 
-  font-weight: 900;
-  color: #64748B; 
-  letter-spacing: 2px;
-  display: flex; 
-  align-items: center; 
-  gap: 8px;
+  font-size: 1.5rem;
+  color: #3ABFF8;
+  font-weight: 800;
+  letter-spacing: 3px;
+  margin-bottom: 5px;
 }
+.nameTitle { font-size: 3.5rem; font-weight: 950; line-height: 0.9; letter-spacing: -3px; color: #fff; margin: 0; }
 
-.boxTag::before {
-  content: ''; 
-  width: 4px; 
-  height: 4px; 
-  background: #3ABFF8; 
-  border-radius: 50%;
-}
+.statusBadge { margin-top: 10px; color: #27C93F; display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 0.75rem; }
+.pulse { width: 7px; height: 7px; background: #27C93F; border-radius: 50%; box-shadow: 0 0 10px #27C93F; animation: pulseAnim 2s infinite; }
+@keyframes pulseAnim { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
 
-/* --- IDENTITY BOX (Added Soft Blue Tint) --- */
-.identityBox { 
-  grid-column: span 2; 
-  background: linear-gradient(135deg, #0D0D0D, #121212); 
-}
+/* --- MISSION BOX --- */
+.missionBox { grid-column: span 1; grid-row: span 2; background: #FFB800; color: #000; border: none; justify-content: center; }
+.missionBox .boxTag { color: rgba(0, 0, 0, 0.3); }
+.missionText { font-size: 2.2rem; font-weight: 950; color: #000; line-height: 1.1; text-align: center; }
+.highlight { background: #000; color: #FFB800; padding: 2px 8px; border-radius: 6px; }
 
-:global([data-theme='light']) .identityBox {
-  background: linear-gradient(135deg, #EEF2FF, #E0E7FF) !important; /* Soft Indigo Tint */
-}
+/* --- EDUCATION & TECH --- */
+.eduBox { grid-column: span 1; }
+.eduContent h4 { font-size: 1.8rem; font-weight: 950; color: #fff; margin: 0; }
+.eduContent p { color: #555; font-size: 0.9rem; margin-top: 5px; }
+.verifiedTag { display: inline-flex; align-items: center; gap: 8px; margin-top: 15px; padding: 6px 15px; border: 1px solid #27C93F; color: #27C93F; border-radius: 100px; font-size: 0.65rem; font-weight: 950; }
 
-.nameTitle { 
-  font-size: 5rem; 
-  font-weight: 950; 
-  line-height: 0.85; 
-  letter-spacing: -4px; 
-  color: #fff; 
-  margin: 0; 
-}
-
-:global([data-theme='light']) .nameTitle {
-  color: #1E1B4B !important;
-}
-
-.statusBadge { 
-  margin-top: 20px; 
-  color: #27C93F; 
-  display: flex; 
-  align-items: center; 
-  gap: 10px; 
-  font-weight: 900; 
-  font-size: 0.75rem; 
-}
-
-.pulse { 
-  width: 8px; 
-  height: 8px; 
-  background: #27C93F; 
-  border-radius: 50%; 
-  box-shadow: 0 0 10px #27C93F; 
-  animation: pulseAnim 2s infinite; 
-}
-
-@keyframes pulseAnim { 
-  0% { transform: scale(1); opacity: 1; } 
-  100% { transform: scale(3); opacity: 0; } 
-}
-
-/* --- MISSION BOX (Remains Bolder Orange) --- */
-.missionBox { 
-  grid-column: span 1; 
-  background: #FF6C37; 
-  color: #000; 
-  cursor: pointer; 
-}
-
-.missionBox .boxTag { color: rgba(0, 0, 0, 0.5); }
-.missionBox .boxTag::before { background: #000; }
-.missionText { font-size: 1.6rem; font-weight: 850; line-height: 1.25; color: #050505; margin: 0; }
-.highlight { background: #000; color: #FF6C37; padding: 2px 8px; border-radius: 4px; font-weight: 900; }
-
-/* --- EDUCATION BOX (Added Soft Green Tint) --- */
-.eduBox { 
-  grid-column: span 2; 
-  background: rgba(255, 255, 255, 0.02); 
-}
-
-:global([data-theme='light']) .eduBox {
-  background: linear-gradient(135deg, #ECFDF5, #D1FAE5) !important; /* Soft Emerald Tint */
-}
-
-.eduContent h4 { 
-  font-size: 2.2rem; 
-  font-weight: 950; 
-  color: #fff; 
-  margin: 0 0 5px 0; 
-}
-
-:global([data-theme='light']) .eduContent h4 {
-  color: #064E3B !important;
-}
-
-.eduContent p { color: #64748B; font-size: 0.9rem; font-family: 'JetBrains Mono', monospace; margin: 0; }
-.verifiedTag { display: inline-block; margin-top: 15px; padding: 6px 15px; border: 1px solid #27C93F; color: #27C93F; border-radius: 100px; font-size: 0.6rem; font-weight: 950; }
-
-/* --- TECH BOX (Added Soft Purple Tint) --- */
-.techBox { 
-  grid-column: span 1; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-}
-
-:global([data-theme='light']) .techBox {
-  background: linear-gradient(135deg, #F5F3FF, #EDE9FE) !important; /* Soft Violet Tint */
-}
-
-.iconOrbit { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; font-size: 3rem; }
-
-:global([data-theme='light']) .iconOrbit {
-  color: #4C1D95 !important;
+.techBox { grid-column: span 1; display: flex; align-items: center; justify-content: center; }
+.iconOrbit { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.glowIcon { 
+  font-size: 2.8rem; color: var(--c); 
+  filter: drop-shadow(0 0 10px var(--c)); 
+  opacity: 0.95;
 }
 
 /* 📍 STICKY HEADING SECTION */
 .stackContainer { position: relative; margin-top: 5rem; }
 .stackTitleSection { position: sticky; top: 100px; z-index: 5; text-align: center; margin-bottom: 10rem; }
-
-.stackTitle { 
-  font-size: 4rem; 
-  font-weight: 950; 
-  color: #fff; 
-  letter-spacing: -2px; 
-  text-transform: uppercase; 
-  margin: 0; 
-}
-
-:global([data-theme='light']) .stackTitle {
-  color: #0F172A !important;
-}
-
-.stackTitle span { color: #3ABFF8; }
-
 .skillsStackContainer { display: flex; flex-direction: column; position: relative; z-index: 10; gap: 30vh; margin-top: -100px; }
 
+/* 📱 RESPONSIVE */
 @media (max-width: 1024px) {
-  .bentoGrid { grid-template-columns: 1fr; grid-template-rows: auto; }
-  .identityBox, .eduBox { grid-column: span 1; }
-  .nameTitle { font-size: 3.5rem; }
-  .stackTitle { font-size: 2.5rem; }
-}
+  .bentoGrid { grid-template-columns: 1fr; grid-template-rows: auto; margin-bottom: 7rem !important; }
+  .identityBox, .eduBox, .techBox, .missionBox { grid-column: span 1; grid-row: auto; min-height: 250px;}
 
-
-
-/* Mobile  */
-
-@media (max-width: 768px) {
   .aboutWrapper {
-    padding: 5rem 1.2rem; /* Side padding kam ki taaki boxes ko jagah mile */
-    overflow: hidden;
+    padding-top: 1rem !important; /* Reduces the huge top padding */
+    margin-top: 1rem !important; /* Pulls the section up towards the Home cards */
+  
   }
 
-  .bgText {
-    font-size: 7rem; /* Background marquee chota kiya */
-    top: 5%;
-  }
-
-  /* 🍱 BENTO GRID: Switching to a simple stack */
-  .bentoGrid {
-    grid-template-columns: 1fr !important; /* Force single column */
-    grid-template-rows: auto !important;   /* Height content ke hisaab se adjust hogi */
-    gap: 15px;
-    margin-bottom: 5rem;
+  .introHeader {
+    margin-bottom: 2rem !important; /* Reduces space before the Bento grid */
   }
 
   .gridBox {
-    grid-column: span 1 !important; /* Saare boxes ab full width honge */
-    padding: 30px 20px;
-    min-height: 250px; /* Mobile par height thodi kam ki */
-    border-radius: 20px; /* Slightly less rounded for small screens */
+    padding: 24px !important; /* Makes the box content tighter */
+    min-height: 200px !important; /* Shorter boxes */
+    border-radius: 24px; /* Smoother corners for small screens */
   }
 
+  .boxTag {
+    top: 20px;
+    left: 24px;
+    font-size: 0.55rem; /* Keeps the [ 01 IDENTITY ] label subtle */
+  }
+
+
   .nameTitle {
-    font-size: 3rem; /* "SHIVANI GUJJAR" font size scaled down */
-    letter-spacing: -2px;
+    font-size: 2.2rem !important; /* Shivani Gujjar text size */
+    letter-spacing: -1.5px;
+  }
+
+  .mernLabel {
+    font-size: 1rem !important; /* "MERN STACK DEVELOPER" text size */
   }
 
   .missionText {
-    font-size: 1.3rem; /* Mission text size adjusted */
+    font-size: 1.6rem !important; /* Yellow card text size */
+    line-height: 1.2;
+  }
+
+  .bgText {
+    font-size: 6rem !important; /* Shrinks the background marquee text */
+  }
+}
+
+
+/* --- 📱 SMALL SCREEN BENTO POLISH --- */
+@media (max-width: 600px) {
+  .bentoGrid {
+    /* Large gap creates the "individual card" physical separation */
+    gap: 30px !important; 
+    padding: 0 10px;
+  }
+
+  .gridBox {
+    /* Rim-lighting: making borders more visible so the card has an edge */
+    background: #0A0A0A !important; 
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    
+    /* Depth: Shadow makes it pop off the background marquee */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7) !important;
+    
+    /* Spacing: Give internal content some breathing room */
+    padding: 1.8rem !important;
+    min-height: 220px !important;
+  }
+
+  /* Identity Box Specifics */
+  .nameTitle {
+    font-size: 1.8rem !important; /* Smaller to prevent text crowding */
+    line-height: 1.1;
+  }
+
+  .mernLabel {
+    font-size: 0.8rem !important;
+    letter-spacing: 1.5px !important;
+    margin-bottom: 8px;
+  }
+
+  /* Mission Box (Yellow Card) */
+  .missionBox {
+    background: #FFB800 !important;
+    border: none !important;
+    /* Glow effect for the yellow card */
+    box-shadow: 0 10px 30px rgba(255, 184, 0, 0.15) !important;
+    text-align: center;
+    justify-content: center !important;
+  }
+
+  .missionText {
+    font-size: 1.4rem !important;
     line-height: 1.3;
   }
 
-  .eduContent h4 {
-    font-size: 1.8rem; /* Education title chota kiya */
+  /* Tech Stack Card icons spacing */
+  .techBox {
+    min-height: 160px !important;
+    justify-content: center !important;
   }
-
+  
   .iconOrbit {
-    gap: 20px;
-    font-size: 2.5rem; /* Tech icons thode chote kiye */
+    gap: 30px !important; /* More space between icons so it doesn't look cluttered */
   }
 
-  /* 📍 STICKY HEADING SECTION */
-  .stackTitleSection {
-    top: 80px; /* Header ke liye thoda aur gap */
-    margin-bottom: 1rem;
-  }
-
-  .stackTitle {
-    font-size: 2.2rem; /* "DETAILED CAPABILITIES" size fix */
-    letter-spacing: -1px;
-  }
-
-  .skillsStackContainer {
-    gap: 10vh; /* Cards ke beech ka gap kam kiya */
-    margin-top: 0;
+  /* Shrink background marquee even more to avoid "muddying" the gaps */
+  .bgText {
+    font-size: 4rem !important;
+    opacity: 0.02 !important;
   }
 }
+
+
+@media (max-width: 768px) {
+  /* 1. Kill the forced scroll space in the container */
+  .stackContainer {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* 2. Tighten the gap between the sticky cards */
+  .skillsStackContainer {
+    gap: 10vh !important; 
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* 3. TARGET THE LAST CARD: This is where most of that gap is coming from */
+  /* We use :last-child to remove the margin that usually allows for scrolling */
+  .skillsStackContainer > div:last-child {
+    margin-bottom: 2rem !important; /* Minimal breathing room */
+  }
+
+  /* 4. PULL THE NEXT SECTION UP: The Nuclear Option */
+  /* If the gap persists, we manually pull the next section into view */
+  .aboutWrapper {
+    margin-bottom: 1rem !important;
+    padding-bottom: 0 !important;
+  }
+}
+
+
+
+
+

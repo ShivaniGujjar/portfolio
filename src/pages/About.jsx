@@ -23,12 +23,11 @@ const About = () => {
     { label: "Workflow", icons: [<SiGit />, <SiFramer />], title: "DEV WORKFLOW", desc: "Optimized deployment & animations.", color: "#FF6C37", percentage: 80 }
   ];
 
-  // Hover Variant for Bento Boxes
   const boxHover = {
     hover: { 
       y: -8, 
-      borderColor: "#3ABFF8", 
-      backgroundColor: "rgba(255, 255, 255, 0.05)",
+      borderColor: "rgba(58, 191, 248, 0.4)", 
+      backgroundColor: "rgba(58, 191, 248, 0.02)",
       transition: { duration: 0.3, ease: "easeOut" } 
     }
   };
@@ -36,7 +35,7 @@ const About = () => {
   return (
     <section className={styles.aboutWrapper} id="about">
       
-      {/* 🌀 Background Marquee */}
+      {/* 🌀 Background Marquee - Centered Vertically */}
       <div className={styles.marqueeContainer}>
         <motion.h1 
           className={styles.bgText}
@@ -47,41 +46,38 @@ const About = () => {
         </motion.h1>
       </div>
 
-      {/* 🍱 THE INTERACTIVE BENTO GRID */}
+      {/* 🏆 CENTERED HEADING */}
+      <div className={styles.introHeader}>
+        <h2 className={styles.mainTitle}>ABOUT <span>ME</span></h2>
+        <div className={styles.headerLine}></div>
+      </div>
+
+      {/* 🍱 BENTO GRID */}
       <div className={styles.bentoGrid}>
         
-        {/* BOX 1: IDENTITY */}
-        <motion.div 
-          className={`${styles.gridBox} ${styles.identityBox}`}
-          variants={boxHover}
-          whileHover="hover"
-        >
-          <span className={styles.boxTag}>IDENTITY</span>
-          <h2 className={styles.nameTitle}>SHIVANI <br/> GUJJAR</h2>
+        {/* 🆔 IDENTITY BOX */}
+        <motion.div className={`${styles.gridBox} ${styles.identityBox}`} variants={boxHover} whileHover="hover">
+          <span className={styles.boxTag}>[ 01 IDENTITY ]</span>
+          <div className={styles.idBody}>
+            <p className={styles.mernLabel}>MERN STACK DEVELOPER</p>
+            <h2 className={styles.nameTitle}>SHIVANI GUJJAR</h2>
+          </div>
           <div className={styles.statusBadge}>
             <span className={styles.pulse}></span> AVAILABLE FOR WORK
           </div>
         </motion.div>
 
-        {/* BOX 2: MISSION (Orange Pop) */}
-        <motion.div 
-          className={`${styles.gridBox} ${styles.missionBox}`}
-          variants={boxHover}
-          whileHover={{ y: -8, scale: 1.01 }}
-        >
-          <span className={styles.boxTag}>MISSION</span>
+        {/* 🎯 MISSION BOX */}
+        <motion.div className={`${styles.gridBox} ${styles.missionBox}`} variants={boxHover} whileHover={{ y: -8, scale: 1.01 }}>
+          <span className={styles.boxTag}>[ 02 MISSION ]</span>
           <p className={styles.missionText}>
             Developing <span className={styles.highlight}>Scalable</span> MERN solutions with pixel-perfect precision.
           </p>
         </motion.div>
 
-        {/* BOX 3: EDUCATION */}
-        <motion.div 
-          className={`${styles.gridBox} ${styles.eduBox}`}
-          variants={boxHover}
-          whileHover="hover"
-        >
-          <span className={styles.boxTag}>EDUCATION</span>
+        {/* 🎓 ACADEMIC BOX */}
+        <motion.div className={`${styles.gridBox} ${styles.eduBox}`} variants={boxHover} whileHover="hover">
+          <span className={styles.boxTag}>[ 03 ACADEMIC ]</span>
           <div className={styles.eduContent}>
             <h4>MCA GRADUATE</h4>
             <p>2026 Batch • IT Specialization</p>
@@ -89,18 +85,14 @@ const About = () => {
           </div>
         </motion.div>
 
-        {/* BOX 4: TECH ORBIT */}
-        <motion.div 
-          className={`${styles.gridBox} ${styles.techBox}`}
-          variants={boxHover}
-          whileHover="hover"
-        >
-          <span className={styles.boxTag}>CORE_STACK</span>
+        {/* 🛠️ TECH STACK BOX */}
+        <motion.div className={`${styles.gridBox} ${styles.techBox}`} variants={boxHover} whileHover="hover">
+          <span className={styles.boxTag}>[ 04 STACK ]</span>
           <div className={styles.iconOrbit}>
-            <motion.div whileHover={{ scale: 1.2, rotate: 15 }}><SiReact style={{ color: '#61DAFB' }} /></motion.div>
-            <motion.div whileHover={{ scale: 1.2, rotate: -15 }}><SiNodedotjs style={{ color: '#339933' }} /></motion.div>
-            <motion.div whileHover={{ scale: 1.2, rotate: 15 }}><SiMongodb style={{ color: '#47A248' }} /></motion.div>
-            <motion.div whileHover={{ scale: 1.2, rotate: -15 }}><SiJavascript style={{ color: '#F7DF1E' }} /></motion.div>
+            <motion.div className={styles.glowIcon} style={{'--c': '#61DAFB'}} whileHover={{ scale: 1.2, rotate: 15 }}><SiReact /></motion.div>
+            <motion.div className={styles.glowIcon} style={{'--c': '#339933'}} whileHover={{ scale: 1.2, rotate: -15 }}><SiNodedotjs /></motion.div>
+            <motion.div className={styles.glowIcon} style={{'--c': '#47A248'}} whileHover={{ scale: 1.2, rotate: 15 }}><SiMongodb /></motion.div>
+            <motion.div className={styles.glowIcon} style={{'--c': '#F7DF1E'}} whileHover={{ scale: 1.2, rotate: -15 }}><SiJavascript /></motion.div>
           </div>
         </motion.div>
       </div>
@@ -109,6 +101,7 @@ const About = () => {
       <div className={styles.stackContainer}>
         <div className={styles.stackTitleSection}>
           <h2 className={styles.stackTitle}>DETAILED <span>CAPABILITIES</span></h2>
+          <div className={styles.headerLine}></div>
         </div>
 
         <div className={styles.skillsStackContainer}>

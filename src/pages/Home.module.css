@@ -63,7 +63,8 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start; 
-  padding: 2rem; 
+  margin-top: 2rem !important; 
+  padding-top: 80px !important;
   max-width: 1200px; 
   margin: 5rem auto;
   min-height: auto;
@@ -357,32 +358,75 @@
   box-shadow: -20px 20px 40px rgba(0, 0, 0, 0.05), 0 10px 20px rgba(var(--accent-rgb), 0.1);
 }
 
-/* --- 📱 MOBILE HERO FIX (1024px & Below) --- */
+/* --- ADD/UPDATE THESE RULES IN YOUR CSS --- */
+
+/* 1. This hides the colored text list on mobile */
+.techTextList {
+  display: inline;
+}
+
+/* 📱 MOBILE RESPONSIVE OVERRIDES (1024px & Below) */
+/* --- 📱 MOBILE HERO SECTION FIX --- */
+/* --- 📱 FINAL MOBILE HERO FIX --- */
 @media (max-width: 1024px) {
+  
   .heroContainer {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding-top: 60px !important;
+    gap: 0 !important; /* Managing spacing manually via margins */
+    min-height: auto !important; 
     height: auto !important;
-    min-height: auto !important;
-    padding: 100px 1.5rem 0rem 1.5rem !important; /* Bottom padding zero kiya space hatane ke liye */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+    padding-bottom: 2rem !important; 
+    margin-bottom: 0 !important;
   }
 
+  /* 🛠️ THE FIX: This allows children to ignore the parent div for ordering */
   .heroText {
-    text-align: center;
-    margin-bottom: 2rem;
+    display: contents !important; 
   }
 
-  /* --- 🧪 THE GLOWING ICON ROW --- */
+  /* 1. TOP: Status & Heading */
+  .statusBadge { order: 1 !important; }
+  .heroHeading {
+    order: 2 !important;
+    font-size: 2.5rem !important; 
+    line-height: 1.1 !important;
+    letter-spacing: -1.5px !important;
+    width: 100% !important;
+    margin-bottom: 10px !important;
+  }
+
+  .highlight {
+    font-size: 1.5rem !important;
+    padding: 4px 15px !important;
+  }
+
+  /* 2. NEXT: Subtext */
+  .heroSubtext {
+    order: 3 !important;
+    font-size: 0.95rem !important;
+    max-width: 90% !important;
+    margin: 0 auto 1.5rem auto !important;
+  }
+
+  /* Hide the redundant tech list text */
+  .techTextList, [class*="Color"] {
+    display: none !important;
+  }
+
+  /* 3. MIDDLE: The MERN Bricks (The visual Bridge) */
   .mernStackGraphic {
+    order: 4 !important; 
     display: flex !important;
     flex-direction: row !important;
-    flex-wrap: wrap; /* Safety for very small screens */
-    justify-content: center;
-    gap: 15px;
-    width: 100%;
-    margin: 0 auto 3rem auto !important; /* Space only below the row */
+    justify-content: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+    margin: 0 0 2.5rem 0 !important;
+    padding: 0 !important;
   }
 
   .techLayer {
@@ -392,79 +436,43 @@
     display: flex !important;
     align-items: center;
     justify-content: center;
-    border-radius: 15px;
+    background: #0D0D0D !important;
+    border-radius: 14px !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    position: relative;
-    background: #0A0A0A !important;
-    transition: all 0.4s ease;
-  }
-
-  /* ⚡ THE INTENSE GLOW (Restoring the Original Soul) */
-  .mongoLayer { 
-    border-left: 4px solid #47A248 !important;
-    box-shadow: 0 10px 30px rgba(71, 162, 72, 0.25), inset 0 0 15px rgba(71, 162, 72, 0.1) !important; 
-  }
-  .expressLayer { 
-    border-left: 4px solid #FFFFFF !important;
-    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15), inset 0 0 15px rgba(255, 255, 255, 0.05) !important; 
-  }
-  .reactLayer { 
-    border-left: 4px solid #61DAFB !important;
-    box-shadow: 0 10px 30px rgba(97, 218, 251, 0.25), inset 0 0 15px rgba(97, 218, 251, 0.1) !important; 
-  }
-  .nodeLayer { 
-    border-left: 4px solid #F2C94C !important;
-    box-shadow: 0 10px 30px rgba(242, 201, 76, 0.25), inset 0 0 15px rgba(242, 201, 76, 0.1) !important; 
+    border-bottom: 3px solid var(--accent) !important; 
+    transform: none !important;
   }
 
   .layerIcon {
     font-size: 1.8rem !important;
-    margin: 0 !important;
-    filter: drop-shadow(0 0 5px currentColor); /* Icon focus glow */
+    color: var(--accent) !important; 
+    filter: drop-shadow(0 0 10px var(--accent)) !important; 
     opacity: 1 !important;
   }
 
-  /* Hide everything else inside the card */
-  .monoText, .layerStatus, .layerBlock {
-    display: none !important;
+  .monoText, .layerStatus, .layerBlock { display: none !important; }
+
+  /* 4. BOTTOM: The Button */
+  .buttonGroup {
+    order: 5 !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin-top: 0 !important;
   }
 
-  /* Remove hover transform that breaks mobile touch */
-  .techLayer:hover {
-    transform: translateY(-8px) !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .heroContainer {
-    height: auto !important;
-    min-height: auto !important; 
-    padding-top: 10px !important;
-    padding-bottom: 0px !important; /* Bottom padding zero */
-    margin-bottom: 0px !important; /* Bottom margin zero */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start !important;
-  }
-
-  .heroText {
-    margin-bottom: 0.5rem !important; /* Heading aur Button ke beech space kam */
-  }
-
-  .mernStackGraphic {
-    margin-top: 2rem !important;
-    margin-bottom: 0px !important; /* Icons ke niche ki space khatam */
-    padding-bottom: 0px !important;
+  .ctaButton {
+    width: 85% !important;
+    max-width: 320px;
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-weight: 900 !important;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4) !important;
+    padding: 16px !important;
   }
 }
 
-/* 📱 SMALL PHONES FIX */
 @media (max-width: 480px) {
-  .heroHeading {
-    font-size: 2.5rem !important;
-  }
-  .techLayer {
-    width: 58px !important;
-    height: 58px !important;
-  }
+  .heroHeading { font-size: 2.1rem !important; }
+  .techLayer { width: 58px !important; height: 58px !important; }
 }

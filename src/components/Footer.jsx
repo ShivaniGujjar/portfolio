@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiArrowUp, FiActivity } from 'react-icons/fi';
+import { FiArrowUp } from 'react-icons/fi';
 import styles from './Footer.module.css';
 
 const Footer = () => {
@@ -22,7 +22,7 @@ const Footer = () => {
             onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} 
             className={styles.scrollBtn}
           >
-            BACK_TO_TOP <FiArrowUp />
+            BACK TO TOP <FiArrowUp />
           </button>
         </div>
 

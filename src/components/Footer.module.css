@@ -3,7 +3,7 @@
   background: #000;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   width: 100%;
-  transition: background 0.4s ease;
+  transition: all 0.4s ease;
 }
 
 /* 💡 LIGHT THEME SYNC */
@@ -32,7 +32,7 @@
   font-weight: 900;
   font-size: 0.8rem;
   color: #FFF;
-  letter-spacing: -0.5px;
+  letter-spacing: 1px;
 }
 :global([data-theme='light']) .brand { color: #0F172A !important; }
 
@@ -46,25 +46,43 @@
   letter-spacing: 1px;
 }
 
-/* --- CENTER SIDE (The Minimal Button) --- */
+/* --- CENTER SIDE (The Terminal Button) --- */
 .scrollBtn {
-  background: transparent;
-  border: none;
-  color: #64748B;
+  background: #EEEEEE;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #000;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.7rem;
-  font-weight: 900;
+  font-weight: 950;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 8px;
-  transition: all 0.3s ease;
-  letter-spacing: 1px;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 24px;
+  border-radius: 6px;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
 }
 
 .scrollBtn:hover {
-  color: #FF6C37;
+  
+  border-color: #FF6C37;
+  color: #FFF;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(255, 108, 55, 0.1);
+  background-color: #FF6C37;
+}
+
+.scrollBtn svg {
+  transition: transform 0.3s ease;
+}
+
+.scrollBtn:hover svg {
   transform: translateY(-2px);
+  
+  
 }
 
 /* --- RIGHT SIDE (Status) --- */
@@ -75,10 +93,7 @@
   background: rgba(39, 201, 63, 0.03);
   padding: 6px 15px;
   border-radius: 4px;
-}
-
-:global([data-theme='light']) .statusBox {
-  background: rgba(34, 197, 94, 0.05) !important;
+  border: 1px solid rgba(39, 201, 63, 0.1);
 }
 
 .pulseDot {
@@ -104,57 +119,49 @@
   100% { transform: scale(1); opacity: 1; }
 }
 
-
-
+/* --- 📱 MOBILE RESPONSIVE --- */
 @media (max-width: 768px) {
   .footerWrapper {
-    padding: 3rem 1.5rem; /* Padding adjusted for mobile */
+    padding: 3rem 1.5rem;
   }
 
   .footerContainer {
-    /* Side-by-side layout se vertical stack mein shift */
     flex-direction: column; 
     gap: 2.5rem;
     text-align: center;
   }
 
-  /* --- LEFT: BRANDING --- */
   .footerLeft {
     flex-direction: column;
     gap: 8px;
   }
 
-  .brand {
-    font-size: 1rem; /* Branding thoda bada kiya focus ke liye */
-  }
+  .brand { font-size: 1rem; }
+  .divider { display: none; }
 
-  .divider {
-    display: none; /* Mobile par vertical divider ki zarurat nahi hai */
-  }
-
-  .registry {
-    font-size: 0.6rem;
-    opacity: 0.6;
-  }
-
-  /* --- CENTER: ACTION --- */
   .footerCenter {
     width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   .scrollBtn {
-    width: 100%; /* Full width clickable area */
-    justify-content: center;
-    padding: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.05); /* Added subtle border for tap target */
-    border-radius: 8px;
+    width: 90% !important;
+    max-width: 300px;
+    padding: 14px !important;
+    background: #DDD !important;
+    color: #000;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    font-size: 0.75rem !important;
+    
   }
 
-  :global([data-theme='light']) .scrollBtn {
-    border-color: rgba(0, 0, 0, 0.05) !important;
+  .scrollBtn:hover {
+    background-color: #FF6C37 !important;
+    color: #EEEEEE !important;
   }
 
-  /* --- RIGHT: STATUS --- */
   .footerRight {
     width: 100%;
     display: flex;
@@ -162,8 +169,7 @@
   }
 
   .statusBox {
-    justify-content: center;
-    width: fit-content;
-    padding: 8px 20px;
+    padding: 10px 25px !important;
+    border-radius: 100px !important;
   }
 }

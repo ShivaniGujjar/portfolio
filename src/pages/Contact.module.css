@@ -247,3 +247,68 @@
 }
 
 @keyframes blink { 50% { opacity: 0.3; } }
+
+
+@media (max-width: 768px) {
+  .contactWrapper {
+    /* 🚀 Pulls the section up to meet the last project card */
+    margin-top: -4rem !important; 
+    padding-top: 1rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  .headerSection {
+    margin-bottom: 2rem !important;
+  }
+
+  .mainTitle {
+    font-size: 2.4rem !important;
+    letter-spacing: -1.5px !important;
+  }
+
+
+  .formContainer {
+    width: 92% !important;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 1.5rem !important; /* Smaller internal padding */
+    border-radius: 16px !important;
+  }
+
+  /* Make the floating labels chota */
+  .inputLabel {
+    font-size: 0.55rem !important;
+    padding: 3px 8px !important;
+    top: -10px !important; /* Adjust position for smaller size */
+  }
+
+  /* Shrink the input boxes */
+  .inputField, .textArea {
+    padding: 12px 15px !important;
+    font-size: 0.85rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .textArea {
+    min-height: 100px !important; /* Don't let message box get too tall */
+  }
+
+  /* The Send Button */
+  .sendBtn {
+    padding: 14px !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 1px !important;
+  }
+
+  /* Social Icons Row */
+  .socialRow {
+    gap: 15px !important;
+    margin-top: 2rem !important;
+  }
+
+  .socialIcon {
+    width: 45px !important;
+    height: 45px !important;
+    font-size: 1.2rem !important;
+  }
+}

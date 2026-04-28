@@ -1,344 +1,364 @@
-/* ============================================================
-   🚀 PROJECT CARD - THE MASTER HYBRID BUILD
-   Light Mode: Neo-Brutalism | Dark Mode: SaaS Ghost
-   ============================================================ */
-
-.projectSection {
-  perspective: 1000px;
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 5rem;
-  align-items: center;
-  margin-bottom: 12rem;
-  --project-color: #2D9CDB; /* Dynamic variable set via JSX */
-}
-
-/* --- REVERSED LAYOUT LOGIC --- */
-.reversed {
-  direction: rtl;
-}
-.reversed > * {
-  direction: ltr;
-}
-
-/* --- VISUAL SIDE (3D CONTAINER) --- */
-.visualSide {
-  position: relative;
-  padding: 1.5rem;
-  transition: transform 0.1s ease-out;
-  transform-style: preserve-3d;
-  cursor: crosshair;
-}
-
-.colorBlock {
-  position: relative;
-  background-color: var(--project-color);
-  border: 4px solid #1A1A1A;
-  padding: 2.5rem;
-  box-shadow: 20px 20px 0px #1A1A1A;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transform-style: preserve-3d;
-}
-
-.checkerboard {
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(#1A1A1A 1.5px, transparent 1.5px);
-  background-size: 15px 15px;
-  opacity: 0.15;
-  z-index: 1;
-}
-
-.imageFrame {
-  position: relative;
-  z-index: 2;
-  border: 4px solid #1A1A1A;
-  background: #000;
-  box-shadow: 12px 12px 0px #1A1A1A;
-  overflow: hidden; /* Clips the laser scan */
-  transition: all 0.3s ease;
-  transform-style: preserve-3d;
-}
-
-/* --- WINDOW HEADER UI --- */
-.windowHeader {
-  height: 32px;
-  background: #1A1A1A;
-  display: flex;
-  align-items: center;
-  padding: 0 12px;
-  border-bottom: 2px solid #1A1A1A;
-}
-
-.dotGroup { display: flex; gap: 6px; }
-.wDot { width: 8px; height: 8px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); }
-.wDot:nth-child(1) { background: #FF5F56; }
-.wDot:nth-child(2) { background: #FFBD2E; }
-.wDot:nth-child(3) { background: #27C93F; }
-
-.windowTitle {
-  margin-left: auto;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: #888;
-  text-transform: lowercase;
-  font-weight: 800;
-}
-
-.projectImg {
-  width: 100%;
-  display: block;
-  filter: grayscale(100%) contrast(1.1);
-  transition: 0.5s ease;
-  transform: scale(1.01); /* Prevents subpixel flickering */
-}
-
-.idBadge {
-  position: absolute;
-  top: 50px;
-  right: 20px;
-  background: #F2C94C;
-  color: #1A1A1A;
-  padding: 6px 14px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.8rem;
-  font-weight: 950;
-  border: 3px solid #1A1A1A;
-  z-index: 10;
-  box-shadow: 4px 4px 0px #1A1A1A;
-}
-
-/* --- SCAN LASER ANIMATION --- */
-.scanLaser {
-  position: absolute;
-  top: -100%;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: #FFFFFF;
-  box-shadow: 0 0 15px #FFFFFF, 0 0 30px var(--project-color);
-  z-index: 5;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.visualSide:hover .scanLaser {
-  opacity: 1;
-  animation: laserSweep 2.5s infinite linear;
-}
-
-.visualSide:hover .projectImg {
-  filter: grayscale(0%) contrast(1);
-  transform: scale(1.08);
-}
-
-@keyframes laserSweep {
-  0% { top: -5%; }
-  100% { top: 105%; }
-}
-
-/* --- CONTENT SIDE --- */
-.contentSide {
+.card {
+  background: linear-gradient(145deg, #0f0f0f, #080808);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  overflow: hidden;
+  max-width: 420px;
+  margin: 0 auto;
+  transition: all 0.6s cubic-bezier(0.2, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
+  position: relative;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.01);
 }
 
-.headerMeta {
+.card:hover {
+  border-color: var(--accent);
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 20px var(--accent);
+}
+
+/* 🖥️ TERMINAL HEADER */
+.cardHeader {
+  padding: 10px 18px;
+  background: #0d0d0d;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 15px;
-  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
 }
 
-.status {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.8rem;
-  font-weight: 950;
-  color: var(--project-color);
-  letter-spacing: 2px;
+.dots { display: flex; gap: 6px; }
+.dots span { width: 7px; height: 7px; border-radius: 50%; }
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+
+.fileTitle { 
+  font-family: 'JetBrains Mono', monospace; 
+  font-size: 0.5rem; 
+  color: #333; 
+  font-weight: 800; 
+  letter-spacing: 1.5px;
 }
 
-.colorLine {
-  flex: 1;
-  height: 4px;
-  background: var(--project-color);
-  border: 2px solid #1A1A1A;
+/* 🖼️ IMAGE AREA */
+.imageArea { position: relative; padding: 12px; }
+.img {
+  width: 100%;
+  border-radius: 12px;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  filter: grayscale(0.5) brightness(0.85);
+  transition: 0.6s ease;
 }
 
-.title {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 950;
-  letter-spacing: -3px;
-  line-height: 0.9;
-  margin-bottom: 1.5rem;
-  color: #1A1A1A;
-}
+.card:hover .img { filter: grayscale(0) brightness(1.1); }
 
-.description {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #475569;
-  line-height: 1.6;
-  margin-bottom: 2.5rem;
-  max-width: 500px;
-}
-
-/* --- TECH STACK PILLS --- */
-.techTitle {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  font-weight: 950;
-  color: #1A1A1A;
-  margin-bottom: 1rem;
-  letter-spacing: 1px;
-}
-
-.techCloud {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 3rem;
-}
-
-.techPill {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: #FFFFFF;
-  border: 3px solid #1A1A1A;
-  padding: 6px 14px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.7rem;
-  font-weight: 900;
-  color: #1A1A1A;
-  box-shadow: 4px 4px 0px #1A1A1A;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-/* --- BUTTONS --- */
-.buttonStack {
-  display: flex;
-  gap: 1rem;
-}
-
-.mainBtn, .sideBtn {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 18px;
-  border-radius: 10px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  font-weight: 950;
-  text-transform: uppercase;
-  border: 3.5px solid #1A1A1A !important;
-  text-decoration: none;
-  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.mainBtn { background: #1A1A1A !important; color: #FFF !important; box-shadow: 6px 6px 0px #27AE60 !important; }
-.sideBtn { background: #27AE60 !important; color: #FFF !important; box-shadow: 6px 6px 0px #1A1A1A !important; }
-
-.mainBtn:hover, .sideBtn:hover { transform: translate(-3px, -3px); }
-.mainBtn:active, .sideBtn:active { transform: translate(4px, 4px); box-shadow: none !important; }
-
-/* ============================================================
-   🌑 DARK MODE OVERRIDES: SAAS GHOST
-   ============================================================ */
-
-[data-theme='dark'] .colorBlock {
-  background: rgba(255, 255, 255, 0.03) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 20px 20px 0px #080808 !important;
-  backdrop-filter: blur(12px);
-}
-
-[data-theme='dark'] .colorBlock::before {
-  content: '';
+.liveBadge {
   position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
-    rgba(255, 255, 255, 0.08), 
-    transparent 40%
-  );
-  z-index: 0;
-  pointer-events: none;
+  top: 22px; right: 22px;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.5rem;
+  font-weight: 950;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
 }
 
-[data-theme='dark'] .imageFrame { border-color: rgba(255,255,255,0.1) !important; box-shadow: none !important; }
-[data-theme='dark'] .title { color: #FFFFFF !important; }
-[data-theme='dark'] .description { color: #94A3B8 !important; }
-[data-theme='dark'] .techTitle { color: #64748B !important; }
+.pulse {
+  width: 5px; height: 5px; background: #ff3e3e; border-radius: 50%;
+  box-shadow: 0 0 8px #ff3e3e;
+  animation: pulseAnim 2s infinite;
+}
+@keyframes pulseAnim { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
 
-[data-theme='dark'] .techPill {
-  background: rgba(255, 255, 255, 0.03) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  color: #E2E8F0 !important;
-  box-shadow: none !important;
+/* 🧱 TECH BRICKS - PIXEL PERFECT LEFT ALIGN */
+.content { 
+  padding: 12px 22px 20px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Force everything to start at the same X-axis */
 }
 
-[data-theme='dark'] .mainBtn {
-  background: rgba(255, 255, 255, 0.05) !important;
-  color: #FFF !important;
-  border: 1px solid rgba(255,255,255,0.2) !important;
-  box-shadow: none !important;
+.techWall { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 5px;            /* Tighter gap */
+  margin-bottom: 8px;
+  padding: 0; 
+  margin-top: 2px;
+  
 }
 
-[data-theme='dark'] .mainBtn:hover {
-  background: #FFF !important;
-  color: #000 !important;
-  box-shadow: 0 0 30px rgba(255,255,255,0.2) !important;
+.techChip {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Brighter default border */
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #999; /* Brighter default text (not dull) */
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.card:hover .techChip {
+  color: #fff; /* White text on hover for clarity */
+  border-color: var(--brand-color);
+  background: rgba(0, 0, 0, 0.4);
+  /* Added a subtle glow effect */
+  box-shadow: 0 0 10px rgba(var(--brand-rgb), 0.2); 
 }
 
-[data-theme='dark'] .sideBtn {
-  background: rgba(39, 174, 96, 0.05) !important;
-  color: #27AE60 !important;
-  border: 1px solid rgba(39, 174, 96, 0.2) !important;
-  box-shadow: none !important;
+
+.techIcon {
+  font-size: 0.8rem;
+  color: var(--brand-color); /* Icon keeps its color to look "active" */
+  filter: drop-shadow(0 0 2px var(--brand-color));
+  display: flex;
+  align-items: center;
 }
 
-[data-theme='dark'] .sideBtn:hover {
-  background: #27AE60 !important;
-  color: #000 !important;
-  box-shadow: 0 0 30px rgba(39, 174, 96, 0.4) !important;
+.card:hover .techIcon {
+  filter: drop-shadow(0 0 5px var(--brand-color));
 }
 
-/* =========================================
-   📱 MOBILE RESPONSIVE
-   ========================================= */
+/* 📝 TYPOGRAPHY */
+.title { 
+  font-size: 1.5rem; /* Slightly smaller to save space */
+  margin-bottom: 2px;
+  color: #fff; 
+  font-weight: 950; 
+  letter-spacing: -1.5px; 
+  text-align: left;
+}
 
-@media (max-width: 1100px) {
-  .projectSection { 
-    grid-template-columns: 1fr; 
-    gap: 4rem; 
-    margin-bottom: 8rem;
-    text-align: center;
+.description { 
+  font-size: 0.85rem; /* Better scale for the card size */
+ line-height: 1.3;    /* Tighter lines to prevent height growth */
+  margin-bottom: 10px;
+  color: #666; 
+  text-align: left;
+}
+
+/* 📊 READOUT - PRECISION GRID */
+.readout {
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.015); 
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 10px 15px;  /* Slimmed down inner box */
+  margin-bottom: 12px;
+  border-radius: 14px; 
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.metric span { 
+  font-size: 0.5rem; 
+  color: #333; 
+  font-weight: 900; 
+  letter-spacing: 1.5px; 
+  line-height: 1;
+}
+
+.metric strong { 
+  font-family: 'JetBrains Mono', monospace; 
+  font-size: 0.75rem; 
+  color: #fff; 
+  line-height: 1;
+}
+
+.greenText { color: #27C93F !important; }
+
+/* 🟢 THE STATUS DOT FIX */
+.statusText { 
+  color: #27C93F !important; 
+  display: flex !important; 
+  flex-direction: row !important; 
+  align-items: center !important; 
+  gap: 7px !important; 
+  white-space: nowrap !important;
+  margin: 0 !important;
+}
+
+.statusDot { 
+  width: 6px; 
+  height: 6px; 
+  background: #27C93F; 
+  border-radius: 50%; 
+  box-shadow: 0 0 10px #27C93F; 
+  flex-shrink: 0;
+  /* Baseline micro-adjustment */
+  transform: translateY(0.5px); 
+}
+
+/* 🕹️ ACTIONS */
+/* 🕹️ ACTIONS CONTAINER */
+.ctaGroup { 
+  display: flex; 
+  gap: 10px; 
+  width: 100%; 
+  margin-top: auto; 
+}
+
+/* 🚀 MAIN RUN_APP BUTTON */
+.mainBtn {
+  flex: 1; 
+  background: transparent; 
+  border: 1px solid #999; 
+  padding: 12px; 
+  color: #fff;
+  border-radius: 8px; /* Sharper professional corners */
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800; 
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  gap: 8px; 
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+}
+
+/* Professional Hover: Solid Color Shift, No Glow */
+.mainBtn:hover { 
+  background: #fff; /* Brand Blue */
+  border-color: #3abff8;
+  color: #080808; 
+}
+
+/* 🐙 GITHUB ICON BUTTON */
+.iconBtn { 
+  width: 48px;
+  height: 48px;
+  border-radius: 8px; 
+  background: transparent; 
+  border: 1px solid rgba(255, 255, 255, 0.15); 
+  color: #116d42; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+/* Professional Hover: Solid GitHub Green, No Tilt */
+.iconBtn:hover { 
+  background: #27AE60; /* Official GitHub Green */
+  border-color: #238636; 
+  color: #ffffff; 
+}
+
+
+/* --- 📱 MOBILE SPECIFIC IMPROVEMENTS --- */
+@media (max-width: 768px) {
+  .projectCard {
+    padding: 1.2rem !important; /* Tightens the card */
+    gap: 1.2rem !important;
+    border-radius: 20px !important;
   }
-  
-  .reversed { direction: ltr; }
-  
-  .visualSide { padding: 0; }
-  .colorBlock { padding: 1.5rem; box-shadow: 12px 12px 0px #1A1A1A; }
-  .imageFrame { box-shadow: 8px 8px 0px #1A1A1A; }
-  
-  .headerMeta { justify-content: center; }
-  .description { margin-left: auto; margin-right: auto; }
-  .techCloud { justify-content: center; }
 
-  .buttonStack { flex-direction: column; }
-  .mainBtn, .sideBtn { width: 100%; }
+  /* 🖼️ Shrink the browser frame slightly for better proportions */
+  .imageContainer {
+    margin-bottom: 0.5rem;
+  }
 
-  /* Disable 3D on mobile for better touch UX */
-  .visualSide { transform: none !important; }
+  /* 🏷️ Clean up the Tags (The "Hodgepodge" fix) */
+  .tagWrapper {
+    gap: 6px !important;
+    margin-bottom: 0.2rem;
+  }
+
+  .tag {
+    padding: 3px 8px !important;
+    font-size: 0.6rem !important; /* Smaller text makes it feel pro */
+    border-radius: 5px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .tag svg {
+    font-size: 0.7rem !important;
+  }
+
+  /* 📝 Title & Description */
+  .title {
+    font-size: 1.5rem !important; /* Sharp and readable */
+    letter-spacing: -1px !important;
+    margin-bottom: 0.3rem !important;
+  }
+
+  .description {
+    font-size: 0.85rem !important;
+    line-height: 1.4 !important;
+    color: #777 !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* 📊 Stats Bar (The "Dashboard" look) */
+  .statsRow {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important; /* Forces clean 3-col layout */
+    padding: 0.8rem !important;
+    gap: 8px !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+    border-radius: 10px !important;
+  }
+
+  .statLabel {
+    font-size: 0.5rem !important;
+    color: #444 !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  .statValue {
+    font-size: 0.7rem !important;
+    font-weight: 900 !important;
+  }
+
+  /* 🚀 Action Buttons */
+  .actionGroup {
+    gap: 10px !important;
+    margin-top: 0.5rem;
+  }
+
+  .runBtn {
+    padding: 12px !important;
+    font-size: 0.8rem !important;
+    border-radius: 8px !important;
+  }
+
+  .codeBtn {
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 8px !important;
+  }
+
+  .mainBtn {
+    padding: 14px;
+    border-radius: 6px;
+  }
+
+  .iconBtn {
+    width: 50px;
+    height: 50px;
+    border-radius: 6px;
+  }
 }
-
-@media (max-width: 640px) {
-  .title { font-size: 2.8rem; }
-  .projectSection { margin-bottom: 6rem; }
-}
-
-
