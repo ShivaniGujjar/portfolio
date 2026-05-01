@@ -1,7 +1,24 @@
 /* ============================================================
    GLOBAL RESET & THEME VARIABLES
-   ============================================================ */
+   =======
+   ===================================================== */
+   @import url('https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500&f[]=general-sans@700,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;800&display=swap');
 
+  html, body {
+  margin: 0;
+  padding: 0;
+  /* 🚀 Don't touch overflow here */
+  width: 100%;
+  height: auto;
+}
+
+#root {
+  /* 🚀 'clip' sticky ko break nahi karta aur right-side space ko hide kar deta hai */
+  overflow-x: clip; 
+  width: 100%;
+  position: relative;
+}
 :root {
   /* 🎨 LIGHT MODE */
   --bg-primary: #F9F9F7;

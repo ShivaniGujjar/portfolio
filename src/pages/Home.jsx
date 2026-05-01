@@ -1,113 +1,162 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import styles from './Home.module.css';
-import { SiMongodb, SiExpress, SiReact, SiNodedotjs } from 'react-icons/si';
 
 const Home = () => {
-  // Animation Variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2, delayChildren: 0.3 },
-    },
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [isMobile, setIsMobile] = useState(false);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const handleMouseMove = (e) => {
+    if (!containerRef.current || isMobile) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
   };
 
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+  const floatingSkills = [
+    { text: 'REACT ARCHITECTURE', color: '#058CD7', id: 'chip0' },
+    { text: 'NODE.JS SYSTEMS', color: '#0e6342', id: 'chip1' },
+    { text: 'MONGODB DESIGN', color: '#1db454', id: 'chip2' },
+    { text: 'SCALABLE BACKEND', color: '#FF6C37', id: 'chip3' },
+  ];
+
+  const reveal = {
+    hidden: { y: "110%" },
     visible: {
       y: 0,
-      opacity: 1,
-      transition: { type: 'spring', stiffness: 100 },
-    },
+      transition: { duration: 0.8, ease: [0.33, 1, 0.68, 1] }
+    }
   };
 
-  const stackVariants = {
-    hidden: { x: 50, opacity: 0 },
+  const chipReveal = {
+    hidden: { opacity: 0, scale: 0.8 },
     visible: (i) => ({
-      x: 0,
       opacity: 1,
-      transition: { delay: i * 0.1, type: 'spring', stiffness: 50, damping: 12 },
-    }),
+      scale: 1,
+      transition: { delay: 1 + (i * 0.15), duration: 0.5 }
+    })
+  };
+
+  const magneticEffect = isMobile ? {} : {
+    scale: 1.08,
+    x: (mousePos.x - (containerRef.current?.offsetWidth / 2 || 0)) * 0.02,
+    y: (mousePos.y - (containerRef.current?.offsetHeight / 2 || 0)) * 0.02,
+    transition: { type: "spring", stiffness: 120, damping: 14 }
   };
 
   return (
-    <motion.section 
-      className={styles.heroContainer} 
-      id="home"
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
+    <section
+      className={styles.heroContainer}
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
     >
-      <div className={styles.heroText}>
-        {/* Status Badge */}
-        <motion.div className={styles.statusBadge} variants={itemVariants}>
-          <motion.span 
-            className={styles.pulseDot}
-            animate={{ scale: [1, 1.2, 1], opacity: [1, 0.6, 1] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-          />
-          <span className={styles.statusText}>SYSTEM_STATUS: OPERATIONAL</span>
+
+      {/* 🔦 Spotlight only on desktop */}
+      {!isMobile && (
+        <div
+          className={styles.spotlight}
+          style={{
+            background: `radial-gradient(600px at ${mousePos.x}px ${mousePos.y}px, rgba(255,108,55,0.08), transparent 80%)`
+          }}
+        />
+      )}
+
+      {/* 🔷 Chips */}
+      {floatingSkills.map((skill, i) => (
+        <motion.div
+          key={i}
+          className={`${styles.floatingChip} ${styles[skill.id]}`}
+          style={{ '--accent': skill.color }}
+          custom={i}
+          variants={chipReveal}
+          initial="hidden"
+          animate="visible"
+          whileHover={magneticEffect}
+        >
+          <motion.div
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 5, repeat: Infinity }}
+            className={styles.chipInner}
+          >
+            <span className={styles.dot} /> {skill.text}
+          </motion.div>
         </motion.div>
+      ))}
 
-        {/* Main Heading */}
-        <motion.h1 className={styles.heroHeading} variants={itemVariants}>
-          BUILDING <br />
-          <span className={styles.outlineText}>SCALABLE</span> <br />
-          <div className={styles.highlightWrapper}>
-            <span className={styles.highlight}>MERN STACK</span>
-          </div> <br />
-          APPLICATIONS
-        </motion.h1>
-        
-        {/* Subtext Logic: span hidden on mobile via CSS */}
-        <motion.p className={styles.heroSubtext} variants={itemVariants}>
-          Specializing in high-performance <br /> web architecture with
-          <span className={styles.techTextList}>
-            <span className={styles.reactColor}> React</span> |
-            <span className={styles.nodeColor}> Node.js</span> |
-            <span className={styles.mongoColor}> MongoDB</span>
-          </span>
-        </motion.p>
+      {/* 🔶 Content */}
+      <div className={styles.centerContent}>
 
-        {/* Action Button - Moved via CSS order on mobile */}
-        <motion.div className={styles.buttonGroup} variants={itemVariants}>
-          <motion.a 
-            href="#projects" 
-            className={styles.ctaButton}
-            whileHover={{ scale: 1.05, x: 5 }}
+        <div className={styles.statusBadge}>
+          <span className={styles.statusText}>SYSTEM_STATUS: OPERATIONAL</span>
+        </div>
+
+        <h1 className={styles.heroHeading}>
+          <div className={styles.mask}>
+            <motion.span variants={reveal} initial="hidden" animate="visible">
+              BUILDING
+            </motion.span>
+          </div>
+
+          <div className={styles.mask}>
+            <motion.span
+              variants={reveal}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 0.1 }}
+              className={styles.outlineText}
+            >
+              SCALABLE
+            </motion.span>
+          </div>
+
+          <div className={styles.mask}>
+            <motion.span
+              variants={reveal}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 0.2 }}
+              className={styles.orangeText}
+            >
+              APPLICATIONS
+            </motion.span>
+          </div>
+        </h1>
+
+        <motion.div
+          className={styles.pillGroup}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.2 }}
+        >
+          <motion.a
+            href="#projects"
+            className={styles.pillWhite}
+            whileHover={magneticEffect}
             whileTap={{ scale: 0.95 }}
           >
-            VIEW PROJECTS →
+            VIEW PROJECTS
           </motion.a>
-        </motion.div>
-      </div>
 
-      {/* MERN Bricks Graphic - Moved via CSS order on mobile */}
-      <div className={styles.mernStackGraphic}>
-        {[
-          { icon: <SiMongodb />, label: 'DATABASE | MONGODB', status: 'ACTIVE', class: styles.mongoLayer },
-          { icon: <SiExpress />, label: 'SERVER | EXPRESS', status: 'STABLE', class: styles.expressLayer },
-          { icon: <SiReact />, label: 'CLIENT | REACT', status: 'READY', class: styles.reactLayer },
-          { icon: <SiNodedotjs />, label: 'RUNTIME | NODE.JS', status: 'LIVE', class: styles.nodeLayer },
-        ].map((tech, i) => (
-          <motion.div 
-            key={i}
-            custom={i}
-            variants={stackVariants}
-            className={`${styles.techLayer} ${tech.class}`}
-            whileHover={{ x: -15, transition: { duration: 0.2 } }}
+          <motion.div
+            className={styles.pillOrange}
+            whileHover={magneticEffect}
           >
-            <div className={styles.layerContent}>
-              <div className={styles.layerIcon}>{tech.icon}</div>
-              <p className={styles.monoText}>{tech.label}</p>
-            </div>
-            <div className={styles.layerStatus}>{tech.status}</div>
-            <div className={styles.layerBlock}></div>
+            MERN SPECIALIST
           </motion.div>
-        ))}
+        </motion.div>
+
       </div>
-    </motion.section>
+    </section>
   );
 };
 
