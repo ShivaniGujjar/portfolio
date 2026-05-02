@@ -1,33 +1,44 @@
 .aboutWrapper {
-  padding: 2rem 2rem;
-  max-width: 1250px;
+  /* 1. Remove forced padding and margins */
+  padding: 0 2rem 5rem 2rem; /* Top padding is now 0 */
   margin: 0 auto;
+  max-width: 1250px;
   position: relative;
   background: #000;
+  
+  /* 2. Pull the whole section up to touch the Hero if needed */
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 
-/* 🌀 MARQUEE - CENTERED VERTICALLY BEHIND BENTO */
+/* 🏆 CENTERED HEADING - FIXED SPACING */
+.introHeader {
+  width: 100%;
+  text-align: center;
+  /* 3. Reduced margin-bottom and ensured 0 margin-top */
+  margin-top: 0;
+  padding-top: 8rem; /* Use padding for internal space instead of margin */
+  margin-bottom: 3rem; 
+  z-index: 10;
+  position: relative;
+}
+
+/* 🌀 MARQUEE - FIXED POSITIONING */
 .marqueeContainer {
   position: absolute; 
-  top: 40%; /* Changed from 10% to center it vertically behind the cards */
+  top: 50%; /* Adjust to ensure it stays behind the Bento cards */
   left: 0; 
   width: 100%; 
   white-space: nowrap; 
   opacity: 0.03; 
   pointer-events: none;
-  transform: translateY(-50%); /* Perfectly centers relative to the container */
+  transform: translateY(-50%);
+  z-index: 1;
 }
 
+/* ... rest of your code ... */
 .bgText { font-size: 15rem; font-weight: 950; color: #fff; }
 
-/* 🏆 CENTERED HEADING */
-.introHeader {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 5rem;
-  z-index: 10;
-  position: relative;
-}
 
 .mainTitle, .stackTitle {
   font-size: clamp(2.5rem, 7vw, 4.2rem);
@@ -70,11 +81,53 @@
 }
 
 .boxTag {
-  position: absolute; top: 30px; left: 35px;
-  font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; 
-  font-weight: 900; color: #444; letter-spacing: 2px;
+  position: absolute; 
+  top: 30px; 
+  left: 35px;
+  
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 100px;
+  
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem; 
+  font-weight: 700; 
+  color: #888; /* Muted color for a premium feel */
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
 }
 
+.gridBox:hover .boxTag {
+  background: rgba(58, 191, 248, 0.1);
+  border-color: rgba(58, 191, 248, 0.3);
+  color: #fff; /* Hover par text white ho jayega */
+}
+
+/* 🎯 MISSION BOX (Yellow Card) ke liye adjustment */
+.boxTag::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  background: #3ABFF8;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(58, 191, 248, 0.5);
+}
+
+/* Mission Box specific tag override */
+.missionBox .boxTag {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.missionBox .boxTag::before {
+  background: #000;
+  box-shadow: none;
+}
 /* --- IDENTITY BOX --- */
 .identityBox { grid-column: span 2; }
 .idBody { margin-bottom: 20px; }
@@ -94,7 +147,23 @@
 
 /* --- MISSION BOX --- */
 .missionBox { grid-column: span 1; grid-row: span 2; background: #FFB800; color: #000; border: none; justify-content: center; }
-.missionBox .boxTag { color: rgba(0, 0, 0, 0.3); }
+.missionBox .boxTag { color: rgba(0, 0, 0, 0.3); }.gridBox:hover .boxTag {
+  color: #aaa;
+  border-left-color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* 🎨 SPECIAL HANDLING FOR YELLOW BOX TAG */
+.missionBox .boxTag {
+  background: rgba(0, 0, 0, 0.05);
+  border-left-color: #000;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.missionBox .boxTag::before {
+  background: #000;
+  box-shadow: none;
+}
 .missionText { font-size: 2.2rem; font-weight: 950; color: #000; line-height: 1.1; text-align: center; }
 .highlight { background: #000; color: #FFB800; padding: 2px 8px; border-radius: 6px; }
 
@@ -123,8 +192,8 @@
   .identityBox, .eduBox, .techBox, .missionBox { grid-column: span 1; grid-row: auto; min-height: 250px;}
 
   .aboutWrapper {
-    padding-top: 1rem !important; /* Reduces the huge top padding */
-    margin-top: 1rem !important; /* Pulls the section up towards the Home cards */
+    padding-top: 0 !important;
+    margin-top: 0 !important;
   
   }
 
@@ -139,9 +208,9 @@
   }
 
   .boxTag {
-    top: 20px;
-    left: 24px;
-    font-size: 0.55rem; /* Keeps the [ 01 IDENTITY ] label subtle */
+    top: 25px;
+    left: 25px;
+    font-size: 0.55rem;
   }
 
 
@@ -171,6 +240,13 @@
     /* Large gap creates the "individual card" physical separation */
     gap: 30px !important; 
     padding: 0 10px;
+  }
+
+  .boxTag {
+    top: 20px;
+    left: 20px;
+    padding: 2px 8px;
+    letter-spacing: 1px;
   }
 
   .gridBox {
@@ -234,16 +310,32 @@
 @media (max-width: 768px) {
   /* 1. Kill the forced scroll space in the container */
   .stackContainer {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-  }
+  position: relative;
+  margin-top: 0 !important;   /* 🔥 FIX (was 5rem) */
+}
 
   /* 2. Tighten the gap between the sticky cards */
-  .skillsStackContainer {
-    gap: 10vh !important; 
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-  }
+ .skillsStackContainer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 10;
+  gap: 30vh;
+
+  margin-top: 0 !important;   /* 🔥 FIX (was -100px) */
+}
+
+.introHeader {
+  width: 100%;
+  text-align: center;
+
+  margin-top: 0;
+  padding-top: 1rem;   /* 🔥 thoda aur tight */
+
+  margin-bottom: 2rem;
+  z-index: 10;
+  position: relative;
+}
 
   /* 3. TARGET THE LAST CARD: This is where most of that gap is coming from */
   /* We use :last-child to remove the margin that usually allows for scrolling */
@@ -254,8 +346,8 @@
   /* 4. PULL THE NEXT SECTION UP: The Nuclear Option */
   /* If the gap persists, we manually pull the next section into view */
   .aboutWrapper {
-    margin-bottom: 1rem !important;
-    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    padding-top: 1rem !important; /* "ABOUT ME" ko bilkul hero ke buttons ke niche pull karo */
   }
 }
 

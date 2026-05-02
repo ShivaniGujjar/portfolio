@@ -105,6 +105,7 @@
   font-weight: 950; 
   color: #FFF; 
   letter-spacing: -1px; 
+  text-decoration: none;
 }
 
 .dot { color: #3ABFF8; }
@@ -118,9 +119,10 @@
   border-radius: 100px;
   font-weight: 900;
   font-size: 0.9rem;
+  text-decoration: none;
 }
 
-.onlyForDesktop { display: none; } /* Hidden on mobile */
+.onlyForDesktop { display: none; text-decoration: none; } /* Hidden on mobile */
 
 .hamburger {
   display: flex;

@@ -57,7 +57,7 @@ const About = () => {
         
         {/* 🆔 IDENTITY BOX */}
         <motion.div className={`${styles.gridBox} ${styles.identityBox}`} variants={boxHover} whileHover="hover">
-          <span className={styles.boxTag}>[ 01 IDENTITY ]</span>
+          <span className={styles.boxTag}>IDENTITY</span>
           <div className={styles.idBody}>
             <p className={styles.mernLabel}>MERN STACK DEVELOPER</p>
             <h2 className={styles.nameTitle}>SHIVANI GUJJAR</h2>
@@ -69,7 +69,7 @@ const About = () => {
 
         {/* 🎯 MISSION BOX */}
         <motion.div className={`${styles.gridBox} ${styles.missionBox}`} variants={boxHover} whileHover={{ y: -8, scale: 1.01 }}>
-          <span className={styles.boxTag}>[ 02 MISSION ]</span>
+          <span className={styles.boxTag}>MISSION</span>
           <p className={styles.missionText}>
             Developing <span className={styles.highlight}>Scalable</span> MERN solutions with pixel-perfect precision.
           </p>
@@ -77,7 +77,7 @@ const About = () => {
 
         {/* 🎓 ACADEMIC BOX */}
         <motion.div className={`${styles.gridBox} ${styles.eduBox}`} variants={boxHover} whileHover="hover">
-          <span className={styles.boxTag}>[ 03 ACADEMIC ]</span>
+          <span className={styles.boxTag}>ACADEMIC</span>
           <div className={styles.eduContent}>
             <h4>MCA GRADUATE</h4>
             <p>2026 Batch • IT Specialization</p>
@@ -87,7 +87,7 @@ const About = () => {
 
         {/* 🛠️ TECH STACK BOX */}
         <motion.div className={`${styles.gridBox} ${styles.techBox}`} variants={boxHover} whileHover="hover">
-          <span className={styles.boxTag}>[ 04 STACK ]</span>
+          <span className={styles.boxTag}>TECH-STACK</span>
           <div className={styles.iconOrbit}>
             <motion.div className={styles.glowIcon} style={{'--c': '#61DAFB'}} whileHover={{ scale: 1.2, rotate: 15 }}><SiReact /></motion.div>
             <motion.div className={styles.glowIcon} style={{'--c': '#339933'}} whileHover={{ scale: 1.2, rotate: -15 }}><SiNodedotjs /></motion.div>

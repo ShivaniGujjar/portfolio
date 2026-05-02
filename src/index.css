@@ -1,5 +1,5 @@
-/* ============================================================
-   RESET
+/* ============================================================ 
+   RESET & BASE
    ============================================================ */
 * {
   margin: 0;
@@ -7,11 +7,19 @@
   box-sizing: border-box;
 }
 
-/* ============================================================
-   ROOT VARIABLES
-   ============================================================ */
+html {
+  scroll-behavior: smooth;
+  /* Agar aap koi library use nahi kar rahe, toh ye basics hain */
+}
+
+body {
+  /* Overscroll behavior stop karta hai ajeeb "bounce" ko */
+  overscroll-behavior-y: none; 
+}
+
 :root {
-  --bg-primary: #050403;
+  /* CRITICAL FIX: Background MUST be black to match hero */
+  --bg-primary: #000; 
   --bg-secondary: #0D0D0D;
   --text-main: #FFFFFF;
   --text-muted: #94A3B8;
@@ -19,62 +27,67 @@
   --font-mono: 'JetBrains Mono', monospace;
 }
 
-/* ============================================================
-   HTML + BODY FIX (VERY IMPORTANT)
+/* ============================================================ 
+   HTML + BODY (STRETCHED TO FULL VIEWPORT)
    ============================================================ */
 html, body {
   width: 100%;
-  overflow-x: hidden;   /* ✅ prevents side scroll */
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  /* overflow-x: clip avoids side scroll while keeping sticky active */
+  overflow-x: clip; 
   scroll-behavior: smooth;
   background-color: var(--bg-primary);
-}
-
-/* ============================================================
-   BODY DESIGN
-   ============================================================ */
-body {
-  min-height: 100vh;
   color: var(--text-main);
   font-family: 'Inter', -apple-system, sans-serif;
-  line-height: 1.5;
+}
 
+body {
+  position: relative;
+  /* Anti-aliasing for smooth GSAP text reveal */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Fixed Background Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
   background-image: 
     linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
   background-size: 40px 40px;
-  background-attachment: fixed;
-}
-
-/* Glow */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at 50% -10%, rgba(255, 108, 55, 0.12), transparent 70%);
+  z-index: -1;
   pointer-events: none;
-  z-index: 0;
 }
 
-/* ============================================================
-   ROOT FIX (IMPORTANT)
+/* ============================================================ 
+   ROOT & APP CONTAINER
    ============================================================ */
 #root {
   width: 100%;
-  position: relative;
-  overflow-x: hidden;  /* ✅ FIXED (removed clip) */
-  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-/* ============================================================
-   TYPOGRAPHY
+/* ============================================================ 
+   GLOBAL SECTION BEHAVIOR
    ============================================================ */
-h1, h2 {
-  text-transform: uppercase;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+section {
+  width: 100%; /* Ensures all sections take full width */
+  position: relative;
+  background: var(--bg-primary);
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
+/* Clean Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { 
+  background: #333; 
+  border-radius: 10px; 
 }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-orange); }
