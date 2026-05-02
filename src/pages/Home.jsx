@@ -96,9 +96,7 @@ const Home = () => {
       {/* 🔶 Content */}
       <div className={styles.centerContent}>
 
-        <div className={styles.statusBadge}>
-          <span className={styles.statusText}>SYSTEM_STATUS: OPERATIONAL</span>
-        </div>
+        
 
         <h1 className={styles.heroHeading}>
           <div className={styles.mask}>

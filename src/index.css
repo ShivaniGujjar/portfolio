@@ -1,227 +1,67 @@
-/* ============================================================
-   GLOBAL RESET & THEME VARIABLES
-   =======
-   ===================================================== */
-   @import url('https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500&f[]=general-sans@700,600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;800&display=swap');
-
-  html, body {
-  margin: 0;
-  padding: 0;
-  /* 🚀 Don't touch overflow here */
-  width: 100%;
-  height: auto;
-}
-
-#root {
-  /* 🚀 'clip' sticky ko break nahi karta aur right-side space ko hide kar deta hai */
-  overflow-x: clip; 
-  width: 100%;
-  position: relative;
-}
-:root {
-  /* 🎨 LIGHT MODE */
-  --bg-primary: #F9F9F7;
-  --text-main: #1A1A1A;
-  --text-muted: #475569;
-  --accent-orange: #FF6C37;
-  --border-main: #1A1A1A;
-}
-
-
-/* =========================================
-   🌐 GLOBAL LIGHT MODE ELEVATION
-   ========================================= */
-
-[data-theme='light'] {
-  /* 🎨 The "Ghost Slate" background */
-  --bg-global: #F8FAFC; 
-  /* ☁️ Pure White for cards/elements to pop */
-  --bg-card: #FFFFFF;
-  /* 🖋️ Soft Navy for text (more premium than pure black) */
-  --text-main: #0F172A;
-  --text-muted: #64748B;
-}
-
-[data-theme='light'] body {
-  background-color: var(--bg-global) !important;
-  /* ✨ Adds a professional 'blueprint' texture across the whole site */
-  background-image: 
-    radial-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px);
-  background-size: 30px 30px;
-  color: var(--text-main);
-  transition: background 0.4s ease;
-}
-
-[data-theme='dark'] {
-  /* 🌑 DARK MODE */
-  --bg-primary: #050403;
-  --bg-secondary: #0D0D0D;
-  --text-main: #FFFFFF;
-  --text-muted: #94A3B8;
-  --accent-orange: #FF6C37;
-}
-
-/* ============================================================
-   BASE STYLES
-   ============================================================ */
-
+/* 1. Reset & Core */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+:root {
+  /* DARK MODE (Default) */
+  --bg-primary: #050403;
+  --bg-secondary: #0D0D0D;
+  --text-main: #FFFFFF;
+  --text-muted: #94A3B8;
+  --accent-orange: #FF6C37;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-primary); /* Prevents white flash */
+}
+
 body {
-  background-color: var(--bg-primary) !important;
-  color: var(--text-main);
-  font-family: 'Inter', -apple-system, sans-serif;
-  overflow-x: hidden;
+  width: 100%;
   min-height: 100vh;
-  transition: background-color 0.4s ease;
-  position: relative;
+  overflow-x: hidden;
+  color: var(--text-main);
+  background-color: var(--bg-primary);
+  font-family: 'Inter', -apple-system, sans-serif;
+  line-height: 1.5;
+  
+  /* The Grid Pattern */
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px; /* Slightly smaller for mobile-first */
+  background-attachment: fixed;
 }
 
-/* ============================================================
-   🔥 FINAL DARK MODE GLOW (WORKING)
-   ============================================================ */
-
-[data-theme='dark'] body {
-  background: #050403;
-}
-
-/* MAIN GLOW */
-[data-theme='dark'] body::before {
+/* The Radial Glow */
+body::after {
   content: "";
   position: fixed;
   inset: 0;
-  background:
-    radial-gradient(circle at 80% 20%, rgba(255,108,55,0.35), transparent 60%),
-    radial-gradient(circle at 20% 80%, rgba(255,108,55,0.25), transparent 60%);
-  filter: blur(100px);
+  background: radial-gradient(circle at 50% -10%, rgba(255, 108, 55, 0.12), transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
 
-/* CONTENT ABOVE GLOW */
 #root {
-  position: relative;
-  z-index: 1;
-}
-
-/* ============================================================
-   TRANSPARENCY FIX (IMPORTANT)
-   ============================================================ */
-
-[data-theme='dark'] section,
-[data-theme='dark'] main,
-[data-theme='dark'] .appWrapper {
-  background: transparent !important;
-}
-
-/* REMOVE stacking issues */
-section {
-  display: block;
   width: 100%;
   position: relative;
+  overflow-x: clip; 
+  z-index: 1; /* Keeps content above the glow */
 }
 
-/* ============================================================
-   TYPOGRAPHY VISIBILITY
-   ============================================================ */
-
-h1, h2, h3, h4, h5, h6, p, span, a {
-  opacity: 1 !important;
-  visibility: visible !important;
+/* 2. Responsive Typography */
+h1, h2 {
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1.1; /* Adjusted for mobile line-wrapping */
 }
-
-/* ============================================================
-   GLOBAL HELPERS
-   ============================================================ */
 
 a {
   text-decoration: none;
   color: inherit;
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-primary);
-}
-
-::-webkit-scrollbar-thumb {
-  background: #2D2D2D;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-orange);
-}
-
-
-
-
-
-
-
-/* ============================================================
-   🚀 SHERYIANS STYLE UPGRADE (ADD THIS AT THE BOTTOM)
-   ============================================================ */
-
-:root {
-  --font-mono: 'JetBrains Mono', monospace;
-  --shery-orange: #FF6C37;
-  --shery-bg: #050403;
-}
-
-[data-theme='dark'] body {
-  background-color: var(--shery-bg) !important;
-  /* Adding the subtle grid pattern seen in the video */
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 50px 50px;
-  background-attachment: fixed;
-}
-
-/* Improving the Radial Glow for more depth */
-[data-theme='dark'] body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at 50% -10%, rgba(255, 108, 55, 0.15), transparent 60%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Sheryians-style Smooth Scroll */
-html {
-  scroll-behavior: smooth;
-}
-
-/* High-End Typography Reset */
-h1, h2 {
-  text-transform: uppercase;
-  letter-spacing: -0.05em;
-  line-height: 0.9;
-}
-
-/* Custom Selection Glow */
-::selection {
-  background: var(--shery-orange);
-  color: #fff;
-}
-
-/* Scrollbar Upgrade for Dark Mode */
-[data-theme='dark']::-webkit-scrollbar-thumb {
-  background: #1a1a1a;
-  border: 2px solid var(--shery-bg);
-}
-
-[data-theme='dark']::-webkit-scrollbar-thumb:hover {
-  background: var(--shery-orange);
 }
