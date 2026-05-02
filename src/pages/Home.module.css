@@ -13,7 +13,6 @@
   padding: 0 5vw;
 }
 
-
 /* ============================================================
    2. CENTER CONTENT & HEADING
    ============================================================ */
@@ -30,11 +29,10 @@
 }
 
 .mask {
-  /* overflow: hidden ko hata kar ye do lines add karein */
-  overflow: visible; 
+  overflow: visible;
   display: block;
-  clip-path: inset(0 0 -10% 0); /* Ye niche se thoda extra space rakhega taaki box na bane */
-  margin-bottom: -0.1em; /* Words ke beech ka gap control karne ke liye */
+  clip-path: inset(0 0 -10% 0);
+  margin-bottom: -0.1em;
 }
 
 .heroHeading {
@@ -48,17 +46,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* GPU acceleration taaki rendering clean ho */
-  transform: translateZ(0); 
+  transform: translateZ(0);
   backface-visibility: hidden;
 }
 
-/* Skyblue outline fix */
+/* Skyblue outline */
 .outlineText {
   color: transparent;
   -webkit-text-stroke: 1.5px #00C2FF;
-  /* Glow ko halka sa kam kiya taaki box effect na bane */
-  filter: drop-shadow(0 0 2px rgba(0, 194, 255, 0.2)); 
+  filter: drop-shadow(0 0 2px rgba(0, 194, 255, 0.2));
 }
 .outlineText:hover {
   color: #00C2FF;
@@ -74,8 +70,6 @@
 /* ============================================================
    3. STATUS BADGE & PILLS
    ============================================================ */
-
-
 .statusText {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.6rem;
@@ -96,6 +90,7 @@
   border-radius: 10px;
   font-weight: 900;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .pillOrange {
@@ -104,10 +99,11 @@
   padding: 16px 40px;
   border-radius: 10px;
   font-weight: 900;
+  cursor: pointer;
 }
 
 /* ============================================================
-   4. FLOATING CHIPS (Mobile Logic Inside)
+   4. FLOATING CHIPS
    ============================================================ */
 .floatingChip {
   position: absolute;
@@ -147,78 +143,172 @@
   border-radius: 50%;
   background: var(--accent);
   box-shadow: 0 0 10px var(--accent);
+  flex-shrink: 0;
 }
 
-/* --- CHIP POSITIONS --- */
-
-/* Top Row */
+/* --- CHIP POSITIONS (Desktop) --- */
 .chip0 { top: 18%; left: 12%; }
 .chip1 { top: 12%; right: 18%; }
-
-/* Bottom Row */
 .chip2 { bottom: 28%; left: 15%; }
 .chip3 { bottom: 22%; right: 12%; }
 
 /* ============================================================
-   📱 MOBILE RESPONSIVE (Inspired by Creative Video Editor code)
+   SPOTLIGHT
+   ============================================================ */
+.spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ============================================================
+   📱 TABLET (768px – 1024px)
+   ============================================================ */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .chip0 { top: 15%; left: 5%; }
+  .chip1 { top: 15%; right: 5%; left: auto; }
+  .chip2 { bottom: 20%; left: 5%; }
+  .chip3 { bottom: 20%; right: 5%; left: auto; }
+}
+
+/* ============================================================
+   📱 MOBILE (≤ 768px) — FULLY FIXED
    ============================================================ */
 @media (max-width: 768px) {
   .heroContainer {
-    padding-top: 80px;
-    height: auto;
+    padding: 120px 16px 60px;
     min-height: 100vh;
-  }
-
-  .heroHeading {
-    font-size: clamp(2.5rem, 15vw, 4.5rem);
-    line-height: 1;
-    letter-spacing: -0.05em;
-    display: flex;
-    flex-direction: column;
+    height: auto;
     align-items: center;
   }
 
-  /* 🛠️ CHIP FIX: Aligning chips tightly around the heading */
-  .floatingChip {
-    scale: 0.85; /* Slightly smaller for mobile screens */
+  .centerContent {
+    gap: 0;
+    width: 100%;
   }
 
-  /* Top Chips: Above the heading */
-  .chip0 { top: 20%; left: 5% !important; }
-  .chip1 { top: 20%; right: 5% !important; left: auto !important; }
+  .heroHeading {
+    font-size: clamp(2.4rem, 14vw, 4rem);
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    margin: 0.5rem 0 1rem;
+  }
 
-  /* Bottom Chips: Below the heading but ABOVE the buttons */
-  .chip2 { bottom: 35%; left: 5% !important; }
-  .chip3 { bottom: 35%; right: 5% !important; left: auto !important; }
+  /* ── Chips: stack each pair vertically on left/right ── */
 
+  /* TOP-LEFT chip */
+  .chip0 {
+    top: 5%;
+    left: 4% !important;
+    right: auto !important;
+  }
+
+  /* TOP-RIGHT chip */
+  .chip1 {
+    top: 5%;
+    right: 4% !important;
+    left: auto !important;
+  }
+
+  /* BOTTOM-LEFT chip */
+  .chip2 {
+    bottom: 16%;
+    left: 4% !important;
+    right: auto !important;
+  }
+
+  /* BOTTOM-RIGHT chip */
+  .chip3 {
+    bottom: 16%;
+    right: 4% !important;
+    left: auto !important;
+  }
+
+  /* Shrink chips so text fits without clipping */
+  .chipInner {
+    font-size: 0.5rem;
+    padding: 6px 10px;
+    gap: 6px;
+    max-width: 42vw;      /* never wider than ~half screen */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .dot {
+    width: 5px;
+    height: 5px;
+  }
+
+  /* Pills */
   .pillGroup {
     flex-direction: column;
+    align-items: center;
     width: 100%;
-    max-width: 280px;
+    max-width: 320px;
     gap: 12px;
-    margin-top: 6rem; /* Space to let Bottom Chips breathe */
-    transform: translateY(0) !important;
+    margin-top: 2.5rem;
   }
 
-  .pillWhite, .pillOrange {
+  .pillWhite,
+  .pillOrange {
     width: 100%;
-    padding: 16px 0;
+    padding: 15px 0;
     text-align: center;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    border-radius: 10px;
   }
 
   .statusBadge {
-    transform: scale(0.8);
+    transform: scale(0.85);
     margin-bottom: 0.5rem;
   }
 }
 
-/* Extra safety for very small phones */
+/* ============================================================
+   📱 SMALL PHONES (≤ 480px)
+   ============================================================ */
 @media (max-width: 480px) {
-  .heroHeading {
-    font-size: clamp(1.8rem, 12vw, 3rem);
+  .heroContainer {
+    padding-top: 100px;
+    padding-bottom: 50px;
   }
-  
-  .chip2, .chip3 {
-    bottom: 32%; /* Adjusted for smaller vertical height */
+
+  .heroHeading {
+    font-size: clamp(2rem, 13vw, 3rem);
+  }
+
+  .chip0 { top: 4%; }
+  .chip1 { top: 4%; }
+
+  .chip2 { bottom: 14%; }
+  .chip3 { bottom: 14%; }
+
+  .chipInner {
+    font-size: 0.45rem;
+    padding: 5px 8px;
+    max-width: 40vw;
+  }
+
+  .pillWhite,
+  .pillOrange {
+    font-size: 0.8rem;
+    padding: 14px 0;
+  }
+}
+
+/* ============================================================
+   📱 VERY SMALL (≤ 360px)
+   ============================================================ */
+@media (max-width: 360px) {
+  .heroHeading {
+    font-size: clamp(1.8rem, 12vw, 2.6rem);
+  }
+
+  .chipInner {
+    font-size: 0.42rem;
+    max-width: 38vw;
   }
 }
