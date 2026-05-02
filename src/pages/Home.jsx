@@ -92,14 +92,12 @@ const Home = () => {
       ))}
 
       <div className={styles.centerContent}>
-        <h1 className={styles.heroHeading}>
-
+        <h1 className={styles.heroHeading} aria-label="Building Scalable Applications">
           <div className={styles.mask}>
             <motion.span variants={reveal} initial="hidden" animate="visible">
               BUILDING
             </motion.span>
           </div>
-
           <div className={styles.mask}>
             <motion.span
               variants={reveal}
@@ -111,7 +109,6 @@ const Home = () => {
               SCALABLE
             </motion.span>
           </div>
-
           <div className={styles.mask}>
             <motion.span
               variants={reveal}
@@ -119,11 +116,11 @@ const Home = () => {
               animate="visible"
               transition={{ delay: 0.2 }}
               className={styles.orangeText}
+              aria-label="Applications"
             >
               APPLICATIONS
             </motion.span>
           </div>
-
         </h1>
 
         <motion.div
