@@ -61,7 +61,6 @@ const Home = () => {
       onMouseMove={handleMouseMove}
     >
 
-      {/* 🔦 Spotlight only on desktop */}
       {!isMobile && (
         <div
           className={styles.spotlight}
@@ -71,7 +70,6 @@ const Home = () => {
         />
       )}
 
-      {/* 🔷 Chips */}
       {floatingSkills.map((skill, i) => (
         <motion.div
           key={i}
@@ -93,12 +91,9 @@ const Home = () => {
         </motion.div>
       ))}
 
-      {/* 🔶 Content */}
       <div className={styles.centerContent}>
-
-        
-
         <h1 className={styles.heroHeading}>
+
           <div className={styles.mask}>
             <motion.span variants={reveal} initial="hidden" animate="visible">
               BUILDING
@@ -128,6 +123,7 @@ const Home = () => {
               APPLICATIONS
             </motion.span>
           </div>
+
         </h1>
 
         <motion.div
@@ -152,7 +148,6 @@ const Home = () => {
             MERN SPECIALIST
           </motion.div>
         </motion.div>
-
       </div>
     </section>
   );

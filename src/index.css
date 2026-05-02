@@ -1,12 +1,16 @@
-/* 1. Reset & Core */
+/* ============================================================
+   RESET
+   ============================================================ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* ============================================================
+   ROOT VARIABLES
+   ============================================================ */
 :root {
-  /* DARK MODE (Default) */
   --bg-primary: #050403;
   --bg-secondary: #0D0D0D;
   --text-main: #FFFFFF;
@@ -15,29 +19,33 @@
   --font-mono: 'JetBrains Mono', monospace;
 }
 
-html {
+/* ============================================================
+   HTML + BODY FIX (VERY IMPORTANT)
+   ============================================================ */
+html, body {
+  width: 100%;
+  overflow-x: hidden;   /* ✅ prevents side scroll */
   scroll-behavior: smooth;
-  background-color: var(--bg-primary); /* Prevents white flash */
+  background-color: var(--bg-primary);
 }
 
+/* ============================================================
+   BODY DESIGN
+   ============================================================ */
 body {
-  width: 100%;
   min-height: 100vh;
-  overflow-x: hidden;
   color: var(--text-main);
-  background-color: var(--bg-primary);
   font-family: 'Inter', -apple-system, sans-serif;
   line-height: 1.5;
-  
-  /* The Grid Pattern */
+
   background-image: 
     linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 40px 40px; /* Slightly smaller for mobile-first */
+  background-size: 40px 40px;
   background-attachment: fixed;
 }
 
-/* The Radial Glow */
+/* Glow */
 body::after {
   content: "";
   position: fixed;
@@ -47,18 +55,23 @@ body::after {
   z-index: 0;
 }
 
+/* ============================================================
+   ROOT FIX (IMPORTANT)
+   ============================================================ */
 #root {
   width: 100%;
   position: relative;
-  overflow-x: clip; 
-  z-index: 1; /* Keeps content above the glow */
+  overflow-x: hidden;  /* ✅ FIXED (removed clip) */
+  z-index: 1;
 }
 
-/* 2. Responsive Typography */
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
 h1, h2 {
   text-transform: uppercase;
   letter-spacing: -0.02em;
-  line-height: 1.1; /* Adjusted for mobile line-wrapping */
+  line-height: 1.1;
 }
 
 a {

@@ -1,60 +1,77 @@
-/* ============================================================
-   1. HERO CONTAINER
-   ============================================================ */
+/* GLOBAL SAFETY */
+* {
+  box-sizing: border-box;
+}
+
+/* ============================================================ */
+/* HERO CONTAINER FULL WIDTH FIX */
+/* ============================================================ */
+
 .heroContainer {
-  min-height: 100dvh; /* Dynamic height for mobile browsers */
-  width: 100%;
+  position: relative;
+
+  width: 100vw;                 /* 🔥 FULL WIDTH */
+  max-width: 100vw;
+
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
+
   background: #000;
-  position: relative;
-  overflow-x: hidden; /* Only hide horizontal */
-  padding: 0; /* Mobile edge-to-edge */
+
+  overflow-x: hidden;
+
+  /* 🔥 BREAK OUT OF PARENT */
+  margin-left: calc(-50vw + 50%);
 }
+
+/* ============================================================ */
+/* CENTER CONTENT */
+/* ============================================================ */
 
 .centerContent {
   z-index: 10;
   text-align: center;
+
   width: 100%;
-  max-width: 100%; 
-  padding: 0 15px; /* Side safety gap */
+  max-width: 1200px;     /* control content width */
+  margin: 0 auto;
+
+  padding: 0 20px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* ============================================================ */
+/* TEXT */
+/* ============================================================ */
+
 .mask {
-  /* overflow: hidden ko hata kar ye do lines add karein */
-  overflow: visible; 
+  overflow: visible;
   display: block;
-  clip-path: inset(0 0 -10% 0); /* Ye niche se thoda extra space rakhega taaki box na bane */
-  margin-bottom: -0.1em; /* Words ke beech ka gap control karne ke liye */
+  clip-path: inset(0 0 -10% 0);
+  margin-bottom: -0.1em;
 }
 
 .heroHeading {
-  /* Fluid font fix: 12vw is safer for the word 'APPLICATIONS' */
   font-size: clamp(2.2rem, 12vw, 8.5rem);
   font-weight: 950;
-  line-height: 1.0; 
+  line-height: 1.0;
   letter-spacing: -0.04em;
-  margin: 2rem 0; /* Spacing for chips to breathe */
+  margin: 2rem 0;
+
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Skyblue outline fix */
 .outlineText {
   color: transparent;
   -webkit-text-stroke: 1.5px #00C2FF;
-  /* Glow ko halka sa kam kiya taaki box effect na bane */
-  filter: drop-shadow(0 0 2px rgba(0, 194, 255, 0.2)); 
-}
-.outlineText:hover {
-  color: #00C2FF;
-  -webkit-text-stroke: 1px transparent;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  filter: drop-shadow(0 0 2px rgba(0, 194, 255, 0.2));
 }
 
 .orangeText {
@@ -62,17 +79,9 @@
   text-shadow: 0 0 30px rgba(255, 108, 55, 0.4);
 }
 
-/* ============================================================
-   3. STATUS BADGE & PILLS
-   ============================================================ */
-
-
-.statusText {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.6rem;
-  color: #00995E;
-  font-weight: 800;
-}
+/* ============================================================ */
+/* BUTTONS */
+/* ============================================================ */
 
 .pillGroup {
   display: flex;
@@ -97,9 +106,10 @@
   font-weight: 900;
 }
 
-/* ============================================================
-   4. FLOATING CHIPS (Mobile Logic Inside)
-   ============================================================ */
+/* ============================================================ */
+/* FLOATING CHIPS */
+/* ============================================================ */
+
 .floatingChip {
   position: absolute;
   z-index: 5;
@@ -113,23 +123,11 @@
   padding: 8px 16px;
   border-radius: 6px;
   color: #fff;
-  font-family: 'JetBrains Mono', monospace;
   font-size: 0.6rem;
   display: flex;
   align-items: center;
   gap: 8px;
   white-space: nowrap;
-  position: relative;
-}
-
-.chipInner::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  box-shadow: 0 0 15px var(--accent);
-  opacity: 0.15;
-  z-index: -1;
 }
 
 .dot {
@@ -137,79 +135,47 @@
   height: 6px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 10px var(--accent);
 }
 
-/* --- CHIP POSITIONS --- */
-
-/* Top Row */
+/* positions */
 .chip0 { top: 18%; left: 12%; }
 .chip1 { top: 12%; right: 18%; }
-
-/* Bottom Row */
 .chip2 { bottom: 28%; left: 15%; }
 .chip3 { bottom: 22%; right: 12%; }
 
-/* ============================================================
-   📱 MOBILE RESPONSIVE (Inspired by Creative Video Editor code)
-   ============================================================ */
+/* ============================================================ */
+/* MOBILE */
+/* ============================================================ */
+
 @media (max-width: 768px) {
   .heroContainer {
-    padding-top: 80px;
-    height: auto;
     min-height: 100vh;
   }
 
   .heroHeading {
     font-size: clamp(2.5rem, 15vw, 4.5rem);
-    line-height: 1;
-    letter-spacing: -0.05em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
-
-  /* 🛠️ CHIP FIX: Aligning chips tightly around the heading */
-  .floatingChip {
-    scale: 0.85; /* Slightly smaller for mobile screens */
-  }
-
-  /* Top Chips: Above the heading */
-  .chip0 { top: 20%; left: 5% !important; }
-  .chip1 { top: 20%; right: 5% !important; left: auto !important; }
-
-  /* Bottom Chips: Below the heading but ABOVE the buttons */
-  .chip2 { bottom: 35%; left: 5% !important; }
-  .chip3 { bottom: 35%; right: 5% !important; left: auto !important; }
 
   .pillGroup {
     flex-direction: column;
     width: 100%;
     max-width: 280px;
     gap: 12px;
-    margin-top: 6rem; /* Space to let Bottom Chips breathe */
-    transform: translateY(0) !important;
+    margin-top: 5rem;
   }
 
-  .pillWhite, .pillOrange {
+  .pillWhite,
+  .pillOrange {
     width: 100%;
-    padding: 16px 0;
     text-align: center;
   }
 
-  .statusBadge {
-    transform: scale(0.8);
-    margin-bottom: 0.5rem;
+  .floatingChip {
+    scale: 0.85;
   }
-}
 
-/* Extra safety for very small phones */
-@media (max-width: 480px) {
-  .heroHeading {
-    font-size: clamp(1.8rem, 12vw, 3rem);
-  }
-  
-  .chip2, .chip3 {
-    bottom: 32%; /* Adjusted for smaller vertical height */
-  }
+  .chip0 { top: 20%; left: 5%; }
+  .chip1 { top: 20%; right: 5%; }
+  .chip2 { bottom: 35%; left: 5%; }
+  .chip3 { bottom: 35%; right: 5%; }
 }
