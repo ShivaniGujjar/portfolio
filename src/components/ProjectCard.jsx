@@ -3,11 +3,12 @@ import { motion } from 'framer-motion';
 import styles from './ProjectCard.module.css';
 import { HiOutlineExternalLink, HiCode } from 'react-icons/hi';
 
-// 🔍 FIXED IMPORTS: Sirf wahi icons jo library mein exist karte hain
+// 🔍 FIXED IMPORTS: Kept exact baseline imports and appended required CreatorFlow assets
 import { 
   SiReact, SiNodedotjs, SiMongodb, SiExpress, SiSocketdotio, 
   SiRedux, SiTailwindcss, SiFramer, SiJsonwebtokens, 
-  SiLangchain, SiGoogle, SiOpenai, SiMarkdown, SiAxios
+  SiLangchain, SiGoogle, SiOpenai, SiMarkdown, SiAxios,
+  SiMongoose
 } from 'react-icons/si';
 
 import { LuSearchCode, LuBrainCircuit } from 'react-icons/lu';
@@ -23,14 +24,15 @@ const techData = {
   'JWT': { icon: <SiJsonwebtokens />, color: '#FB015B' },
   'AXIOS': { icon: <SiAxios />, color: '#5A29E4' },
   
-  // Unravel AI Bricks (AI Agent Stack)
+  // Unravel AI / CreatorFlow Bricks
   'LANGCHAIN': { icon: <SiLangchain />, color: '#1C3C3C' },
-  'GEMINI': { icon: <SiGoogle />, color: '#4285F4' },    // SiGoogleway ki jagah SiGoogle
-  'MISTRAL': { icon: <SiOpenai />, color: '#FF5C00' },   // SiMistral ki jagah SiOpenai (Fallback)
+  'GEMINI': { icon: <SiGoogle />, color: '#4285F4' },    
+  'MISTRAL': { icon: <SiOpenai />, color: '#FF5C00' },   
   'TAVILY': { icon: <LuSearchCode />, color: '#5F57FF' },
   'SOCKET.IO': { icon: <SiSocketdotio />, color: '#ffffff' },
   'MARKDOWN': { icon: <SiMarkdown />, color: '#ffffff' },
-  'FRAMER': { icon: <SiFramer />, color: '#E10098' }
+  'FRAMER': { icon: <SiFramer />, color: '#E10098' },
+  'MONGOOSE': { icon: <SiMongoose />, color: '#880000' }
 };
 
 const ProjectCard = ({ id, title, description, techStack, imageSrc, repoLink, liveLink, themeColor }) => {
@@ -62,7 +64,6 @@ const ProjectCard = ({ id, title, description, techStack, imageSrc, repoLink, li
         <div className={styles.techWall}>
           {techStack.map((tech, i) => {
             const key = tech.toUpperCase();
-            // Safety Check: Agar icon nahi milta toh default brain icon dikhayega
             const techInfo = techData[key];
             
             return (

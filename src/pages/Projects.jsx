@@ -3,6 +3,7 @@ import ProjectCard from '../components/ProjectCard';
 import styles from './Projects.module.css';
 import tasksyncImg from '../assets/tasksync.png';
 import unravelImg from '../assets/unravel.png'; 
+import creatorflowImg from '../assets/creatorflow.png'
 
 const projectsData = [
   { 
@@ -25,7 +26,18 @@ const projectsData = [
     repoLink: 'https://github.com/ShivaniGujjar/unravel', 
     liveLink: 'https://unravel-liart.vercel.app/', 
     themeColor: '#FF6C37' 
-  }
+  },
+
+  {
+  id: "3", // Version update
+  title: "CreatorFlow",
+  description: "An AI-driven content roadmapping and scripting workspace generating automated production loops, structural idea-tracking, and dynamic generation models for creators.",
+  techStack: ["React", "Node.js", "MongoDB", "Socket.io", "LangChain", "Gemini", "Mistral"],
+  imageSrc: creatorflowImg,
+  repoLink: "https://github.com/.../creatorflow",
+  liveLink: "https://...",
+  themeColor: "#FF4D00" // Neon Vermillion for hot orange branding
+}
 ];
 function Projects() {
   return (
