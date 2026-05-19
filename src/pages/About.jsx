@@ -111,13 +111,7 @@ const About = () => {
 
         </div>
 
-        {/* 🏆 CAPABILITIES HEADING */}
-        <div className="w-full text-center mt-32 mb-16">
-          <h2 className="text-[3rem] md:text-[5rem] font-black text-white tracking-tighter uppercase mb-2">
-            DETAILED <span className="text-[#00C2FF]">CAPABILITIES</span>
-          </h2>
-          <div className="w-20 h-1 bg-[#00C2FF] mx-auto rounded-full"></div>
-        </div>
+        
 
       </div>
     </section>

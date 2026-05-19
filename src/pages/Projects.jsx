@@ -39,46 +39,35 @@ const projectsData = [
 
 function Projects() {
   return (
-    // 🚀 ID YAHAN ADD KI HAI: id="projects"
-    <section 
-      id="projects"
-      className="w-full relative bg-brand-black pt-24 md:pt-32 pb-20 overflow-hidden"
-      style={{
-        backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 0)',
-        backgroundSize: '40px 40px'
-      }}
-    >
-      {/* ⚡ Futuristic Top Boundary Line */}
-      <div className="absolute top-0 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-
-      {/* INNER CONTENT WRAPPER */}
-      <div className="w-full max-w-[1250px] mx-auto px-6 sm:px-8">
+    <section id="projects" className="w-full relative bg-[#050507] pt-24 pb-20">
+      <div className="w-full max-w-[1250px] mx-auto px-6">
         
-        {/* 🛠️ HEADER */}
-        <div className="text-center mb-16 md:mb-24 flex flex-col items-center">
-          <span className="font-mono text-[0.65rem] tracking-[0.3em] font-black text-[#00C2FF] uppercase mb-4 block px-3 py-1 bg-white/5 border border-white/10 rounded-full">
+        {/* 🛠️ HEADER: MATCHED EXACTLY WITH SCREENSHOT */}
+        <div className="text-center mb-16 flex flex-col items-center">
+          
+          {/* Pill Badge */}
+          <span className="font-mono text-[0.6rem] tracking-[0.2em] font-bold text-[#00C2FF] uppercase mb-6 px-4 py-1 border border-white/10 rounded-full inline-block">
             PRODUCTION REGISTRY
           </span>
-          <h2 className="text-[2.5rem] sm:text-[3.2rem] md:text-[clamp(2.2rem,6vw,4rem)] text-white font-black leading-[1.15] tracking-tight uppercase m-0 py-2">
-            RECENT <span className="text-brand-blue-bright drop-shadow-[0_0_20px_rgba(0,194,255,0.2)]">BUILDS</span>
+          
+          {/* Heading with White/Cyan split */}
+          <h2 className="text-[clamp(2.5rem,8vw,5rem)] font-black leading-[1.1] tracking-tighter uppercase m-0 py-2">
+            <span className="text-white">RECENT</span> <span className="text-[#00C2FF]">BUILDS</span>
           </h2>
-          <p className="text-[#888] text-sm md:text-[1rem] mt-3 px-2 max-w-[540px] font-medium leading-relaxed">
+          
+          {/* Subtext */}
+          <p className="text-[#888] text-sm md:text-[1rem] mt-6 px-2 max-w-[540px] font-medium leading-relaxed">
             Engineered solutions optimizing high-efficiency application stacks, bidirectional websockets, and modular multi-agent pipelines.
           </p>
-          <div className="w-10 h-1 bg-brand-blue-bright mt-5 rounded-full shadow-[0_0_15px_rgba(0,194,255,0.3)]" />
+
+          {/* Cyan Dash Divider */}
+          <div className="w-12 h-1 bg-[#00C2FF] mt-8 rounded-full" />
         </div>
         
-        {/* 🏁 EVEN SYMMETRIC GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-12 justify-items-center">
+        {/* GRID */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 justify-items-center">
           {projectsData.map((project) => (
-            <div 
-              key={project.id} 
-              className="w-full max-w-[420px] relative group"
-            >
-              <div 
-                className="absolute -inset-1 rounded-[32px] opacity-0 blur-xl group-hover:opacity-20 transition duration-700 pointer-events-none"
-                style={{ background: `radial-gradient(circle at center, ${project.themeColor}30, transparent 70%)` }}
-              />
+            <div key={project.id} className="w-full max-w-[500px]">
               <ProjectCard {...project} />
             </div>
           ))}

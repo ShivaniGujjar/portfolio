@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import SkillCard from '../components/SkillCard';
 import { 
   SiReact, SiNodedotjs, SiMongodb, 
@@ -13,27 +13,22 @@ const Capabilities = () => {
   ];
 
   return (
-    // 🛠️ Full width section with your responsive padding
-    <section className="w-full px-4 md:px-8 pb-20 relative bg-brand-black pt-16 md:pt-24" id="capabilities">
+    <section className="w-full relative bg-[#050507] pt-12 pb-20" id="capabilities">
       
-      {/* Separators */}
-      <div className="absolute top-0 left-4 right-4 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent md:hidden" />
+      {/* 🏆 EXACT HEADING AS PER SCREENSHOT */}
+      <div className="w-full text-center mb-16">
+        <h2 className="w-full text-[clamp(2.5rem,8vw,6rem)] font-black leading-[1] tracking-tighter uppercase m-0 px-4">
+          <span className="text-white">DETAILED</span> <span className="text-[#00C2FF]">CAPABILITIES</span>
+        </h2>
+        {/* Short Cyan Divider */}
+        <div className="w-16 h-1 bg-[#00C2FF] mx-auto mt-6 rounded-full"></div>
+      </div>
 
-      {/* 📍 THE STICKY STACKING ENGINE */}
-      <div className="relative mt-0 md:mt-10 max-w-[1250px] mx-auto">
-        <div className="md:sticky md:top-[100px] z-5 text-center mb-16 md:mb-40">
-          <h2 className="text-[clamp(2.2rem,6vw,4rem)] text-white font-black leading-[1.15] tracking-tight uppercase m-0 py-2">
-            DETAILED <span className="text-brand-blue-bright drop-shadow-[0_0_20px_rgba(0,194,255,0.2)]">CAPABILITIES</span>
-          </h2>
-          <div className="w-10 h-1 bg-brand-blue-bright mx-auto mt-5 rounded-full shadow-[0_0_15px_rgba(0,194,255,0.3)]"></div>
-        </div>
-
-        {/* ⚡ STICKY STACKING EFFECT (Original gap-[30vh] maintained) */}
-        <div className="flex flex-col relative z-10 gap-[30vh] mt-0 md:-mt-[100px] [&>div:last-child]:mb-8">
-          {skillData.map((skill, index) => (
-            <SkillCard key={index} index={index} {...skill} />
-          ))}
-        </div>
+      {/* STICKY STACKING ENGINE */}
+      <div className="flex flex-col relative z-10 gap-[20vh] max-w-[1250px] mx-auto px-4 md:px-8">
+        {skillData.map((skill, index) => (
+          <SkillCard key={index} index={index} {...skill} />
+        ))}
       </div>
     </section>
   );
