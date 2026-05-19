@@ -1,8 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  SiReact, SiNodedotjs, SiMongodb, SiJavascript 
-} from 'react-icons/si';
+import { SiReact, SiNodedotjs, SiMongodb, SiJavascript } from 'react-icons/si';
 
 // ==========================================
 // 🏷️ REUSABLE PILL BADGE COMPONENT
@@ -21,11 +19,10 @@ const CardBadge = ({ text, dotClass, borderClass, bgClass, textClass = "text-whi
 // ==========================================
 const About = () => {
   return (
-    // 🚀 OUTER WRAPPER: Yeh hamesha 100% width lega aur background color set karega
     <section className="relative w-full bg-[#050507] pt-24 md:pt-32 pb-12 overflow-hidden" id="about">
       
       {/* Background Marquee Text */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen min-w-full whitespace-nowrap opacity-[0.02] pointer-events-none z-0 select-none overflow-hidden">
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen min-w-full whitespace-nowrap opacity-[0.02] pointer-events-none z-0 select-none overflow-hidden">
         <motion.h1 
           className="font-outfit text-[3rem] sm:text-[5rem] md:text-[9rem] xl:text-[11rem] font-black text-white uppercase tracking-tighter m-0 inline-block"
           animate={{ x: [0, -1400] }}
@@ -35,91 +32,60 @@ const About = () => {
         </motion.h1>
       </div>
 
-      {/* 🚀 INNER CONTAINER: Yeh tumhare content ko exactly 1200px mein center rakhega */}
       <div className="w-full max-w-[1200px] mx-auto px-5 lg:px-8 relative z-10">
 
-        {/* 🏆 CENTERED HEADING */}
+        {/* 🏆 FIXED HEADING (Styled like Detailed Capabilities) */}
         <div className="w-full text-center pt-4 pb-16 relative flex flex-col items-center justify-center">
-          <h2 className="font-outfit text-[2.8rem] sm:text-[4rem] md:text-[5rem] font-black text-white tracking-tighter uppercase m-0 leading-none select-none flex items-center justify-center gap-2 sm:gap-4">
-            ABOUT 
-            <span className="font-jetbrains font-light text-[#00C2FF] text-[3.2rem] sm:text-[4.5rem] md:text-[6rem] translate-y-[-5%]">{'{'}</span>
-            <span className="text-[#00C2FF] drop-shadow-[0_0_20px_rgba(0,194,255,0.3)]">ME</span>
-            <span className="font-jetbrains font-light text-[#00C2FF] text-[3.2rem] sm:text-[4.5rem] md:text-[6rem] translate-y-[-5%]">{'}'}</span>
+          <h2 className="font-outfit text-[2.8rem] sm:text-[4rem] md:text-[5rem] font-black text-white tracking-tighter uppercase m-0 leading-none select-none flex items-center justify-center gap-4">
+            ABOUT <span className="text-[#00C2FF]">ME</span>
           </h2>
+          {/* Cyan Line Divider */}
+          <div className="mt-6 w-16 h-[3px] bg-[#00C2FF] rounded-full"></div>
         </div>
 
         {/* 🍱 PREMIUM HYBRID BENTO GRID */}
         <div className="grid grid-cols-1 gap-5 relative md:grid-cols-3 md:grid-rows-[260px_260px] lg:gap-6">
           
-          {/* 🆔 IDENTITY BOX (Dark Mode) */}
+          {/* 🆔 IDENTITY BOX */}
           <motion.div 
             className="group flex flex-col justify-end relative bg-[#0A0A0C] border border-white/[0.05] rounded-[32px] p-8 shadow-2xl hover:border-[#00C2FF]/30 transition-colors duration-500 md:col-span-2 pt-16" 
             whileHover={{ y: -5 }}
           >
-            <CardBadge 
-              text="IDENTITY" 
-              dotClass="bg-[#00C2FF] shadow-[0_0_8px_#00C2FF]" 
-              borderClass="border-[#00C2FF]/20" 
-              bgClass="bg-[#00C2FF]/5" 
-            />
-            
+            <CardBadge text="IDENTITY" dotClass="bg-[#00C2FF] shadow-[0_0_8px_#00C2FF]" borderClass="border-[#00C2FF]/20" bgClass="bg-[#00C2FF]/5" />
             <div className="mb-2 mt-auto relative z-10">
-              <p className="font-jetbrains text-xs sm:text-sm md:text-base font-bold text-[#00C2FF] tracking-[0.15em] mb-2.5 uppercase">
-                Mern Stack Developer
-              </p>
-              <h2 className="font-outfit text-[2.2rem] sm:text-[3rem] md:text-[3.5rem] lg:text-[4rem] font-black leading-none tracking-tight text-white uppercase">
-                Shivani Gujjar
-              </h2>
+              <p className="font-jetbrains text-xs sm:text-sm md:text-base font-bold text-[#00C2FF] tracking-[0.15em] mb-2.5 uppercase">Mern Stack Developer</p>
+              <h2 className="font-outfit text-[2.2rem] sm:text-[3rem] md:text-[3.5rem] lg:text-[4rem] font-black leading-none tracking-tight text-white uppercase">Shivani Gujjar</h2>
             </div>
-            
             <div className="mt-5 flex items-center gap-3 font-jetbrains text-[10px] font-black tracking-widest text-[#27C93F] uppercase relative z-10">
-              <span className="w-2 h-2 bg-[#27C93F] rounded-full animate-ping shadow-[0_0_12px_#27C93F]"></span> 
-              Available For Work
+              <span className="w-2 h-2 bg-[#27C93F] rounded-full animate-ping shadow-[0_0_12px_#27C93F]"></span> Available For Work
             </div>
           </motion.div>
 
-          {/* 🎯 MISSION BOX (The Bold Yellow #FFB800) */}
+          {/* 🎯 MISSION BOX */}
           <motion.div 
             className="group flex flex-col items-center justify-center relative bg-[#FFB800] border-none rounded-[32px] p-8 lg:p-10 text-center shadow-[0_15px_40px_rgba(255,184,0,0.15)] hover:shadow-[0_20px_50px_rgba(255,184,0,0.3)] transition-all duration-500 md:row-span-2 pt-16" 
             whileHover={{ y: -5, scale: 1.01 }}
           >
-            <CardBadge 
-              text="MISSION" 
-              dotClass="bg-black" 
-              borderClass="border-black/20" 
-              bgClass="bg-black/5" 
-              textClass="text-black/60 group-hover:text-black transition-colors"
-            />
-
+            <CardBadge text="MISSION" dotClass="bg-black" borderClass="border-black/20" bgClass="bg-black/5" textClass="text-black/60 group-hover:text-black" />
             <p className="font-outfit text-[1.4rem] sm:text-[1.6rem] md:text-[1.8rem] lg:text-[2.2rem] font-black leading-[1.2] text-black mt-4 relative z-10">
-              Developing <br className="hidden sm:block" />
-              <span className="bg-black text-[#FFB800] px-3 py-1 rounded-lg mt-2 mb-2 inline-block shadow-xl">
-                Scalable
-              </span> <br className="hidden sm:block" />
+              Developing <br/>
+              <span className="bg-black text-[#FFB800] px-3 py-1 rounded-lg mt-2 mb-2 inline-block shadow-xl">Scalable</span> <br/>
               MERN solutions with pixel-perfect precision.
             </p>
           </motion.div>
 
-          {/* 🎓 ACADEMIC TIMELINE BOX (Premium Timeline Design) */}
+          {/* 🎓 ACADEMIC TIMELINE BOX */}
           <motion.div 
             className="group flex flex-col justify-end relative bg-[#0A0A0C] border border-white/[0.05] rounded-[32px] p-8 shadow-2xl hover:border-white/20 transition-colors duration-500 pt-16" 
             whileHover={{ y: -5 }}
           >
-            <CardBadge 
-              text="ACADEMIC" 
-              dotClass="bg-white/80 shadow-[0_0_8px_rgba(255,255,255,0.6)]" 
-              borderClass="border-white/20" 
-              bgClass="bg-white/5" 
-            />
-            
+            <CardBadge text="ACADEMIC" dotClass="bg-white/80 shadow-[0_0_8px_rgba(255,255,255,0.6)]" borderClass="border-white/20" bgClass="bg-white/5" />
             <div className="flex flex-col gap-4 h-full justify-end relative z-10 mt-6">
               <div>
                 <h4 className="font-outfit text-xl sm:text-2xl font-bold text-white tracking-wide m-0">MCA <span className="text-white/40 font-light text-lg">@ LPU</span></h4>
                 <p className="font-jetbrains text-[10px] sm:text-[11px] text-[#00C2FF] mt-1.5 tracking-widest">2024 — 2026</p>
               </div>
-              
               <div className="w-full h-[1px] bg-gradient-to-r from-white/10 to-transparent"></div>
-              
               <div>
                 <h4 className="font-outfit text-lg sm:text-xl font-bold text-white/70 tracking-wide m-0">BCA <span className="text-white/30 font-light text-base">@ GGSIPU</span></h4>
                 <p className="font-jetbrains text-[10px] sm:text-[11px] text-white/30 mt-1.5 tracking-widest">2021 — 2023</p>
@@ -132,30 +98,27 @@ const About = () => {
             className="group flex flex-col justify-center items-center relative bg-[#0A0A0C] border border-white/[0.05] rounded-[32px] p-8 shadow-2xl hover:border-[#00C2FF]/30 transition-colors duration-500 pt-16" 
             whileHover={{ y: -5 }}
           >
-            <CardBadge 
-              text="TECH STACK" 
-              dotClass="bg-[#00C2FF] shadow-[0_0_8px_#00C2FF]" 
-              borderClass="border-[#00C2FF]/30" 
-              bgClass="bg-[#00C2FF]/10" 
-            />
-
-            <div className="grid grid-cols-2 gap-x-10 gap-y-8 mt-6 relative z-10 lg:gap-x-12 lg:gap-y-10">
-              <motion.div className="text-[3rem] sm:text-[3.5rem] text-[#61DAFB] drop-shadow-[0_0_15px_rgba(97,218,251,0.4)]" whileHover={{ scale: 1.15, rotate: 15 }}>
-                <SiReact />
-              </motion.div>
-              <motion.div className="text-[3rem] sm:text-[3.5rem] text-[#339933] drop-shadow-[0_0_15px_rgba(51,153,51,0.4)]" whileHover={{ scale: 1.15, rotate: -15 }}>
-                <SiNodedotjs />
-              </motion.div>
-              <motion.div className="text-[3rem] sm:text-[3.5rem] text-[#47A248] drop-shadow-[0_0_15px_rgba(71,162,72,0.4)]" whileHover={{ scale: 1.15, rotate: 15 }}>
-                <SiMongodb />
-              </motion.div>
-              <motion.div className="w-[3rem] h-[3rem] sm:w-[3.5rem] sm:h-[3.5rem] bg-[#F7DF1E] flex items-center justify-center rounded-lg drop-shadow-[0_0_15px_rgba(247,223,30,0.4)] text-black" whileHover={{ scale: 1.15, rotate: -15 }}>
-                <SiJavascript className="text-[2rem] sm:text-[2.5rem]" />
-              </motion.div>
+            <CardBadge text="TECH STACK" dotClass="bg-[#00C2FF]" borderClass="border-[#00C2FF]/30" bgClass="bg-[#00C2FF]/10" />
+            <div className="grid grid-cols-2 gap-8 mt-6 relative z-10 lg:gap-12">
+              <SiReact className="text-[3rem] text-[#61DAFB]" />
+              <SiNodedotjs className="text-[3rem] text-[#339933]" />
+              <SiMongodb className="text-[3rem] text-[#47A248]" />
+              <div className="w-[3rem] h-[3rem] bg-[#F7DF1E] rounded-lg flex items-center justify-center">
+                <SiJavascript className="text-[2rem] text-black" />
+              </div>
             </div>
           </motion.div>
 
         </div>
+
+        {/* 🏆 CAPABILITIES HEADING */}
+        <div className="w-full text-center mt-32 mb-16">
+          <h2 className="text-[3rem] md:text-[5rem] font-black text-white tracking-tighter uppercase mb-2">
+            DETAILED <span className="text-[#00C2FF]">CAPABILITIES</span>
+          </h2>
+          <div className="w-20 h-1 bg-[#00C2FF] mx-auto rounded-full"></div>
+        </div>
+
       </div>
     </section>
   );

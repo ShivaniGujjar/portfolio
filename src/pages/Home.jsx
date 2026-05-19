@@ -56,7 +56,7 @@ const Home = () => {
 
         {/* Top Declaration */}
         <div className="reveal font-mono text-[9px] tracking-[0.25em] uppercase mb-6 opacity-70">
-          <span className="text-[#00C2FF]">const</span> profile <span className="text-[#FF6C37]">=</span> MERN_ARCHITECT;
+          <span className="text-[#00C2FF]">const</span> profile <span className="text-[#FF6C37]">=</span> MERN_DEVELOPER;
         </div>
 
         {/* Hero Headline */}
