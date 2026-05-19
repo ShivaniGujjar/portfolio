@@ -1,59 +1,79 @@
 import React from 'react';
-import styles from './App.module.css';
 import { motion } from 'framer-motion';
 
 import Navbar from './components/Navbar';
-import Footer from './components/Footer'; // Import our new Footer
+import Footer from './components/Footer'; 
 import Home from './pages/Home';
 import About from './pages/About';
+import Capabilities from './pages/Capabilities'; // <-- Highly cohesive new structural node split
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 
 function App() {
   return (
-    <div className={styles.appWrapper}>
-      <header className={styles.header}>
-        <div className={styles.contentWrapper}>
+    // MAIN GLOBAL WRAPPER BLOCK
+    <div className="bg-brand-black min-h-screen text-white select-none">
+      
+      {/* 🖥️ GLOBAL REGISTRY FLOATING NAVBAR ACCENT */}
+      <header className="fixed top-0 left-0 w-full z-50 pointer-events-none">
+        <div className="w-full max-w-[1400px] mx-auto pointer-events-auto">
           <Navbar />
         </div>
       </header>
 
-      <main>
-        <section id="home" className={styles.mainSection}>
-          <div className={styles.contentWrapper}>
-            <Home />
-          </div>
-        </section>
+      {/* 🚀 SIMPLIFIED MAIN VIEWPORT MATRIX (FIXED OVERFLOW DEADLOCK) */}
+      <main className="w-full">
+        
+        {/* Home Section */}
+        <Home />
 
-        {/* --- Sections are now clean and unified --- */}
-        <motion.section 
-          id="about" 
-          className={styles.mainSection}
+        {/* About Section Container */}
+        <motion.div 
+          className="w-full bg-transparent"
           initial={{ opacity: 0 }} 
           whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
         >
           <About />
-        </motion.section>
+        </motion.div>
 
-        <motion.section 
-          id="projects" 
-          className={styles.mainSection}
+        {/* 📍 Capabilities Stacking Engine Section (Rendered right after About) */}
+        <motion.div 
+          className="w-full bg-transparent"
           initial={{ opacity: 0 }} 
           whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
+          <Capabilities />
+        </motion.div>
+
+        {/* Projects Section Container */}
+        <motion.div 
+          className="w-full bg-transparent"
+          initial={{ opacity: 0 }} 
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
         >
           <Projects />
-        </motion.section>
+        </motion.div>
 
-        <motion.section 
-          id="contact" 
-          className={styles.mainSection}
+        {/* Contact Section Container */}
+        <motion.div 
+          className="w-full bg-transparent"
           initial={{ opacity: 0 }} 
           whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
         >
           <Contact />
-        </motion.section>
+        </motion.div>
+
       </main>
       
+      {/* 🏁 ASSEMBLED GLOBAL FOOTER */}
       <Footer />
     </div>
   );
