@@ -36,7 +36,7 @@ const Footer = () => {
           <div className="flex items-center gap-2.5 bg-[#27C93F]/3 border border-[#27C93F]/10 px-6 py-2.5 md:px-3.5 md:py-1.5 rounded-full md:rounded-sm">
             <span className="w-1.5 h-1.5 bg-[#27C93F] rounded-full shadow-[0_0_10px_rgba(39,201,63,0.4)] animate-pulse duration-1000" />
             <span className="font-mono text-[0.65rem] font-black text-[#27C93F] tracking-wider">
-              SYSTEM_OPERATIONAL
+              SYSTEM OPERATIONAL
             </span>
           </div>
         </div>

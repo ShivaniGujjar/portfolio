@@ -26,10 +26,7 @@ html, body, #root {
   background-color: var(--color-brand-black);
   color: #ffffff;
   scroll-behavior: smooth;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  
-  /* 🔥 FIX: Don't put overflow-x: hidden on HTML/BODY/#ROOT together! 
-     We allow global layout scroll validation here. */
+  font-family: 'Outfit', sans-serif;
 }
 
 /* 🚀 Safe alternative to prevent horizontal layout leaks without killing sticky */

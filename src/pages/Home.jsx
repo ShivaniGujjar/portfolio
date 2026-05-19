@@ -2,120 +2,93 @@ import React, { useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { SiMongodb, SiExpress, SiReact, SiNodedotjs } from 'react-icons/si';
 
+// ==========================================
+// 🚀 VERTICAL SCROLL + HOVER BUTTON
+// ==========================================
+const ScrollButton = ({ text, href, isPrimary }) => {
+  return (
+    <a
+      href={href}
+      className={`group block h-[52px] w-full sm:w-[200px] overflow-hidden rounded-xl font-extrabold text-[11px] sm:text-xs uppercase tracking-[0.2em] transition-all duration-500 ${
+        isPrimary
+          ? "bg-white text-black hover:bg-[#FF6C37] hover:text-white"
+          : "bg-transparent border border-white/20 text-white hover:bg-[#FF6C37] hover:border-[#FF6C37]"
+      }`}
+    >
+      <div className="flex flex-col transition-transform duration-500 [transition-timing-function:cubic-bezier(0.19,1,0.22,1)] group-hover:-translate-y-[52px]">
+        <span className="flex h-[52px] items-center justify-center">{text}</span>
+        <span className="flex h-[52px] items-center justify-center text-white">{text}</span>
+      </div>
+    </a>
+  );
+};
+
+// ==========================================
+// 🏠 MAIN HOME COMPONENT
+// ==========================================
 const Home = () => {
   const containerRef = useRef(null);
 
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
-
-      gsap.set([".title-line", ".btn", ".tech-hud-pod"], { opacity: 0, y: 40 });
-      gsap.set(".grid-bg", { opacity: 0 });
-      gsap.set(".ambient-radar-glow", { opacity: 0, scale: 0.8 });
-
-      tl.to(".grid-bg", { opacity: 0.15, duration: 1.5 })
-        .to(".ambient-radar-glow", { opacity: 1, scale: 1, duration: 1.8, ease: "power3.out" }, "-=1.2")
-        .to(".title-line", { opacity: 1, y: 0, duration: 1.2, stagger: 0.12 }, "-=1.2")
-        .to(".tech-hud-pod", { opacity: 1, y: 0, scale: 1, duration: 1.2, stagger: 0.08, ease: "back.out(1.1)" }, "-=0.8")
-        .to(".btn", { opacity: 1, y: 0, duration: 0.8, stagger: 0.1 }, "-=0.4");
-      
-      gsap.to(".bg-react-pod", { y: "-=15", duration: 4, repeat: -1, yoyo: true, ease: "sine.inOut" });
-      gsap.to(".bg-node-pod", { y: "+=15", duration: 4.5, repeat: -1, yoyo: true, ease: "sine.inOut", delay: 0.2 });
-      gsap.to(".bg-mongo-pod", { y: "-=12", duration: 5, repeat: -1, yoyo: true, ease: "sine.inOut", delay: 0.4 });
-      gsap.to(".bg-express-pod", { y: "+=12", duration: 4.2, repeat: -1, yoyo: true, ease: "sine.inOut", delay: 0.1 });
-
+      gsap.set(".reveal", { opacity: 0, y: 30 });
+      tl.to(".reveal", { opacity: 1, y: 0, duration: 1.2, stagger: 0.12, delay: 0.1 });
     }, containerRef);
     return () => ctx.revert();
   }, []);
+
+  // ... (Home.jsx)
 
   return (
     <section 
       ref={containerRef} 
       id="home"
-      className="relative w-full bg-[#070709] overflow-hidden px-4 pt-36 pb-12 flex flex-col items-center justify-start sm:min-h-screen sm:justify-center sm:pt-0 sm:pb-0"
+      // min-h-screen ki jagah pt-24 use karo taaki space handle ho
+      className="relative w-full pt-24 pb-12 bg-[#050507] flex flex-col items-center overflow-hidden px-5"
     >
-      {/* 🌐 TECH MATRIX GRID BACKGROUND */}
-      <div 
-        className="grid-bg absolute inset-0 w-full h-full pointer-events-none mix-blend-screen"
-        style={{
-          backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px)',
-          backgroundSize: '45px 45px',
-          maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 80%)',
-          WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 80%)'
-        }}
-      />
+      <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_center,_white_1px,_transparent_1px)] bg-[size:40px_40px] pointer-events-none"></div>
 
-      {/* 🔮 CYBER AUDIO-VISUAL GLARE MATRIX */}
-      <div className="ambient-radar-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[70vh] pointer-events-none rounded-full bg-gradient-to-b from-[#00C2FF]/4 to-transparent blur-[120px] mix-blend-screen select-none z-0" />
-
-      {/* ================= CYBER RADAR HUD PODS ================= */}
-      <div className="tech-hud-pod bg-react-pod absolute top-[14%] left-[6%] md:left-[10%] xl:left-[12%] pointer-events-auto select-none z-0 hidden sm:block">
-        <div className="relative w-28 h-28 md:w-36 md:h-36 flex items-center justify-center group cursor-crosshair">
-          <div className="absolute inset-0 rounded-full border border-dashed border-[#00C2FF]/10 group-hover:border-[#00C2FF]/40 transition-colors duration-500 animate-[spin_60s_linear_infinite]" />
-          <div className="w-[82%] h-[82%] rounded-full bg-gradient-to-b from-[#0F0F14] to-[#0A0A0F] border border-white/5 flex items-center justify-center text-[#00C2FF] opacity-40 text-4xl md:text-5xl transition-all duration-500 group-hover:opacity-100 group-hover:scale-105 group-hover:border-[#00C2FF]/40">
-            <SiReact className="animate-[spin_30s_linear_infinite]" />
-          </div>
-        </div>
-      </div>
-
-      <div className="tech-hud-pod bg-mongo-pod absolute top-[12%] right-[6%] md:right-[10%] xl:right-[12%] pointer-events-auto select-none z-0 hidden sm:block">
-        <div className="relative w-28 h-28 md:w-36 md:h-36 flex items-center justify-center group cursor-crosshair">
-          <div className="absolute inset-0 rounded-full border border-dashed border-[#47A248]/10 group-hover:border-[#47A248]/40 transition-colors duration-500 animate-[spin_50s_linear_infinite]" />
-          <div className="w-[82%] h-[82%] rounded-full bg-gradient-to-b from-[#0F0F14] to-[#0A0A0F] border border-white/5 flex items-center justify-center text-[#47A248] opacity-35 text-4xl md:text-5xl transition-all duration-500 group-hover:opacity-100 group-hover:scale-105 group-hover:border-[#47A248]/40">
-            <SiMongodb />
-          </div>
-        </div>
-      </div>
-
-      <div className="tech-hud-pod bg-node-pod absolute bottom-[14%] left-[5%] md:left-[8%] xl:left-[10%] pointer-events-auto select-none z-0 hidden sm:block">
-        <div className="relative w-28 h-28 md:w-36 md:h-36 flex items-center justify-center group cursor-crosshair">
-          <div className="absolute inset-0 rounded-full border border-dashed border-[#339933]/10 group-hover:border-[#339933]/40 transition-colors duration-500 animate-[spin_45s_linear_infinite]" />
-          <div className="w-[82%] h-[82%] rounded-full bg-gradient-to-b from-[#0F0F14] to-[#0A0A0F] border border-white/5 flex items-center justify-center text-[#339933] opacity-35 text-4xl md:text-5xl transition-all duration-500 group-hover:opacity-100 group-hover:scale-105 group-hover:border-[#339933]/40">
-            <SiNodedotjs />
-          </div>
-        </div>
-      </div>
-
-      <div className="tech-hud-pod bg-express-pod absolute bottom-[16%] right-[5%] md:right-[8%] xl:right-[10%] pointer-events-auto select-none z-0 hidden sm:block">
-        <div className="relative w-28 h-28 md:w-36 md:h-36 flex items-center justify-center group cursor-crosshair">
-          <div className="absolute inset-0 rounded-full border border-white/5 group-hover:border-white/30 transition-colors duration-500 animate-[spin_55s_linear_infinite]" />
-          <div className="w-[82%] h-[82%] rounded-full bg-gradient-to-b from-[#0F0F14] to-[#0A0A0F] border border-white/5 flex items-center justify-center text-white/40 text-4xl md:text-5xl shadow-[0_20px_40px_rgba(0,0,0,0.7)] transition-all duration-500 group-hover:opacity-100 group-hover:scale-105 group-hover:border-white/30">
-            <SiExpress />
-          </div>
-        </div>
-      </div>
-
-      {/* ================= CORE CONTENT MATRIX ================= */}
-      <div className="relative z-10 text-center w-full max-w-[1400px] px-4 flex flex-col items-center pointer-events-none">
+      <div className="relative z-10 w-full max-w-[1000px] mx-auto flex flex-col items-center text-center">
         
-        {/* 🛠️ Applied font-mono class to cleanly enforce JetBrains Mono styling */}
-        <h1 className="text-[2.2rem] sm:text-[3.5rem] md:text-[5rem] lg:text-[6.8rem] xl:text-[7.6rem] font-black leading-[1.08] tracking-tighter text-white m-0 uppercase select-none w-full max-w-[1250px] py-4">
-          <span className="block title-line will-change-transform drop-shadow-[0_10px_30px_rgba(0,0,0,0.9)]">
-            BUILDING
-          </span>
-          <span className="block title-line text-transparent bg-clip-text bg-gradient-to-r from-[#00C2FF] via-white to-[#00C2FF] bg-[size:200%] animate-[shimmer_8s_linear_infinite] will-change-transform py-1.5 drop-shadow-[0_0_25px_rgba(0,194,255,0.15)]">
-            SCALABLE
-          </span>
-          <span className="block title-line title-lock-end will-change-transform text-[#FF6C37] drop-shadow-[0_10px_30px_rgba(0,0,0,0.9)] whitespace-nowrap">
-            <span className="text-[#00C2FF] font-light font-mono mr-1.5 sm:mr-4 select-none">&lt;</span>
-            APPLICATIONS
-            <span className="text-[#00C2FF] font-light font-mono ml-1.5 sm:ml-4 select-none">/&gt;</span>
-          </span>
+        {/* Header/Nav Spacer agar zaroori hai */}
+        <div className="h-16" /> 
+
+        {/* Top Declaration */}
+        <div className="reveal font-mono text-[9px] tracking-[0.25em] uppercase mb-6 opacity-70">
+          <span className="text-[#00C2FF]">const</span> profile <span className="text-[#FF6C37]">=</span> MERN_ARCHITECT;
+        </div>
+
+        {/* Hero Headline */}
+        <h1 className="flex flex-col gap-1 w-full text-[clamp(2.2rem,8vw,6.5rem)] font-black leading-[0.9] tracking-tighter uppercase select-none">
+          <div className="reveal text-white">BUILDING</div>
+          <div className="reveal flex items-center justify-center gap-2 sm:gap-4 text-[#00C2FF]">
+            <span className="font-mono font-light opacity-60">{' {'}</span>
+            <span>SCALABLE</span>
+            <span className="font-mono font-light opacity-60">{'}'}</span>
+          </div>
+          <div className="reveal flex items-center justify-center gap-2 sm:gap-4 text-[#FF6C37]">
+            <span className="font-mono font-light opacity-60">{'</'}</span>
+            <span>APPLICATIONS</span>
+            <span className="font-mono font-light opacity-60">{'>'}</span>
+          </div>
         </h1>
 
-        {/* Action targets with crisp typography definition */}
-        <div className="flex flex-col gap-4 w-full max-w-[240px] mt-12 md:mt-16 pointer-events-auto md:flex-row md:max-w-none md:justify-center md:gap-6">
-          <a href="#projects" className="btn w-full md:w-auto bg-white text-black font-extrabold text-xs md:text-sm uppercase tracking-wide py-4 px-12 rounded-xl text-center shadow-lg transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_10px_30px_rgba(255,255,255,0.15)]">
-            VIEW PROJECTS
-          </a>
-          <a href="#about" className="btn w-full md:w-auto bg-[#FF6C37] text-white font-extrabold text-xs md:text-sm uppercase tracking-wide py-4 px-12 rounded-xl text-center transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_10px_30px_rgba(255,108,55,0.25)]">
-            MERN SPECIALIST
-          </a>
+        {/* Tech Stack */}
+        <div className="reveal flex items-center gap-6 sm:gap-10 mt-6 text-xl sm:text-3xl">
+          <SiMongodb className="text-[#47A248]" title="MongoDB" />
+          <SiExpress className="text-white/80" title="Express.js" />
+          <SiReact className="text-[#00C2FF]" title="React" />
+          <SiNodedotjs className="text-[#339933]" title="Node.js" />
         </div>
-      </div>
 
-      {/* Bottom Layout Anchor Gradient */}
-      <div className="absolute bottom-0 left-0 w-full h-[15vh] bg-gradient-to-t from-[#070709] to-transparent pointer-events-none" />
+        {/* CTA Buttons - Margin aur kam ki */}
+        <div className="reveal flex flex-col sm:flex-row items-center gap-4 mt-8 w-full sm:w-auto">
+          <ScrollButton href="#projects" text="VIEW PROJECTS" isPrimary={true} />
+          <ScrollButton href="#contact" text="LET'S CONNECT" isPrimary={false} />
+        </div>
+
+      </div>
     </section>
   );
 };
