@@ -42,39 +42,35 @@ const Home = () => {
     <section 
       ref={containerRef} 
       id="home"
-      className="relative w-full h-auto py-20 bg-[#050507] flex flex-col items-center justify-center px-4 overflow-x-hidden"
+      // h-auto and py-24 ensure content is compact and only takes necessary space
+      className="relative w-full h-auto py-24 bg-[#050507] flex flex-col items-center justify-center px-5"
     >
       <div className="relative z-10 w-full max-w-[1200px] mx-auto flex flex-col items-center text-center">
         
-        {/* Improved Mobile-Responsive Tag */}
-        <div className="reveal mb-8 px-4 py-2 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm max-w-[95vw]">
-          <div className="flex flex-wrap items-center justify-center gap-x-2 font-mono text-[9px] uppercase text-white/70">
-            <span><span className="text-[#00C2FF]">const</span> profile</span>
-            <span className="text-[#FF6C37]">=</span>
-            <span className="whitespace-nowrap">MERN_DEVELOPER;</span>
-          </div>
+        {/* Top Tag */}
+        <div className="reveal mb-8 px-4 py-1.5 rounded-full border border-white/10 bg-white/5">
+          <span className="font-mono text-[9px] tracking-[0.25em] uppercase text-white/70">
+            <span className="text-[#00C2FF]">const</span> profile <span className="text-[#FF6C37]">=</span> MERN_DEVELOPER;
+          </span>
         </div>
 
-        {/* Hero Headline - Optimized for Mobile */}
-        <h1 className="flex flex-col items-center w-full text-[clamp(2.2rem,9vw,7rem)] font-black leading-[0.85] tracking-tighter uppercase px-1">
+        {/* Hero Headline */}
+        <h1 className="flex flex-col gap-1 w-full text-[clamp(2.5rem,8vw,7rem)] font-black leading-[0.9] tracking-tighter uppercase">
           <div className="reveal text-white">BUILDING</div>
-          
-          <div className="reveal flex items-center justify-center text-[#00C2FF] w-full">
-            <span className="font-light opacity-30 text-3xl sm:text-5xl mr-2">{'{'}</span>
-            <span className="inline-block">SCALABLE</span>
-            <span className="font-light opacity-30 text-3xl sm:text-5xl ml-2">{'}'}</span>
+          <div className="reveal flex items-center justify-center gap-4 text-[#00C2FF]">
+            <span className="font-light opacity-30 text-5xl">{'{'}</span>
+            <span>SCALABLE</span>
+            <span className="font-light opacity-30 text-5xl">{'}'}</span>
           </div>
-
-          <div className="reveal flex items-center justify-center text-[#FF6C37] w-full px-1">
-            <span className="font-light opacity-30 text-3xl sm:text-5xl mr-2">{'</'}</span>
-            {/* Added shrink class to prevent stretching */}
-            <span className="inline-block w-auto shrink">APPLICATIONS</span>
-            <span className="font-light opacity-30 text-3xl sm:text-5xl ml-2">{'>'}</span>
+          <div className="reveal flex items-center justify-center gap-4 text-[#FF6C37]">
+            <span className="font-light opacity-30 text-5xl">{'</'}</span>
+            <span>APPLICATIONS</span>
+            <span className="font-light opacity-30 text-5xl">{'>'}</span>
           </div>
         </h1>
 
         {/* Tech Stack */}
-        <div className="reveal flex items-center gap-6 mt-10 mb-10 text-2xl sm:text-3xl">
+        <div className="reveal flex items-center gap-10 mt-12 mb-12 text-3xl">
           <SiMongodb style={{ color: "#47A248" }} />
           <SiExpress className="text-white/80" />
           <SiReact style={{ color: "#00C2FF" }} />
@@ -82,7 +78,7 @@ const Home = () => {
         </div>
 
         {/* CTA Buttons */}
-        <div className="reveal flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
+        <div className="reveal flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
           <ScrollButton href="#projects" text="VIEW PROJECTS" isPrimary={true} />
           <ScrollButton href="#contact" text="LET'S CONNECT" isPrimary={false} />
         </div>
