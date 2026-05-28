@@ -94,20 +94,21 @@ const About = () => {
           </motion.div>
 
           {/* 🛠️ TECH STACK GLOW BOX */}
-          <motion.div 
-            className="group flex flex-col justify-center items-center relative bg-[#0A0A0C] border border-white/[0.05] rounded-[32px] p-8 shadow-2xl hover:border-[#00C2FF]/30 transition-colors duration-500 pt-16" 
-            whileHover={{ y: -5 }}
-          >
-            <CardBadge text="TECH STACK" dotClass="bg-[#00C2FF]" borderClass="border-[#00C2FF]/30" bgClass="bg-[#00C2FF]/10" />
-            <div className="grid grid-cols-2 gap-8 mt-6 relative z-10 lg:gap-12">
-              <SiReact className="text-[3rem] text-[#61DAFB]" />
-              <SiNodedotjs className="text-[3rem] text-[#339933]" />
-              <SiMongodb className="text-[3rem] text-[#47A248]" />
-              <div className="w-[3rem] h-[3rem] bg-[#F7DF1E] rounded-lg flex items-center justify-center">
-                <SiJavascript className="text-[2rem] text-black" />
-              </div>
-            </div>
-          </motion.div>
+          {/* 🛠️ TECH STACK GLOW BOX */}
+<motion.div 
+  className="group flex flex-col justify-center items-center relative bg-[#0A0A0C] border border-white/[0.05] rounded-[32px] p-8 shadow-2xl hover:border-[#00C2FF]/30 transition-colors duration-500 pt-16" 
+  whileHover={{ y: -5 }}
+>
+  <CardBadge text="TECH STACK" dotClass="bg-[#00C2FF]" borderClass="border-[#00C2FF]/30" bgClass="bg-[#00C2FF]/10" />
+  
+  <div className="grid grid-cols-2 gap-8 mt-6 relative z-10 lg:gap-12">
+    <SiReact className="text-[3rem] text-[#61DAFB]" />
+    <SiNodedotjs className="text-[3rem] text-[#339933]" />
+    <SiMongodb className="text-[3rem] text-[#47A248]" />
+    {/* Corrected JS Icon below */}
+    <SiJavascript className="text-[3rem] text-[#F7DF1E]" />
+  </div>
+</motion.div>
 
         </div>
 
