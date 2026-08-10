@@ -31,15 +31,7 @@ const Footer = () => {
           </button>
         </div>
 
-        {/* RIGHT: Operational Status */}
-        <div className="w-full md:w-auto flex justify-center">
-          <div className="flex items-center gap-2.5 bg-[#1A1A1E] border border-white/10 px-6 py-3 md:px-4 md:py-1.5 rounded-full">
-            <span className="w-1.5 h-1.5 bg-[#27C93F] rounded-full shadow-[0_0_10px_#27C93F] animate-pulse" />
-            <span className="font-mono text-[0.65rem] font-black text-[#27C93F] tracking-wider uppercase">
-              System Operational
-            </span>
-          </div>
-        </div>
+        
 
       </div>
     </footer>

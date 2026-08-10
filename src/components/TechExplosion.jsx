@@ -134,7 +134,7 @@ const TechExplosion = () => {
                 <div className="w-2.5 h-2.5 rounded-full bg-[#eab308] shadow-[0_0_8px_#eab308]" />
                 <div className="w-2.5 h-2.5 rounded-full bg-[#27C93F] shadow-[0_0_8px_#27C93F]" />
               </div>
-              <span className="font-mono text-[9px] text-[#00C2FF] font-bold tracking-widest">[CRT_DEV_3D]</span>
+              
             </div>
 
             {/* Curved Glass Screen */}
@@ -152,7 +152,7 @@ const TechExplosion = () => {
                 <div className="w-2 h-2 rounded-full bg-[#1e2736] border border-white/10" />
                 <div className="w-2 h-2 rounded-full bg-[#1e2736] border border-white/10" />
               </div>
-              <span className="font-mono text-[8px] text-white/30 tracking-[0.25em]">MERN_OS</span>
+              
             </div>
           </div>
 
