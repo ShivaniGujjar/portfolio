@@ -112,22 +112,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* FOOTER ENGINE TERMINAL TRACK */}
-      <div className="fade-in w-full max-w-[1400px] mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pt-5 border-t border-white/5 mt-4 sm:mt-0">
-        <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-white/20">Core Stack</span>
-        
-        <div className="flex items-center gap-5 sm:gap-8 bg-white/[0.02] border border-white/5 px-5 sm:px-6 py-3 rounded-xl sm:rounded-full w-full sm:w-auto justify-between sm:justify-start backdrop-blur-md">
-          <SiMongodb style={{ color: "#47A248" }} className="text-2xl sm:text-3xl hover:scale-110 transition-transform duration-300 shrink-0" />
-          <div className="w-px h-4 bg-white/10 hidden sm:block" />
-          <div className="text-2xl sm:text-3xl flex items-center justify-center text-white hover:scale-110 transition-transform duration-300 shrink-0">
-            <SiExpress className="w-6 h-6 sm:w-7 sm:h-7 object-contain" />
-          </div>
-          <div className="w-px h-4 bg-white/10 hidden sm:block" />
-          <SiReact style={{ color: "#00C2FF" }} className="text-2xl sm:text-3xl hover:scale-110 transition-transform duration-300 shrink-0" />
-          <div className="w-px h-4 bg-white/10 hidden sm:block" />
-          <SiNodedotjs style={{ color: "#339933" }} className="text-2xl sm:text-3xl hover:scale-110 transition-transform duration-300 shrink-0" />
-        </div>
-      </div>
+      
 
     </section>
   );

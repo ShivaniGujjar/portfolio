@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ProjectCard from '../components/ProjectCard';
 import tasksyncImg from '../assets/tasksync.png';
 import unravelImg from '../assets/unravel.png'; 
 import creatorflowImg from '../assets/creatorflow.png';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const projectsData = [
   { 
@@ -38,40 +42,62 @@ const projectsData = [
 ];
 
 function Projects() {
+  const sectionRef = useRef(null);
+  const triggerRef = useRef(null);
+
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      const projectsTrack = sectionRef.current;
+      
+      // Calculate full horizontal scroll width
+      const getScrollAmount = () => {
+        let trackWidth = projectsTrack.scrollWidth;
+        return -(trackWidth - window.innerWidth + 80);
+      };
+
+      gsap.to(projectsTrack, {
+        x: getScrollAmount,
+        ease: "none",
+        scrollTrigger: {
+          trigger: triggerRef.current,
+          start: "top top",
+          end: () => `+=${projectsTrack.scrollWidth}`,
+          pin: true,
+          scrub: 1,
+          invalidateOnRefresh: true,
+        }
+      });
+    }, triggerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="projects" className="w-full relative bg-[#050507] pt-24 pb-20">
-      <div className="w-full max-w-[1250px] mx-auto px-6">
+    <section ref={triggerRef} id="projects" className="w-full relative bg-[#050507] overflow-hidden">
+      <div className="min-h-screen flex flex-col justify-center py-12">
         
-        {/* 🛠️ HEADER: MATCHED EXACTLY WITH SCREENSHOT */}
-        <div className="text-center mb-16 flex flex-col items-center">
+        {/* HEADER */}
+        <div className="w-full max-w-[1250px] mx-auto px-6 text-center mb-8 shrink-0">
+         
           
-          {/* Pill Badge */}
-          <span className="font-mono text-[0.6rem] tracking-[0.2em] font-bold text-[#00C2FF] uppercase mb-6 px-4 py-1 border border-white/10 rounded-full inline-block">
-            PRODUCTION REGISTRY
-          </span>
-          
-          {/* Heading with White/Cyan split */}
-          <h2 className="text-[clamp(2.5rem,8vw,5rem)] font-black leading-[1.1] tracking-tighter uppercase m-0 py-2">
+          <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-black leading-[1.1] tracking-tighter uppercase m-0">
             <span className="text-white">RECENT</span> <span className="text-[#00C2FF]">BUILDS</span>
           </h2>
-          
-          {/* Subtext */}
-          <p className="text-[#888] text-sm md:text-[1rem] mt-6 px-2 max-w-[540px] font-medium leading-relaxed">
-            Engineered solutions optimizing high-efficiency application stacks, bidirectional websockets, and modular multi-agent pipelines.
-          </p>
-
-          {/* Cyan Dash Divider */}
-          <div className="w-12 h-1 bg-[#00C2FF] mt-8 rounded-full" />
+          <div className="w-12 h-1 bg-[#00C2FF] mt-4 rounded-full mx-auto" />
         </div>
         
-        {/* GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 justify-items-center">
+        {/* HORIZONTAL KINETIC TRACK */}
+        <div 
+          ref={sectionRef} 
+          className="flex flex-nowrap gap-8 md:gap-12 px-6 md:px-20 w-max items-center"
+        >
           {projectsData.map((project) => (
-            <div key={project.id} className="w-full max-w-[500px]">
+            <div key={project.id} className="w-[85vw] sm:w-[500px] shrink-0">
               <ProjectCard {...project} />
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
