@@ -27,16 +27,16 @@ const About = () => {
       {/* 🌌 TOP SEAMLESS FADE GRADIENT OVERLAY (Blends upper Tech Stack section) */}
       <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-[#020204] via-[#050507]/90 to-transparent pointer-events-none z-10" />
 
-      {/* Background Marquee Text */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen min-w-full whitespace-nowrap opacity-[0.03] pointer-events-none z-0 select-none overflow-hidden">
-        <motion.h1 
-          className="font-outfit text-[3rem] sm:text-[5rem] md:text-[9rem] xl:text-[11rem] font-black text-white uppercase tracking-tighter m-0 inline-block"
-          animate={{ x: [0, -1400] }}
-          transition={{ repeat: Infinity, duration: 35, ease: "linear" }}
-        >
-          MERN STACK • CREATIVE DEVELOPER • MERN STACK • CREATIVE DEVELOPER •
-        </motion.h1>
-      </div>
+      {/* Background Marquee Text (Moved to Top) */}
+<div className="absolute top-1/7 left-0 w-full whitespace-nowrap opacity-[0.03] pointer-events-none z-0 select-none overflow-hidden pt-4">
+  <motion.h1 
+    className="font-outfit text-[3rem] sm:text-[5rem] md:text-[9rem] xl:text-[11rem] font-black text-white uppercase tracking-tighter m-0 inline-block leading-none"
+    animate={{ x: [0, -1400] }}
+    transition={{ repeat: Infinity, duration: 35, ease: "linear" }}
+  >
+    MERN STACK • CREATIVE DEVELOPER • MERN STACK • CREATIVE DEVELOPER •
+  </motion.h1>
+</div>
 
       <div className="w-full max-w-[1200px] mx-auto px-5 lg:px-8 relative z-20">
 

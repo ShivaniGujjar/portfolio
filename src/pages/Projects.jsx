@@ -5,6 +5,7 @@ import ProjectCard from '../components/ProjectCard';
 import tasksyncImg from '../assets/tasksync.png';
 import unravelImg from '../assets/unravel.png'; 
 import creatorflowImg from '../assets/creatorflow.png';
+import beamImg from '../assets/beam.png'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -38,6 +39,15 @@ const projectsData = [
     repoLink: "https://github.com/ShivaniGujjar/creatorflow",
     liveLink: "https://creatorflow-black.vercel.app/",
     themeColor: "#FF4D00" 
+  },
+  {
+    id: "beam",
+    title: "BEAM – Deployment Platform",
+    description: "Mini-Vercel clone built with distributed build workers, Redis Pub/Sub log streaming, Supabase Storage, and reverse proxy routing.",
+    techStack: ["React", "Node.js", "Express", "Socket.io", "Redis", "Supabase"],
+    imageSrc: beamImg, // Ya apni path imageSrc daalo
+    repoLink: "https://github.com/ShivaniGujjar/beam",
+    videoSrc: "https://res.cloudinary.com/n1mfkfh4/video/upload/v1786459091/Video_Project_1_achcvp.mp4",
   }
 ];
 
@@ -48,25 +58,31 @@ function Projects() {
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
       const projectsTrack = sectionRef.current;
-      
-      // Calculate full horizontal scroll width
+
+      // Dynamic calculation for full horizontal scroll including all 4 cards
       const getScrollAmount = () => {
-        let trackWidth = projectsTrack.scrollWidth;
-        return -(trackWidth - window.innerWidth + 80);
+        const trackWidth = projectsTrack.scrollWidth;
+        const viewportWidth = window.innerWidth;
+        // Total negative translation needed to reveal the last card completely
+        return -(trackWidth - viewportWidth + 120);
       };
 
-      gsap.to(projectsTrack, {
+      const animation = gsap.to(projectsTrack, {
         x: getScrollAmount,
         ease: "none",
         scrollTrigger: {
           trigger: triggerRef.current,
           start: "top top",
-          end: () => `+=${projectsTrack.scrollWidth}`,
+          end: () => `+=${sectionRef.current.scrollWidth}`,
           pin: true,
           scrub: 1,
           invalidateOnRefresh: true,
+          anticipatePin: 1,
         }
       });
+
+      // Recalculate GSAP positions after all images are fully loaded
+      window.addEventListener('load', () => ScrollTrigger.refresh());
     }, triggerRef);
 
     return () => ctx.revert();
@@ -78,8 +94,6 @@ function Projects() {
         
         {/* HEADER */}
         <div className="w-full max-w-[1250px] mx-auto px-6 text-center mb-8 shrink-0">
-         
-          
           <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-black leading-[1.1] tracking-tighter uppercase m-0">
             <span className="text-white">RECENT</span> <span className="text-[#00C2FF]">BUILDS</span>
           </h2>
@@ -89,10 +103,10 @@ function Projects() {
         {/* HORIZONTAL KINETIC TRACK */}
         <div 
           ref={sectionRef} 
-          className="flex flex-nowrap gap-8 md:gap-12 px-6 md:px-20 w-max items-center"
+          className="flex flex-nowrap gap-8 md:gap-12 px-6 md:px-20 w-max items-center pr-24 md:pr-36"
         >
           {projectsData.map((project) => (
-            <div key={project.id} className="w-[85vw] sm:w-[500px] shrink-0">
+            <div key={project.id} className="w-[85vw] sm:w-[420px] md:w-[450px] shrink-0">
               <ProjectCard {...project} />
             </div>
           ))}
