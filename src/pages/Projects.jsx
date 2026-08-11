@@ -47,7 +47,7 @@ const projectsData = [
     techStack: ["React", "Node.js", "Express", "Socket.io", "Redis", "Supabase"],
     imageSrc: beamImg, // Ya apni path imageSrc daalo
     repoLink: "https://github.com/ShivaniGujjar/beam",
-    videoSrc: "https://res.cloudinary.com/n1mfkfh4/video/upload/v1786459091/Video_Project_1_achcvp.mp4",
+    liveLink: "https://beam-sable.vercel.app/",
   }
 ];
 

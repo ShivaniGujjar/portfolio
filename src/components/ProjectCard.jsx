@@ -30,13 +30,13 @@ const techData = {
 };
 
 const ProjectCard = ({ 
-  id, 
-  title, 
-  description, 
-  techStack, 
-  imageSrc, 
-  repoLink, 
-  liveLink,
+  id = "beam", 
+  title = "BEAM", 
+  description = "Automated deployment engine that compiles and hosts frontend apps directly from public GitHub repositories.", 
+  techStack = ["REACT", "EXPRESS", "SOCKET.IO", "REDIS", "SUPABASE"], 
+  imageSrc = "/beam-thumbnail.png", 
+  repoLink = "https://github.com/ShivaniGujjar/beam", 
+  liveLink = "https://beam-sable.vercel.app/",
   videoSrc,
   stats = [
     { label: "ARCH", val: "MICROSERVICES", color: "#61DAFB" },
@@ -133,7 +133,7 @@ const ProjectCard = ({
         </div>
       </motion.div>
 
-      {/* 🍿 PORTAL BACKDROP - RENDERED AT BODY LEVEL FOR PERFECT CENTERING */}
+      {/* PORTAL BACKDROP - RENDERED AT BODY LEVEL */}
       {typeof document !== 'undefined' && createPortal(
         <AnimatePresence>
           {isVideoOpen && (
