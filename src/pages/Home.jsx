@@ -1,220 +1,131 @@
 import React, { useLayoutEffect, useRef, useState, useEffect } from 'react';
 import { gsap } from 'gsap';
-import { FiCode, FiGitCommit, FiGlobe } from 'react-icons/fi';
+import { HiArrowUpRight } from 'react-icons/hi2';
+import {
+  SiReact, SiNodedotjs, SiMongodb, SiExpress,
+  SiTailwindcss, SiJavascript, SiRedux, SiGit
+} from 'react-icons/si';
 
-// ==========================================
-// 🔢 SEQUENTIAL NUMBER TICKER COMPONENT
-// ==========================================
-const CountUpNumber = ({ targetNumber, suffix = "+", colorClass = "text-[#00C2FF]" }) => {
-  const numRef = useRef(null);
+const coreSkills = [
+  { name: 'React', icon: <SiReact />, color: '#00C2FF' },
+  { name: 'Node.js', icon: <SiNodedotjs />, color: '#339933' },
+  { name: 'Express', icon: <SiExpress />, color: '#FFFFFF' },
+  { name: 'MongoDB', icon: <SiMongodb />, color: '#47A248' },
+  { name: 'Tailwind', icon: <SiTailwindcss />, color: '#00C2FF' },
+  { name: 'JavaScript', icon: <SiJavascript />, color: '#F7DF1E' },
+  { name: 'Redux', icon: <SiRedux />, color: '#764ABC' },
+  { name: 'Git', icon: <SiGit />, color: '#FF6C37' },
+];
 
-  useLayoutEffect(() => {
-    const obj = { count: 0 };
-    
-    let ctx = gsap.context(() => {
-      gsap.to(obj, {
-        count: targetNumber,
-        duration: 2,
-        delay: 0.6,
-        ease: "power2.out",
-        onUpdate: () => {
-          if (numRef.current) {
-            numRef.current.innerText = Math.floor(obj.count);
-          }
-        }
-      });
-    }, numRef);
+// A quiet terminal-style line. This is the one "signature" moment on the page —
+// everything else stays deliberately calm around it.
+const WhoAmI = () => {
+  const [typed, setTyped] = useState('');
+  const full = 'whoami';
 
-    return () => ctx.revert();
-  }, [targetNumber]);
+  useEffect(() => {
+    let i = 0;
+    const id = setInterval(() => {
+      i++;
+      setTyped(full.slice(0, i));
+      if (i === full.length) clearInterval(id);
+    }, 90);
+    return () => clearInterval(id);
+  }, []);
 
   return (
-    <div className="font-outfit text-lg sm:text-3xl font-black text-white tracking-tight leading-none inline-flex items-center">
-      <span ref={numRef}>0</span>
-      <span className={colorClass}>{suffix}</span>
+    <div className="fade-in flex flex-wrap items-center gap-1.5 sm:gap-2 font-mono text-xs sm:text-[13px] text-white/40 mb-5 sm:mb-6">
+      
     </div>
   );
 };
 
-// ==========================================
-// 🚀 COMPACT RESPONSIVE JACKPOT BUTTON
-// ==========================================
-const JackpotButton = ({ text, href, isPrimary, target, rel }) => {
-  return (
-    <a
-      href={href}
-      target={target}
-      rel={rel}
-      className={`group relative h-[42px] sm:h-[56px] w-full max-w-[240px] sm:w-[175px] overflow-hidden rounded-lg sm:rounded-xl font-bold text-[10px] sm:text-xs uppercase tracking-[0.18em] sm:tracking-[0.2em] transition-all duration-300 flex items-center justify-center border select-none shrink-0 ${
-        isPrimary
-          ? "bg-white text-black border-white hover:bg-[#FF6C37] hover:border-[#FF6C37] hover:text-white shadow-[0_0_25px_rgba(255,255,255,0.2)]"
-          : "bg-white/[0.03] text-white border-white/10 hover:border-white/30 hover:bg-white/5"
-      }`}
-    >
-      <div className="flex flex-col h-[42px] sm:h-[56px] w-full items-center transition-transform duration-500 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-[42px] sm:group-hover:-translate-y-[56px]">
-        <span className="flex h-[42px] sm:h-[56px] shrink-0 items-center justify-center w-full">{text}</span>
-        <span className="flex h-[42px] sm:h-[56px] shrink-0 items-center justify-center w-full">{text}</span>
-      </div>
-    </a>
-  );
-};
-
-// ==========================================
-// 🏠 PERFECTLY SPACED HERO SECTION
-// ==========================================
 const Home = () => {
   const containerRef = useRef(null);
-  const [totalCommits, setTotalCommits] = useState(150);
-
-  useEffect(() => {
-    const fetchGitHubCommits = async () => {
-      try {
-        const response = await fetch('https://api.github.com/search/commits?q=author:ShivaniGujjar', {
-          headers: {
-            'Accept': 'application/vnd.github.cloak-preview+json'
-          }
-        });
-        
-        if (response.ok) {
-          const data = await response.json();
-          if (data.total_count) {
-            setTotalCommits(data.total_count);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching live GitHub commits:", error);
-      }
-    };
-
-    fetchGitHubCommits();
-  }, []);
 
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
-      
-      gsap.set(".smooth-line", { 
-        opacity: 0,
-        y: 30,
-        rotationX: -10,
-        transformOrigin: "50% 0%"
-      });
-      gsap.set(".fade-in", { opacity: 0, y: 20 });
-      
-      tl.to(".smooth-line", { 
-        opacity: 1, 
-        y: 0,
-        rotationX: 0,
-        duration: 1.1, 
-        stagger: 0.1
-      })
-      .to(".fade-in", { 
-        opacity: 1, 
-        y: 0,
-        duration: 0.8 
-      }, "-=0.7");
-      
+      gsap.fromTo(
+        '.fade-in',
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.6, stagger: 0.07, ease: 'power2.out', delay: 0.1 }
+      );
     }, containerRef);
     return () => ctx.revert();
   }, []);
 
   return (
-    <section 
-      ref={containerRef} 
+    <section
+      ref={containerRef}
       id="home"
-      className="relative w-full h-auto bg-[#020204] flex flex-col justify-start px-3 xs:px-6 sm:px-12 lg:px-20 pt-32 sm:pt-40 pb-10 sm:pb-16 select-none overflow-x-hidden"
-      style={{ perspective: "1000px" }}
+      className="relative w-full min-h-[90vh] bg-[#050507] text-white flex flex-col justify-center px-5 sm:px-12 lg:px-24 pt-24 sm:pt-28 pb-16 sm:pb-20 select-none overflow-hidden"
     >
-      {/* Background Cyber Pattern & Ambient Glows */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:32px_32px] sm:bg-[size:48px_48px] pointer-events-none" />
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[85vw] sm:w-[60vw] h-[40vw] sm:h-[35vw] bg-[#00C2FF]/[0.035] rounded-full blur-[100px] sm:blur-[160px] pointer-events-none" />
+      {/* One soft ambient glow, off to the side — not centered, not doubled */}
+      <div className="absolute -top-20 -right-40 w-[36vw] h-[36vw] bg-[#00C2FF]/[0.04] rounded-full blur-[130px] pointer-events-none" />
 
-      {/* 👑 CENTERED HERO BODY */}
-      <div className="w-full max-w-[1300px] mx-auto flex flex-col items-center justify-center text-center relative z-10 mt-4 sm:mt-8">
-        
-        {/* Main Heading */}
-        <h1 
-          className="w-full font-outfit text-[clamp(2.1rem,8vw,5.8rem)] font-black leading-[0.95] uppercase text-center flex flex-col gap-1 sm:gap-2 tracking-[-0.03em]"
-          style={{ transformStyle: "preserve-3d" }}
-        >
-          <div className="smooth-line text-white [backface-visibility:hidden] will-change-transform">
-            BUILDING
-          </div>
-          
-          <div className="smooth-line text-[#00C2FF] [backface-visibility:hidden] will-change-transform drop-shadow-[0_0_25px_rgba(0,194,255,0.25)]">
-            SCALABLE
-          </div>
-          
-          <div className="smooth-line text-[#FF6C37] [backface-visibility:hidden] will-change-transform drop-shadow-[0_0_25px_rgba(255,108,55,0.25)]">
-            APPLICATIONS
-          </div>
+      <div className="w-full max-w-[760px] mx-auto flex flex-col items-start relative z-10">
+
+        <WhoAmI />
+
+        {/* Plain name line — no badge, no icon, just who you are */}
+        <p className="fade-in text-sm text-white/45 mb-4">
+          Hey, I'm <span className="text-white/70">Shivani</span> - a fullstack developer based in India.
+        </p>
+
+        {/* Sentence-case, mixed weight — reads like someone said it, not shouted it */}
+        <h1 className="fade-in text-[1.75rem] xs:text-[2rem] sm:text-[2.6rem] md:text-[3.1rem] font-semibold tracking-tight leading-[1.25] sm:leading-[1.2] mb-4 sm:mb-5 text-white/95">
+          I build <span className="text-[#00C2FF]">fullstack</span> apps that
+          feel <span className="text-[#FF6C37]">simple</span> to use.
         </h1>
 
-        {/* 🔢 HORIZONTAL METRICS BAR */}
-        <div className="fade-in w-full max-w-[100%] sm:max-w-4xl mx-auto mt-8 sm:mt-12 flex flex-row items-center justify-around gap-1 sm:gap-0 px-2 xs:px-4 sm:px-8 py-3 sm:py-5 rounded-2xl bg-white/[0.02] border border-white/10 backdrop-blur-md shadow-2xl">
-          
-          {/* Milestone 1 */}
-          <div className="flex items-center gap-1.5 xs:gap-2.5 sm:gap-3.5 cursor-default">
-            <div className="p-1.5 xs:p-2 sm:p-2.5 rounded-lg sm:rounded-xl bg-[#00C2FF]/10 text-[#00C2FF] border border-[#00C2FF]/20 shadow-[0_0_15px_rgba(0,194,255,0.1)] shrink-0">
-              <FiCode className="text-sm xs:text-base sm:text-lg" />
-            </div>
-            <div className="text-left">
-              <CountUpNumber targetNumber={10} colorClass="text-[#00C2FF]" />
-              <span className="font-mono text-[7.5px] xs:text-[9px] sm:text-[11px] text-white/50 tracking-wider sm:tracking-[0.2em] uppercase font-bold mt-0.5 block leading-tight">
-                Projects <span className="hidden xs:inline">Built</span>
-              </span>
-            </div>
-          </div>
+        <p className="fade-in text-sm sm:text-base text-white/50 max-w-[520px] leading-relaxed mb-8 sm:mb-10">
+          MERN stack, mostly. I like taking a rough idea and turning it into
+          something that actually works end to end — backend, UI, the small
+          details in between.
+        </p>
 
-          <div className="h-6 sm:h-8 w-[1px] bg-white/10 shrink-0" />
+        {/* Buttons: no sliding text trick, no drop shadow theatrics */}
+        <div className="fade-in flex flex-wrap items-center gap-2.5 sm:gap-3 mb-10 sm:mb-14">
+          <a
+            href="#projects"
+            className="group inline-flex items-center gap-1.5 bg-white text-black text-[13px] sm:text-sm font-medium py-2 sm:py-2.5 px-4 sm:px-5 rounded-lg transition-colors duration-200 hover:bg-[#00C2FF]"
+          >
+            See my work
+            <HiArrowUpRight size={14} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
 
-          {/* Milestone 2 */}
-          <div className="flex items-center gap-1.5 xs:gap-2.5 sm:gap-3.5 cursor-default">
-            <div className="p-1.5 xs:p-2 sm:p-2.5 rounded-lg sm:rounded-xl bg-[#FF6C37]/10 text-[#FF6C37] border border-[#FF6C37]/20 shadow-[0_0_15px_rgba(255,108,55,0.1)] shrink-0">
-              <FiGitCommit className="text-sm xs:text-base sm:text-lg" />
-            </div>
-            <div className="text-left">
-              <CountUpNumber targetNumber={totalCommits} colorClass="text-[#FF6C37]" />
-              <span className="font-mono text-[7.5px] xs:text-[9px] sm:text-[11px] text-white/50 tracking-wider sm:tracking-[0.2em] uppercase font-bold mt-0.5 block leading-tight">
-                Github <span className="hidden xs:inline">Commits</span>
-              </span>
-            </div>
-          </div>
-
-          <div className="h-6 sm:h-8 w-[1px] bg-white/10 shrink-0" />
-
-          {/* Milestone 3 */}
-          <div className="flex items-center gap-1.5 xs:gap-2.5 sm:gap-3.5 cursor-default">
-            <div className="p-1.5 xs:p-2 sm:p-2.5 rounded-lg sm:rounded-xl bg-[#27C93F]/10 text-[#27C93F] border border-[#27C93F]/20 shadow-[0_0_15px_rgba(39,201,63,0.1)] shrink-0">
-              <FiGlobe className="text-sm xs:text-base sm:text-lg" />
-            </div>
-            <div className="text-left">
-              <CountUpNumber targetNumber={6} colorClass="text-[#27C93F]" />
-              <span className="font-mono text-[7.5px] xs:text-[9px] sm:text-[11px] text-white/50 tracking-wider sm:tracking-[0.2em] uppercase font-bold mt-0.5 block leading-tight">
-                Live <span className="hidden xs:inline">Deployments</span>
-              </span>
-            </div>
-          </div>
-
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noreferrer"
+            className="text-[13px] sm:text-sm font-medium py-2 sm:py-2.5 px-4 sm:px-5 rounded-lg text-white/70 border border-white/10 bg-white/[0.03] backdrop-blur-md transition-colors duration-200 hover:text-white hover:border-white/20"
+          >
+            Resume
+          </a>
         </div>
 
-        {/* COMPACT BUTTONS & DESCRIPTION */}
-        <div className="fade-in flex flex-col items-center gap-3 sm:gap-6 mt-6 sm:mt-10 w-full max-w-2xl mx-auto px-2">
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-4 w-full">
-            <JackpotButton href="#projects" text="VIEW PROJECTS" isPrimary={true} />
-            <JackpotButton href="/resume.pdf" text="VIEW RESUME ↗" isPrimary={false} target="_blank" rel="noreferrer" />
-            
+        {/* Quiet divider — same rhythm as the rest of the site, not a hard rule */}
+        <div className="fade-in w-full h-px bg-white/[0.07] mb-8 sm:mb-10" />
+
+        {/* Individual glass chips — each tool sits in its own soft frosted pill */}
+        <div className="fade-in w-full">
+          <span className="text-[10px] sm:text-[11px] text-white/35 tracking-wide mb-3 sm:mb-4 block uppercase">
+            Tools I reach for most
+          </span>
+          <div className="flex flex-wrap gap-2 sm:gap-2.5">
+            {coreSkills.map((skill, i) => (
+              <span
+                key={i}
+                className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-[13px] text-white/70 bg-white/[0.03] border border-white/[0.08] backdrop-blur-md transition-colors duration-200 hover:text-white hover:border-white/20 hover:bg-white/[0.05]"
+              >
+                <span style={{ color: skill.color }} className="text-sm sm:text-base opacity-90">{skill.icon}</span>
+                {skill.name}
+              </span>
+            ))}
           </div>
-
-          <p className="font-mono text-[10px] sm:text-xs text-white/50 max-w-md text-center leading-relaxed tracking-wide mt-1">
-            Crafting resilient web architecture with performance-first fullstack engineering profiles.
-          </p>
-
         </div>
 
       </div>
-
     </section>
   );
 };

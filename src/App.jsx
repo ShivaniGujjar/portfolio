@@ -10,7 +10,6 @@ import About from './pages/About';
 import Capabilities from './pages/Capabilities';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
-import TechExplosion from './components/TechExplosion';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -55,7 +54,6 @@ function App() {
 
       <main className="w-full">
         <Home />
-        <TechExplosion />
         <About />
         <Capabilities />
         <Projects />

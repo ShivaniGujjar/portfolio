@@ -5,33 +5,33 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    // 🛠️ FORCE BACKGROUND TO PURE BLACK (bg-[#0A0A0C])
-    <footer className="w-full bg-[#0A0A0C] px-[5%] py-12 md:py-8 border-t border-white/5">
-      <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center gap-10 md:gap-0 text-center">
-        
-        {/* LEFT: Branding */}
-        <div className="flex flex-col md:flex-row items-center gap-2 md:gap-[15px] font-mono">
-          <span className="font-black text-base md:text-[0.8rem] text-white tracking-widest uppercase">
+    <footer className="w-full bg-[#050507] border-t border-white/[0.05] px-5 sm:px-12 py-8">
+      <div className="max-w-[1100px] mx-auto flex flex-col md:flex-row items-center justify-between gap-5 text-xs">
+
+        <div className="flex items-center gap-2 text-white/40">
+          <span className="font-medium text-white/80">
             Shivani Gujjar
           </span>
-          <span className="hidden md:inline text-[#222]">|</span>
-          <span className="text-[0.65rem] font-bold text-white/40 tracking-widest">
-            ©{currentYear}
+          <span className="text-white/20">•</span>
+          <span className="text-white/35">
+            © {currentYear}
           </span>
         </div>
 
-        {/* CENTER: Back To Top */}
-        <div className="w-full md:w-auto flex justify-center">
-          <button 
-            onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} 
-            className="group w-[90%] max-w-[300px] md:w-auto bg-[#1A1A1E] border border-white/10 text-white font-mono text-[0.75rem] font-black uppercase tracking-widest px-8 py-4 md:py-2.5 rounded-xl md:rounded-md cursor-pointer flex items-center justify-center gap-3 transition-all duration-300 hover:bg-white hover:text-black"
-          >
-            BACK TO TOP 
-            <FiArrowUp className="text-base" />
-          </button>
+        <div className="text-white/35 flex items-center gap-1.5">
+          <span>Built with</span>
+          <span className="text-[#00C2FF]">React</span>
+          <span>&</span>
+          <span className="text-[#00C2FF]">Tailwind</span>
         </div>
 
-        
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="group px-4 py-2 bg-white/[0.03] border border-white/[0.08] hover:border-white/20 text-white/50 hover:text-white rounded-lg transition-colors duration-200 flex items-center gap-2 font-medium cursor-pointer"
+        >
+          <span>Back to top</span>
+          <FiArrowUp className="text-sm transition-transform duration-200 group-hover:-translate-y-0.5" />
+        </button>
 
       </div>
     </footer>

@@ -1,56 +1,61 @@
 import React from 'react';
 import SkillCard from '../components/SkillCard';
 
+const skillData = [
+  {
+    label: "Frontend",
+    title: "UI & Interaction",
+    color: "#00C2FF",
+    features: [
+      { name: "Responsive Layouts", tag: "Tailwind / Grid" },
+      { name: "Animation Physics", tag: "GSAP / Framer" },
+      { name: "State Architecture", tag: "Redux Toolkit" }
+    ],
+    techList: ["React", "Tailwind", "GSAP", "Framer", "Redux"]
+  },
+  {
+    label: "Backend",
+    title: "Server & Real-Time",
+    color: "#27C93F",
+    features: [
+      { name: "RESTful APIs", tag: "Node / Express" },
+      { name: "Live Data Stream", tag: "Socket.io" },
+      { name: "GenAI Integration", tag: "LangChain" }
+    ],
+    techList: ["Node.js", "Express", "MongoDB", "Socket.io", "LangChain"]
+  },
+  {
+    label: "DevOps",
+    title: "Workflow & Tooling",
+    color: "#FF6C37",
+    features: [
+      { name: "Version Control", tag: "Git / GitHub" },
+      { name: "Component Systems", tag: "Modular / DRY" },
+      { name: "Cloud Hosting", tag: "Vercel / Hostinger" }
+    ],
+    techList: ["Git", "Vite", "Vercel", "Hostinger", "Postman"]
+  }
+];
+
 const Capabilities = () => {
-  const skillData = [
-    { 
-      label: "Frontend Systems", 
-      title: "UI ARCHITECTURE", 
-      color: "#00C2FF", 
-      highlights: [
-        { title: "Fluid Custom Layouts", desc: "Pixel-perfect responsive architecture built with Tailwind CSS & CSS Grid." },
-        { title: "60FPS Animation Physics", desc: "Silky smooth timeline controls powered by GSAP & Framer Motion." },
-        { title: "Predictable State Sync", desc: "Centralized client-side data store with efficient render cycles." }
-      ]
-    },
-    { 
-      label: "Backend & Systems", 
-      title: "SYSTEM LOGIC", 
-      color: "#00ED64", 
-      highlights: [
-        { title: "LangChain AI Workflows", desc: "Dynamic prompt chaining, embeddings, and intelligent contextual responses." },
-        { title: "Socket.io Event Gateway", desc: "Real-time, bi-directional socket events for low-latency communication." },
-        { title: "Mongoose Database Models", desc: "Indexed MongoDB collections engineered for high-throughput queries." }
-      ]
-    },
-    { 
-      label: "Engineering Standards", 
-      title: "DEV WORKFLOW", 
-      color: "#FF6C37", 
-      highlights: [
-        { title: "Structured Version Control", desc: "Git feature branching, PR reviews, and atomic commit practices." },
-        { title: "Modular Component Design", desc: "Reusable UI primitives adhering strictly to DRY engineering principles." },
-        { title: "Automated Deployments", desc: "Continuous integration pipelines synced with production GitHub branches." }
-      ]
-    }
-  ];
-
   return (
-    <section className="w-full relative bg-[#050507] pt-12 pb-20" id="capabilities">
-      
-      {/* 🏆 HEADING */}
-      <div className="w-full text-center mb-16">
-        <h2 className="w-full text-[clamp(2.5rem,5vw,5.5rem)] font-black leading-[1] tracking-tighter uppercase m-0 px-4">
-          <span className="text-white">DETAILED</span> <span className="text-[#00C2FF]">CAPABILITIES</span>
-        </h2>
-        <div className="w-16 h-[3px] bg-[#00C2FF] mx-auto mt-4 rounded-full"></div>
-      </div>
+    <section className="w-full relative bg-[#050507] py-20 sm:py-28 border-t border-white/[0.05]" id="capabilities">
 
-      {/* STICKY STACKING ENGINE */}
-      <div className="flex flex-col relative z-10 gap-[15vh] max-w-[1250px] mx-auto px-4 md:px-8">
-        {skillData.map((skill, index) => (
-          <SkillCard key={index} index={index} {...skill} />
-        ))}
+      <div className="w-full max-w-[1100px] mx-auto px-5 sm:px-8 relative z-10">
+
+        {/* Header — heading only */}
+        <div className="mb-10 sm:mb-14">
+          <h2 className="text-2xl sm:text-4xl font-semibold tracking-tight text-white/95">
+            What I actually <span className="text-[#00C2FF]">work with</span>
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
+          {skillData.map((skill, idx) => (
+            <SkillCard key={idx} {...skill} />
+          ))}
+        </div>
+
       </div>
     </section>
   );

@@ -1,112 +1,86 @@
-import React, { useLayoutEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React from 'react';
 import ProjectCard from '../components/ProjectCard';
-import tasksyncImg from '../assets/tasksync.png';
-import unravelImg from '../assets/unravel.png'; 
-import creatorflowImg from '../assets/creatorflow.png';
-import beamImg from '../assets/beam.png'
 
-gsap.registerPlugin(ScrollTrigger);
+import tasksyncImg from '../assets/tasksync.png';
+import unravelImg from '../assets/unravel.png';
+import creatorflowImg from '../assets/creatorflow.png';
+import beamImg from '../assets/beam.png';
+import akshayImg from '../assets/akshay.jpeg';
 
 const projectsData = [
-  { 
-    id: "1", 
-    title: 'TaskSync', 
-    description: 'MERN stack Kanban system with real-time drag-and-drop orchestration and JWT security.', 
-    techStack: ['React', 'Redux', 'MongoDB', 'Node.js', 'Tailwind', 'DND', 'JWT'], 
-    imageSrc: tasksyncImg, 
-    repoLink: 'https://github.com/ShivaniGujjar/tasksync', 
-    liveLink: 'https://tasksync-delta.vercel.app/', 
-    themeColor: '#00C2FF' 
-  },
-  { 
-    id: "2", 
-    title: 'Unravel', 
-    description: 'AI assistant designed to decipher complex neural thoughts using advanced GenAI models.', 
-    techStack: ['React', 'GenAI', 'Tailwind', 'Framer', 'Redux'], 
-    imageSrc: unravelImg, 
-    repoLink: 'https://github.com/ShivaniGujjar/unravel', 
-    liveLink: 'https://unravel-liart.vercel.app/', 
-    themeColor: '#FF6C37' 
+  {
+    id: "freelance-video-portfolio",
+    title: 'Akshay Portfolio – Video Editor',
+    isFreelance: true,
+    year: "2026",
+    description: 'Custom client portfolio engineered for a senior video editor at Masters Union. Features Lenis smooth scrolling, GSAP kinetic layouts, and React Player media streaming.',
+    techStack: ['REACT', 'VITE', 'TAILWIND', 'GSAP', 'FRAMER', 'LENIS'],
+    imageSrc: akshayImg,
+    repoLink: '',
+    liveLink: 'https://akshayportfolio.com'
   },
   {
-    id: "3", 
+    id: "1",
+    title: 'TaskSync',
+    isFreelance: false,
+    year: "2025",
+    description: 'MERN stack Kanban workspace featuring real-time drag-and-drop board orchestration and JWT-secured user sessions.',
+    techStack: ['REACT', 'REDUX', 'MONGODB', 'NODE.js', 'TAILWIND', 'DND', 'JWT'],
+    imageSrc: tasksyncImg,
+    repoLink: 'https://github.com/ShivaniGujjar/tasksync',
+    liveLink: 'https://tasksync-delta.vercel.app/'
+  },
+  {
+    id: "2",
+    title: 'Unravel',
+    isFreelance: false,
+    year: "2025",
+    description: 'AI assistant application built to synthesize and answer complex queries using generative AI models.',
+    techStack: ['REACT', 'GENAI', 'TAILWIND', 'FRAMER', 'REDUX'],
+    imageSrc: unravelImg,
+    repoLink: 'https://github.com/ShivaniGujjar/unravel',
+    liveLink: 'https://unravel-liart.vercel.app/'
+  },
+  {
+    id: "3",
     title: "CreatorFlow",
-    description: "An AI-driven content roadmapping and scripting workspace generating automated production loops.",
-    techStack: ["React", "Node.js", "MongoDB", "Socket.io", "LangChain", "Gemini", "Mistral"],
+    isFreelance: false,
+    year: "2026",
+    description: "Content roadmapping platform automating creator scripts and production workflows using multi-model GenAI integration.",
+    techStack: ["REACT", "NODE.JS", "MONGODB", "SOCKET.IO", "LANGCHAIN", "GEMINI", "MISTRAL"],
     imageSrc: creatorflowImg,
     repoLink: "https://github.com/ShivaniGujjar/creatorflow",
-    liveLink: "https://creatorflow-black.vercel.app/",
-    themeColor: "#FF4D00" 
+    liveLink: "https://creatorflow-black.vercel.app/"
   },
   {
     id: "beam",
-    title: "BEAM – Deployment Platform",
-    description: "Mini-Vercel clone built with distributed build workers, Redis Pub/Sub log streaming, Supabase Storage, and reverse proxy routing.",
-    techStack: ["React", "Node.js", "Express", "Socket.io", "Redis", "Supabase"],
-    imageSrc: beamImg, // Ya apni path imageSrc daalo
+    title: "BEAM – Deployment Engine",
+    isFreelance: false,
+    year: "2026",
+    description: "Automated deployment engine with distributed build workers, Redis Pub/Sub log streaming, and Supabase storage.",
+    techStack: ["REACT", "NODE.JS", "EXPRESS", "SOCKET.IO", "REDIS", "SUPABASE"],
+    imageSrc: beamImg,
     repoLink: "https://github.com/ShivaniGujjar/beam",
-    liveLink: "https://beam-sable.vercel.app/",
+    liveLink: "https://beam-sable.vercel.app/"
   }
 ];
 
 function Projects() {
-  const sectionRef = useRef(null);
-  const triggerRef = useRef(null);
-
-  useLayoutEffect(() => {
-    let ctx = gsap.context(() => {
-      const projectsTrack = sectionRef.current;
-
-      // Dynamic calculation for full horizontal scroll including all 4 cards
-      const getScrollAmount = () => {
-        const trackWidth = projectsTrack.scrollWidth;
-        const viewportWidth = window.innerWidth;
-        // Total negative translation needed to reveal the last card completely
-        return -(trackWidth - viewportWidth + 120);
-      };
-
-      const animation = gsap.to(projectsTrack, {
-        x: getScrollAmount,
-        ease: "none",
-        scrollTrigger: {
-          trigger: triggerRef.current,
-          start: "top top",
-          end: () => `+=${sectionRef.current.scrollWidth}`,
-          pin: true,
-          scrub: 1,
-          invalidateOnRefresh: true,
-          anticipatePin: 1,
-        }
-      });
-
-      // Recalculate GSAP positions after all images are fully loaded
-      window.addEventListener('load', () => ScrollTrigger.refresh());
-    }, triggerRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section ref={triggerRef} id="projects" className="w-full relative bg-[#050507] overflow-hidden">
-      <div className="min-h-screen flex flex-col justify-center py-12">
-        
-        {/* HEADER */}
-        <div className="w-full max-w-[1250px] mx-auto px-6 text-center mb-8 shrink-0">
-          <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-black leading-[1.1] tracking-tighter uppercase m-0">
-            <span className="text-white">RECENT</span> <span className="text-[#00C2FF]">BUILDS</span>
+    <section id="projects" className="w-full relative bg-[#050507] py-20 sm:py-28 border-t border-white/[0.05]">
+
+      <div className="w-full max-w-[1100px] mx-auto px-5 sm:px-8 relative z-10">
+
+        {/* Header — heading only */}
+        <div className="mb-10 sm:mb-14">
+          <h2 className="text-2xl sm:text-4xl font-semibold tracking-tight text-white/95">
+            Things I've <span className="text-[#00C2FF]">actually shipped</span>
           </h2>
-          <div className="w-12 h-1 bg-[#00C2FF] mt-4 rounded-full mx-auto" />
         </div>
-        
-        {/* HORIZONTAL KINETIC TRACK */}
-        <div 
-          ref={sectionRef} 
-          className="flex flex-nowrap gap-8 md:gap-12 px-6 md:px-20 w-max items-center pr-24 md:pr-36"
-        >
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 justify-items-center">
           {projectsData.map((project) => (
-            <div key={project.id} className="w-[85vw] sm:w-[420px] md:w-[450px] shrink-0">
+            <div key={project.id} className="w-full flex justify-center">
               <ProjectCard {...project} />
             </div>
           ))}
