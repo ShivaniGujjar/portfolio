@@ -71,7 +71,7 @@ const ProjectCard = ({
             />
 
             {liveLink && (
-              <div className="absolute top-2.5 right-2.5 bg-black/60 backdrop-blur-md border border-white/10 px-2.5 py-1 rounded-full flex items-center gap-1.5 text-[10px] font-medium text-white/80">
+              <div className="absolute top-2.5 right-2.5 bg-black/60 backdrop-blur-md border border-white/10 px-2.5 py-1 rounded-md flex items-center gap-1.5 text-[10px] font-medium text-white/80">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#27C93F] animate-pulse" />
                 live
               </div>
