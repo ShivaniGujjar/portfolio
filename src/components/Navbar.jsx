@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
+import ThemeToggle from './ThemeToggle';
 
 // Connect button — now matches the same sentence-case pill style as every other CTA on the site
 const NavConnectButton = ({ text, href }) => {
   return (
     <a
       href={href}
-      className="hidden lg:flex items-center justify-center h-[36px] px-5 rounded-lg font-medium text-[13px] bg-white text-black hover:bg-[#00C2FF] transition-colors duration-200"
+      className="hidden lg:flex items-center justify-center h-[36px] px-5 rounded-lg font-medium text-[13px] bg-black text-white dark:bg-white dark:text-black hover:bg-[#00C2FF] hover:text-black transition-colors duration-200"
     >
       {text}
     </a>
@@ -54,7 +55,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-[1100px] h-[58px] z-50 flex items-center bg-[#08080a]/80 backdrop-blur-md border border-white/[0.08] rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-transform duration-300 ${
+      className={`fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-[1100px] h-[58px] z-50 flex items-center bg-white/80 dark:bg-[#08080a]/80 backdrop-blur-md border border-black/[0.09] dark:border-white/[0.08] rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-transform duration-300 ${
         isVisible ? 'translate-y-0' : '-translate-y-[180%]'
       }`}
     >
@@ -67,17 +68,17 @@ const Navbar = () => {
 
       <div className="w-full px-5 sm:px-6 flex justify-between items-center relative">
 
-        <a href="#home" className="font-mono text-sm font-bold text-white tracking-wider">
-          Shivani<span className="text-[#00C2FF]">.</span>
+        <a href="#home" className="font-mono text-sm font-bold text-black dark:text-white tracking-wider">
+          shivani<span className="text-[#0077A6] dark:text-[#00C2FF]">.</span>
         </a>
 
-        <div className={`fixed top-0 left-0 w-full h-screen bg-[#050507]/98 backdrop-blur-xl flex flex-col justify-center items-center transition-transform duration-300 z-40 ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'} lg:static lg:h-auto lg:w-auto lg:bg-transparent lg:backdrop-blur-none lg:translate-y-0 lg:flex-row lg:z-auto`}>
+        <div className={`fixed top-0 left-0 w-full h-screen bg-[#FAFAF9] dark:bg-[#050507]/98 backdrop-blur-xl flex flex-col justify-center items-center transition-transform duration-300 z-40 ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'} lg:static lg:h-auto lg:w-auto lg:bg-transparent lg:backdrop-blur-none lg:translate-y-0 lg:flex-row lg:z-auto`}>
           <ul className="flex flex-col gap-8 text-center m-0 p-0 list-none lg:flex-row lg:gap-1 text-sm">
             {navItems.map((item) => (
               <li key={item.name}>
                 <a
                   href={item.href}
-                  className="px-3.5 py-1.5 rounded-lg text-white/60 hover:text-white hover:bg-white/[0.05] transition-colors duration-200"
+                  className="px-3.5 py-1.5 rounded-lg text-black/55 dark:text-white/60 hover:text-black dark:hover:text-white hover:bg-black/[0.05] dark:hover:bg-white/[0.05] transition-colors duration-200"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
@@ -87,7 +88,8 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
+          <ThemeToggle />
           <NavConnectButton href="#contact" text="Connect" />
 
           <button
@@ -95,9 +97,9 @@ const Navbar = () => {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle Menu"
           >
-            <span className={`w-5 h-[2px] bg-white rounded-lg transition-transform duration-300 ${isMenuOpen ? 'translate-y-[7px] rotate-45' : ''}`}></span>
-            <span className={`w-5 h-[2px] bg-white rounded-lg transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
-            <span className={`w-5 h-[2px] bg-white rounded-lg transition-transform duration-300 ${isMenuOpen ? '-translate-y-[7px] -rotate-45' : ''}`}></span>
+            <span className={`w-5 h-[2px] bg-black dark:bg-white rounded-full transition-transform duration-300 ${isMenuOpen ? 'translate-y-[7px] rotate-45' : ''}`}></span>
+            <span className={`w-5 h-[2px] bg-black dark:bg-white rounded-full transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
+            <span className={`w-5 h-[2px] bg-black dark:bg-white rounded-full transition-transform duration-300 ${isMenuOpen ? '-translate-y-[7px] -rotate-45' : ''}`}></span>
           </button>
         </div>
 

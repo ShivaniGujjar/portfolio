@@ -39,14 +39,14 @@ const skillData = [
 
 const Capabilities = () => {
   return (
-    <section className="w-full relative bg-[#050507] py-20 sm:py-28 border-t border-white/[0.05]" id="capabilities">
+    <section className="w-full relative bg-[#FAFAF9] dark:bg-[#050507] py-20 sm:py-28 border-t border-black/[0.06] dark:border-white/[0.05]" id="capabilities">
 
       <div className="w-full max-w-[1100px] mx-auto px-5 sm:px-8 relative z-10">
 
         {/* Header — heading only */}
         <div className="mb-10 sm:mb-14">
-          <h2 className="text-2xl sm:text-4xl font-semibold tracking-tight text-white/95">
-            What I actually <span className="text-[#00C2FF]">work with</span>
+          <h2 className="text-2xl sm:text-4xl font-semibold tracking-tight text-black/90 dark:text-white/95">
+            What I actually <span className="text-[#0077A6] dark:text-[#00C2FF]">work with</span>
           </h2>
         </div>
 

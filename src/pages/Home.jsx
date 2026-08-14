@@ -9,7 +9,7 @@ import {
 const coreSkills = [
   { name: 'React', icon: <SiReact />, color: '#00C2FF' },
   { name: 'Node.js', icon: <SiNodedotjs />, color: '#339933' },
-  { name: 'Express', icon: <SiExpress />, color: '#FFFFFF' },
+  { name: 'Express', icon: <SiExpress /> },
   { name: 'MongoDB', icon: <SiMongodb />, color: '#47A248' },
   { name: 'Tailwind', icon: <SiTailwindcss />, color: '#00C2FF' },
   { name: 'JavaScript', icon: <SiJavascript />, color: '#F7DF1E' },
@@ -34,8 +34,10 @@ const WhoAmI = () => {
   }, []);
 
   return (
-    <div className="fade-in flex flex-wrap items-center gap-1.5 sm:gap-2 font-mono text-xs sm:text-[13px] text-white/40 mb-5 sm:mb-6">
-      
+    <div className="fade-in flex flex-wrap items-center gap-1.5 sm:gap-2 font-mono text-xs sm:text-[13px] text-black/40 dark:text-white/40 mb-5 sm:mb-6">
+      <span className="text-black/30 dark:text-white/30">$</span>
+      <span>{typed}</span>
+      <span className="w-[6px] h-[13px] bg-black/40 dark:bg-white/40 animate-pulse" />
     </div>
   );
 };
@@ -58,29 +60,29 @@ const Home = () => {
     <section
       ref={containerRef}
       id="home"
-      className="relative w-full min-h-[90vh] bg-[#050507] text-white flex flex-col justify-center px-5 sm:px-12 lg:px-24 pt-24 sm:pt-28 pb-16 sm:pb-20 select-none overflow-hidden"
+      className="relative w-full min-h-[90vh] bg-[#FAFAF9] dark:bg-[#050507] text-black dark:text-white flex flex-col justify-center px-5 sm:px-12 lg:px-24 pt-24 sm:pt-28 pb-16 sm:pb-20 select-none overflow-hidden"
     >
       {/* One soft ambient glow, off to the side — not centered, not doubled */}
       <div className="absolute -top-20 -right-40 w-[36vw] h-[36vw] bg-[#00C2FF]/[0.04] rounded-full blur-[130px] pointer-events-none" />
 
       <div className="w-full max-w-[760px] mx-auto flex flex-col items-start relative z-10">
 
-        <WhoAmI />
+        
 
         {/* Plain name line — no badge, no icon, just who you are */}
-        <p className="fade-in text-sm text-white/45 mb-4">
-          Hey, I'm <span className="text-white/70">Shivani</span> - a fullstack developer based in India.
+        <p className="fade-in text-sm text-black/45 dark:text-white/45 mb-4">
+          Hey, I'm <span className="text-black/70 dark:text-white/70">Shivani</span> - a fullstack developer based in India.
         </p>
 
         {/* Sentence-case, mixed weight — reads like someone said it, not shouted it */}
-        <h1 className="fade-in text-[1.75rem] xs:text-[2rem] sm:text-[2.6rem] md:text-[3.1rem] font-semibold tracking-tight leading-[1.25] sm:leading-[1.2] mb-4 sm:mb-5 text-white/95">
-          I build <span className="text-[#00C2FF]">fullstack</span> apps that
-          feel <span className="text-[#FF6C37]">simple</span> to use.
+        <h1 className="fade-in text-[1.75rem] xs:text-[2rem] sm:text-[2.6rem] md:text-[3.1rem] font-semibold tracking-tight leading-[1.25] sm:leading-[1.2] mb-4 sm:mb-5 text-black/90 dark:text-white/95">
+          I build <span className="text-[#0077A6] dark:text-[#00C2FF]">fullstack</span> apps that
+          feel <span className="text-[#C8481A] dark:text-[#FF6C37]">simple</span> to use.
         </h1>
 
-        <p className="fade-in text-sm sm:text-base text-white/50 max-w-[520px] leading-relaxed mb-8 sm:mb-10">
+        <p className="fade-in text-sm sm:text-base text-black/50 dark:text-white/50 max-w-[520px] leading-relaxed mb-8 sm:mb-10">
           MERN stack, mostly. I like taking a rough idea and turning it into
-          something that actually works end to end — backend, UI, the small
+          something that actually works end to end - backend, UI and the small
           details in between.
         </p>
 
@@ -88,7 +90,7 @@ const Home = () => {
         <div className="fade-in flex flex-wrap items-center gap-2.5 sm:gap-3 mb-10 sm:mb-14">
           <a
             href="#projects"
-            className="group inline-flex items-center gap-1.5 bg-white text-black text-[13px] sm:text-sm font-medium py-2 sm:py-2.5 px-4 sm:px-5 rounded-lg transition-colors duration-200 hover:bg-[#00C2FF]"
+            className="group inline-flex items-center gap-1.5 bg-black text-white dark:bg-white dark:text-black text-[13px] sm:text-sm font-medium py-2 sm:py-2.5 px-4 sm:px-5 rounded-lg transition-colors duration-200 hover:bg-[#00C2FF] hover:text-black"
           >
             See my work
             <HiArrowUpRight size={14} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -98,25 +100,25 @@ const Home = () => {
             href="/resume.pdf"
             target="_blank"
             rel="noreferrer"
-            className="text-[13px] sm:text-sm font-medium py-2 sm:py-2.5 px-4 sm:px-5 rounded-lg text-white/70 border border-white/10 bg-white/[0.03] backdrop-blur-md transition-colors duration-200 hover:text-white hover:border-white/20"
+            className="text-[13px] sm:text-sm font-medium py-2 sm:py-2.5 px-4 sm:px-5 rounded-lg text-black/65 dark:text-white/70 border border-black/10 dark:border-white/10 bg-black/[0.03] dark:bg-white/[0.03] backdrop-blur-md transition-colors duration-200 hover:text-black dark:hover:text-white hover:border-black/20 dark:hover:border-white/20"
           >
             Resume
           </a>
         </div>
 
         {/* Quiet divider — same rhythm as the rest of the site, not a hard rule */}
-        <div className="fade-in w-full h-px bg-white/[0.07] mb-8 sm:mb-10" />
+        <div className="fade-in w-full h-px bg-black/[0.08] dark:bg-white/[0.07] mb-8 sm:mb-10" />
 
         {/* Individual glass chips — each tool sits in its own soft frosted pill */}
         <div className="fade-in w-full">
-          <span className="text-[10px] sm:text-[11px] text-white/35 tracking-wide mb-3 sm:mb-4 block uppercase">
+          <span className="text-[10px] sm:text-[11px] text-black/35 dark:text-white/35 tracking-wide mb-3 sm:mb-4 block uppercase">
             Tools I reach for most
           </span>
           <div className="flex flex-wrap gap-2 sm:gap-2.5">
             {coreSkills.map((skill, i) => (
               <span
                 key={i}
-                className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-[13px] text-white/70 bg-white/[0.03] border border-white/[0.08] backdrop-blur-md transition-colors duration-200 hover:text-white hover:border-white/20 hover:bg-white/[0.05]"
+                className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-[13px] text-black/65 dark:text-white/70 bg-black/[0.03] dark:bg-white/[0.03] border border-black/[0.09] dark:border-white/[0.08] backdrop-blur-md transition-colors duration-200 hover:text-black dark:hover:text-white hover:border-black/20 dark:hover:border-white/20 hover:bg-black/[0.05] dark:hover:bg-white/[0.05]"
               >
                 <span style={{ color: skill.color }} className="text-sm sm:text-base opacity-90">{skill.icon}</span>
                 {skill.name}

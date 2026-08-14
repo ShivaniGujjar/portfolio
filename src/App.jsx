@@ -45,7 +45,7 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-brand-black min-h-screen text-white select-none">
+    <div className="bg-neutral-50 dark:bg-[#050507] min-h-screen text-neutral-900 dark:text-white select-none transition-colors duration-300">
       <header className="fixed top-0 left-0 w-full z-50 pointer-events-none">
         <div className="w-full max-w-[1400px] mx-auto pointer-events-auto">
           <Navbar />

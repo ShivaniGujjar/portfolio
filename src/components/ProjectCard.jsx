@@ -14,14 +14,14 @@ const techData = {
   'NODE.JS': { icon: <SiNodedotjs />, color: '#339933' },
   'MONGODB': { icon: <SiMongodb />, color: '#47A248' },
   'MONGOOSE': { icon: <SiMongoose />, color: '#FF6C37' },
-  'EXPRESS': { icon: <SiExpress />, color: '#ffffff' },
-  'SOCKET.IO': { icon: <SiSocketdotio />, color: '#ffffff' },
+  'EXPRESS': { icon: <SiExpress /> },
+  'SOCKET.IO': { icon: <SiSocketdotio /> },
   'REDIS': { icon: <SiRedis />, color: '#FF6C37' },
   'SUPABASE': { icon: <SiSupabase />, color: '#00C2FF' },
   'REDUX': { icon: <SiRedux />, color: '#764ABC' },
   'TAILWIND': { icon: <SiTailwindcss />, color: '#00C2FF' },
   'JWT': { icon: <SiJsonwebtokens />, color: '#FF6C37' },
-  'DND': { icon: <HiCode />, color: '#FFF' },
+  'DND': { icon: <HiCode /> },
   'FRAMER': { icon: <SiFramer />, color: '#FF6C37' },
   'LANGCHAIN': { icon: <SiLangchain />, color: '#00C2FF' },
   'GENAI': { icon: <LuBrainCircuit />, color: '#FF6C37' },
@@ -49,21 +49,21 @@ const ProjectCard = ({
   return (
     <>
       <div
-        className="group relative flex flex-col justify-between bg-white/[0.03] border border-white/[0.08] backdrop-blur-md rounded-2xl p-5 sm:p-6 w-full max-w-[460px] transition-colors duration-300 hover:border-white/[0.15]"
+        className="group relative flex flex-col justify-between bg-black/[0.03] dark:bg-white/[0.03] border border-black/[0.09] dark:border-white/[0.08] backdrop-blur-md rounded-2xl p-5 sm:p-6 w-full max-w-[460px] transition-colors duration-300 hover:border-black/[0.15] dark:border-white/[0.15]"
       >
 
         <div>
           {/* Meta bar — same dot-label pattern as About / Capabilities, not shouty caps */}
-          <div className="flex items-center justify-between text-xs text-white/40 mb-4">
+          <div className="flex items-center justify-between text-xs text-black/40 dark:text-white/40 mb-4">
             <span className="flex items-center gap-1.5" style={{ color: accentColor }}>
               <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: accentColor }} />
               {isFreelance ? 'Freelance work' : 'Personal build'}
             </span>
-            <span className="text-white/30">{year}</span>
+            <span className="text-black/30 dark:text-white/30">{year}</span>
           </div>
 
           {/* Thumbnail */}
-          <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-white/[0.02] border border-white/[0.06] mb-5">
+          <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-black/[0.02] dark:bg-white/[0.02] border border-black/[0.07] dark:border-white/[0.06] mb-5">
             <img
               src={imageSrc}
               alt={title}
@@ -71,31 +71,31 @@ const ProjectCard = ({
             />
 
             {liveLink && (
-              <div className="absolute top-2.5 right-2.5 bg-black/60 backdrop-blur-md border border-white/10 px-2.5 py-1 rounded-md flex items-center gap-1.5 text-[10px] font-medium text-white/80">
+              <div className="absolute top-2.5 right-2.5 bg-black/60 backdrop-blur-md border border-black/10 dark:border-white/10 px-2.5 py-1 rounded-lg flex items-center gap-1.5 text-[10px] font-medium text-black/75 dark:text-white/80">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#27C93F] animate-pulse" />
                 live
               </div>
             )}
           </div>
 
-          <h3 className="text-lg sm:text-xl font-semibold text-white/95 tracking-tight mb-2">
+          <h3 className="text-lg sm:text-xl font-semibold text-black/90 dark:text-white/95 tracking-tight mb-2">
             {title}
           </h3>
 
-          <p className="text-[13px] text-white/50 leading-relaxed mb-6 line-clamp-2">
+          <p className="text-[13px] text-black/45 dark:text-white/50 leading-relaxed mb-6 line-clamp-2">
             {description}
           </p>
         </div>
 
         <div>
-          <div className="flex flex-wrap gap-1.5 mb-6 pt-4 border-t border-white/[0.06]">
+          <div className="flex flex-wrap gap-1.5 mb-6 pt-4 border-t border-black/[0.07] dark:border-white/[0.06]">
             {techStack.map((tech, i) => {
               const techKey = tech.toUpperCase();
               const config = techData[techKey] || { icon: <LuBrainCircuit />, color: '#00C2FF' };
               return (
                 <span
                   key={i}
-                  className="flex items-center gap-1.5 px-2.5 py-1 bg-white/[0.03] border border-white/[0.06] rounded-md text-[11px] text-white/60"
+                  className="flex items-center gap-1.5 px-2.5 py-1 bg-black/[0.03] dark:bg-white/[0.03] border border-black/[0.07] dark:border-white/[0.06] rounded-md text-[11px] text-black/55 dark:text-white/60"
                 >
                   <span style={{ color: config.color }}>{config.icon}</span>
                   {tech}
@@ -112,7 +112,7 @@ const ProjectCard = ({
                 target="_blank"
                 rel="noreferrer"
                 style={{ '--hover-accent': accentColor }}
-                className="flex-1 bg-white text-black text-sm font-medium py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors duration-200 group/btn hover:bg-[var(--hover-accent)]"
+                className="flex-1 bg-black text-white dark:bg-white dark:text-black text-sm font-medium py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors duration-200 group/btn hover:bg-[var(--hover-accent)] hover:text-black"
               >
                 <span>Visit project</span>
                 <HiOutlineExternalLink size={14} className="transition-transform duration-200 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
@@ -120,7 +120,7 @@ const ProjectCard = ({
             ) : (
               <button
                 onClick={() => setIsVideoOpen(true)}
-                className="flex-1 bg-white text-black hover:bg-[#00C2FF] text-sm font-medium py-2.5 px-4 rounded-full flex items-center justify-center gap-2 transition-colors duration-200 cursor-pointer"
+                className="flex-1 bg-black text-white dark:bg-white dark:text-black hover:bg-[#00C2FF] hover:text-black text-sm font-medium py-2.5 px-4 rounded-full flex items-center justify-center gap-2 transition-colors duration-200 cursor-pointer"
               >
                 <span>Watch demo</span>
                 <HiPlay size={14} />
@@ -133,7 +133,7 @@ const ProjectCard = ({
                 target="_blank"
                 rel="noreferrer"
                 title="Source code"
-                className="p-2.5 bg-white/[0.04] border border-white/[0.08] hover:border-white/20 text-white/60 hover:text-white rounded-full transition-colors duration-200"
+                className="p-2.5 bg-black/[0.04] dark:bg-white/[0.04] border border-black/[0.09] dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/20 text-black/55 dark:text-white/60 hover:text-black dark:hover:text-white rounded-full transition-colors duration-200"
               >
                 <HiCode size={15} />
               </a>
@@ -156,13 +156,13 @@ const ProjectCard = ({
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.2 }}
                 onClick={(e) => e.stopPropagation()}
-                className="relative w-full max-w-4xl bg-[#0a0a0c] border border-white/10 rounded-2xl overflow-hidden shadow-2xl cursor-default"
+                className="relative w-full max-w-4xl bg-white dark:bg-[#0a0a0c] border border-black/10 dark:border-white/10 rounded-2xl overflow-hidden shadow-2xl cursor-default"
               >
-                <div className="px-5 py-3 bg-white/[0.03] border-b border-white/[0.08] flex items-center justify-between">
-                  <span className="text-xs text-white/50">{title} — demo preview</span>
+                <div className="px-5 py-3 bg-black/[0.03] dark:bg-white/[0.03] border-b border-black/[0.09] dark:border-white/[0.08] flex items-center justify-between">
+                  <span className="text-xs text-black/45 dark:text-white/50">{title} — demo preview</span>
                   <button
                     onClick={() => setIsVideoOpen(false)}
-                    className="p-1 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-all cursor-pointer"
+                    className="p-1 rounded-lg bg-black/10 dark:bg-white/10 text-black dark:text-white hover:bg-black/20 dark:hover:bg-white/20 transition-all cursor-pointer"
                   >
                     <HiX size={16} />
                   </button>
