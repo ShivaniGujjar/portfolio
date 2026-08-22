@@ -20,9 +20,9 @@ const Footer = () => {
 
         <div className="text-black/35 dark:text-white/35 flex items-center gap-1.5">
           <span>Built with</span>
-          <span className="text-[#0077A6] dark:text-[#00C2FF]">React</span>
+          <span className="text-[#00C2FF] dark:text-[#00C2FF]">React</span>
           <span>&</span>
-          <span className="text-[#0077A6] dark:text-[#00C2FF]">Tailwind</span>
+          <span className="text-[#00C2FF] dark:text-[#00C2FF]">Tailwind</span>
         </div>
 
         <button

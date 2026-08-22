@@ -23,7 +23,7 @@ const Contact = () => {
         {/* Header — heading only */}
         <div className="mb-10 sm:mb-14">
           <h2 className="text-2xl sm:text-4xl font-semibold tracking-tight text-black/90 dark:text-white/95">
-            Let's <span className="text-[#0077A6] dark:text-[#00C2FF]">talk</span>
+            Let's <span className="text-[#00C2FF] dark:text-[#00C2FF]">talk</span>
           </h2>
         </div>
 
@@ -33,7 +33,7 @@ const Contact = () => {
           <div className="lg:col-span-5 flex flex-col justify-between">
             <div>
               <h3 className="text-xl sm:text-2xl font-semibold text-black/90 dark:text-white/95 tracking-tight leading-snug mb-4">
-                Got a project in mind, or looking for a <span className="text-[#C8481A] dark:text-[#FF6C37]">fullstack engineer</span>?
+                Got a project in mind, or looking for a <span className="text-[#FF6C37] dark:text-[#FF6C37]">fullstack engineer</span>?
               </h3>
 
               <p className="text-[13px] sm:text-sm text-black/45 dark:text-white/50 leading-relaxed mb-8">

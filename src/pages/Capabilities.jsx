@@ -46,7 +46,7 @@ const Capabilities = () => {
         {/* Header — heading only */}
         <div className="mb-10 sm:mb-14">
           <h2 className="text-2xl sm:text-4xl font-semibold tracking-tight text-black/90 dark:text-white/95">
-            What I actually <span className="text-[#0077A6] dark:text-[#00C2FF]">work with</span>
+            What I actually <span className="text-[#00C2FF] dark:text-[#00C2FF]">work with</span>
           </h2>
         </div>
 

@@ -69,7 +69,7 @@ const Navbar = () => {
       <div className="w-full px-5 sm:px-6 flex justify-between items-center relative">
 
         <a href="#home" className="font-mono text-sm font-bold text-black dark:text-white tracking-wider">
-          shivani<span className="text-[#0077A6] dark:text-[#00C2FF]">.</span>
+          shivani<span className="text-[#00C2FF] dark:text-[#00C2FF]">.</span>
         </a>
 
         <div className={`fixed top-0 left-0 w-full h-screen bg-[#FAFAF9] dark:bg-[#050507]/98 backdrop-blur-xl flex flex-col justify-center items-center transition-transform duration-300 z-40 ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'} lg:static lg:h-auto lg:w-auto lg:bg-transparent lg:backdrop-blur-none lg:translate-y-0 lg:flex-row lg:z-auto`}>

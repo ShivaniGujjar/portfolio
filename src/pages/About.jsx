@@ -16,19 +16,19 @@ const focusPoints = [
   {
     color: '#00C2FF',
     text: (
-      <>Mostly <strong className="text-black dark:text-white font-medium">MERN</strong> — React on the front, Node/Express behind it, MongoDB doing the remembering.</>
+      <>Mostly <strong className="text-black dark:text-white font-medium">MERN</strong> - React on the front, Node/Express behind it, MongoDB doing the remembering.</>
     ),
   },
   {
     color: '#FF6C37',
     text: (
-      <>I reach for <strong className="text-black dark:text-white font-medium">Socket.io</strong> when something needs to feel alive — live updates, chats, that sort of thing.</>
+      <>I reach for <strong className="text-black dark:text-white font-medium">Socket.io</strong> when something needs to feel alive - live updates, chats, that sort of thing.</>
     ),
   },
   {
     color: '#27C93F',
     text: (
-      <>Spend a fair bit of time on the small stuff — <strong className="text-black dark:text-white font-medium">micro-interactions</strong>, load states, the parts people don't notice unless they're missing.</>
+      <>Spend a fair bit of time on the small stuff - <strong className="text-black dark:text-white font-medium">micro-interactions</strong>, load states, the parts people don't notice unless they're missing.</>
     ),
   },
 ];
@@ -43,7 +43,7 @@ const About = () => {
         {/* Header — heading only, no command-line eyebrow */}
         <div className="mb-10 sm:mb-14">
           <h2 className="text-2xl sm:text-4xl font-semibold tracking-tight text-black/90 dark:text-white/95">
-            A bit about <span className="text-[#0077A6] dark:text-[#00C2FF]">me</span>
+            A bit about <span className="text-[#00C2FF] dark:text-[#00C2FF]">me</span>
           </h2>
         </div>
 
@@ -89,7 +89,7 @@ const About = () => {
           >
             <div>
               <div className="flex items-center gap-2 text-xs text-black/40 dark:text-white/40 mb-6">
-                <HiOutlineAcademicCap className="text-[#C8481A] dark:text-[#FF6C37]" />
+                <HiOutlineAcademicCap className="text-[#FF6C37] dark:text-[#FF6C37]" />
                 <span>Education</span>
               </div>
 
@@ -97,7 +97,7 @@ const About = () => {
                 <div>
                   <div className="flex justify-between items-baseline mb-1">
                     <h4 className="font-medium text-black dark:text-white text-base">MCA</h4>
-                    <span className="text-[11px] text-[#0077A6] dark:text-[#00C2FF]">2024 – 2026</span>
+                    <span className="text-[11px] text-[#00C2FF] dark:text-[#00C2FF]">2024 – 2026</span>
                   </div>
                   <p className="text-xs text-black/40 dark:text-white/40">Lovely Professional University</p>
                 </div>

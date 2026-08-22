@@ -8,17 +8,17 @@ import beamImg from '../assets/beam.png';
 import akshayImg from '../assets/akshay.jpeg';
 
 const projectsData = [
-  {
-    id: "freelance-video-portfolio",
-    title: 'Akshay Portfolio – Video Editor',
-    isFreelance: true,
-    year: "2026",
-    description: 'Custom client portfolio engineered for a senior video editor at Masters Union. Features Lenis smooth scrolling, GSAP kinetic layouts, and React Player media streaming.',
-    techStack: ['REACT', 'VITE', 'TAILWIND', 'GSAP', 'FRAMER', 'LENIS'],
-    imageSrc: akshayImg,
-    repoLink: '',
-    liveLink: 'https://akshayportfolio.com'
-  },
+  // {
+  //   id: "freelance-video-portfolio",
+  //   title: 'Akshay Portfolio – Video Editor',
+  //   isFreelance: true,
+  //   year: "2026",
+  //   description: 'Custom client portfolio engineered for a senior video editor at Masters Union. Features Lenis smooth scrolling, GSAP kinetic layouts, and React Player media streaming.',
+  //   techStack: ['REACT', 'VITE', 'TAILWIND', 'GSAP', 'FRAMER', 'LENIS'],
+  //   imageSrc: akshayImg,
+  //   repoLink: '',
+  //   // liveLink: 'https://akshayportfolio.com'
+  // },
   {
     id: "1",
     title: 'TaskSync',
@@ -74,7 +74,7 @@ function Projects() {
         {/* Header — heading only */}
         <div className="mb-10 sm:mb-14">
           <h2 className="text-2xl sm:text-4xl font-semibold tracking-tight text-black/90 dark:text-white/95">
-            Things I've <span className="text-[#0077A6] dark:text-[#00C2FF]">actually shipped</span>
+            Things I've <span className="text-[#00C2FF] dark:text-[#00C2FF]">actually shipped</span>
           </h2>
         </div>
 
