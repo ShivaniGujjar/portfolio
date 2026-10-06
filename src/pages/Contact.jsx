@@ -33,7 +33,7 @@ const socialClass =
 
 const Contact = () => {
   const [copied, setCopied] = useState(false);
-  const email = 'shivanigujjar.dev@gmail.com';
+  const email = 'shivanibuttargujjar@gmail.com';
 
   const [name, setName] = useState('');
   const [replyTo, setReplyTo] = useState('');
