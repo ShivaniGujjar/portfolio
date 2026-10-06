@@ -163,7 +163,7 @@ const projectsData = [
     techStack: ['REACT', 'VITE', 'TAILWIND', 'GSAP', 'FRAMER', 'LENIS'],
     imageSrc: akshayImg, // Replace with your actual preview asset later
     repoLink: '',
-    liveLink: ''
+    liveLink: 'https://akshayshrivastava.com/'
   },
   {
     id: "1",
