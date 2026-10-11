@@ -55,11 +55,27 @@ const packages = [
 
 const work = [
   {
-    title: 'Akshay – Video Editor',
-    desc: 'Kinetic layouts, smooth scrolling and a showreel-first design for a professional video editor.',
-    stack: ['React', 'GSAP', 'Framer', 'Lenis'],
+    title: 'Akshay Shrivastava – Video Editor Portfolio',
+    package: 'Premium',
+    desc: 'Akshay was sharing his work through a Linktree with no fixed place to showcase it all. I built him a custom multi-page site with Editing, Motion Design, Direction and About Me pages, deployed on Hostinger with his own domain akshayshrivastava.com',
+    stack: [
+  'React',
+  'Vite',
+  'Tailwind CSS',
+  'GSAP',
+  'Framer Motion',
+  'Lenis',
+  'Swiper',
+  'React Router',
+  'SEO',
+  'Hostinger',
+  'Custom domain',
+],
     imageSrc: akshayImg,
     liveLink: AKSHAY_LIVE_LINK,
+    // Optional: add once Akshay sends feedback
+    // quote: 'Paste his feedback here.',
+    // quoteBy: 'Akshay Shrivastava, Video Editor',
   },
 ];
 
@@ -157,7 +173,8 @@ const Freelance = () => {
         <p className="mt-4 text-xs text-black/40 dark:text-white/40">
           50% to start, 50% on delivery. Hosting is free on all packages. A custom domain
           (about ₹600–1,000 per year) is bought by you in your own name, so you
-          own it and handle the yearly renewal; I set it up for you. Need something different? Tell me and I'll quote it.
+          own it and handle the yearly renewal; I set it up for you. Need something
+          different? Tell me and I'll quote it.
         </p>
 
         {/* Work */}
@@ -166,10 +183,17 @@ const Freelance = () => {
         </h3>
         <div className="grid grid-cols-1 gap-4 sm:gap-5">
           {work.map((w) => (
-            <div key={w.title} className={`${cardBase} p-5 sm:p-6 hover:border-black/[0.15] dark:hover:border-white/[0.15] md:grid md:grid-cols-2 md:gap-8 md:items-center`}>
+            <div
+              key={w.title}
+              className={`${cardBase} p-5 sm:p-6 hover:border-black/[0.15] dark:hover:border-white/[0.15] md:grid md:grid-cols-2 md:gap-8 md:items-center`}
+            >
               {w.imageSrc && (
                 <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-black/[0.02] dark:bg-white/[0.02] border border-black/[0.07] dark:border-white/[0.06] mb-5 md:mb-0">
-                  <img src={w.imageSrc} alt={w.title} className="w-full h-full object-cover opacity-90" />
+                  <img
+                    src={w.imageSrc}
+                    alt={w.title}
+                    className="w-full h-full object-cover opacity-90"
+                  />
                   {w.liveLink && (
                     <div className="absolute top-2.5 right-2.5 bg-black/60 backdrop-blur-md border border-white/10 px-2.5 py-1 rounded-lg flex items-center gap-1.5 text-[10px] font-medium text-white/80">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#27C93F] animate-pulse" />
@@ -178,42 +202,63 @@ const Freelance = () => {
                   )}
                 </div>
               )}
-              <div>
-              <h4 className="text-lg font-semibold text-black/90 dark:text-white/95 tracking-tight mb-2">
-                {w.title}
-              </h4>
-              <p className="text-[13px] text-black/45 dark:text-white/50 leading-relaxed mb-5">
-                {w.desc}
-              </p>
-              <div className="flex flex-wrap items-center gap-1.5">
-                {w.stack.map((s) => (
-                  <span
-                    key={s}
-                    className="px-2.5 py-1 bg-black/[0.03] dark:bg-white/[0.03] border border-black/[0.07] dark:border-white/[0.06] rounded-md text-[11px] text-black/55 dark:text-white/60"
-                  >
-                    {s}
-                  </span>
-                ))}
-              </div>
 
-              <div className="mt-6 pt-5 border-t border-black/[0.07] dark:border-white/[0.06]">
-                {w.liveLink ? (
-                  <a
-                    href={w.liveLink}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="bg-black text-white dark:bg-white dark:text-black hover:bg-[#00C2FF] hover:text-black text-sm font-medium py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors duration-200 group/btn"
-                  >
-                    <span>View live demo</span>
-                    <HiOutlineExternalLink size={14} className="transition-transform duration-200 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-                  </a>
-                ) : (
-                  <div className="bg-black/[0.04] dark:bg-white/[0.04] border border-black/[0.08] dark:border-white/[0.08] text-black/50 dark:text-white/50 text-xs font-mono py-2.5 px-4 rounded-xl flex items-center justify-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping" />
-                    <span>Demo coming soon</span>
-                  </div>
+              <div>
+                {w.package && (
+                  <span className="inline-block mb-3 px-2 py-0.5 text-[10px] font-mono bg-[#FF6C37]/10 text-[#FF6C37] border border-[#FF6C37]/20 rounded-full">
+                    {w.package} package
+                  </span>
                 )}
-              </div>
+                <h4 className="text-lg font-semibold text-black/90 dark:text-white/95 tracking-tight mb-2">
+                  {w.title}
+                </h4>
+                <p className="text-[13px] text-black/45 dark:text-white/50 leading-relaxed mb-5">
+                  {w.desc}
+                </p>
+
+                <div className="flex flex-wrap items-center gap-1.5">
+                  {w.stack.map((s) => (
+                    <span
+                      key={s}
+                      className="px-2.5 py-1 bg-black/[0.03] dark:bg-white/[0.03] border border-black/[0.07] dark:border-white/[0.06] rounded-md text-[11px] text-black/55 dark:text-white/60"
+                    >
+                      {s}
+                    </span>
+                  ))}
+                </div>
+
+                {w.quote && (
+                  <blockquote className="mt-5 pl-3 border-l-2 border-[#00C2FF]/50 text-[13px] text-black/60 dark:text-white/65 leading-relaxed">
+                    {w.quote}
+                    {w.quoteBy && (
+                      <footer className="mt-1.5 text-xs text-black/40 dark:text-white/40">
+                        {w.quoteBy}
+                      </footer>
+                    )}
+                  </blockquote>
+                )}
+
+                <div className="mt-6 pt-5 border-t border-black/[0.07] dark:border-white/[0.06]">
+                  {w.liveLink ? (
+                    <a
+                      href={w.liveLink}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="bg-black text-white dark:bg-white dark:text-black hover:bg-[#00C2FF] hover:text-black text-sm font-medium py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors duration-200 group/btn"
+                    >
+                      <span>View live site</span>
+                      <HiOutlineExternalLink
+                        size={14}
+                        className="transition-transform duration-200 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5"
+                      />
+                    </a>
+                  ) : (
+                    <div className="bg-black/[0.04] dark:bg-white/[0.04] border border-black/[0.08] dark:border-white/[0.08] text-black/50 dark:text-white/50 text-xs font-mono py-2.5 px-4 rounded-xl flex items-center justify-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping" />
+                      <span>Demo coming soon</span>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           ))}
@@ -228,7 +273,9 @@ const Freelance = () => {
             <li key={title} className={`${cardBase} p-5`}>
               <span className="text-xs text-[#00C2FF]">Step {i + 1}</span>
               <p className="mt-1 text-sm font-medium text-black/90 dark:text-white/95">{title}</p>
-              <p className="mt-1.5 text-[13px] text-black/45 dark:text-white/50 leading-relaxed">{text}</p>
+              <p className="mt-1.5 text-[13px] text-black/45 dark:text-white/50 leading-relaxed">
+                {text}
+              </p>
             </li>
           ))}
         </ol>
