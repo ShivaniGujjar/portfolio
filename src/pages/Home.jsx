@@ -195,7 +195,7 @@ const Home = () => {
           </a>
 
           <a
-            href="https://docs.google.com/document/d/1uNi8epNTsuL0mG9hMaQtmdGPhNienZEzQX4v00JIY6A/export?format=pdf"
+            href="https://docs.google.com/document/d/1lSmZd74YR51ruyvNwrFD5_P6SWzF5nWISuSdW2nBNNQ/edit?usp=sharing"
             target="_blank"
             rel="noreferrer"
             className="text-[13px] sm:text-sm font-medium py-2 sm:py-2.5 px-4 sm:px-5 rounded-lg text-black/65 dark:text-white/70 border border-black/10 dark:border-white/10 bg-black/[0.03] dark:bg-white/[0.03] backdrop-blur-md transition-colors duration-200 hover:text-black dark:hover:text-white hover:border-black/20 dark:hover:border-white/20"
