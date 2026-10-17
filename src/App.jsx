@@ -70,23 +70,27 @@ function App() {
     };
   }, []);
 
-  // On every page change: go to the #section if there is one, else to the top.
-  // Also refresh ScrollTrigger because the page height has changed.
-  useEffect(() => {
-    const lenis = lenisRef.current;
-    if (!lenis) return;
+  // On every route/hash change: smooth-scroll to the #section if only the hash changed,
+// jump instantly when the page itself changed (or on first load), else go to the top.
+const prevPath = useRef(null);
+useEffect(() => {
+  const lenis = lenisRef.current;
+  if (!lenis) return;
 
-    const t = setTimeout(() => {
-      ScrollTrigger.refresh();
-      if (hash) {
-        lenis.scrollTo(hash, { offset: -80, immediate: true });
-      } else {
-        lenis.scrollTo(0, { immediate: true });
-      }
-    }, 50);
+  const pageChanged = prevPath.current !== pathname;
+  prevPath.current = pathname;
 
-    return () => clearTimeout(t);
-  }, [pathname, hash]);
+  const t = setTimeout(() => {
+    ScrollTrigger.refresh();
+    if (hash) {
+      lenis.scrollTo(hash, { offset: -80, immediate: pageChanged });
+    } else {
+      lenis.scrollTo(0, { immediate: true });
+    }
+  }, 50);
+
+  return () => clearTimeout(t);
+}, [pathname, hash]);
 
   return (
     <div className="bg-neutral-50 dark:bg-[#050507] min-h-screen text-neutral-900 dark:text-white select-none transition-colors duration-300">

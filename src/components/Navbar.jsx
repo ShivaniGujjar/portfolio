@@ -126,6 +126,20 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-2.5">
+          <Link
+  to="/freelance"
+  className={`lg:hidden flex items-center gap-1.5 h-[30px] px-2.5 rounded-lg border text-xs font-medium text-[#00A8DD] dark:text-[#00C2FF] transition-colors duration-200 ${
+    onFreelance
+      ? 'bg-[#00C2FF]/15 border-[#00C2FF]/40'
+      : 'bg-[#00C2FF]/[0.07] border-[#00C2FF]/25'
+  }`}
+>
+  <span className="relative flex h-1.5 w-1.5">
+    <span className="absolute inline-flex h-full w-full rounded-full bg-[#00C2FF] opacity-60 animate-ping" />
+    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#00C2FF]" />
+  </span>
+  Freelance
+</Link>
           <ThemeToggle />
           <NavConnectButton href="#contact" text="Connect" />
 

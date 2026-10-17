@@ -79,6 +79,43 @@ const work = [
   },
 ];
 
+const testimonials = [
+  {
+    quote:
+      "A huge shoutout to Shivani Gujjar for handling the entire development and helping bring my ideas to life. Couldn't have done it without her. Kudos!",
+    name: 'Akshay Shrivastava',
+    role: 'Video Editor & Motion Designer',
+    source: 'LinkedIn post',
+    featured: true,
+    client: true,
+  },
+  {
+    quote: 'Best portfolio seen so far. Amazing work',
+    name: 'Yash Verma',
+    role: 'Retention Specialist @SoTrue',
+    source: 'LinkedIn comment',
+  },
+  {
+    quote: 'Crazy portfolio 💥',
+    name: 'Shubham Maurya',
+    role: 'Video Editor at Waywen',
+    source: 'LinkedIn comment',
+  },
+  {
+    quote: 'Portfolio looking 🔥',
+    name: 'Akhil Sharma',
+    role: 'Video Editor | Post-Production',
+    source: 'LinkedIn comment',
+  },
+
+  {
+  quote: 'Shivani is doing great job. Kaafi attractive hai.',
+  name: 'Vinay Mishra',
+  role: '',
+  source: 'Message',
+},
+];
+
 const steps = [
   ['Brief', 'You share your goals, content and sites you like.'],
   ['Design', 'I send a mockup. You approve it before I write code.'],
@@ -89,6 +126,49 @@ const steps = [
 
 const cardBase =
   'bg-black/[0.03] dark:bg-white/[0.03] border border-black/[0.09] dark:border-white/[0.08] backdrop-blur-md rounded-2xl transition-colors duration-300';
+
+  const TestimonialCard = ({ t, className = '' }) => (
+  <figure
+    className={`${cardBase} relative p-5 sm:p-6 flex flex-col justify-between hover:border-black/[0.15] dark:hover:border-white/[0.15] ${
+      t.client ? 'border-[#00C2FF]/50 dark:border-[#00C2FF]/50' : ''
+    } ${className}`}
+  >
+    {t.featured && (
+      <span
+        aria-hidden="true"
+        className="absolute right-6 top-3 text-7xl font-bold leading-none text-[#00C2FF]/70 select-none"
+      >
+        ”
+      </span>
+    )}
+    <div>
+      <div className="flex items-center gap-2">
+        {t.client && (
+          <span className="px-2 py-0.5 text-[10px] font-mono bg-[#00C2FF]/10 text-[#00C2FF] border border-[#00C2FF]/20 rounded-full">
+            Client
+          </span>
+        )}
+        <p className="text-[11px] text-[#FF6C37]">{t.source}</p>
+      </div>
+      <blockquote
+        className={`mt-3 font-medium leading-relaxed text-black/85 dark:text-white/90 ${
+          t.featured ? 'text-lg sm:text-xl max-w-3xl' : 'text-[15px]'
+        }`}
+      >
+        {t.quote}
+      </blockquote>
+    </div>
+    <figcaption className="mt-6 flex items-center gap-3">
+      <div className="w-9 h-9 shrink-0 rounded-full bg-[#00C2FF]/10 border border-[#00C2FF]/30 text-[#00C2FF] text-xs font-semibold flex items-center justify-center">
+        {t.name.split(' ').map((n) => n[0]).join('')}
+      </div>
+      <div className="min-w-0">
+        <p className="text-sm font-medium text-black/90 dark:text-white/95">{t.name}</p>
+        <p className="text-xs text-black/40 dark:text-white/40 truncate">{t.role}</p>
+      </div>
+    </figcaption>
+  </figure>
+);
 
 const Freelance = () => {
   // Tell the Contact form which package was picked, then scroll to it.
@@ -114,7 +194,7 @@ const Freelance = () => {
         </div>
 
         {/* Packages */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
           {packages.map((p) => (
             <div
               key={p.name}
@@ -263,6 +343,33 @@ const Freelance = () => {
             </div>
           ))}
         </div>
+
+       {/* Testimonials */}
+<h3 className="mt-16 sm:mt-20 mb-6 text-xl sm:text-2xl font-semibold tracking-tight text-black/90 dark:text-white/95">
+  Words from the <span className="text-[#FF6C37]">launch</span>
+</h3>
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+  {testimonials
+    .filter((t) => t.client)
+    .map((t) => (
+      <TestimonialCard
+        key={t.name + t.quote}
+        t={t}
+        className={t.featured ? 'md:col-span-2' : 'md:col-span-1'}
+      />
+    ))}
+</div>
+
+<p className="mt-10 mb-4 text-xs text-black/40 dark:text-white/40">
+  Reactions to the project
+</p>
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+  {testimonials
+    .filter((t) => !t.client)
+    .map((t) => (
+      <TestimonialCard key={t.name + t.quote} t={t} />
+    ))}
+</div>
 
         {/* Process: a real sequence, so numbered steps make sense */}
         <h3 className="mt-16 sm:mt-20 mb-6 text-xl sm:text-2xl font-semibold tracking-tight text-black/90 dark:text-white/95">
