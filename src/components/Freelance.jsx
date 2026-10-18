@@ -194,7 +194,7 @@ const Freelance = () => {
         </div>
 
         {/* Packages */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
           {packages.map((p) => (
             <div
               key={p.name}
