@@ -23,7 +23,7 @@ const packages = [
   },
   {
     name: 'Standard',
-    price: '₹11,999',
+    price: '₹9,999',
     note: 'Custom multi-section site',
     delivery: '10–14 days',
     popular: true,
@@ -253,8 +253,7 @@ const Freelance = () => {
         <p className="mt-4 text-xs text-black/40 dark:text-white/40">
           50% to start, 50% on delivery. Hosting is free on all packages. A custom domain
           (about ₹600–1,000 per year) is bought by you in your own name, so you
-          own it and handle the yearly renewal; I set it up for you. Need something
-          different? Tell me and I'll quote it.
+          own it and handle the yearly renewal. <br />I set it up for you.
         </p>
 
         {/* Work */}
